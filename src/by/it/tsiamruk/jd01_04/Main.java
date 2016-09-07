@@ -11,7 +11,7 @@ public class Main {
         };
         double y[]={20,11,40,37};
         double x[]=Util.findroot(a,y);
-       // InOut.arrayPrint2D(a);
+        // InOut.arrayPrint2D(a);
         System.out.println("Roots");
         InOut.arrayPrint(x);
         System.out.println("Determinant= "+Util.det(a));

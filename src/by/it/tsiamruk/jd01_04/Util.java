@@ -17,7 +17,7 @@ public class Util {
 
         }
         InOut.arrayPrint2D(m);
-//прямой ход гауса
+        //прямой ход
         for (int diag = 0; diag <n-1 ; diag++) {
 
             for (int row = diag+1; row < n; row++) {
@@ -29,7 +29,7 @@ public class Util {
             }
         }
         InOut.arrayPrint2D(m);
-//обратный ход жордана
+        //обратный ход
         for (int diag = n-1; diag >0 ; diag--) {
 
             for (int row = diag-1; row >=0; row--) {
@@ -70,7 +70,7 @@ public class Util {
                 }
             }
         }
-      // InOut.arrayPrint2D(m);
+         // InOut.arrayPrint2D(m);
         double res = 1;
         for (int i = 0; i < n; i++) {
             res=res*m[i][i];
