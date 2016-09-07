@@ -1,4 +1,4 @@
-package by.it.laurynovich.jd_01_02;
+package by.it.laurynovich.jd01_02;
 
 import java.util.Scanner;
 
