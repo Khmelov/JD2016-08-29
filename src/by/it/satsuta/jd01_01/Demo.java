@@ -1,4 +1,4 @@
-package by.it.satsuta.JD01_01;
+package by.it.satsuta.jd01_01;
 
 
 public class Demo {
