@@ -9,6 +9,7 @@ public class Main {
                 {2,10,9,7},
                 {3,8,9,12}
         };
+
         double y[]={20,11,40,37};
         double x[]=Util.findroot(a,y);
         // InOut.arrayPrint2D(a);

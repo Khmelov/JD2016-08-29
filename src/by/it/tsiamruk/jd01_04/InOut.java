@@ -10,6 +10,7 @@ public class InOut {
         }
         System.out.println();
     }
+
     public static void arrayPrint(double[] m) {
         for (int i = 0; i <m.length ; i++) {
 
