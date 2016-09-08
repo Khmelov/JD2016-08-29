@@ -1,4 +1,4 @@
-package by.it.artiuschik.JD_01_02;
+package by.it.artiuschik.jd_01_02;
 public class TaskA {
     static public int getShortNum(int[] mas){
         int result=Integer.MIN_VALUE;

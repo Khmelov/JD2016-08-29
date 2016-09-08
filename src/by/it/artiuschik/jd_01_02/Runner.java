@@ -1,4 +1,4 @@
-package by.it.artiuschik.JD_01_02;
+package by.it.artiuschik.jd_01_02;
 public class Runner {
     public static void main(String[] args) {
         String str = Util.readFromConsole();

@@ -1,4 +1,4 @@
-package by.it.artiuschik.JD_01_04;
+package by.it.artiuschik.jd_01_04;
 
 public class Helper {
     static double[] findRoot(double[][] a, double[] y) {

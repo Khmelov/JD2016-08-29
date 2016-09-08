@@ -1,4 +1,4 @@
-package by.it.artiuschik.JD_01_02;
+package by.it.artiuschik.jd_01_02;
 import java.util.Random;
 
 public class TaskC

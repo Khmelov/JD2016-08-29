@@ -1,4 +1,4 @@
-package by.it.artiuschik.JD_01_02;
+package by.it.artiuschik.jd_01_02;
 public class TaskB
 {
     static boolean inInterval(int number,int left,int right)
