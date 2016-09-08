@@ -10,11 +10,17 @@ public class Task3 {
 
         double x = 3.567;
 
-        System.out.println("I param I        value       I");
+        System.out.println("______________________________");
+        System.out.println("| param |        value       |");
+        System.out.println("______________________________");
 
         for (double a = rangeStart; a <= rangeEnd; a +=3.75){
             double y = 1 / tan(pow(x, 3)) + 2.24 * a * x;
-            System.out.println(String.format("%-2s%-6s%-2s%-19s%-20s", "I", a, "I", y, "I"));
+            System.out.println(String.format("%-2s%-6s%-2s%-19s%-20s", "|", a, "|", y, "|"));
         }
+
+        System.out.println("|       |                    |");
+        System.out.println("------------------------------");
+
     }
 }
