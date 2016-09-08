@@ -44,7 +44,7 @@ public class TaskB {
 
     } else
             System.out.println("Введенному числу " + num + " не соответствует\n" +
-            "ни один месяц. ");
+            "ни один месяц.");
     }
     public static void getSquarRoot(){
 
