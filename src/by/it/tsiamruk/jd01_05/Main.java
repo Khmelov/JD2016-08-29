@@ -1,10 +1,7 @@
 package by.it.tsiamruk.jd01_05;
 
 
-import by.it.tsiamruk.jd01_05.math.Task1;
-import by.it.tsiamruk.jd01_05.math.Task2;
-import by.it.tsiamruk.jd01_05.math.Task3;
-import by.it.tsiamruk.jd01_05.math.Task4;
+import by.it.tsiamruk.jd01_05.math.*;
 
 public class Main {
     public static void main(String[] args){
@@ -22,6 +19,6 @@ public class Main {
         Task4.additionMulti();
 
         //Task 5
-
+        Task5.functionCalculalation();
     }//end of main method
 }//end of main class
