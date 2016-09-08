@@ -2,10 +2,6 @@ package by.it.artiuschik.jd_01_02;
 import java.util.Scanner;
 
 public class Util {
-    /**
-     * @param mas входной массив
-     * @return перевернутый массив
-     */
     static int[] reverseMas(int[] mas)
     {
         int temp;
@@ -56,19 +52,20 @@ public class Util {
     static int[] moveZerosToEnd(int[] mas)
     {
         int count=0;
+        int mas1[]=new int[mas.length];
         for(int i=0;i<mas.length;i++)
         {
             if(mas[i]!=0)
             {
-                mas[count]=mas[i];
+                mas1[count]=mas[i];
                 count++;
             }
         }
-        for(int i=count+1;i<mas.length;i++)
+        for(int i=count+1;i<mas1.length;i++)
         {
-            mas[i]=0;
+            mas1[i]=0;
         }
-        return mas;
+        return mas1;
     }
     static double srednArifm(int[] mas)
     {

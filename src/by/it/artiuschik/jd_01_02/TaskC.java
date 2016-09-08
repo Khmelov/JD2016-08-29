@@ -38,9 +38,9 @@ public class TaskC
             for(int j=0;j<n;j++)
             {
                 if (matrix[i][j] >= 0) {
-                    System.out.print(" " + matrix[i][j] + " ");
+                    System.out.printf("% 4.2f ",matrix[i][j]);
                 } else {
-                    System.out.print(matrix[i][j] + " ");
+                    System.out.printf("%4.2f ",matrix[i][j]);
                 }
             }
             System.out.println();
@@ -58,14 +58,12 @@ public class TaskC
                 if(matrix[i][j]>0)
                 {
                     flag=!flag;
+                    continue;
                 }
-                else
-                {
                     if(flag)
                     {
                         strSum+=matrix[i][j];
                     }
-                }
             }
             if(flag==true)
             {
