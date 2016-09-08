@@ -3,7 +3,7 @@ public class Runner {
     public static void main(String[] args) {
         String str = Util.readFromConsole();
         int mas[] = Util.getArrayInt(str);
-        Util.printArray(mas);
+        //Util.printArray(mas);
         int shortNum = TaskA.getShortNum(mas);
         System.out.println("Short num=" + shortNum);
         System.out.println("Short len=" + String.valueOf(shortNum).length());
@@ -16,8 +16,8 @@ public class Runner {
             if (new Integer(i).toString().length() < mean) {
                 System.out.print(i + " ");
             }
-            System.out.println();
         }
+        System.out.println();
         for (int i : mas) {
             if (TaskA.uniqueDigits(i)) {
                 System.out.print("Найдено число из различных цифр: " + i);
@@ -42,14 +42,20 @@ public class Runner {
         k = Integer.parseInt(Util.readFromConsole());
         TaskB.printMatrix(Math.sqrt(k), k);
         //3.Найти корни квадраного уравнения
-        double answers[] = TaskB.kvadrUravn(Double.parseDouble(args[0]), Double.parseDouble(args[1]), Double.parseDouble(args[2]));
-        if (answers == null) {
-            System.out.println("Корней нет");
-        } else {
-            System.out.println("Корни: ");
-            for (int i = 0; i < answers.length; i++) {
-                System.out.print(answers[i] + " ");
+        if(args.length!=0) {
+            double answers[] = TaskB.kvadrUravn(Double.parseDouble(args[0]), Double.parseDouble(args[1]), Double.parseDouble(args[2]));
+            if (answers == null) {
+                System.out.println("Корней нет");
+            } else {
+                System.out.println("Корни: ");
+                for (int i = 0; i < answers.length; i++) {
+                    System.out.print(answers[i] + " ");
+                }
             }
+        }
+        else
+        {
+            System.out.println("Отстствуют аргументы командной строки");
         }
         //4. Вывести на консоль название мсяца соответствующего данному числу
         System.out.print("Введите число : ");
@@ -79,7 +85,6 @@ public class Runner {
         System.out.println("Новая матрица:");
         TaskC.printMatrix(newMatrix.length,newMatrix);
         /*5. Удалить из матрицы сроки и столбцы содежащие минимальный элемент*/
-        TaskC.printMatrix(matrix.length,matrix);
         System.out.println("Матрица после удаления элементов:");
         TaskC.printMatrix(TaskC.deleteRowsAndCols(matrix).length,TaskC.deleteRowsAndCols(matrix));
         /*6. Найти минимальный элемент и переместить его в позицию [1,1]
