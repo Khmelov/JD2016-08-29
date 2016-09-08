@@ -1,4 +1,4 @@
-package by.it.sukora.JD01_02;
+package by.it.sukora.JD1_02;
 
 import java.io.BufferedReader;
 import java.io.IOException;
