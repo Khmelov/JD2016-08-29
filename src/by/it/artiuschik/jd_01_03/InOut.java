@@ -1,4 +1,4 @@
-package by.it.artiuschik.JD_01_03;
+package by.it.artiuschik.jd_01_03;
 import java.util.Scanner;
 
 public class InOut {

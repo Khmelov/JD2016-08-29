@@ -1,4 +1,4 @@
-package by.it.artiuschik.JD_01_03;
+package by.it.artiuschik.jd_01_03;
 public class Runner {
     public static void main(String[]args)
     {

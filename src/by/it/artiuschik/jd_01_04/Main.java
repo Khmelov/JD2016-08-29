@@ -1,4 +1,4 @@
-package by.it.artiuschik.JD_01_04;
+package by.it.artiuschik.jd_01_04;
 public class Main
 {
     public static void main(String[] args)
