@@ -9,7 +9,7 @@ public class Runner {
         System.out.println();
 
 
-        System.out.println("Матрица NxN :");
+        System.out.println("Матрица NxN : ");
         TaskB.matrix();
 
 

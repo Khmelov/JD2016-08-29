@@ -24,9 +24,9 @@ public class TaskB {
     }
     public static void getNumMonth(){
         String month=null;
-        //int[]mas={1,2,3,4,5,6,7,8,9,10,11,12};
-        int num=8;
-        if(num>=1||num<=12){
+        int[]mas={1,2,3,4,5,6,7,8,9,10,11,12};
+        int num=10;
+        if(num>=mas[0]||num<=mas[11]){
             switch(num){
                 case 1: System.out.println("Январь");break;
                 case 2: System.out.println("Февраль"); break;
@@ -46,8 +46,8 @@ public class TaskB {
             System.out.println("Введенному числу " + num + " не соответствует\n" +
             "ни один месяц.");
     }
-    public static void getSquarRoot(){
+   // public static void getSquarRoot(){
 
-    }
 }
+
 
