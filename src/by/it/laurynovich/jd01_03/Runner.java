@@ -10,8 +10,9 @@ public class Runner {
         System.out.println(line);
         double[] mas = InOut.arrayFromString( line );
         InOut.arrayPrint( mas,"m",3 );
+
        // mas=Utill.bubbleSort( mas );
-        mas=Utill.uniSort( mas );
+        mas = Utill.uniSort( mas );
         System.out.println("\n  Sort mas");
         InOut.arrayPrint( mas,"m",3 );
 

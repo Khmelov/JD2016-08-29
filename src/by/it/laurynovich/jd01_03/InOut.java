@@ -31,7 +31,7 @@ public class InOut {
         InOut.cols = cols;
         int col=0;
         for (double value:mas){
-            System.out.printf ( name + "[%-2d]=%-6.1f", col, mas[col] );
+            System.out.printf ( name + "[ %-2d]=%-6.1f", col, mas[col] );
             col++;
             if (col%cols==0 || col == mas.length-1) {
                 System.out.println();
