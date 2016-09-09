@@ -16,27 +16,19 @@ public class Runner {
         System.out.print("Long len=" + String.valueOf(longNum).length() +" ");
 
         double averageNum=TaskA.getAverageNum(mas);
-        double sum=TaskA.sum;
-        double sr=sum/mas.length;
-        System.out.print("Числа меньше "+sr+"таковы: ");
+        System.out.print("Числа меньше "+averageNum+"таковы: ");
                 for (int i:mas) {
-                    if (i<sr) {
+                    if (i<averageNum) {
                         System.out.print(i+" ");
                     }
                 }
         System.out.println();
 
-        static boolean diffChar(int value) {
-        char[] mas=value.toString().toCharArray();
-        for (int i=0; i<mas.length-1; i++) {
-            for (int j=i+1; j<mas.length; j++)
-                if (mas[i]==mas[j]) {
-                    return false;
-                }
+        for (int i:mas) {
+           if (TaskA.variousLitter(i)) {
+               System.out.print("Число из различных цифр: "+i);
+               break;
+            }
         }
-
-                return true;
-    }
-
     }
 }
