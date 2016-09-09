@@ -3,11 +3,11 @@ package by.it.vashukevich.jd1_03;
 import java.util.Scanner;
 
 
-/**
+/*
  * Created by Admin on 03.09.16.
  */
 public class InOut {
-    public static String consoleReadLine() {
+    static String consoleReadLine() {
         /*  InputStreamReader inputStreamReader = new InputStreamReader(System.in);
             BufferedReader line = new BufferedReader(inputStreamReader);
             String out = line.readLine();
@@ -21,7 +21,7 @@ public class InOut {
         return line;
     }
 
-    static public double[] stringLineToInArray(String line) {
+    static double[] stringLineToInArray(String line) {
         line = line.trim();//удаляем пробелы в начале и в конце
         String[] linString = line.split(" ");//преобразование строки в массив
         int count = linString.length;//найдем длину массива
@@ -32,7 +32,7 @@ public class InOut {
         return mas;
     }
 
-    public static void arrayPrint(double[] mas, String name, int cols) {
+    static void arrayPrint(double[] mas, String name, int cols) {
         int col = 0;
         for (int i = 0; i < mas.length; i++) {
             System.out.print(name);//печатаем имя массива
@@ -46,7 +46,7 @@ public class InOut {
         }
     }
 
-    public static void arrayPrint2D(double[][] mas, String name) {
+    static void arrayPrint2D(double[][] mas, String name) {
         for (int i = 0; i < mas.length; i++) {      //перебираем строки массива
             for (int j = 0; j < mas[0].length; j++) {  //перебираем столбцы мссива
                 System.out.printf(name + "[%1d,%1d]=%-6.1f", i, j, mas[i][j]);//печатаем имя массива
@@ -56,7 +56,7 @@ public class InOut {
             }
         }
 
-    public static double[][] inArrayPrint2D() {
+    static double[][] inArrayPrint2D() {
         double [][]mass={
                 {1,2,3,4,},
                 {5,6,7,8,},
@@ -65,7 +65,7 @@ public class InOut {
         return mass;
     }
 
-    public static void arrayPrint2D(double[][] mass) {
+    static void arrayPrint2D(double[][] mass) {
         for (int i = 0; i < mass.length; i++) {      //перебираем строки массива
             for (int j = 0; j < mass[0].length; j++) {  //перебираем столбцы мссива
                 System.out.printf("%6.1f",mass[i][j]);//печатаем имя массива

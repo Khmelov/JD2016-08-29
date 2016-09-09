@@ -1,11 +1,11 @@
 package by.it.vashukevich.jd1_03;
 
-/**
+/*
  * Created by Admin on 04.09.16.
  */
 public class Util {
 
-    public static double[] sortMas(double[]mas) {
+    static double[] sortMas(double[]mas) {
         //double[] m = {6, 4, 8, 12, 9, 21, 14, 32};
        // PrintMas(m);
         boolean swap=true;
@@ -33,7 +33,7 @@ public class Util {
         System.out.println();
     }*/
 
-    public static double[] sortIntArray(double[]mas,boolean upDirection) {
+    static double[] sortIntArray(double[]mas,boolean upDirection) {
         //mass = new double[]{2, 12, 3, 14, 15, 61, 20, 18};
         for(int i=0;i<mas.length-1;i++)
             for(int j=i+1;j<mas.length;j++)

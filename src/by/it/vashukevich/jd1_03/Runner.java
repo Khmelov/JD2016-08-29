@@ -2,7 +2,7 @@ package by.it.vashukevich.jd1_03;
 
 import java.io.IOException;
 
-/**
+/*
  * Created by Admin on 03.09.16.
  */
 public class Runner {

@@ -1,6 +1,6 @@
 package by.it.vashukevich.jd01_02;
 
-/**
+/*
  * Created by Admin on 31.08.16.
  */
 public class TaskA {
