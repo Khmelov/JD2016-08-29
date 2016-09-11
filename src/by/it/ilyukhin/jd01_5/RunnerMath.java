@@ -16,7 +16,7 @@ public class RunnerMath {
         //Task_3
         Task_3.printTable();
         //Task_4
-        //System.out.println(Task_4.calculate());
+        System.out.println(Task_4.calculate());
 
 
 
