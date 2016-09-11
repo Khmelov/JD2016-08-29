@@ -3,7 +3,6 @@ package by.it.ilyukhin.jd01_2;
 
 public class Runner {
     public static void main(String[] args) {
-        //TaskA
         String line = Util.getConsoleLine();
         int arr[] = Util.lineToIntArray(line);
         String max = TaskA.getMax(arr);
@@ -25,6 +24,9 @@ public class Runner {
                 break;
             }
         }
+        //TaskB
+        /*int interval = TaskB.accessoryInterval();
+        double matrix=TaskB.massiveOut();*/
     }
 }
 

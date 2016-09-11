@@ -19,8 +19,8 @@ public class Util {
         }
         return array;
     }
-
-    static int inputK() {
+   //TaskB
+    /*static int inputK() {
         Scanner inputK = new Scanner(System.in);
         int k = inputK.nextInt();
         return k;
@@ -46,5 +46,10 @@ public class Util {
         return N;
 
     }
+    static double inputK2() {
+        Scanner inputK2=new Scanner(System.in);
+        double K= inputK2.nextDouble();
+        return K;
+    }*/
 }
 
