@@ -47,16 +47,24 @@ public class Helper {
         }
         return x;
     }
-}
-    /*static double det(double[][] m) {
+
+    static double det(double[][] m){
         int n=m.length;
-    for (int diag=0; diag<n-1; diag++) {
-        for (int row=diag+1; row<n; row++) {
-            double k = m[row][diag] / m[diag][diag];
-            for (int col = 0; col < n; col++) {
-                m[row][col] = m[row][col] - m[diag][col] * k;
+
+        for (int diag = 0; diag <n-1 ; diag++) {
+            for (int row = diag+1; row < n; row++) {
+                double k = m[row][diag] / m[diag][diag];
+                for (int col = 0; col < n ; col++) {
+                    m[row][col] = m[row][col] - m[diag][col] * k;
+                }
             }
         }
-        InOut.printArr(m);
-    }*/
+        double res = 1;
+        for (int i = 0; i < n; i++) {
+            res=res*m[i][i];
+        }
+        return res;
+    }
+}
+
 

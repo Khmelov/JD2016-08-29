@@ -14,7 +14,7 @@ public class Main {
         double x[]=Helper.findRoot(a,y);
         System.out.println("Roots");
         InOut.printArr(x);
-        System.out.println("Determinant = ");
+        System.out.println("Determinant = "+Helper.det(a));
     }
 
 }
