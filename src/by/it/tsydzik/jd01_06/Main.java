@@ -11,5 +11,6 @@ public class Main {
 
         System.out.println("\nTask A2\n");
         TaskA2.taskA2();
+
     }
 }
