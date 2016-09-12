@@ -6,13 +6,13 @@ package by.it.tsydzik.jd01_05;
  */
 public class Main {
 	public static void main(String[] args) {
-/*
+
 		System.out.println("Var 15\nTask 1");
 		Task1.compute();
 
 		System.out.println("\nTask 2");
 		Task2.compute();
-*/
+
 		System.out.println("\nTask 3");
 		Task3.compute();
 	}
