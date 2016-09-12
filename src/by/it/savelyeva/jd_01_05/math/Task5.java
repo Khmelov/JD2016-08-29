@@ -21,7 +21,7 @@ public class Task5 {
                 beta = 1/Math.tan(x*x);
             }
             alpha = Math.log10(Math.abs(beta + 2.74));
-            System.out.printf("iteration %d (x = %.2f, t = %.2f): alpha = %10.6f\n", i, x, t, alpha);
+            System.out.printf("iteration %d (x = %.2f, x/2 = %.2f): alpha = %10.6f\n", i, x, t, alpha);
             x += deltaX;
         }
     }
