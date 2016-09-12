@@ -12,6 +12,6 @@ public class Task6 {
 
         //announce new array type double and assign aray lenght = count.
         double[] array = new double[count];
-
+        return array;
     }
 }
