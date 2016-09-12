@@ -60,37 +60,3 @@ public class Helper {
         InOut.printArr(m);
     }*/
 
-    static double det(double[][] m) {
-        //подготовка операционной матрицы
-        int n = m.length;
-
-//прямой ход
-        for (int diag = 0; diag < n; diag++) {
-            for (int row = diag + 1; row < n; row++) {
-                double k = m[row][diag] / m[diag][diag];
-                for (int col = 0; col < n + 1; col++) {
-                    m[row][col] = m[row][col] - m[diag][col] * k;
-                }
-            }
-            InOut.printArr(m);
-        }
-        //обратный ход
-        for (int diag = n - 1; diag > 0; diag--) {
-            for (int row = diag - 1; row >= 0; row--) {
-                double k = m[row][diag] / m[diag][diag];
-                for (int col = 0; col < n + 1; col++) {
-                    m[row][col] = m[row][col] - m[diag][col] * k;
-                }
-            }
-            InOut.printArr(m);
-        }
-        //решение системы
-        double x=1;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                x=x*m[i][j];
-            }
-        }
-        return x;
-    }
-
