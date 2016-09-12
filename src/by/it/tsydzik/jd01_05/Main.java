@@ -15,5 +15,14 @@ public class Main {
 
 		System.out.println("\nTask 3");
 		Task3.compute();
+
+		System.out.println("\nTask 4");
+		Task4.compute();
+
+		System.out.println("\nTask 5");
+		Task5.compute();
+
+		System.out.println("\nTask 6");
+		Task6.compute();
 	}
 }
