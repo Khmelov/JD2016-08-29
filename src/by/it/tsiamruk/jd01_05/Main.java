@@ -20,5 +20,10 @@ public class Main {
 
         //Task 5
         Task5.functionCalculalation();
+
+        //Task 6
+        double[] a = Task6.newArray();
+        Task6.showArray(a);
+
     }//end of main method
 }//end of main class
