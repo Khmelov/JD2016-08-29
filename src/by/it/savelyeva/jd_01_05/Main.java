@@ -59,6 +59,15 @@ public class Main {
                 myTask6.calculateAverageArraySlice(m, m.length-10, m.length));
 
         InOut.printArray(myTask6.createArrayFromArray(m), "M", 5);
+
+
+        Task7 myTask7 = new Task7();
+        int[] arrA = myTask7.createArrayA(31, 103, 450);
+        InOut.printArray(arrA, "A", 5);
+        InOut.drawArray(arrA, "A", 5, false);
+        int[] arrB = myTask7.createArrayFromArray(arrA);
+        InOut.printArray(arrB, "B", 2);
+        InOut.drawArray(arrB, "B", 2, true);
     }
 
 }
