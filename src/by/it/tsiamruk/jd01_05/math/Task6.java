@@ -27,15 +27,64 @@ public class Task6 {
         return array;
     }
 
-    public static void showArray(double[] mas){
+    public static void showArray(double[] array){
           int col = 0;
 
-        for (double value:mas) {
-            System.out.printf("array value is: "+value +" index[%d]\n", col);
+        for (double value : array) {
+            System.out.printf("array value is: " + value + " index[%d]\n", col);
             col++;
         }
+    }
+
+    public static void evenIndexArray(double[] array){
+        //counter
+        int count = 0;
+        //multiplicator
+        double mult = 1;
+
+        for (double value : array){
+            if (count % 2 == 0){
+                mult*=value;
+            }
+            count ++;
+        }
+        System.out.printf("Multiplication of every even index of array is [%f]", mult);
 
     }
 
+    public static double[] newArray(double[] array){
 
-}
+        int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > 2){
+                count ++;
+            }
+
+        }
+        double[] newArray = new double[count];
+
+
+        int counter = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i]> 2){
+                    newArray[counter] = array[i];
+                    counter++;
+            }
+        }
+
+        //test
+        //for (double value : newArray) {
+        //    System.out.println(value);
+        //}
+
+       return newArray;
+    }
+
+
+    }//end class
+
+
+
+
+
