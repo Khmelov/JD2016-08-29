@@ -2,7 +2,7 @@ package by.it.opashniuk.jd01_03;
 
 public class Runner {
     public static void main(String[] args) {
-        String line="1 2.3 123";
+        String line="1 123 2.3";
         System.out.println(line);
         double mas[]=InOut.arrayFromString(line);
         InOut.arrayPrint(mas,"m",3);
