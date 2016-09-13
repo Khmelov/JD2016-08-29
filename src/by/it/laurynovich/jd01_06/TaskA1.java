@@ -1,4 +1,4 @@
-package by.it.laurynovich.jd01_05;
+package by.it.laurynovich.jd01_06;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
