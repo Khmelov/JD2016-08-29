@@ -1,4 +1,4 @@
-package by.it.laurynovich.jd01_05;
+package by.it.laurynovich.jd01_06;
 
 /**
  * Created by vseotdala on 09.09.2016.
