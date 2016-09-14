@@ -19,9 +19,9 @@ public class TaskB {
          */
 
         System.out.println("Введите натуральное значение k");
-        double K =  Math.sqrt(Util.inputK());
+        double K =  3;//Math.sqrt(Util.inputK());
         System.out.println("Введите значение N");
-        int N = Util.inputN2();
+        int N = 5;//Util.inputN2();
         int col = 0;
         double[][] mas = new double[N][N];
         N = mas.length;
