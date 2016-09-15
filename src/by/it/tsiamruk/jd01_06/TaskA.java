@@ -39,7 +39,7 @@ public class TaskA {
     }
     //task 3
     //метод для поиска гласных
-    static boolean Glasnaya(String word){
+    static boolean vowel(String word){
         //паттерн для гласных букв
         String oae="яЯыЫуУаАиИеУоОюЮэЭёЁ";
         char first=word.charAt(0);
@@ -59,7 +59,7 @@ public class TaskA {
         Matcher m=p.matcher(text);
         int counter=0;
         while (m.find()) //пока находятся слова, мы подсчитываем число подходящих под проверку
-            if (Glasnaya(m.group())) //если проверка показали гласные в начале и конце
+            if (vowel(m.group())) //если проверка показали гласные в начале и конце
             {
                 counter++;                     //то увеличим общий счетчик
                 //System.out.println(m.group()); //для вывода слова, не нужно по условию
