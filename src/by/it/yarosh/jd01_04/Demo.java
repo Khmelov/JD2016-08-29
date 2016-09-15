@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd01_04;
+package by.it.yarosh.jd01_04;
 
 import java.io.IOException;
 
