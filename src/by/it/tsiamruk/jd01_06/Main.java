@@ -1,9 +1,11 @@
-package by.it.tsiamruk.jd01_06.classwork;
+package by.it.tsiamruk.jd01_06;
 
 public class Main {
     public static void main(String[] args){
         TaskA.task1();
         System.out.println();
         TaskA.task2();
+        System.out.println();
+        TaskA.task3();
     }
 }

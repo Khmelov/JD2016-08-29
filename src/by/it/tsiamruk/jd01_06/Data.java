@@ -1,4 +1,4 @@
-package by.it.tsiamruk.jd01_06.classwork;
+package by.it.tsiamruk.jd01_06;
 
 
 
