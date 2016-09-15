@@ -17,5 +17,8 @@ public class Main {
         System.out.println("\nTask B1\n");
         TaskB1.taskB1();
 
+        System.out.println("\nTask B2\n");
+        TaskB2.taskB2();
+
     }
 }
