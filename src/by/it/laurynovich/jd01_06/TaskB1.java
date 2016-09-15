@@ -9,23 +9,15 @@ import java.util.regex.Pattern;
 //  1. Из текста удалить все слова длины 5, начинающиеся на согласную букву.
 public class TaskB1 {
 
-    public boolean Soglasnaja (String word){
-        String sdf = "йцкнгшщхъфвпрлджчсмтьб";
-        sdf = sdf + sdf.toUpperCase();
-        int len = word.length();
-        if (len == 5)
-        return (sdf.indexOf(word.charAt(0)) >= 0 );
-    }
-
     public static void main(String[] args) {
         StringBuilder text = new StringBuilder(Data.POEM);
-        Pattern p = Pattern.compile("[а-яА-ЯёЁ]+");
+        Pattern p = Pattern.compile("[ ][йцкнгшщхъфвпрлджчсмтьбЙЦКНГШЩЗХЪФВПРЛДЖЧСМТЬБ]{1,}[А-Яа-яёЁ]{4}[ |,|:|;|.]");
         Matcher m = p.matcher(text);
-        while (m.find())
-            if ( Soglasnaja(m.group()))
-            {
-                System.out.println(m.group());
-            }
+        StringBuilder newText = new StringBuilder();
+        while (m.find()){
+
+        newText = text.delete(m.start(1),m.start(6));}
+        System.out.println(newText);
 
     }
 
