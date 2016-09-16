@@ -7,10 +7,10 @@ import java.io.IOException;
  */
 public class Runner {
     public static void main(String[] args) throws IOException{
-        //String line="1 22 333 4444 55555 666666";
+        //String text="1 22 333 4444 55555 666666";
         System.out.println("Введите числа через пробел");
-        String line = Util.getOneLine();
-        int arr[]=Util.lineToIntArray(line);
+        String text = Util.getOneLine();
+        int arr[]=Util.lineToIntArray(text);
         String max= TaskA.getMax(arr);
         System.out.println(max);
         String min= TaskA.getMin(arr);
