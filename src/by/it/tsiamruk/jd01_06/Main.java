@@ -9,5 +9,7 @@ public class Main {
         TaskA.task3();
         System.out.println();
         TaskB.task1();
+        System.out.println();
+        TaskB.task2();
     }
 }
