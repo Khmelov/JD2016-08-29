@@ -19,37 +19,5 @@ public class Util {
         }
         return array;
     }
-   //TaskB
-    /*static int inputK() {
-        Scanner inputK = new Scanner(System.in);
-        int k = inputK.nextInt();
-        return k;
-
-    }
-
-    static int inputN() {
-        Scanner inputN = new Scanner(System.in);
-        int n = inputN.nextInt();
-        return n;
-
-    }
-
-    static int inputM() {
-        Scanner inputM = new Scanner(System.in);
-        int m = inputM.nextInt();
-        return m;
-    }
-
-    static int inputN2() {
-        Scanner inputN2 = new Scanner(System.in);
-        int N = inputN2.nextInt();
-        return N;
-
-    }
-    static double inputK2() {
-        Scanner inputK2=new Scanner(System.in);
-        double K= inputK2.nextDouble();
-        return K;
-    }*/
 }
 
