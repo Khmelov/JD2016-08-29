@@ -15,7 +15,7 @@ public class TaskB {
         Pattern p=Pattern.compile("[^а-яА-ЯёЁ][Б-Щб-щ^еЕёЁиИоОуУ]([а-я]{4})[^а-яА-ЯёЁ]");
         Matcher m=p.matcher(sb);
         while (m.find()){
-            m.appendReplacement(sb, " ");
+           m.appendReplacement(sb, " ");
         }
         sb.delete(0, a+7);
 
