@@ -1,6 +1,6 @@
 package by.it.sukora.JD1_05;
 
-import JD1_05.Math.*;
+import by.it.sukora.JD1_05.Math.*;
 
 /**
  * Created by stasi on 05.09.2016.
