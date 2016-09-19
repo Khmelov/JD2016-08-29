@@ -1,7 +1,7 @@
-package by.it.akhmelev.jd01_10.matlab_prototype.vars;
+package by.it.akhmelev.jd01_10.matlab_v2.vars;
 
-import by.it.akhmelev.jd01_10.matlab_prototype.Patterns;
-import by.it.akhmelev.jd01_10.matlab_prototype.interfaces.IVar;
+import by.it.akhmelev.jd01_10.matlab_v2.Patterns;
+import by.it.akhmelev.jd01_10.matlab_v2.interfaces.IVar;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

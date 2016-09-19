@@ -1,6 +1,6 @@
-package by.it.akhmelev.jd01_10.matlab_prototype.vars;
+package by.it.akhmelev.jd01_10.matlab_v2.vars;
 
-import by.it.akhmelev.jd01_10.matlab_prototype.interfaces.*;
+import by.it.akhmelev.jd01_10.matlab_v2.interfaces.*;
 
 
 /** Класс для операций со скалярными величинами */
