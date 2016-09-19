@@ -1,10 +1,10 @@
-package by.it.akhmelev.jd01_10.matlab_prototype.vars;
+package by.it.akhmelev.jd01_10.matlab_v2.vars;
 
-import by.it.akhmelev.jd01_10.matlab_prototype.Error;
-import by.it.akhmelev.jd01_10.matlab_prototype.interfaces.IAdd;
-import by.it.akhmelev.jd01_10.matlab_prototype.interfaces.IDiv;
-import by.it.akhmelev.jd01_10.matlab_prototype.interfaces.IMul;
-import by.it.akhmelev.jd01_10.matlab_prototype.interfaces.ISub;
+import by.it.akhmelev.jd01_10.matlab_v2.Error;
+import by.it.akhmelev.jd01_10.matlab_v2.interfaces.IAdd;
+import by.it.akhmelev.jd01_10.matlab_v2.interfaces.IDiv;
+import by.it.akhmelev.jd01_10.matlab_v2.interfaces.IMul;
+import by.it.akhmelev.jd01_10.matlab_v2.interfaces.ISub;
 
 public abstract class Var implements IAdd,ISub,IMul,IDiv {
     //эти процедуры будут ЧАСТИЧНО перекрыты в подклассах VarF VarV VarM (числа, вектора и матрицы)

@@ -1,9 +1,9 @@
-package by.it.akhmelev.jd01_10.matlab_prototype;
+package by.it.akhmelev.jd01_10.matlab_v2;
 
-import by.it.akhmelev.jd01_10.matlab_prototype.vars.Var;
-import by.it.akhmelev.jd01_10.matlab_prototype.vars.VarF;
-import by.it.akhmelev.jd01_10.matlab_prototype.vars.VarM;
-import by.it.akhmelev.jd01_10.matlab_prototype.vars.VarV;
+import by.it.akhmelev.jd01_10.matlab_v2.vars.Var;
+import by.it.akhmelev.jd01_10.matlab_v2.vars.VarF;
+import by.it.akhmelev.jd01_10.matlab_v2.vars.VarM;
+import by.it.akhmelev.jd01_10.matlab_v2.vars.VarV;
 
 public class Runner {
 
