@@ -7,60 +7,62 @@ import java.util.Arrays;
  */
 public abstract class Lamp implements ILightSource {
 
-    private String[] producer;
-    private int power;
-    private int year;
-    private boolean isLampOn = true;    // включена ли лампа
+	private boolean isLampOn = false;
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Lamp{");
-        sb.append("producer=").append(Arrays.toString(producer));
-        sb.append(", power=").append(power);
-        sb.append(", year=").append(year);
-        sb.append(", isLampOn=").append(isLampOn);
-        sb.append('}');
-        return sb.toString();
-    }
+	private static final int MIN_CAPACITY = 0;
+	private static final int MAX_CAPACITY = 100;
+	private int capacity = 30;
 
-    public String[] getProducer() {
-        return producer;
-    }
+	public Lamp(boolean isLampOn) {
+		this.isLampOn = isLampOn;
+	}
 
-    public void setProducer(String[] producer) {
-        this.producer = producer;
-    }
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("Lamp{");
+		sb.append("isLampOn=").append(isLampOn);
+		sb.append(", capacity=").append(capacity);
+		sb.append('}');
+		return sb.toString();
+	}
 
-    public int getPower() {
-        return power;
-    }
+	@Override
+	public void turnOnLight() {
+		isLampOn = true;
+	}
 
-    public void setPower(int power) {
-        this.power = power;
-    }
+	@Override
+	public void turnOffLights() {
+		isLampOn = false;
+	}
 
-    public int getYear() {
-        return year;
-    }
+	boolean isLampOn() {
+		return isLampOn;
+	}
 
-    public void setYear(int year) {
-        this.year = year;
-    }
+	public void increaseCapacity() {
+		if (capacity < MAX_CAPACITY) {
+			capacity++;
+		}
+	}
 
-    public boolean isLampOn() {
-        return isLampOn;
-    }
+	@Override
+	public void increaseCapacity(int delta) {
+		if (capacity + delta <= MAX_CAPACITY) {
+			capacity += delta;
+		}
+	}
 
-    public void setLampOn(boolean lampOn) {
-        isLampOn = lampOn;
-    }
+	public void reduceCapacity() {
+		if (capacity > MIN_CAPACITY) {
+			capacity--;
+		}
+	}
 
-    public Lamp(String[] producer, int power, int year, boolean isLampOn) {
-
-        this.producer = producer;
-        this.power = power;
-        this.year = year;
-        this.isLampOn = isLampOn;
-    }
-
+	@Override
+	public void reduceCapacity(int delta) {
+		if (capacity - delta >= MIN_CAPACITY) {
+			capacity -= delta;
+		}
+	}
 }
