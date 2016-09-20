@@ -13,9 +13,9 @@ public class Main {
         System.out.println("Полным выражением(1) y= " + Task1.tog(a, b));
 
         double x =0.9;
-        System.out.println("Вычислить функцию(2) z=" +Task2.funct(a*19.4628099, x));
+        System.out.println("Вычислил функцию(2) z=" +Task2.funct(a*19.4628099, x));
         System.out.println("Tабулирование функции y(3)");Task3.functab();
-        System.out.println("Вложенные циклы(Задание 4): " +Task4.proiz());
+        System.out.println("Вложенные циклы(4): " +Task4.proiz());
 
 
     }
