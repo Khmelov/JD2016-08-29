@@ -19,7 +19,7 @@ public class TaskA2 {
                         mastext[j]="";
                     }
                 }
-                System.out.println("повторы слова \""+mastext[i]+"\" равны "+count);
+                System.out.println("повтор слова \""+mastext[i]+"\" равны "+count);
             }
         }
 
