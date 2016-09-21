@@ -8,6 +8,8 @@ public class CargoShip extends Ship {
     public boolean atSee() {
         System.out.println("Грузовой корабль в море!");
         return super.atSee();
+
+
     }
 
     @Override

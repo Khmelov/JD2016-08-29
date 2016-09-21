@@ -11,5 +11,6 @@ public interface IShip {
     void changeCource();
     void loadShip();
 
+
     
 }
