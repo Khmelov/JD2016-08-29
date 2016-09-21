@@ -1,29 +1,35 @@
-package by.it.tsiamruk.matlab;
+package by.it.tsiamruk.matlab.vars;
 
 
-public abstract class Var implements IOperable{
+import by.it.tsiamruk.matlab.Error;
+import by.it.tsiamruk.matlab.interfaces.IAdd;
+import by.it.tsiamruk.matlab.interfaces.IDiv;
+import by.it.tsiamruk.matlab.interfaces.IMul;
+import by.it.tsiamruk.matlab.interfaces.ISub;
+
+public abstract class Var implements IAdd,IDiv,IMul,ISub{
 
     @Override
     public Var add(Var var) {
         new Error("Сложение невозможно");
-        return var;
+        return null;
     }
 
     @Override
     public Var sub(Var var) {
         new Error("Вычитание невозможно");
-        return var;
+        return null;
     }
 
     @Override
     public Var mul(Var var) {
         new Error("Умножение невозможно");
-        return var;
+        return null;
     }
 
     @Override
     public Var div(Var var) {
         new Error("Деление невозможно");
-        return var;
+        return null;
     }
 }
