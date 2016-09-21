@@ -55,8 +55,14 @@ public class VarM extends Var {
 
     @Override
     public String toString() {
-        return "VarM{" +
-                "value=" + Arrays.toString(value) +
-                '}';
+
+
+        for (int i = 0; i < value.length  ; i++) {
+
+            Arrays.toString(value[i]);
+
+        }
+        return toString();
     }
+
 }
