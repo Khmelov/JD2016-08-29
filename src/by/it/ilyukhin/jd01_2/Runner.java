@@ -24,9 +24,9 @@ public class Runner {
                 break;
             }
         }
-        //TaskB
-        /*int interval = TaskB.accessoryInterval();
-        double matrix=TaskB.massiveOut();*/
+        //TaskB1
+        /*int interval = TaskB1.accessoryInterval();
+        double matrix=TaskB1.massiveOut();*/
     }
 }
 

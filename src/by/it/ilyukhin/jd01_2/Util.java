@@ -19,7 +19,7 @@ public class Util {
         }
         return array;
     }
-   //TaskB
+   //TaskB1
     /*static int inputK() {
         Scanner inputK = new Scanner(System.in);
         int k = inputK.nextInt();

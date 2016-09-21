@@ -51,7 +51,7 @@ public class Runner02 {
 //        System.out.print("n = "+n);
 //        System.out.print("  m = "+m);
 //        System.out.println("  k = "+k);
-//        boolean belong = TaskB.belongToInretval(n, m, k);
+//        boolean belong = TaskB1.belongToInretval(n, m, k);
 //        if (belong) {
 //            System.out.print("k = " + k);
 //            System.out.print(" принадлежит интервалу [" + n);
@@ -70,7 +70,7 @@ public class Runner02 {
 //        System.out.println("Введите натуральное число, являющееся квадратом целого числа");
 //        String tempString = Utill.readFromConsole();
 //        int  numMatrix = Integer.parseInt(tempString);
-//        TaskB.printMatrixForm(numMatrix);
+//        TaskB1.printMatrixForm(numMatrix);
 //
 //        // 3. Найти корни квадратного уравнения. Параметры уравнения передавать с
 //        // командной строкой.
@@ -79,7 +79,7 @@ public class Runner02 {
 //        System.out.println(tempCoeff);
 //        double[] mas2 = Utill.getArrayDouble(tempCoeff);
 //        //Utill.printArrayD(mas2);
-//        double [] root = TaskB.findRoots(mas2);
+//        double [] root = TaskB1.findRoots(mas2);
 //        System.out.println("Roots");
 //        Utill.printArrayD(root);
 //
@@ -87,7 +87,7 @@ public class Runner02 {
 //
 //        String monStr = Utill.readFromConsole();
 //        int month = Integer.parseInt(monStr);
-//        TaskB.getMonth(month);
+//        TaskB1.getMonth(month);
 //        //System.out.println(monStr);
 //
         System.out.println("Введите размерность матрицы n = ");
