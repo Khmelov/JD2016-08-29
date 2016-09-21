@@ -9,10 +9,11 @@ public class Runner08 {
         Ship tanker = new Tanker();
         //System.out.println(ship.atSee());
         //System.out.println(tanker.atSee());
-//        boolean state = ship.atSee();
-//        boolean state1 = tanker.atSee();
+        boolean state = ship.atSee();
+        boolean state1 = tanker.atSee();
         ship.inNeedToRepair(false);
         tanker.inNeedToRepair(false);
+
     }
 
 
