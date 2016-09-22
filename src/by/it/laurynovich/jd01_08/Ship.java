@@ -19,6 +19,7 @@ public abstract class Ship implements IShip {
         if (state == false){System.out.println("Корабль не требует ремонта");}
 
         else { System.out.println("Корабль требует ремонта");
+
         }
 
     }
@@ -27,11 +28,5 @@ public abstract class Ship implements IShip {
     public void changeCource() {
 
     }
-
-    @Override
-    public void loadShip() {
-
-    }
-
 
 }
