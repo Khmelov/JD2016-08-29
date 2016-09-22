@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd01_01;
+package by.it.yarosh.jd01_01;
 
 class Hello {
 

@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd01_02;
+package by.it.yarosh.jd01_02;
 
 class TaskA {
     //метод поиска самого длинного элемента и его длины
