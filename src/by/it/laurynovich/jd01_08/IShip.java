@@ -10,6 +10,8 @@ public interface IShip {
     void inNeedToRepair(boolean state);
     void changeCource();
     void loadShip();
+    void setHelp();
+    void setHelp(boolean state, boolean canGo);
 
 
     

@@ -13,6 +13,15 @@ public class Runner08 {
         boolean state1 = tanker.atSee();
         ship.inNeedToRepair(false);
         tanker.inNeedToRepair(false);
+        tanker.changeCource();
+        tanker.loadShip();
+        ship.loadShip();
+        ship.changeCource();
+
+        tanker.setHelp();
+        tanker.setHelp(state, false);
+
+
 
     }
 
