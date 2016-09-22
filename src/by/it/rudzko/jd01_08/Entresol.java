@@ -5,6 +5,11 @@ package by.it.rudzko.jd01_08;
  */
 public class Entresol extends Locker {
 
+    public Entresol() {
+        super.getPar();
+        super.getPrice();
+    }
+
     @Override
     public float findSq() {
         return 0;

@@ -12,8 +12,6 @@ public class Main {
         float[]pr=new float[6];
         System.out.println("\nNow let's create a wardrobe.");
         Locker w=new Wardrobe();
-        w.getPar();
-        w.getPrice();
         if(w.lessThanAv(pr)) System.out.println("Wow! It's cheap!");
         w.descr();
         w.descr(pr);
@@ -22,8 +20,6 @@ public class Main {
         System.out.println(w.fitSize(lR,wR));
         System.out.println("\nNow let's create a sofa.");
         Seat s=new Sofa();
-        s.getPar();
-        s.getPrice();
         if(s.lessThanAv(pr)) System.out.println("Wow! It's cheap!");
         s.descr();
         s.descr(pr);
@@ -32,8 +28,6 @@ public class Main {
         System.out.println(s.fitSize(lR,wR));
         System.out.println("\nNow let's create a dinner table.");
         Table dt=new DinnerTable();
-        dt.getPar();
-        dt.getPrice();
         if(dt.lessThanAv(pr)) System.out.println("Wow! It's cheap!");
         dt.descr();
         dt.descr(pr);
@@ -42,8 +36,6 @@ public class Main {
         System.out.println(dt.fitSize(lR,wR));
         System.out.println("\nNow let's create an entresol.");
         Locker en=new Entresol();
-        en.getPar();
-        en.getPrice();
         if(en.lessThanAv(pr)) System.out.println("Wow! It's cheap!");
         en.descr();
         en.descr(pr);
@@ -52,8 +44,6 @@ public class Main {
         System.out.println(en.fitSize(lR,wR));
         System.out.println("\nNow let's create an armchair.");
         Seat ch=new Chair();
-        ch.getPar();
-        ch.getPrice();
         if(ch.lessThanAv(pr)) System.out.println("Wow! It's cheap!");
         ch.descr();
         ch.descr(pr);

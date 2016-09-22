@@ -4,6 +4,12 @@ package by.it.rudzko.jd01_08;
  * Created by Leta on 18.09.2016.
  */
 public class Chair extends Seat {
+
+    public Chair(){
+        super.getPar();
+        super.getPrice();
+    }
+
     @Override
     public void descr() {
         System.out.println("\n\nArmchair\nLength: "+super.getL()+".\nWidth: "+super.getW()+".\nPrice: "+super.getP()+".");
