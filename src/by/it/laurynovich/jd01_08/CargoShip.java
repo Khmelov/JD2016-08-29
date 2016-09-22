@@ -14,17 +14,29 @@ public class CargoShip extends Ship {
 
     @Override
     public void capacity() {
-        System.out.println("Вместимость Танкера  =  800м3");
+        System.out.println("Вместимость грузового корабля  =  500м3");
     }
 
 
     @Override
     public void changeCource() {
-        super.changeCource();
+        System.out.println("Корабль может изменить курс");
     }
 
     @Override
     public void loadShip() {
-        super.loadShip();
+        System.out.println("Загрузить корабль контейнерами");
     }
+
+    @Override
+    public void setHelp() {
+
+    }
+
+    @Override
+    public void setHelp(boolean state, boolean canGo) {
+
+    }
+
+
 }

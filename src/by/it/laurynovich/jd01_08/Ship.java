@@ -6,8 +6,7 @@ package by.it.laurynovich.jd01_08;
 public abstract class Ship implements IShip {
     @Override
     public boolean atSee() {
-        //System.out.println("Корабль в море!");
-        return true;
+       return true;
     }
 
     @Override
@@ -33,4 +32,6 @@ public abstract class Ship implements IShip {
     public void loadShip() {
 
     }
+
+
 }
