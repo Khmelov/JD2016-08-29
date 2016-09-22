@@ -31,8 +31,6 @@ public class Runner08 {
         tanker.loadShip();
 
 
-
-
     }
 
 

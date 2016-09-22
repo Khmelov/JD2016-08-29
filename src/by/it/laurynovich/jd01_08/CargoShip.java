@@ -27,7 +27,6 @@ public class CargoShip extends Ship {
     @Override
     public void loadShip() {
         System.out.println("//CS Загрузить корабль контейнерами");
-
     }
 
     @Override

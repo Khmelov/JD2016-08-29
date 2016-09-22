@@ -13,6 +13,5 @@ public interface IShip {
     void setHelp();
     void setHelp(boolean state, boolean canGo);
 
-
     
 }

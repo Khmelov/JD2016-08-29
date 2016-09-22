@@ -44,7 +44,6 @@ public class Tanker extends CargoShip {
             System.out.println("//T SOS");}
         else{
             System.out.println("//T Tanker должен вернуться в порт");
-
         }
 
     }
