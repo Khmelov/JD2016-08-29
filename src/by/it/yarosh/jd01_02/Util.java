@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd01_02;
+package by.it.yarosh.jd01_02;
 
 import java.io.IOException;
 import java.util.Scanner;
