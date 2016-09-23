@@ -2,7 +2,7 @@ package by.it.opashniuk.jd01_08;
 
 public class Main {
     public static void main(String[] args) {
-        Suit sportSuit = new Suit();
+        Dress sportSuit = new Suit();
         System.out.println("Характеристики костюма:");
         sportSuit.color();
         sportSuit.composition();
@@ -14,7 +14,7 @@ public class Main {
 
         System.out.println();
 
-        Suit2 sportWomanSuit = new Suit2();
+        Dress sportWomanSuit = new Suit2();
         System.out.println("Характеристики костюма:");
         sportWomanSuit.color();
         sportWomanSuit.composition();
