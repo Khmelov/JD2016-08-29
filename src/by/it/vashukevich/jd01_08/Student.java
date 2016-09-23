@@ -16,7 +16,7 @@ public abstract class Student implements IEnrollee {
 
     @Override
     public String toString() {
-        return "На сессии я получаю только "+mark+","+secondMark;
+        return "Иногда я получаю "+mark+","+secondMark;
     }
 
     @Override
