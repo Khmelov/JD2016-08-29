@@ -4,7 +4,7 @@ package by.it.tsiamruk.matlab.vars;
 import by.it.tsiamruk.matlab.interfaces.*;
 
 public class VarF extends Var implements IVar{
-    public double value;
+    private double value;
 
     /**
      * At first i must create a constructor to get values.

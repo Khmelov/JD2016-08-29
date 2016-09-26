@@ -4,6 +4,7 @@ import by.it.tsiamruk.matlab.interfaces.IAdd;
 import by.it.tsiamruk.matlab.interfaces.IDiv;
 import by.it.tsiamruk.matlab.interfaces.IMul;
 import by.it.tsiamruk.matlab.interfaces.ISub;
+import by.it.tsiamruk.matlab.vars.Var;
 import by.it.tsiamruk.matlab.vars.VarV;
 
 /**
@@ -11,7 +12,25 @@ import by.it.tsiamruk.matlab.vars.VarV;
  */
 public class VarVOperations extends VarV implements IAdd,ISub,IMul,IDiv {
 
-    public VarVOperations(double[] value) {
-        super(value);
+    public VarVOperations(double[] vector) {
+        super(vector);
+    }
+
+    public VarVOperations(VarV init) {
+        super(init);
+    }
+
+    public VarVOperations(String str) {
+        super(str);
+    }
+
+    @Override
+    public void setFrom(String str) {
+        super.setFrom(str);
+    }
+
+    @Override
+    public Var add(Var var) {
+        return super.add(var);
     }
 }
