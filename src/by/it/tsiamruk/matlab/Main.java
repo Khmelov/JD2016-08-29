@@ -22,7 +22,7 @@ public class Main {
         while (m.find()){
             arrayList.add(m.group());
         }
-        //test
+        //testing sucsess of add elements to ArrayList
         //System.out.println(arrayList.toString());
         Var f1 = new VarFOperations(arrayList.get(0));
         Var f2 = new VarFOperations(arrayList.get(1));
