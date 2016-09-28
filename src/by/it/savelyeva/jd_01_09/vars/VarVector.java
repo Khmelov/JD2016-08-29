@@ -113,6 +113,11 @@ public class VarVector extends Var implements IVariable {
     }
 
     @Override
+    public Var assign(String s) {
+        return new VarVector(this.value);
+    }
+
+    @Override
     public String toString() { return Arrays.toString(value); }
 
     @Override
