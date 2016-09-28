@@ -8,11 +8,13 @@ public class Main {
 	public static void main(String[] args) {
 
 		TableLamp tableLamp = new TableLamp(false);
+		Lamp lamp = new TableLamp(false);
 		tableLamp.turnOnLight();
 		tableLamp.increaseCapacity();
 		tableLamp.increaseCapacity(5);
 		tableLamp.reduceCapacity();
 		tableLamp.reduceCapacity(7);
 		tableLamp.turnOffLights();
+		lamp.toString();
 	}
 }
