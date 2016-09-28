@@ -1,7 +1,8 @@
 package by.it.tsiamruk.jd01_12.TaskA;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
+
 
 
 /**
@@ -9,19 +10,25 @@ import java.util.List;
  */
 public class TaskA1 {
     public static void firstTask() {
-        List rating = new ArrayList();
+        ArrayList<Integer> rating = new ArrayList<Integer>();
 
         for (int i = 0; i < 10; i++) {
-            rating.add((int) (Math.random() * 10 + 1));
+            int val = (int) (Math.random() * 10 + 1);
+            rating.add(val);
         }
 
+        ArrayList<Integer> ratingWithoutBads = new ArrayList<Integer>();
+        ratingWithoutBads.addAll(0, rating);
 
-        List ratingWithoutBads = new ArrayList();
-        for (int i = 0; i < rating.size(); i++) {
-            if ((int) (rating.get(i)) > 4)
-                ratingWithoutBads.add(rating.get(i));
+        int positiveRate = 0;
+        int size = ratingWithoutBads.size();
+        Iterator<Integer> it = ratingWithoutBads.iterator();
+
+        while (it.hasNext()) {
+            if (it.next() > 4) {
+                positiveRate++;
+            } else it.remove();
         }
-
 
         System.out.println(rating.toString());
         System.out.println(ratingWithoutBads.toString());
