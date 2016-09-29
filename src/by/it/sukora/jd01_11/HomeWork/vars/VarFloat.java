@@ -1,6 +1,6 @@
 package by.it.sukora.jd01_11.HomeWork.vars;
 
-import jd01_11.HomeWork.interfaces.IVariable;
+import by.it.sukora.jd01_11.HomeWork.interfaces.IVariable;
 
 
 public class VarFloat extends Var implements IVariable {

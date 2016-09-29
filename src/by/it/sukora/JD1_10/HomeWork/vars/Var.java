@@ -1,9 +1,9 @@
 package by.it.sukora.JD1_10.HomeWork.vars;
 
-import JD1_10.HomeWork.interfaces.IAdd;
-import JD1_10.HomeWork.interfaces.IDiv;
-import JD1_10.HomeWork.interfaces.IMul;
-import JD1_10.HomeWork.interfaces.ISub;
+import by.it.sukora.JD1_10.HomeWork.interfaces.IAdd;
+import by.it.sukora.JD1_10.HomeWork.interfaces.IDiv;
+import by.it.sukora.JD1_10.HomeWork.interfaces.IMul;
+import by.it.sukora.JD1_10.HomeWork.interfaces.ISub;
 
 public abstract class Var implements IAdd,ISub,IMul,IDiv {
     //эти процедуры будут ЧАСТИЧНО перекрыты в подклассах VarF VarV VarM (числа, вектора и матрицы)

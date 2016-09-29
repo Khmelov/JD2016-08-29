@@ -1,6 +1,6 @@
 package by.it.sukora.jd01_11.HomeWork.vars;
 
-import jd01_11.HomeWork.interfaces.IOperable;
+import by.it.sukora.jd01_11.HomeWork.interfaces.IOperable;
 
 
 public abstract class Var implements IOperable {

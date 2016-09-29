@@ -1,9 +1,9 @@
 package by.it.sukora.JD1_09.HomeWork;
 
-import JD1_09.HomeWork.vars.Var;
-import JD1_09.HomeWork.vars.VarF;
-import JD1_09.HomeWork.vars.VarM;
-import JD1_09.HomeWork.vars.VarV;
+import by.it.sukora.JD1_09.HomeWork.vars.Var;
+import by.it.sukora.JD1_09.HomeWork.vars.VarF;
+import by.it.sukora.JD1_09.HomeWork.vars.VarM;
+import by.it.sukora.JD1_09.HomeWork.vars.VarV;
 
 public class Runner {
 

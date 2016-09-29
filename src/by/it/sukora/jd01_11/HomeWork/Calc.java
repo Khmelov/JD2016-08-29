@@ -1,11 +1,11 @@
 package by.it.sukora.jd01_11.HomeWork;
 
-import jd01_11.HomeWork.inout.Parser;
-import jd01_11.HomeWork.inout.Printer;
-import jd01_11.HomeWork.vars.Var;
-import jd01_11.HomeWork.vars.VarFloat;
-import jd01_11.HomeWork.vars.VarMatrix;
-import jd01_11.HomeWork.vars.VarVector;
+import by.it.sukora.jd01_11.HomeWork.inout.Parser;
+import by.it.sukora.jd01_11.HomeWork.inout.Printer;
+import by.it.sukora.jd01_11.HomeWork.vars.Var;
+import by.it.sukora.jd01_11.HomeWork.vars.VarFloat;
+import by.it.sukora.jd01_11.HomeWork.vars.VarMatrix;
+import by.it.sukora.jd01_11.HomeWork.vars.VarVector;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

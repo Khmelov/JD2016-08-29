@@ -1,7 +1,7 @@
 package by.it.sukora.jd01_11.HomeWork.vars;
 
-import jd01_11.HomeWork.inout.Parser;
-import jd01_11.HomeWork.interfaces.IVariable;
+import by.it.sukora.jd01_11.HomeWork.inout.Parser;
+import by.it.sukora.jd01_11.HomeWork.interfaces.IVariable;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;

@@ -1,6 +1,6 @@
 package by.it.sukora.jd01_11.HomeWork;
 
-import jd01_11.HomeWork.inout.Printer;
+import by.it.sukora.jd01_11.HomeWork.inout.Printer;
 
 
 public class Error {
