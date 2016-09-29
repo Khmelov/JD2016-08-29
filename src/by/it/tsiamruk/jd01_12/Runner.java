@@ -4,6 +4,7 @@ import by.it.tsiamruk.jd01_12.TaskA.MyCollect;
 import by.it.tsiamruk.jd01_12.TaskA.TaskA1;
 import by.it.tsiamruk.jd01_12.TaskA.TaskA2;
 import by.it.tsiamruk.jd01_12.TaskA.TaskA3;
+import by.it.tsiamruk.jd01_12.TaskA.TaskB.TaskB1;
 
 import java.util.ArrayList;
 
@@ -30,6 +31,8 @@ public class Runner {
         System.out.println("Длинна списка чисел " + list.size());
         System.out.println("Список чисел " + list.toString());
         TaskA3.sortSet(list);
+        System.out.println("<<Task B1>>");
+        TaskB1.createHM();
 
     }
 }
