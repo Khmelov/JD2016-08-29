@@ -1,6 +1,6 @@
 package by.it.sukora.jd01_11.HomeWork.interfaces;
 
-import by.it.sukora.jd01_11.HomeWork.vars.Var;
+import jd01_11.HomeWork.vars.Var;
 
 
 public interface IOperable {

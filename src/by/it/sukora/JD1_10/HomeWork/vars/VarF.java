@@ -1,6 +1,6 @@
 package by.it.sukora.JD1_10.HomeWork.vars;
 
-import by.it.sukora.JD1_10.HomeWork.interfaces.*;
+import JD1_10.HomeWork.interfaces.*;
 
 
 /** Класс для операций со скалярными величинами */

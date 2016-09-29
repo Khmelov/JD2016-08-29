@@ -1,8 +1,8 @@
 package by.it.sukora.JD1_10.HomeWork.vars;
 
 
-import by.it.sukora.JD1_10.HomeWork.Patterns;
-import by.it.sukora.JD1_10.HomeWork.interfaces.IVar;
+import JD1_10.HomeWork.Patterns;
+import JD1_10.HomeWork.interfaces.IVar;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

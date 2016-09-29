@@ -1,6 +1,8 @@
 package by.it.sukora.jd1_08.HomeWork;
 
-
+/**
+ * Created by stasi on 26.09.2016.
+ */
 public class WarShip extends CargoShip {
     String name;
 
