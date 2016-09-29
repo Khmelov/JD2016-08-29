@@ -30,4 +30,10 @@ public abstract class Var implements IOperable {
         new Error("Division is impossible");
         return null;
     }
+
+    @Override
+    public Var assign(String s) {
+        new Error("Assignment is impossible");
+        return null;
+    }
 }
