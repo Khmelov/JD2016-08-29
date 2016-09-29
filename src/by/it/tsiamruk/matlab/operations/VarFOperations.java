@@ -21,32 +21,37 @@ public class VarFOperations extends VarF implements IAdd,IDiv,IMul,ISub {
         super(value);
     }
 
+    @Override
+    public double getValue() {
+        return super.getValue();
+    }
+
     //calcalation operations
     @Override
     public Var add(Var var) {
         if (var instanceof VarF)
-            return new VarF(value + ((VarF)var).value);
+            return new VarF(getValue() + ((VarF) var).getValue());
         return var.add(this);
     }
 
     @Override
     public Var div(Var var) {
         if (var instanceof VarF)
-            return new VarF(value / ((VarF)var).value);
+            return new VarF(getValue() / ((VarF) var).getValue());
         return var.div(this);
     }
 
     @Override
     public Var mul(Var var) {
         if (var instanceof VarF)
-            return new VarF(value * ((VarF) var).value);
+            return new VarF(getValue() * ((VarF) var).getValue());
         return var.mul(this);
     }
 
     @Override
     public Var sub(Var var) {
         if (var instanceof VarF)
-            return new VarF(value - ((VarF) var).value);
+            return new VarF(getValue() - ((VarF) var).getValue());
         VarF minus = new VarF(-1);
         return minus.mul(var.sub(this));
     }
