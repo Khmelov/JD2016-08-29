@@ -33,7 +33,7 @@ public class TaskB2 {
         }
         double b = System.nanoTime();
         double res = b - a;
-        System.out.println("Результат работы метода processArray:" + list + " Время выполнения: " + res);
+        System.out.println("Результат работы метода processArray:" + list + " Время выполнения: " + res / 1000);
         return list;
     }
 
@@ -46,7 +46,7 @@ public class TaskB2 {
         }
         double b = System.nanoTime();
         double res = b - a;
-        System.out.println("Результат работы метода: " + list + " Время выполнения: " + res);
+        System.out.println("Результат работы метода: " + list + " Время выполнения: " + res / 1000);
         return list;
     }
 }
