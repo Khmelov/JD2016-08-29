@@ -23,6 +23,11 @@ public class Main {
         //test sort method
         int[] wordsAmount = TaskB2.wordsAmount(senteces);
         TaskB2.sort(senteces, wordsAmount);
+        System.out.println("___Task3 of TASK B___");
+        String textForTask = new String(Data.POEM);
+        TaskB3.textCleaner(textForTask);
+        TaskB3.sorter(TaskB3.textCleaner(textForTask), 'о');
+
 
 
 

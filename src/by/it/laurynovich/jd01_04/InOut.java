@@ -14,6 +14,7 @@ public class InOut {
         }
         System.out.println();
     }
+
     public static void printArr(double[]x){
         for (int i = 0; i < x.length ; i++) {
             System.out.printf("%-10.2f", x[i]);
