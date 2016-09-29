@@ -13,23 +13,29 @@ public abstract class Locker implements IFurniture{
     private float p;
 
     @Override
-    public void getPar(){
+    public void getPar() throws IllegalArgumentException{
         System.out.println("Please enter length of the locker.");
         String a=new Scanner(System.in).nextLine();
+        this.l=Float.valueOf(a);
+        if (this.l<=0){
+            throw new IllegalArgumentException();
+            }
         System.out.println("Please enter width of the locker.");
         String b=new Scanner(System.in).nextLine();
-
-        this.l=Float.valueOf(a);
         this.w=Float.valueOf(b);
-
+        if (this.w<=0){
+            throw new IllegalArgumentException();
+        }
     };
 
 
     @Override
-    public void getPrice() {
+    public void getPrice() throws IllegalArgumentException{
         System.out.println("Please enter price of the locker.");
         this.p=Float.valueOf(new Scanner(System.in).nextLine());
-
+        if (this.p<0){
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
@@ -60,18 +66,10 @@ public abstract class Locker implements IFurniture{
     };
 
     @Override
-    public String fitSize(float a, float b){
-        if (a>=b) {
-            if (a<this.l) return "The locker fits neither width nor length of the room.";
+    public String fitSize(float a, float b) throws ArithmeticException{
+            if (a<this.l) { ArithmeticException wr=new ArithmeticException("lack of length"); throw wr;}
             else if (b>=this.l) return "The locker fits either width or length of the room.";
             else return "The locker fits length of the room.";
-        }
-        else if (a<b){
-            if (b<this.l) return "The locker fits neither width nor length of the room.";
-            else if (a>=this.l) return "The locker fits either width or length of the room.";
-            else return "The locker fits length of the room.";
-        }
-        return "Extra string";
     };
 
 

@@ -13,23 +13,30 @@ public abstract class Table implements IFurniture{
     private float p;
 
     @Override
-    public void getPar() {
+    public void getPar() throws IllegalArgumentException{
         System.out.println("Please enter length of the table.");
         String a=new Scanner(System.in).nextLine();
+        this.l=Float.valueOf(a);
+        if (this.l<=0){
+            throw new IllegalArgumentException();
+        }
         System.out.println("Please enter width of the table.");
         String b=new Scanner(System.in).nextLine();
-
-        this.l=Float.valueOf(a);
         this.w=Float.valueOf(b);
+        if (this.w<=0){
+            throw new IllegalArgumentException();
+        }
 
     }
 
 
     @Override
-    public void getPrice() {
+    public void getPrice() throws IllegalArgumentException{
         System.out.println("Please enter price of the table.");
         this.p=Float.valueOf(new Scanner(System.in).nextLine());
-
+        if (this.p<0){
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
@@ -59,8 +66,9 @@ public abstract class Table implements IFurniture{
     }
 
     @Override
-    public String fitSize(float a, float b) {
-        if (a>=this.l) return "Table fits width of the room.";
+    public String fitSize(float a, float b) throws ArithmeticException{
+        if (a<this.l){ ArithmeticException wr=new ArithmeticException("lack of length"); throw wr;}
+        if (b>=this.l) return "Table fits width of the room.";
         else return "Table doesn't fit width of the room";
     }
 
