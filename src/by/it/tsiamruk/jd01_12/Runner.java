@@ -4,9 +4,12 @@ import by.it.tsiamruk.jd01_12.TaskA.MyCollect;
 import by.it.tsiamruk.jd01_12.TaskA.TaskA1;
 import by.it.tsiamruk.jd01_12.TaskA.TaskA2;
 import by.it.tsiamruk.jd01_12.TaskA.TaskA3;
-import by.it.tsiamruk.jd01_12.TaskA.TaskB.TaskB1;
+import by.it.tsiamruk.jd01_12.TaskB.TaskB1;
+import by.it.tsiamruk.jd01_12.TaskB.TaskB2;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by waldemar on 28/09/2016.
@@ -33,6 +36,13 @@ public class Runner {
         TaskA3.sortSet(list);
         System.out.println("<<Task B1>>");
         TaskB1.createHM();
+        System.out.println("<<Task B2>>");
+        List<String> b2ArrayList = new ArrayList<String>(TaskB2.processArray(TaskB2.getArrayPeoples(), 0));
+        System.out.println("processArray result:" + b2ArrayList);
+        List<String> b2LinkedList = new LinkedList<String>(TaskB2.processLinked(TaskB2.getLinkedPeoples(), 0));
+        System.out.println("processLinked result:" + b2LinkedList);
+
+
 
     }
 }

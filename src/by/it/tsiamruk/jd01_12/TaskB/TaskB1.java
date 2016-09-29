@@ -1,4 +1,4 @@
-package by.it.tsiamruk.jd01_12.TaskA.TaskB;
+package by.it.tsiamruk.jd01_12.TaskB;
 
 
 import java.util.HashMap;
