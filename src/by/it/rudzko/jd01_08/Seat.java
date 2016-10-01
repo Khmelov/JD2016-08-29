@@ -3,7 +3,8 @@ package by.it.rudzko.jd01_08;
 import java.util.Scanner;
 
 /**
- * Created by Leta on 18.09.2016.
+ * @author Olga Rudzko
+ *
  */
 public abstract class Seat implements IFurniture{
 
@@ -11,7 +12,11 @@ public abstract class Seat implements IFurniture{
     private float w;
 
     private float p;
-
+    /**
+     * @throws IllegalArgumentException
+     * @return void
+     *
+     */
     @Override
     public void getPar()throws IllegalArgumentException{
         System.out.println("Please enter length of the seat.");
@@ -30,7 +35,11 @@ public abstract class Seat implements IFurniture{
 
     };
 
-
+    /**
+     * @throws IllegalArgumentException
+     * @return void
+     *
+     */
     @Override
     public void getPrice() throws IllegalArgumentException{
         System.out.println("Please enter price of the seat.");
@@ -39,7 +48,11 @@ public abstract class Seat implements IFurniture{
             throw new IllegalArgumentException();
         }
     }
-
+    /**
+     * @param prices the array contains prices for other furniture in the room
+     * @return boolean
+     *
+     */
     @Override
     public boolean lessThanAv(float [] prices) {
         int count=0;
@@ -65,7 +78,11 @@ public abstract class Seat implements IFurniture{
     public float findSq() {
         return this.l*this.w;
     }
-
+    /**
+     * @param a,b the length and the width of the room
+     * @return String
+     * @throws ArithmeticException
+     */
     @Override
     public String fitSize(float a, float b) throws ArithmeticException{
             if (a<this.l) { ArithmeticException wr=new ArithmeticException("lack of length"); throw wr;}

@@ -46,12 +46,20 @@ public class Main {
         System.out.println("\n\nTask C"); System.out.println("--------------------------------------------------------");
 
         String[]text={"Minsk","Gomel","Vitebsk","Mogilev","Brest","Grodno","Minsk","Gomel","Vitebsk"};
-        TreeMap<Integer, String> c1=new TreeMap<Integer, String>();
+        Map<Integer, String> c1=new TreeMap<Integer, String>();
         for (String value:text) {
-            int a=value.hashCode();
+            int a=(int)(Math.random()*1000+500);
             c1.put(a,value);
         }
         System.out.println(c1);
+//        ArrayList extra=new ArrayList();
+//        Iterator <Map.Entry<Integer,String>> it=c1.entrySet().iterator();
+//        while(it.hasNext()){
+//            if (!extra.contains(it.next().getValue())) {
+//                extra.add(it.next().getValue());
+//            } else it.next(); it.remove();
+//        }
+//        System.out.println(c1);
 
         GetCross <Integer> test=new GetCross<Integer>();
         HashSet<Integer> hs1=new HashSet<>();       for (int i=0; i<10; i++){ hs1.add((int)(Math.random()*20-10)); }
