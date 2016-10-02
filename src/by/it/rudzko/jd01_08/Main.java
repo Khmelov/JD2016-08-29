@@ -12,7 +12,7 @@ public class Main {
             throw wrongNum;}
         System.out.println("Please enter width of your room.");
         float wR=Float.valueOf(new Scanner(System.in).nextLine());
-        if (wR<lR){ IllegalArgumentException wrongNum=new IllegalArgumentException();
+        if (wR>lR){ IllegalArgumentException wrongNum=new IllegalArgumentException();
             throw wrongNum;}
         float[]pr=new float[6];
         System.out.println("\nNow let's create a wardrobe.");
