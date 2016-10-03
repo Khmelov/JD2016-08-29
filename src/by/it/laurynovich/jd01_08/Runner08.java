@@ -7,6 +7,7 @@ public class Runner08 {
     public static void main(String[] args) {
         Ship ship = new CargoShip();
         Ship tanker = new Tanker();
+
         //System.out.println(ship.atSee());
         //System.out.println(tanker.atSee());
         boolean state = ship.atSee();
@@ -17,16 +18,20 @@ public class Runner08 {
         tanker.loadShip();
         ship.loadShip();
         ship.changeCource();
+        tanker.capacity();
+        ship.capacity();
+        tanker.inNeedToRepair(true);
+        //ship.setHelp(state1 , false);
+        tanker.loadShip();
+        ship.loadShip();
 
-        tanker.setHelp();
-        tanker.setHelp(state, false);
-
+        ((Tanker) tanker).setHelp();
+//        tanker.setHelp(state, false);
+//        tanker.setHelp(state1, true);
+        tanker.loadShip();
 
 
     }
-
-
-
 
 
 }
