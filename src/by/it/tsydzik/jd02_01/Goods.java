@@ -3,7 +3,8 @@ package by.it.tsydzik.jd02_01;
 import java.util.*;
 
 /**
- * Created by user on 03.10.2016.
+ * @author Eugene Tsydzik
+ * @since 10/03/16.
  */
 public class Goods {
 
