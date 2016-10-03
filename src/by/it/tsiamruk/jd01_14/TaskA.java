@@ -10,7 +10,7 @@ import java.io.IOException;
  * Created by waldemar on 02/10/2016.
  */
 public class TaskA {
-    protected static void taskA() {
+    static void taskA() {
         //создание перменных для занесения в файл
         int[] variables = new int[20];
         for (int i = 0; i < variables.length; i++) {
@@ -18,8 +18,8 @@ public class TaskA {
         }
         //занесение в файл
         try (FileOutputStream fos = new FileOutputStream("/Users/waldemartsiamruk/test.txt");) {
-            for (int i = 0; i < variables.length; i++) {
-                fos.write(variables[i]);
+            for (int variable : variables) {
+                fos.write(variable);
             }
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден." + e.getMessage());
@@ -32,20 +32,18 @@ public class TaskA {
             byte[] buffer = new byte[fis.available()];
             fis.read(buffer, 0, fis.available());
             System.out.print("Все Числа: ");
-            for (int i = 0; i < buffer.length; i++) {
-                System.out.printf("%d ", (int) buffer[i]);
+            for (byte aBuffer1 : buffer) {
+                System.out.printf("%d ", (int) aBuffer1);
             }
             double average = 0;
             if (buffer.length > 0) {
                 double sum = 0;
-                for (int i = 0; i < buffer.length; i++) {
-                    sum += (int) buffer[i];
+                for (byte aBuffer : buffer) {
+                    sum += (int) aBuffer;
                 }
                 average = sum / buffer.length;
             }
             System.out.println("\nСредне арифметическое: " + average);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
