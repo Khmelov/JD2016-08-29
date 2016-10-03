@@ -6,13 +6,16 @@ package by.it.laurynovich.jd01_08;
 public interface IShip {
 
     boolean atSee();
+
     void capacity();
+
     void inNeedToRepair(boolean state);
+
     void changeCource();
+
     void loadShip();
-    void setHelp();
-    void setHelp(boolean state, boolean canGo);
+    //void setHelp();
+    // void setHelp(boolean state, boolean canGo);
 
 
-    
 }

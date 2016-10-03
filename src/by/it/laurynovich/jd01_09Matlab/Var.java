@@ -28,4 +28,9 @@ public class Var implements IOperable {
         System.out.println("error");
         return var;
     }
+
+    public Var add1(Var var) {
+        System.out.println("error");
+        return var;
+    }
 }
