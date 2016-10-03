@@ -8,16 +8,13 @@ public class Main {
     public static void main(String[] args) {
         int countBuyer = 0;
         while (countBuyer < 20) {
-            int n = Helper.rnd(2);
+            int n = Helper.rnd(10);
             for (int i = 0; i < n; i++) {
                 Buyer buyer = new Buyer(++countBuyer);
-                buyer.start();
+                Thread th = new Thread(buyer);
+                th.start();
                 if (countBuyer == 20) {
-                    try {
-                        buyer.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    break;
                 }
             }
             Helper.sleep(1000);
