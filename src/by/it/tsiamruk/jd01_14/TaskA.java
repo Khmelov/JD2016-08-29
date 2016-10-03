@@ -10,7 +10,7 @@ import java.io.IOException;
  * Created by waldemar on 02/10/2016.
  */
 public class TaskA {
-    public static void main(String[] args) {
+    protected static void taskA() {
         //создание перменных для занесения в файл
         int[] variables = new int[20];
         for (int i = 0; i < variables.length; i++) {
