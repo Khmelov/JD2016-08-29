@@ -19,6 +19,7 @@ public class InOutCode {
                a.insert(m.start()+1, "0"+Integer.toString(l)+" ");
             }
             l++;
+            m.reset();
         }
 
         System.out.println(a);
