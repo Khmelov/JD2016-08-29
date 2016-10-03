@@ -4,9 +4,18 @@ package by.it.tsydzik.jd02_01;
  * @author Eugene Tsydzik
  * @since 10/03/16.
  */
-public class Buyer extends Thread implements IBuyer {
+public class Buyer implements Runnable, IBuyer {
 
     private int number;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Buyer(int number) {
         this.number = number;
