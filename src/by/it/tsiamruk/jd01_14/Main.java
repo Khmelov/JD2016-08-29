@@ -5,7 +5,9 @@ package by.it.tsiamruk.jd01_14;
  */
 public class Main {
     public static void main(String[] args) {
+        //Task A
         TaskA.taskA();
+        //Task B
         TaskB.taskB();
     }
 }

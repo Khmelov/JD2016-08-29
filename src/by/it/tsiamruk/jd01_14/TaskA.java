@@ -26,7 +26,6 @@ public class TaskA {
         } catch (IOException e) {
             System.out.println("Ошибка ввода/вывода" + e.getMessage());
         }
-        //вывод из файла
         try (FileInputStream fis = new FileInputStream("/Users/waldemartsiamruk/test.txt")) {
             System.out.println("Размер файла: " + fis.available() + " байт(а)");
             byte[] buffer = new byte[fis.available()];

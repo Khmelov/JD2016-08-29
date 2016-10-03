@@ -19,7 +19,6 @@ public class TaskB {
             while ((text = br.readLine()) != null) {
                 sb.append(text).append("\n");
             }
-            //System.out.println(sb.toString());
             Pattern words = Pattern.compile("[aA-zZ]+");
             Matcher wMatch = words.matcher(sb.toString());
             Pattern punctiation = Pattern.compile("[\\.,?!;:]");
