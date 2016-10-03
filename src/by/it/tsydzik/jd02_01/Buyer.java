@@ -4,7 +4,7 @@ package by.it.tsydzik.jd02_01;
  * @author Eugene Tsydzik
  * @since 10/03/16.
  */
-public class Buyer implements Runnable, IBuyer {
+public class Buyer implements Runnable, IBuyer, IBacket {
 
     private int number;
     private String name;
@@ -31,6 +31,7 @@ public class Buyer implements Runnable, IBuyer {
     @Override
     public void run() {
         enterToMarket();
+        takeBacket();
         chooseGoods();
         goToOut();
     }
@@ -42,12 +43,28 @@ public class Buyer implements Runnable, IBuyer {
 
     @Override
     public void chooseGoods() {
-        Helper.sleep(Helper.rnd(500, 2000));
-        System.out.println(this + " choose goods");
+        for (int i = 0; i < Helper.rnd(1, 4); i++) {
+            Helper.sleep(Helper.rnd(100, 200));
+            String goodName = Goods.random();
+            System.out.println(this + " choose good: " + goodName);
+            putGoodsToBacket();
+        }
     }
 
     @Override
     public void goToOut() {
         System.out.println(this + " go to out");
+    }
+
+    @Override
+    public void takeBacket() {
+        Helper.sleep(Helper.rnd(100, 200));
+        System.out.println(this + " take backet");
+    }
+
+    @Override
+    public void putGoodsToBacket() {
+        Helper.sleep(Helper.rnd(100, 200));
+        System.out.println(this + " put goods to backet");
     }
 }
