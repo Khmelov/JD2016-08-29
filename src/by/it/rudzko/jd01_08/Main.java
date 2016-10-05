@@ -5,10 +5,15 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello! Let's try to fill your room with furniture. Please enter length of your room.");
+        try{
+            System.out.println("Hello! Let's try to fill your room with furniture. Please enter length of your room.");
         float lR=Float.valueOf(new Scanner(System.in).nextLine());
+        if (lR<=0){ IllegalArgumentException wrongNum=new IllegalArgumentException();
+            throw wrongNum;}
         System.out.println("Please enter width of your room.");
         float wR=Float.valueOf(new Scanner(System.in).nextLine());
+        if (wR>lR){ IllegalArgumentException wrongNum=new IllegalArgumentException();
+            throw wrongNum;}
         float[]pr=new float[6];
         System.out.println("\nNow let's create a wardrobe.");
         Locker w=new Wardrobe();
@@ -60,9 +65,19 @@ public class Main {
         float ctsq=ct.findSq();
         System.out.println("The square of the coffee table is "+ctsq);
         System.out.println(ct.fitSize(lR,wR));
-        if (wsq+ssq+dtsq+ensq+chsq+ctsq<lR*wR){
-            float free=lR*wR-(wsq+ssq+dtsq+ensq+chsq+ctsq);
+        float free=lR*wR-(wsq+ssq+dtsq+ensq+chsq+ctsq);
+            if (free<=0){
+                ArithmeticException noSpace=new ArithmeticException("not enough free space");
+                throw noSpace;
+            }
             System.out.println("\nCongratulations! You have successfully filled your room! Now you have "+free+" free space in it.");
-        } else System.out.println("Unfortunately, there's not enough free space in your room.");
+        }
+        catch (IllegalArgumentException wrongNum){
+            System.out.println("Sorry, you've entered invalid data.");
+        }
+        catch (ArithmeticException noSpace){
+            System.out.println("Unfortunately, there's "+noSpace+" in your room.");
+        }
+
     }
 }

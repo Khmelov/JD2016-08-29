@@ -124,6 +124,11 @@ public class VarMatrix extends Var implements IVariable {
     }
 
     @Override
+    public Var assign(String s) {
+        return new VarMatrix(this.value);
+    }
+
+    @Override
     public String toString() {
         StringBuilder res = new StringBuilder("[");
         for (int i=0; i<value.length; i++) {

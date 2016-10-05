@@ -12,11 +12,14 @@ public class CoffeeTable extends Table {
     private String col;
 
     @Override
-    public void getPar() {
+    public void getPar() throws IllegalArgumentException{
         System.out.println("Please enter radius of the table.");
         String a=new Scanner(System.in).nextLine();
 
         this.r=Float.valueOf(a);
+        if (this.r<=0){
+            throw new IllegalArgumentException();
+        }
         this.l=r*2;
 
     }
@@ -39,8 +42,9 @@ public class CoffeeTable extends Table {
     }
 
     @Override
-    public String fitSize(float a, float b) {
-        if (a>=this.l) return "Table fits width of the room.";
+    public String fitSize(float a, float b) throws ArithmeticException{
+        if (a<this.l){ ArithmeticException wr=new ArithmeticException("lack of length"); throw wr;}
+        if (b>=this.l) return "Table fits width of the room.";
         else return "Table doesn't fit width of the room";
     }
 
