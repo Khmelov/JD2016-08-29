@@ -9,5 +9,7 @@ public interface IBuyer {
 
     void chooseGoods();
 
+    void goToQueue();
+
     void goToOut();
 }

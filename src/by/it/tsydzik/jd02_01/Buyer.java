@@ -33,6 +33,7 @@ public class Buyer implements Runnable, IBuyer, IBacket {
         enterToMarket();
         takeBacket();
         chooseGoods();
+        goToQueue();
         goToOut();
     }
 
@@ -49,6 +50,22 @@ public class Buyer implements Runnable, IBuyer, IBacket {
             System.out.println(this + " choose good: " + goodName);
             putGoodsToBacket();
         }
+    }
+
+    @Override
+    public void goToQueue() {
+        synchronized (QueueBuyer.monitorQueueBuyer) {
+            QueueBuyer.add(this);
+            System.out.println(this + " added to QueueBuyer");
+        }
+        synchronized (this) {
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     @Override
