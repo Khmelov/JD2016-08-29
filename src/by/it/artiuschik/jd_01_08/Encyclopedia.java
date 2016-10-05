@@ -15,11 +15,15 @@ public class Encyclopedia extends Book {
     }
 
     @Override
-    public void open(int page) {
+    public void open(int page) throws IncorrectBookPageException  {
+        if(page<0)
+        {
+            throw new IncorrectBookPageException("Incorrect book page number");
+        }
         super.open(page);
         System.out.println("Encyclopedia is opened on page " + page);
     }
-    public void open(int tome,int page) {
+    public void open(int tome,int page) throws IncorrectBookPageException {
         super.open(page);
         tomeOpened=tome;
         System.out.println("Encyclopedia is opened on tome "+tomeOpened+" page " + page);
