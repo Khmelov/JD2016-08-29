@@ -6,7 +6,6 @@ import by.it.tsiamruk.matlab.interfaces.IMul;
 import by.it.tsiamruk.matlab.interfaces.ISub;
 import by.it.tsiamruk.matlab.vars.Var;
 import by.it.tsiamruk.matlab.vars.VarF;
-import by.it.tsiamruk.matlab.vars.VarV;
 
 /**
  * Created by waldemar on 21/09/2016.
@@ -32,15 +31,7 @@ public class VarFOperations extends VarF implements IAdd,IDiv,IMul,ISub {
     public Var add(Var var) {
         if (var instanceof VarF)
             return new VarF(getValue() + ((VarF) var).getValue());
-        if (var instanceof VarV) {
-            double v1 = getValue();
-            VarV v2 = new VarV(((VarV) var).getVector());
-            for (int i = 0; i < v2.getVector().length; i++) {
-                v2.getVector()[i] += v1;
-            }
-            return v2;
-        } else
-            return var.add(this);
+        return var.add(this);
     }
 
     @Override
@@ -54,33 +45,15 @@ public class VarFOperations extends VarF implements IAdd,IDiv,IMul,ISub {
     public Var mul(Var var) {
         if (var instanceof VarF)
             return new VarF(getValue() * ((VarF) var).getValue());
-        if (var instanceof VarV) {
-            VarV v1 = new VarV(((VarV) var).getVector());
-            double v2 = getValue();
-            for (int i = 0; i < v1.getVector().length; i++) {
-                v1.getVector()[i] *= v2;
-            }
-            return v1;
-        } else
-            return var.mul(this);
+        return var.mul(this);
     }
 
     @Override
     public Var sub(Var var) {
         if (var instanceof VarF)
             return new VarF(getValue() - ((VarF) var).getValue());
-
-        if (var instanceof VarV) {
-            VarV v1 = new VarV(((VarV) var).getVector());
-            double v2 = getValue();
-            for (int i = 0; i < v1.getVector().length; i++) {
-                v1.getVector()[i] -= v2;
-            }
-            return v1;
-        } else {
-            VarF minus = new VarF(-1);
-            return minus.mul(var.sub(this));
-        }
+        VarF minus = new VarF(-1);
+        return minus.mul(var.sub(this));
     }
 
 }
