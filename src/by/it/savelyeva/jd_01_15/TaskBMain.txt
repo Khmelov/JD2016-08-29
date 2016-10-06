@@ -1,0 +1,80 @@
+1: package by.it.savelyeva.jd_01_15;
+2: 
+3: import java.io.*;
+4: import java.util.regex.Matcher;
+5: import java.util.regex.Pattern;
+6: 
+7: public class TaskBMain {
+8:     
+9:     private static final String patternMultiLineComments = "/\\*(?:.|[\r\n])*?\\*/";
+10:     private static final String patternOneLineComments = "[/]{1}[/]{1}.+";
+11: 
+12:     private static StringBuilder readFileToStringBuilder(String filename) {
+13:         StringBuilder sb = new StringBuilder();
+14:         try (BufferedReader bufferReader = new BufferedReader(new FileReader(filename))) {
+15:             String line;
+16:             while ((line = bufferReader.readLine()) != null) {
+17:                 sb.append(line + "\n");
+18: 
+19:             }
+20:             
+21:         } catch (FileNotFoundException e) {
+22:             System.out.println("File not found");
+23:         } catch (IOException e) {
+24:             e.printStackTrace();
+25:         }
+26:         return sb;
+27:     }
+28: 
+29:     private static StringBuilder cutComments(StringBuilder sb) {
+30:         String regex = "("+patternMultiLineComments+")|("+patternOneLineComments+")";
+31:         Pattern pattern = Pattern.compile(regex);
+32:         Matcher matcher = pattern.matcher(sb);
+33:         int pos = 0;
+34:         while (matcher.find(pos)) {
+35:             sb.delete(matcher.start(), matcher.end());
+36:             pos = matcher.start();
+37:         }
+38:         return sb;
+39:     }
+40: 
+41:     private static StringBuilder formatData(StringBuilder sb) {
+42:         StringBuilder res = new StringBuilder();
+43:         int n = 1;
+44:         int i = 0;
+45:         while (i < sb.length()) {
+46:             int start = i;
+47:             int end = sb.indexOf("\n", start);
+48:             res.append(n).append(": ").append(sb.substring(start, end)).append("\n");
+49:             n++;
+50:             i = end + 1;
+51:         }
+52:         return res;
+53:     }
+54: 
+55:     private static void printToConsole(StringBuilder sb) {
+56:         System.out.println(sb.toString());
+57:     }
+58: 
+59:     private static void printToFile(String filename, StringBuilder sb) {
+60:         try (PrintWriter printer = new PrintWriter(new FileWriter(filename))) {
+61:             printer.print(sb.toString());
+62:         } catch (IOException e) {
+63:             e.printStackTrace();
+64:         }
+65:     }
+66: 
+67:     public static void main(String[] args) {
+68:         String src = System.getProperty("user.dir"); 
+69:         src = src.concat("/src/by/it/savelyeva/");   
+70:         String filename = src + "jd_01_15/TaskBMain.java";     
+71: 
+72: 
+73:         StringBuilder sb = readFileToStringBuilder(filename);
+74:         sb = cutComments(sb);
+75:         sb = formatData(sb);
+76:         printToConsole(sb);
+77:         String newFilename = filename.replaceAll("\\.java",".txt");
+78:         printToFile(newFilename, sb);
+79:     }
+80: }
