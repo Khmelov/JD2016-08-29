@@ -8,13 +8,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class VarV extends Var implements IVar {
-    private double[] vector;
+    public double[] vector;
 
-    public void setVector(double[] vector) {
-        this.vector = vector;
-    }
-
-    public VarV(String str) {
+    public VarV(String str){
         setFrom(str);
     }
 
@@ -23,24 +19,10 @@ public class VarV extends Var implements IVar {
         System.arraycopy(vector, 0, this.vector, 0, vector.length);
     }
 
-    public VarV(VarV init) {
+    protected VarV(VarV init){
         this.vector = new double[init.vector.length];
     }
 
-    public double[] getVector() {
-        return vector;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder res = new StringBuilder("");
-        String prefix = "{";
-        for (Double val : vector) {
-            res.append(prefix).append(val.toString());
-            prefix = ", ";
-        }
-        return res.append("}").toString();
-    }
 
     @Override
     public void setFrom(String str) {
@@ -49,7 +31,7 @@ public class VarV extends Var implements IVar {
         Matcher m = Pattern.compile(Patterns.exVal).matcher(str);
         int i = 0;
         while (m.find()) {
-            vector[i] = Double.parseDouble(m.group());
+            vector[i]=Double.parseDouble(m.group());
             i++;
         }
     }
