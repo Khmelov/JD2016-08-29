@@ -9,7 +9,7 @@ public class Main {
         TaskA.taskA();
         //Task B
         TaskB.taskB();
-        //Task C
+        //Task C.
         System.out.println("To see TaskC please go to TaskC package");
 
     }

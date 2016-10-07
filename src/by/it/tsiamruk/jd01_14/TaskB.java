@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
  */
 public class TaskB {
     static void taskB() {
+        //comment
         StringBuilder sb = new StringBuilder();
         int countWords = 0;
         int countPunct = 0;
