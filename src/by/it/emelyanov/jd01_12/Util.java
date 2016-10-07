@@ -2,6 +2,7 @@ package by.it.emelyanov.jd01_12;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Util {
 
@@ -15,7 +16,7 @@ public class Util {
 
      static void print(String description, HashMap<String,Integer> data){
         System.out.println(description);
-        for (HashMap.Entry<String,Integer> i: data.entrySet()){
+        for (Map.Entry<String,Integer> i: data.entrySet()){
             System.out.println(i.getKey() + "    " + i.getValue() + " раз(а)");
         }
         System.out.println();
