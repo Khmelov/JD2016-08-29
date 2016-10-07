@@ -7,6 +7,7 @@ import java.util.HashMap;
 /**
  * Created by waldemar on 28/09/2016.
  */
+@SuppressWarnings("Since15")
 public class TaskB1 {
     public static HashMap<String, Integer> createHM() {
         HashMap<String, Integer> hashMap = new HashMap<>();
