@@ -70,6 +70,7 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void goToOut() {
+        Dispatcher.countBuyers.incrementAndGet();
         System.out.println(this + " go to out");
     }
 
