@@ -14,14 +14,12 @@ public class TaskC {
     static void ourlist(String path) {
         File list = new File(path);
         for (File dir : list.listFiles()) {
-            if (!dir.getName().startsWith(".")) {
                 if (dir.isDirectory()) {
                     System.out.printf("Catalog: %s\n", dir.getName());
                 }
                 if (dir.isFile()) {
                     System.out.printf("File: %s\n", dir.getName());
                 }
-            }
         }
 
     }
