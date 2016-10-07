@@ -13,8 +13,5 @@ public class Run {
         StringBuilder getindex = TaskB.indexator(task);
         TaskB.consolePrint(getindex);
         TaskB.filePrint(TaskB.filePath(), getindex);
-        System.out.printf("%nTask C%n%n");
-        TaskC.console(TaskC.pathToStartCat());
-
     }
 }

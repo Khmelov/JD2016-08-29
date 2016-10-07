@@ -9,8 +9,7 @@ public class Main {
         TaskA.taskA();
         //Task B
         TaskB.taskB();
-        //Task C.
+        //task C
         TaskC.ourlist(TaskC.path());
-
     }
 }
