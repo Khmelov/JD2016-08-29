@@ -7,7 +7,7 @@ import java.io.PrintWriter;
  * Created by waldemar on 04/10/2016.
  */
 public class TaskA {
-    public static void main(String[] args) {
+    public static void taskA() {
         int[][] matrix = new int[4][4];
         int len = matrix.length;
 
