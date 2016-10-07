@@ -17,7 +17,7 @@ public class TaskA {
             variables[i] = (int) (Math.floor(Math.random() * 1000));
         }
         //занесение в файл.
-        try (FileOutputStream fos = new FileOutputStream("/Users/waldemartsiamruk/test.txt");) {
+        try (FileOutputStream fos = new FileOutputStream("/Users/waldemartsiamruk/IdeaProjects/Students/JD2016-08-29v2/src/by/it/tsiamruk/jd01_14/data/text.txt");) {
             for (int variable : variables) {
                 fos.write(variable);
             }

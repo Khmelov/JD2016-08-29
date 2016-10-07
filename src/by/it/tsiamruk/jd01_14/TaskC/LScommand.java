@@ -6,7 +6,7 @@ import java.io.File;
  * Created by waldemar on 03/10/2016.
  */
 public class LScommand {
-    //comment
+    //c
     static void lsCommand(String s) {
         if (s.equals("ls")) {
             File file = new File("/Users/waldemartsiamruk/IdeaProjects/Students/JD2016-08-29v2");

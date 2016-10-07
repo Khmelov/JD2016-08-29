@@ -6,7 +6,7 @@ package by.it.tsiamruk.jd01_14.TaskC;
 public class Runner {
     public static void main(String[] args) {
         System.out.println("To see the catalogs and files please enter \"ls\" command");
-        //comment
+        //c
         String command = InOut.console();
         LScommand.lsCommand(command);
     }
