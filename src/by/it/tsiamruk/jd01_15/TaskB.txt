@@ -7,7 +7,7 @@
 7: 
 8: public class TaskB {
 9: 
-10:     static String filePath(){
+10:     static String filePath() {
 11:         String src = System.getProperty();    
 12:         src = src.concat();   
 13:         return src + ;
@@ -63,12 +63,12 @@
 63:         return res;
 64:     }
 65: 
-66:     static void consolePrint(StringBuilder sb){
+66:     static void consolePrint(StringBuilder sb) {
 67:         System.out.println(sb);
 68:     }
 69: 
-70:     static void filePrint(String filePath, StringBuilder sb){
-71:         try(PrintWriter pw = new PrintWriter(new FileWriter(filePath))) {
+70:     static void filePrint(String filePath, StringBuilder sb) {
+71:         try (PrintWriter pw = new PrintWriter(new FileWriter(filePath))) {
 72:             pw.print(sb);
 73:         } catch (IOException e) {
 74:             System.out.print();
