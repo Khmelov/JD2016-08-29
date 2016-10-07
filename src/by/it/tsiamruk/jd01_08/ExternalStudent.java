@@ -5,7 +5,7 @@ package by.it.tsiamruk.jd01_08;
  */
 public class ExternalStudent extends Student {
 
-    String name;
+    private String name;
 
     @Override
     public void graduation() {
@@ -36,19 +36,26 @@ public class ExternalStudent extends Student {
     @Override
     public boolean working() {
         boolean working = true;
+        setFatigue(true);
         System.out.println("Я работаю? - " + working);
+        System.out.println("Я устал:" + working);
         return working;
     }
 
     @Override
     public String sayHello() {
         String sayHello = " Я студент заочник";
-        System.out.println("Меня зовут " + name + sayHello);
+        System.out.println("Меня зовут " + getName() + sayHello);
         return sayHello;
     }
 
-
+    @Override
     public void setName(String name) {
-        this.name = name;
+        super.setName(name);
+    }
+
+    @Override
+    public String getName() {
+        return super.getName();
     }
 }
