@@ -10,14 +10,12 @@ public class Cashier implements Runnable {
 
     @Override
     public void run() {
-        while ((Dispatcher.countCashiers.get() == 1 &&
-                !Dispatcher.isFinished()
-        )
-                ) {
+
+        do {
             if (QueueBuyers.needService()) {
                 Buyer buyer = QueueBuyers.extract();
                 System.out.println(this + "Start service " + buyer);
-                Helper.sleep(Helper.rnd(5000));
+                Helper.sleep(Helper.rnd(1000));
                 System.out.println(this + "Billing ... " + buyer);
                 System.out.println(this + "Stop service " + buyer);
                 synchronized (buyer) {
@@ -25,6 +23,7 @@ public class Cashier implements Runnable {
                 }
             }
         }
+        while (Dispatcher.needCashiers());
         System.out.println(this + " stop");
         Dispatcher.countCashiers.decrementAndGet();
     }

@@ -6,15 +6,22 @@ class QueueBuyers {
     static final Integer monitorQueueBuyers = 0;
     private static ArrayDeque<Buyer> queue = new ArrayDeque<>();
 
+    public static int getSize(){
+        int res;
+        synchronized (monitorQueueBuyers) {
+            res = queue.size();
+        }
+        return res;
+    }
+
     public static void add(Buyer b) {
         queue.addLast(b);
-        if (Dispatcher.countCashiers.get() * 2 < queue.size()
-            && Dispatcher.countCashiers.get() < 5) {
+        if (Dispatcher.needCashiers()) {
             //так не падает
-            new Thread(new Cashier()).start();
+            //new Thread(new Cashier()).start();
 
-            //так падает
-            //Dispatcher.poolCashiers.execute(new Cashier());
+            //так тоже не падает, см. Dispatcher.needCashiers
+            Dispatcher.poolCashiers.execute(new Cashier());
             }
         }
 

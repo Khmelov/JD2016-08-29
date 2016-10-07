@@ -11,10 +11,19 @@ public class Dispatcher {
     static public AtomicInteger countCashiers=new AtomicInteger(0);
     static AtomicInteger countBuyers=new AtomicInteger(0);
     static AtomicInteger countOutBuyers=new AtomicInteger(0);
-    static final int PLAN_COUNT_BUYERS=10;
+    static final int PLAN_COUNT_BUYERS=100;
 
     static boolean isFinished(){
         return (countOutBuyers.get()>=PLAN_COUNT_BUYERS);
+    }
+
+    static boolean needCashiers(){
+        boolean res=(countCashiers.get() * 2 < QueueBuyers.getSize());
+        if (!res && countCashiers.get()==1)
+            res=!Dispatcher.isFinished();
+        if (countCashiers.get() >=5 && res)
+            res=false;
+        return res;
     }
     //
 
