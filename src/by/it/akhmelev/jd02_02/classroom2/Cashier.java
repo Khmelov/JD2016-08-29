@@ -1,7 +1,5 @@
 package by.it.akhmelev.jd02_02.classroom2;
 
-import by.it.akhmelev.jd02_01.classroom.*;
-
 public class Cashier implements Runnable{
     @Override
     public void run() {
