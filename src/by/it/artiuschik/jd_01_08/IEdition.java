@@ -1,9 +1,9 @@
 package by.it.artiuschik.jd_01_08;
 
 public interface IEdition {
-    void open(int page);//открыть издание на странице
+    void open(int page) throws IncorrectBookPageException;//открыть издание на странице
 
-    void open();//открыть издание по закладке
+    void open() throws IncorrectBookPageException;//открыть издание по закладке
 
     void close();//закрыть издание
 

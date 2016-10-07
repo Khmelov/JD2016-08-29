@@ -14,10 +14,15 @@ public class ReferenceBook extends Book {
     }
 
     @Override
-    public void open(int page) {
+    public void open(int page) throws IncorrectBookPageException{
         super.open(page);
+        if(page<0)
+        {
+            throw new IncorrectBookPageException("Incorrect book page number");
+        }
         System.out.println("Reference book " + getName() + " is opened on page " + page);
     }
+
 
     @Override
     public void close() {
