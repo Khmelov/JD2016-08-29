@@ -16,8 +16,12 @@ public class TaskA {
         for (int i = 0; i < variables.length; i++) {
             variables[i] = (int) (Math.floor(Math.random() * 1000));
         }
+        //путь
+        String path = System.getProperty("user.dir");
+        path = path.concat("/src/by/it/tsiamruk/");
+        String file = path + "jd01_14/data/text.txt";
         //занесение в файл.
-        try (FileOutputStream fos = new FileOutputStream("/Users/waldemartsiamruk/IdeaProjects/Students/JD2016-08-29v2/src/by/it/tsiamruk/jd01_14/data/text.txt");) {
+        try (FileOutputStream fos = new FileOutputStream(file);) {
             for (int variable : variables) {
                 fos.write(variable);
             }

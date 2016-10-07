@@ -15,7 +15,11 @@ public class TaskB {
         StringBuilder sb = new StringBuilder();
         int countWords = 0;
         int countPunct = 0;
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/waldemartsiamruk/IdeaProjects/Students/JD2016-08-29v2/src/by/it/tsiamruk/jd01_14/data/test.txt"))) {
+        //path
+        String path = System.getProperty("user.dir");
+        path = path.concat("/src/by/it/tsiamruk/");
+        String file = path + "jd01_14/data/test.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String text;
             while ((text = br.readLine()) != null) {
                 sb.append(text).append("\n");
