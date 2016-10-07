@@ -12,11 +12,7 @@ public abstract class Seat implements IFurniture{
     private float w;
 
     private float p;
-    /**
-     * @throws IllegalArgumentException
-     * @return void
-     *
-     */
+
     @Override
     public void getPar()throws IllegalArgumentException{
         System.out.println("Please enter length of the seat.");
@@ -35,11 +31,7 @@ public abstract class Seat implements IFurniture{
 
     };
 
-    /**
-     * @throws IllegalArgumentException
-     * @return void
-     *
-     */
+
     @Override
     public void getPrice() throws IllegalArgumentException{
         System.out.println("Please enter price of the seat.");
@@ -64,8 +56,8 @@ public abstract class Seat implements IFurniture{
         for (int i=0; i<prices.length; i++){
             sum+=prices[i];
         }
-        if (this.p<sum/count) return true;
-        else return false;
+
+        return this.p<sum/count;
     }
 
     @Override
@@ -81,13 +73,14 @@ public abstract class Seat implements IFurniture{
     /**
      * @param a,b the length and the width of the room
      * @return String
-     * @throws ArithmeticException
+     *
      */
     @Override
     public String fitSize(float a, float b) throws ArithmeticException{
-            if (a<this.l) { ArithmeticException wr=new ArithmeticException("lack of length"); throw wr;}
-            else if (b>=this.l) return "It fits either width or length of the room.";
-            else return "It fits length of the room.";
+            if (a<this.l) { throw new ArithmeticException("lack of length");}
+            String s1="It fits either width or length of the room.";
+            String s2="It fits length of the room.";
+            return (b>=this.l)?s1:s2;
     };
 
 

@@ -5,9 +5,6 @@ import by.it.rudzko.jd01_09.Patterns;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Leta on 23.09.2016.
- */
 public class VarMat extends Var {
 
     public double [][] mat;
@@ -64,10 +61,7 @@ public class VarMat extends Var {
         for (int i=0; i<mat.length; i++) {
             for(int j=0; j<mat[0].length; j++) {
                 String str=Double.toString(mat[i][j]);
-                if (j!=mat[0].length-1){
-                    res.append(str).append(", ");
-                }
-                else res.append(str);
+                res=(j!=mat[0].length-1) ? (res.append(str).append(", ")) : (res.append(str));
             }
             res.append("}, {");
         }
