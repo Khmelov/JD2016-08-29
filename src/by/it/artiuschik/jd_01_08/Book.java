@@ -1,4 +1,5 @@
 package by.it.artiuschik.jd_01_08;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -47,12 +48,12 @@ public abstract class Book implements IEdition {
     }
 
     @Override
-    public void open(int page) {
+    public void open(int page) throws IncorrectBookPageException {
         isOpened = true;
     }
 
     @Override
-    public void open() {
+    public void open() throws IncorrectBookPageException{
         if (bookMark != 0) {
             this.open(bookMark);
         } else {
