@@ -5,8 +5,7 @@ package by.it.tsiamruk.jd02_01;
  */
 public class Helper {
     protected static int rnd(int from, int to) {
-        int i = from + (int) (Math.round(Math.random() * (to - from)));
-        return i;
+        return from + (int) (Math.round(Math.random() * (to - from)));
     }
 
     protected static int rnd(int max) {

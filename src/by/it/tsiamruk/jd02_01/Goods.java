@@ -18,6 +18,8 @@ public class Goods {
         table.put("Butter", 2.2);
         table.put("Meat", 57.6);
         table.put("Coffee", 12.0);
+        table.put("Beer", 2.0);
+        table.put("Chicken", 3.5);
         names = new ArrayList<>(table.keySet());
 
     }
