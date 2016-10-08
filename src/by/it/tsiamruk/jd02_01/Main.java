@@ -41,8 +41,6 @@ public class Main {
                 }
                 Helper.sleep(1000);
             }
-        } else
-            System.out.println("Прошла минута");
-
+        }
     }
 }
