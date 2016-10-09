@@ -34,4 +34,15 @@ public class Tanker extends CargoShip {
     public void loadShip() {
         super.loadShip();
     }
+
+
+    public void setHelp(boolean state, boolean canGo) {
+        if (state == true && canGo == false)
+            System.out.println("//T SetHelp");
+        else
+            System.out.println("//T don't SetHelp");
+
+    }
+
+
 }

@@ -12,6 +12,8 @@ public class Runner08 {
         //System.out.println(tanker.atSee());
         boolean state = ship.atSee();
         boolean state1 = tanker.atSee();
+        System.out.println(state);
+        System.out.println(state1);
         ship.inNeedToRepair(false);
         tanker.inNeedToRepair(false);
         tanker.changeCource();
@@ -19,15 +21,15 @@ public class Runner08 {
         ship.loadShip();
         ship.changeCource();
         tanker.capacity();
-        ship.capacity();
+        ((CargoShip)ship).capacity();
         tanker.inNeedToRepair(true);
-        //ship.setHelp(state1 , false);
+        ((CargoShip)ship).setHelp();
         tanker.loadShip();
         ship.loadShip();
 
         ((Tanker) tanker).setHelp();
-//        tanker.setHelp(state, false);
-//        tanker.setHelp(state1, true);
+        ((Tanker) tanker).setHelp(state, false);
+        ((Tanker) tanker).setHelp(state1, true);
         tanker.loadShip();
 
 

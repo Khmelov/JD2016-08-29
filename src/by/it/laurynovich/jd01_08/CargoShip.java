@@ -28,15 +28,10 @@ public class CargoShip extends Ship {
         System.out.println("//CS Загрузить корабль контейнерами");
     }
 
-//    @Override
-//    public void setHelp() {
-//
-//    }
-//
-//    @Override
-//    public void setHelp(boolean state, boolean canGo) {
-//
-//    }
 
+    public void setHelp() {
+        System.out.println("//CS setHelp");
+
+    }
 
 }
