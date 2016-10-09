@@ -4,29 +4,26 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * @author Olga Rudzko
- *
  */
 public class QueueBuyers {
 
-    private static ConcurrentLinkedQueue<Buyer> queue=new ConcurrentLinkedQueue<Buyer>();
+    private static ConcurrentLinkedQueue<Buyer> queue = new ConcurrentLinkedQueue<Buyer>();
 
-    public static int getSize(){
+    public static int getSize() {
         return queue.size();
     }
 
-    public static void addBuyer(Buyer x){
+    public static void addBuyer(Buyer x) {
         queue.add(x);
-//        synchronized (x) {
-            Cashier.poolCashiers.execute(new Cashier());
-            System.out.println("New Cahsier opened.");
-//        }
+        Cashier.poolCashiers.execute(new Cashier());
+        System.out.println("New Cahsier opened.");
     }
 
-    public static Buyer serve(){
+    public static Buyer serve() {
         return queue.poll();
     }
 
-    public static boolean notEmpty(){
+    public static boolean notEmpty() {
         return !queue.isEmpty();
     }
 }
