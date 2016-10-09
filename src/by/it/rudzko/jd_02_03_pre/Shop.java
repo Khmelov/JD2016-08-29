@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.atomic.AtomicInteger;
+
 
 import static by.it.rudzko.jd_02_03_pre.Cashier.poolCashiers;
 
@@ -24,7 +24,7 @@ public class Shop {
             long t2 = System.currentTimeMillis();
             Helper.checkBuyers(buyersInside);  //removes buyers who left the shop from list buyersInside
             try {
-                System.out.println(buyersInside.size() + " buyers iside: " + buyersInside);
+               // System.out.println(buyersInside.size() + " buyers iside: " + buyersInside);
                 if (((t2 - t) / 1000) % 60 < 30) {                      //checks what half of current minute is it
                         if (buyersInside.size() < 11) {        //checks if the number of buyers inside is not more than 10
                         int amount = Helper.random(2);
