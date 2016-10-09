@@ -5,8 +5,7 @@ public class Runner {
 
         Dispatcher.poolCashiers.execute(new Cashier());
         while (Dispatcher.countBuyers.get()<Dispatcher.PLAN_COUNT_BUYERS) {
-            int n= Helper.rnd(2);
-            n=100;
+            int n= Helper.rnd(20);
             for (int i = 0; i < n; i++) {
 
                 Buyer buyer=new Buyer(
@@ -19,6 +18,8 @@ public class Runner {
             }
             Helper.sleep(1000);
         }
+        while (!Dispatcher.isFinished())
+            Helper.sleep(100);
         Dispatcher.poolCashiers.shutdown();
     }
 }
