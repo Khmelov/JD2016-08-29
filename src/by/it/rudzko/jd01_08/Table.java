@@ -2,20 +2,14 @@ package by.it.rudzko.jd01_08;
 
 import java.util.Scanner;
 
-/**
- * Created by Leta on 18.09.2016.
- */
+
 public abstract class Table implements IFurniture{
 
     private float l;
     private float w;
 
     private float p;
-    /**
-     * @throws IllegalArgumentException
-     * @return void
-     *
-     */
+
     @Override
     public void getPar() throws IllegalArgumentException{
         System.out.println("Please enter length of the table.");
@@ -33,11 +27,7 @@ public abstract class Table implements IFurniture{
 
     }
 
-    /**
-     *
-     * @return void
-     * @throws IllegalArgumentException
-     */
+
     @Override
     public void getPrice() throws IllegalArgumentException{
         System.out.println("Please enter price of the table.");
@@ -58,8 +48,8 @@ public abstract class Table implements IFurniture{
         for (int i=0; i<prices.length; i++){
             sum+=prices[i];
         }
-        if (this.p<sum/count) return true;
-        else return false;
+
+        return this.p<sum/count;
     }
 
     @Override
@@ -75,13 +65,13 @@ public abstract class Table implements IFurniture{
     /**
      * @param a,b the length and the width of the room
      * @return String
-     * @throws ArithmeticException
+     *
      */
     @Override
     public String fitSize(float a, float b) throws ArithmeticException{
-        if (a<this.l){ ArithmeticException wr=new ArithmeticException("lack of length"); throw wr;}
-        if (b>=this.l) return "Table fits width of the room.";
-        else return "Table doesn't fit width of the room";
+        if (a<this.l){ throw new ArithmeticException("lack of length");}
+        String s1="Table fits width of the room.";  String s2="Table doesn't fit width of the room";
+        return (b>=this.l) ? s1:s2;
     }
 
 

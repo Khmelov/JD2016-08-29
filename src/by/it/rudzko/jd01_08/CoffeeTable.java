@@ -2,9 +2,7 @@ package by.it.rudzko.jd01_08;
 
 import java.util.Scanner;
 
-/**
- * Created by Leta on 18.09.2016.
- */
+
 public class CoffeeTable extends Table {
 
     private float r;
@@ -43,9 +41,9 @@ public class CoffeeTable extends Table {
 
     @Override
     public String fitSize(float a, float b) throws ArithmeticException{
-        if (a<this.l){ ArithmeticException wr=new ArithmeticException("lack of length"); throw wr;}
-        if (b>=this.l) return "Table fits width of the room.";
-        else return "Table doesn't fit width of the room";
+        if (a<this.l){  throw new ArithmeticException("lack of length");}
+        String s1="Table fits width of the room.";  String s2="Table doesn't fit width of the room";
+       return (b>=this.l)?s1:s2;
     }
 
 
