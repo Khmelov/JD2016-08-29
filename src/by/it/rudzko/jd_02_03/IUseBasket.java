@@ -1,10 +1,10 @@
-package by.it.rudzko.jd_02_03_pre;
+package by.it.rudzko.jd_02_03;
 
 /**
  * @author Olga Rudzko
  */
 
-public interface IUseBasket {
+interface IUseBasket {
     void takeBasket();
 
     void putGoods();
