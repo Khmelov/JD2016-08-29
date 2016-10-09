@@ -1,7 +1,5 @@
 package by.it.laurynovich.jd01_12;
 
-import by.it.emelyanov.jd01_12.TaskA;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
