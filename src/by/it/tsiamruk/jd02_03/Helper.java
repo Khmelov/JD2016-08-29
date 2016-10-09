@@ -1,7 +1,7 @@
-package by.it.tsiamruk.jd02_01;
+package by.it.tsiamruk.jd02_03;
 
 /**
- * Created by waldemar on 03/10/2016.
+ * Created by user on 03.10.2016.
  */
 public class Helper {
     protected static int rnd(int from, int to) {

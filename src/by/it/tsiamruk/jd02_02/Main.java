@@ -11,6 +11,9 @@ public class Main {
             for (int i = 0; i < n; i++) {
                 Buyer buyer = new Buyer(++countBuyer);
                 buyer.start();
+                if (Dispatcher.countCashiers == 0) {
+                    break;
+                }
             }
             Helper.sleep(1000);
         }

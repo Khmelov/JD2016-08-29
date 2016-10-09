@@ -4,6 +4,35 @@ package by.it.tsiamruk.jd01_08;
  * Created by waldemar on 20/09/2016.
  */
 public abstract class Student implements IAbiturient {
+    private double money;
+    private boolean fatigue;
+    private boolean haveknowledges;
+    private String name;
+
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
+
+    public boolean isFatigue() {
+        return fatigue;
+    }
+
+    public void setFatigue(boolean fatigue) {
+        this.fatigue = fatigue;
+    }
+
+    public boolean isHaveknowledges() {
+        return haveknowledges;
+    }
+
+    public void setHaveknowledges(boolean haveknowledges) {
+        this.haveknowledges = haveknowledges;
+    }
 
     @Override
     public String sayHello() {
@@ -46,9 +75,11 @@ public abstract class Student implements IAbiturient {
         System.out.println("Оценка по русскому 100");
     }
 
-    public void setName(String name){
-
+    public void setName(String name) {
+        this.name = name;
     }
 
-
+    public String getName() {
+        return name;
+    }
 }
