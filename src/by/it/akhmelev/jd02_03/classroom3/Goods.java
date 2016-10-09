@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Goods {
-    private static Map<String, Double> table=new HashMap<String, Double>();
+    private static Map<String, Double> table= new HashMap<>();
     private static List<String> names;
     static {
         table.put("Bread",1.0);
@@ -14,7 +14,8 @@ public class Goods {
         table.put("Cofee",33.0);
         table.put("Tea",13.0);
         names=new ArrayList<>(table.keySet());
-    };
+    }
+
     protected static String random(){
         return names.get(Helper.rnd(names.size()-1));
     }

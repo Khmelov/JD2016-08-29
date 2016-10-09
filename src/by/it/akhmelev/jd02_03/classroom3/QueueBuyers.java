@@ -36,7 +36,7 @@ class QueueBuyers {
     static boolean needService() {
         boolean needService;
         synchronized (monitorQueueBuyers) {
-            needService = !queue.isEmpty();
+            needService = (queue.size() > 0);
         }
         return needService;
     }
