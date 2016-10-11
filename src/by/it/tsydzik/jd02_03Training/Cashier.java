@@ -5,10 +5,10 @@ package by.it.tsydzik.jd02_03Training;
  * @since 11.10.16.
  */
 public class Cashier implements Runnable {
-    int num;    //номер кассира
+    int cashierNumber;    //номер кассира
 
     public Cashier() {
-        this.num = ++Dispatcher.countCashiers;
+        this.cashierNumber = ++Dispatcher.countCashiers;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class Cashier implements Runnable {
                     System.out.println(this + " обслужил клиента: " + buyer);
 
                     //увеличим счетчик обслуженных клиентов
-                    Dispatcher.acountCompleteBuyers.incrementAndGet();
+                    Dispatcher.countCompleteBuyers.incrementAndGet();
                     buyer.iWait = false;
                     buyer.notify();     //отдаем блокировку обратно покупателю
                 }
@@ -37,7 +37,7 @@ public class Cashier implements Runnable {
 
     @Override
     public String toString() {
-        return "Кассир-" + num;
+        return "Кассир-" + cashierNumber;
     }
 
 
