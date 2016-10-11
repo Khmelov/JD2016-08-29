@@ -9,8 +9,28 @@ import java.util.concurrent.Executors;
  */
 public class Main {
     public static void main(String[] args) {
-        ExecutorService executor= Executors.newFixedThreadPool(5);
-executor.execute(new Buyer());
+
+        Dispatcher.poolCashier.execute(new Cashier());
+        Dispatcher.poolCashier.execute(new Cashier());
+        Dispatcher.poolCashier.execute(new Cashier());
+        Dispatcher.poolCashier.execute(new Cashier());
+        Dispatcher.poolCashier.execute(new Cashier());
+
+        while (!Dispatcher.planComplete()) {
+            Helper.sleep(1000);
+            int count= Helper.rnd(0, 2);    // то количество покупателей,
+                                            // которое может пройти: 0 1 2
+            for (int i = 0; i <= count; i++) {
+                Buyer buyer = new Buyer(Dispatcher.countBuyers.incrementAndGet());
+                Thread th = new Thread(buyer);
+                th.start();
+                if (Dispatcher.planComplete())
+                    break;
+            }
+        }
+        //завершениe сервиса касс (нельзя будет добавить новые)
+        //однако сами кассы продолжают работу, т.к. они уже выполняются
+        Dispatcher.poolCashier.shutdown();
     }
 
 }
