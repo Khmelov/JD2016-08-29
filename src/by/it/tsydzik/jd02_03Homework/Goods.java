@@ -1,4 +1,4 @@
-package by.it.tsydzik.jd02_03Training;
+package by.it.tsydzik.jd02_03Homework;
 
 import by.it.tsydzik.jd02_03.Helper;
 
@@ -18,9 +18,9 @@ public class Goods {
 
     static {
         table.put("Bread", 1.0);
-        table.put("Milk", 3.0);
-        table.put("Cofee", 33.0);
-        table.put("Tea", 13.0);
+        table.put("Milk", 2.0);
+        table.put("Cofee", 3.0);
+        table.put("Tea", 4.0);
         names = new ArrayList<>(table.keySet());
     }
 

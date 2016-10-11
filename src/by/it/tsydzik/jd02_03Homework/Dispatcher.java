@@ -1,4 +1,4 @@
-package by.it.tsydzik.jd02_03Training;
+package by.it.tsydzik.jd02_03Homework;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

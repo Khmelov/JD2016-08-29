@@ -1,4 +1,4 @@
-package by.it.tsydzik.jd02_03Training;
+package by.it.tsydzik.jd02_03Homework;
 
 /**
  * @author Eugene Tsydzik
