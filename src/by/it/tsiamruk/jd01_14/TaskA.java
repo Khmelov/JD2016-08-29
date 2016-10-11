@@ -11,13 +11,17 @@ import java.io.IOException;
  */
 public class TaskA {
     static void taskA() {
-        //создание перменных для занесения в файл
+        //создание перменных для занесения в файл.
         int[] variables = new int[20];
         for (int i = 0; i < variables.length; i++) {
             variables[i] = (int) (Math.floor(Math.random() * 1000));
         }
-        //занесение в файл
-        try (FileOutputStream fos = new FileOutputStream("/Users/waldemartsiamruk/test.txt");) {
+        //путь
+        String path = System.getProperty("user.dir");
+        path = path.concat("/src/by/it/tsiamruk/");
+        String file = path + "jd01_14/data/text.txt";
+        //занесение в файл.
+        try (FileOutputStream fos = new FileOutputStream(file);) {
             for (int variable : variables) {
                 fos.write(variable);
             }

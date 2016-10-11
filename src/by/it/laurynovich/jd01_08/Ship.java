@@ -6,7 +6,7 @@ package by.it.laurynovich.jd01_08;
 public abstract class Ship implements IShip {
     @Override
     public boolean atSee() {
-       return true;
+        return true;
     }
 
     @Override
@@ -16,9 +16,11 @@ public abstract class Ship implements IShip {
 
     @Override
     public void inNeedToRepair(boolean state) {
-        if (state == false){System.out.println("Корабль не требует ремонта");}
+        if (state == false) {
+            System.out.println("Корабль не требует ремонта");
+        } else {
+            System.out.println("Корабль требует ремонта");
 
-        else { System.out.println("Корабль требует ремонта");
         }
 
     }
@@ -27,11 +29,5 @@ public abstract class Ship implements IShip {
     public void changeCource() {
 
     }
-
-    @Override
-    public void loadShip() {
-
-    }
-
 
 }

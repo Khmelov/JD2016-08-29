@@ -2,20 +2,14 @@ package by.it.rudzko.jd01_08;
 
 import java.util.Scanner;
 
-/**
- * Created by Leta on 17.09.2016.
- */
+
 public abstract class Locker implements IFurniture{
 
     private float l;
     private float w;
 
     private float p;
-    /**
-     * @throws IllegalArgumentException
-     * @return void
-     *
-     */
+
     @Override
     public void getPar() throws IllegalArgumentException{
         System.out.println("Please enter length of the locker.");
@@ -32,11 +26,7 @@ public abstract class Locker implements IFurniture{
         }
     };
 
-    /**
-     *
-     * @return String
-     * @throws IllegalArgumentException
-     */
+
     @Override
     public void getPrice() throws IllegalArgumentException{
         System.out.println("Please enter price of the locker.");
@@ -57,8 +47,7 @@ public abstract class Locker implements IFurniture{
         for (int i=0; i<prices.length; i++){
             sum+=prices[i];
         }
-        if (this.p<sum/count) return true;
-        else return false;
+        return this.p<sum/count;
     }
 
 
@@ -75,13 +64,14 @@ public abstract class Locker implements IFurniture{
     /**
      * @param a,b the length and the width of the room
      * @return String
-     * @throws ArithmeticException
+     *
      */
     @Override
     public String fitSize(float a, float b) throws ArithmeticException{
-            if (a<this.l) { ArithmeticException wr=new ArithmeticException("lack of length"); throw wr;}
-            else if (b>=this.l) return "The locker fits either width or length of the room.";
-            else return "The locker fits length of the room.";
+            if (a<this.l) { throw new ArithmeticException("lack of length"); }
+            String s1="The locker fits either width or length of the room.";
+            String s2="The locker fits length of the room.";
+            return (b>=this.l)?s1:s2;
     };
 
 

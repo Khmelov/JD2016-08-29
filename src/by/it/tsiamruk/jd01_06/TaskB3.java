@@ -6,19 +6,18 @@ package by.it.tsiamruk.jd01_06;
  * а в случае равенства — по алфавиту.
  */
 
-public class TaskB3 {
+class TaskB3 {
 
     /**
      * textCleaner - method that's create array of Strings
      * from incoming string
      */
     static String[] textCleaner(String sometext) {
-        String[] textCleaner = sometext.split("[^а-яА-ЯёЁ]+");
-        return textCleaner;
+        return sometext.split("[^а-яА-ЯёЁ]+");
     }
 
 
-    static Integer symbolInString(String text, char symbol) {
+    private static Integer symbolInString(String text, char symbol) {
 
         int counter = 0;
         for (int i = 0; i < text.length(); i++) {
@@ -62,9 +61,16 @@ public class TaskB3 {
             }
         }
 
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
+        int repeatWordsCounter = 0;
+
+        for (int i = 0; i < array.length - 1; i++) {
+            if (!array[i].equals(array[i + 1])) {
+                System.out.printf("%s %n", array[i]);
+            } else {
+                repeatWordsCounter++;
+            }
         }
+        System.out.printf("количество повторяемых слов: %d %n", repeatWordsCounter);
         return array;
     }
 }

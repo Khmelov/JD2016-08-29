@@ -2,7 +2,7 @@ package by.it.akhmelev.jd02_03.classroom3;
 
 public class Cashier implements Runnable {
 
-    int number;
+    private int number;
 
     public Cashier() {
         number = Dispatcher.countCashiers.incrementAndGet();
@@ -11,8 +11,10 @@ public class Cashier implements Runnable {
     @Override
     public void run() {
 
-        do {
-            if (QueueBuyers.needService()) {
+        System.out.println(this + " opened +++++++++++++++++++++++++++");
+        System.out.println("QueueBuyers Size = "+QueueBuyers.getSize());
+
+        while (QueueBuyers.needService()) {
                 Buyer buyer = QueueBuyers.extract();
                 System.out.println(this + "Start service " + buyer);
                 Helper.sleep(Helper.rnd(1000));
@@ -21,10 +23,10 @@ public class Cashier implements Runnable {
                 synchronized (buyer) {
                     buyer.notify();
                 }
+                if (!QueueBuyers.needService())
+                    Helper.sleep(500);
             }
-        }
-        while (Dispatcher.needCashiers());
-        System.out.println(this + " stop");
+        System.out.println(this + " closed -------------------------------");
         Dispatcher.countCashiers.decrementAndGet();
     }
 
