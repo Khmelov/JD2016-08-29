@@ -5,9 +5,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Leta on 02.10.2016.
- */
+
 public class TaskC {
     public static void printDir(String address){
         File f=new File(address);

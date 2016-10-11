@@ -5,7 +5,7 @@ public class TaskB2 {
     //Getting Array of sentences.
     static String[] arrayOfSentences(String a){
 
-        String[] sentences = a.toString().trim().split("[.!?]+\\s*");
+        String[] sentences = a.trim().split("[.!?]+\\s*");
         //test
         //System.out.println(sentences.length);
         return sentences;

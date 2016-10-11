@@ -2,18 +2,15 @@ package by.it.rudzko.jd01_13;
 
 import java.util.Scanner;
 
-/**
- * Created by user on 26.09.2016.
- */
+
 public class TaskB {
 
     public static void heigth() throws ArithmeticException, NumberFormatException{
         System.out.println("Введите рост в сантиметрах:");
         double h=Double.parseDouble(new Scanner(System.in).nextLine())/100;
         if (h<0){
-            ArithmeticException e=new ArithmeticException("Параметр не может принимать отрицательное значение.");
-            throw e;
-        }
+            throw new ArithmeticException("Параметр не может принимать отрицательное значение.");
+             }
         weight(h);
         System.out.println("Рост: "+h);
     }
@@ -22,9 +19,8 @@ public class TaskB {
         System.out.println("Введите вес:");
         double w=Double.parseDouble(new Scanner(System.in).nextLine());
         if (w<0){
-            ArithmeticException e=new ArithmeticException("Параметр не может принимать отрицательное значение.");
-            throw e;
-        }
+            throw new ArithmeticException("Параметр не может принимать отрицательное значение.");
+           }
         bmi(d,w);
         System.out.println("Вес: "+w);
     }
@@ -36,9 +32,8 @@ public class TaskB {
         try{
             res=d2/Math.pow(d1, 2);
             if (d1==0){
-                ArithmeticException e=new ArithmeticException();
-                throw e;
-            }
+                throw new ArithmeticException();
+                 }
             System.out.println(res);
         if (res<18.5)
         System.out.println("Дефицит массы тела.");

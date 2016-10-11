@@ -9,6 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
+
         System.out.println("\nTask C:\n");
         Var a=new VarMat("{{1,2}, {8,3}}");
         Var b=new VarNum(2);

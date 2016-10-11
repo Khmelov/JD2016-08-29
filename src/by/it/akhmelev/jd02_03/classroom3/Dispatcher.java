@@ -18,7 +18,7 @@ public class Dispatcher {
     }
 
     static boolean needCashiers(){
-        boolean res=(countCashiers.get() * 2 < QueueBuyers.getSize());
+        boolean res=(countCashiers.get() * 5 < QueueBuyers.getSize());
         if (!res && countCashiers.get()==1)
             res=!Dispatcher.isFinished();
         if (countCashiers.get() >=5 && res)

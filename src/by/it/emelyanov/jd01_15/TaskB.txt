@@ -1,0 +1,42 @@
+ 1: package by.it.emelyanov.jd01_15;
+ 2: 
+ 3: import java.io.
+ 4: 
+ 5: public class TaskB {
+ 6: 
+ 7:     
+ 8:      
+ 9:      
+10: 
+11:     public static void main(String[] args) {
+12:         String src = System.getProperty("user.dir") + "/src/by/it/emelyanov/jd01_15/";
+13:         File fileMain = new File(src + "TaskB.java");
+14:         StringBuilder stringBuilder = new StringBuilder();
+15:         int count = 1;
+16:         try {
+17:             try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileMain))) {
+18:                 
+19:                 String line;
+20:                 while ((line = bufferedReader.readLine()) != null) {
+21:                     line = line.replaceAll("(/\\
+22:                     stringBuilder.append(String.format("%2d", count++) + ": " + line + "\n");
+23:                 }
+24:             }
+25:              
+26:         } catch (IOException e) {
+27:             e.printStackTrace();
+28:         }
+29: 
+30:         System.out.println(stringBuilder.toString());
+31: 
+32:         File file = new File(src + "TaskB.txt");
+33: 
+34:         try (PrintWriter printWriter = new PrintWriter(new FileWriter(file))) {
+35:             printWriter.print(stringBuilder.toString());
+36:         } catch (IOException e) {
+37:             e.printStackTrace();
+38:         }
+39: 
+40:     }
+41: }
+42: 
