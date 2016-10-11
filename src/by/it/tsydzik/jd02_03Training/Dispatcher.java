@@ -10,15 +10,22 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Dispatcher {
 
-    static ExecutorService poolCashier = Executors.newFixedThreadPool(5);
+    static ExecutorService poolCashiers = Executors.newFixedThreadPool(5);
 
     //сколько планируется покупателей
-    final static int PLAN_COUNT_BUYERS = 10;
+    final static int PLAN_COUNT_BUYERS = 100;
+
+    //общий счетчик кассиров
+    static AtomicInteger countCashiers = new AtomicInteger(0);
 
     //общий счетчик покупателей
     static AtomicInteger countBuyers = new AtomicInteger(0);
 
-    static boolean planComplete() {
+    //общий счетчик обслуженных покупателей
+    static AtomicInteger countCompleteBuyers = new AtomicInteger(0);
+
+
+    static boolean isPlanCompleted() {
         return countBuyers.get() >= PLAN_COUNT_BUYERS;
     }
 
@@ -27,11 +34,20 @@ public class Dispatcher {
         return countCompleteBuyers.get() >= PLAN_COUNT_BUYERS;
     }
 
-    //общий счетчик обслуженных покупателей
-    static AtomicInteger countCompleteBuyers = new AtomicInteger(0);
-
-    //общий счетчик кассиров
-    static int countCashiers = 0;
+    static boolean needCashiers() {
+        if (!Dispatcher.isPlanCompleted()) {
+            if (countCashiers.get() < 5 && (countCashiers.get() * 5 < QueueBuyers.getSize())) {
+                return true;
+            }
+        } else if (countCashiers.get() < 5
+                && Dispatcher.countBuyers.get() != Dispatcher.countCompleteBuyers.get()
+                && QueueBuyers.needService()) {
+            // То есть мы будем нуждаться в кассиры даже когда план будет завершена,
+            // если у нас есть покупатели внутри
+            return true;
+        }
+        return false;
+    }
 
 
 }
