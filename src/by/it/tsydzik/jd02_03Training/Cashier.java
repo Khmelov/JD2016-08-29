@@ -8,7 +8,7 @@ public class Cashier implements Runnable {
     int cashierNumber;    //номер кассира
 
     public Cashier() {
-        this.cashierNumber = ++Dispatcher.countCashiers;
+        this.cashierNumber = Dispatcher.countCashiers.incrementAndGet();
     }
 
     @Override
@@ -39,6 +39,4 @@ public class Cashier implements Runnable {
     public String toString() {
         return "Кассир-" + cashierNumber;
     }
-
-
 }
