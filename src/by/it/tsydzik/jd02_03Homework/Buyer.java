@@ -1,6 +1,6 @@
-package by.it.tsydzik.jd02_03Training;
+package by.it.tsydzik.jd02_03Homework;
 
-import java.util.Map;
+import java.util.concurrent.Semaphore;
 
 /**
  * @author Eugene Tsydzik
@@ -8,13 +8,17 @@ import java.util.Map;
  */
 public class Buyer implements Runnable, IBuyer, IBasket {
 
-    int number;                    //номер покупателя
     public boolean iWait = false; //флаг того, что покупатель в ожидании
-
+    int number;                    //номер покупателя
     private String name;
 
-    // ограничиваем количество покупателей в зале
-    private Map<String,Double> basket;
+    // Чтобы в зале товар выбирало не более 10 человек
+    private static Semaphore semaphore = new Semaphore(10);
+
+    public Buyer(int number) {
+        this.number = number;
+        this.setName("Покупатель №" + number);
+    }
 
     public String getName() {
         return name;
@@ -22,11 +26,6 @@ public class Buyer implements Runnable, IBuyer, IBasket {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Buyer(int number) {
-        this.number = number;
-        this.setName("Покупатель №" + number);
     }
 
     @Override
@@ -72,7 +71,14 @@ public class Buyer implements Runnable, IBuyer, IBasket {
     public void run() {
         enterToMarket();
         takeBasket();
-        chooseGoods();
+        try {
+            semaphore.acquire();
+            chooseGoods();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }finally {
+            semaphore.release();
+        }
         goToQueue();
         goToOut();
     }
