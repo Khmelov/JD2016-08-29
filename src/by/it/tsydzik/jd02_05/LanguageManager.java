@@ -10,6 +10,11 @@ import java.util.ResourceBundle;
 public class LanguageManager {
     public static final String Path_I18N = "by.it.tsydzik.jd02_05.language";
     private static Locale locale = Locale.ENGLISH;
+
+    public static Locale getLocale() {
+        return locale;
+    }
+
     private static ResourceBundle resourceBundle = setResource(locale);
 
     public static ResourceBundle setResource(Locale locale) {
