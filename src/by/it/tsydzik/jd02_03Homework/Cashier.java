@@ -13,26 +13,21 @@ public class Cashier implements Runnable {
 
     @Override
     public void run() {
-        System.out.println(this + " открыл кассу");
-        while (!Dispatcher.finish()) {
-
-            Buyer buyer = QueueBuyers.poll();
-            if (buyer != null) {
-                synchronized (buyer) {
-                    System.out.println(this + " обслуживает клиента: " + buyer);
-                    Helper.sleep(Helper.rnd(2000, 5000));
-                    System.out.println(this + " обслужил клиента: " + buyer);
-
-                    //увеличим счетчик обслуженных клиентов
-                    Dispatcher.countCompleteBuyers.incrementAndGet();
-                    buyer.iWait = false;
-                    buyer.notify();     //отдаем блокировку обратно покупателю
+        do {
+            if (QueueBuyers.needService()) {
+                Buyer buyer = QueueBuyers.poll();
+                System.out.println(this + " начал обслуживание " + buyer);
+                Helper.sleep(Helper.rnd(1000));
+                if (buyer != null) {
+                    System.out.println(this + " закончил обслуживание " + buyer);
+                    synchronized (buyer) {
+                        buyer.notify();
+                    }
                 }
-            } else {
-                Helper.sleep(1000);
             }
-        }
-        System.out.println(this + " закрыл кассу");
+        } while (Dispatcher.needCashiers());
+        System.out.println(this + " закрылся");
+        Dispatcher.countCashiers.decrementAndGet();
     }
 
     @Override
