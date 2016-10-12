@@ -40,34 +40,6 @@ public class Main {
         printOneVar(new VarVOperations(vec).mul(new VarV(vec)));
         printOneVar(new VarVOperations(vec).div(new VarV(vec)));
 
-//        String string = "2.3 + 3 * 7 / 6";
-//        Pattern p = Pattern.compile("[-]?\\d+\\.?\\d*|[\\w]+");
-//        Matcher m = p.matcher(string);
-//        Pattern p2 = Pattern.compile("[-+*/=]");
-//        Matcher m2 = p2.matcher(string);
-//        List values = new ArrayList<>();
-//        List operations = new ArrayList<>();
-//
-//        while (m.find()) {
-//            values.add(m.group());
-//        }
-//        while (m2.find()) {
-//            operations.add(m2.group());
-//        }
-//
-
-
-//        test success of adding elems to ArrayList
-//        System.out.println(values.toString());
-//        System.out.println(operations.toString());
-//
-//
-//        Var f3 = new VarFOperations(arrayList.get(0));
-//        Var f4 = new VarFOperations(arrayList.get(1));
-
-
-
-
     }
 }
 
