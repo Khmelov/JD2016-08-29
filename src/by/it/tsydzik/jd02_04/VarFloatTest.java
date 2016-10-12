@@ -13,22 +13,38 @@ import static org.junit.Assert.assertEquals;
 public class VarFloatTest {
     @Test
     public void testAdd() throws Exception {
-        assertEquals("Ошибка сложения", (new VarFloat("7.3")).toString(), (new VarFloat("2").add(new VarFloat("5.3"))).toString());
+        VarFloat firstElem = new VarFloat("2");
+        VarFloat secondElem = new VarFloat("5.3");
+        String strResult = firstElem.add(secondElem).toString();
+        String expectedResult = new VarFloat("7.3").toString();
+        assertEquals("Ошибка сложения", expectedResult, strResult);
     }
 
     @Test
     public void testSub() throws Exception {
-        assertEquals("Ошибка вычитания", (new VarFloat("25")).toString(), (new VarFloat("25.55").sub(new VarFloat("0.55"))).toString());
+        VarFloat firstElem = new VarFloat("25.55");
+        VarFloat secondElem = new VarFloat("0.55");
+        String strResult = firstElem.sub(secondElem).toString();
+        String expectedResult = new VarFloat("25").toString();
+        assertEquals("Ошибка вычитания", expectedResult, strResult);
     }
 
     @Test
     public void testMul() throws Exception {
-        assertEquals("Ошибка умножения", (new VarFloat("25.55")).toString(), (new VarFloat("7.3").mul(new VarFloat("3.5"))).toString());
+        VarFloat firstElem = new VarFloat("7.3");
+        VarFloat secondElem = new VarFloat("3.5");
+        String strResult = firstElem.mul(secondElem).toString();
+        String expectedResult = new VarFloat("25.55").toString();
+        assertEquals("Ошибка умножения", expectedResult, strResult);
     }
 
     @Test
     public void testDiv() throws Exception {
-
+        VarFloat firstElem = new VarFloat("7.3");
+        VarFloat secondElem = new VarFloat("2");
+        String strResult = firstElem.div(secondElem).toString();
+        String expectedResult = new VarFloat("3.65").toString();
+        assertEquals("Ошибка деления", expectedResult, strResult);
     }
 
 }
