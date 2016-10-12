@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * Created by nadabratb on 09.10.2016.
  */
 public class TaskB {
+
     private static String src = System.getProperty("user.dir") + "/src/by/it/laurynovich/jd01_14/file/";
     static String filename = src + "testText.txt";
     static File file = new File(filename);
@@ -41,8 +42,8 @@ public class TaskB {
 
         int words = arrayList.size();
         int p = arrayListPunkt.size();
-        System.out.println("Количество знаков препинания в тексте = "+p);
-        System.out.println("Количество слов в тексте = "+words);
+        System.out.println("Количество знаков препинания в тексте = " + p);
+        System.out.println("Количество слов в тексте = " + words);
     }
 
 }

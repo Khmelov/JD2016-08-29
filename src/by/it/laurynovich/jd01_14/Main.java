@@ -7,12 +7,12 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        System.out.println("TaskA jd01_14");
+        System.out.println("Task A jd01_14");
         TaskA.createFile();
         TaskA.readFile();
         System.out.println();
 
-        System.out.println("TaskB jd01_14");
+        System.out.println("Task B jd01_14");
         TaskB.countWords();
     }
 }

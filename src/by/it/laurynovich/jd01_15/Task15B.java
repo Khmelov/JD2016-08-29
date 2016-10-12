@@ -39,7 +39,7 @@ public class Task15B {
         Pattern pattern = Pattern.compile("/\\*((.|\\n)+\\*/)?/");
         Matcher matcher = pattern.matcher(sb);
         int pos = 0;
-        while (matcher.find(pos)){
+        while (matcher.find(pos)) {
             sb.delete(matcher.start(), matcher.end());
             pos = matcher.start();
 
