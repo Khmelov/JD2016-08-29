@@ -1,4 +1,4 @@
-package by.it.rudzko.jd_02_03_pre;
+package by.it.rudzko.jd_02_03;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -7,23 +7,23 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  */
 public class QueueBuyers {
 
-    private static ConcurrentLinkedQueue<Buyer> queue = new ConcurrentLinkedQueue<Buyer>();
+    private static ConcurrentLinkedQueue<Buyer> queue = new ConcurrentLinkedQueue<>();
 
     public static int getSize() {
         return queue.size();
     }
 
-    public static void addBuyer(Buyer x) {
+    static void addBuyer(Buyer x) {
         queue.add(x);
         Cashier.poolCashiers.execute(new Cashier());
         System.out.println("New Cahsier opened.");
     }
 
-    public static Buyer serve() {
+    static Buyer serve() {
         return queue.poll();
     }
 
-    public static boolean notEmpty() {
+    static boolean notEmpty() {
         return !queue.isEmpty();
     }
 }

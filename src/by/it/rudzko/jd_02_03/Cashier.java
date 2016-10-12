@@ -1,4 +1,4 @@
-package by.it.rudzko.jd_02_03_pre;
+package by.it.rudzko.jd_02_03;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Cashier implements Runnable {
 
-    int number;
+    private int number;
     static public AtomicInteger countCashiers = new AtomicInteger(0);
 
     public Cashier() {
@@ -20,7 +20,6 @@ public class Cashier implements Runnable {
     }
 
     static ExecutorService poolCashiers = Executors.newFixedThreadPool(5);
-    static AtomicInteger countServed = new AtomicInteger(0);
 
     static boolean needCashier() {
         boolean res = (QueueBuyers.getSize() - countCashiers.get() >= 5);
@@ -38,16 +37,15 @@ public class Cashier implements Runnable {
                 Helper.performing(Helper.random(2000, 5000));
                 System.out.println("\n" + this + " served " + x + ".\n____Bill:____\n" + x.choice);
                 System.out.println("--------------");
-                Double bill=0.0;
-                Iterator<Map.Entry<String, Double>> it=x.choice.entrySet().iterator();
-                while (it.hasNext()){
-                    bill+=it.next().getValue();
+                Double bill = 0.0;
+                Iterator<Map.Entry<String, Double>> it = x.choice.entrySet().iterator();
+                while (it.hasNext()) {
+                    bill += it.next().getValue();
                 }
-                System.out.println("Total     "+bill+"\n");
+                System.out.println("Total     " + bill + "\n");
                 synchronized (x) {
                     x.notify();
                 }
-                countServed.incrementAndGet();
             }
         }
         while (needCashier());

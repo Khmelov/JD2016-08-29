@@ -1,4 +1,4 @@
-package by.it.rudzko.jd_02_03_pre;
+package by.it.rudzko.jd_02_03;
 
 /**
  * @author Olga Rudzko
