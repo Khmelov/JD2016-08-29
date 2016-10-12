@@ -6,10 +6,22 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/out" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/artiuschik" />
       <excludeFolder url="file://$MODULE_DIR$/src/by/it/emelyanov" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/laurynovich" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/savelyeva/jd_01_12" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/tsiamruk/jd01_12" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/grishechkin" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/ilyukhin" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/morozov" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/opashniuk" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/rudzko" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/satsuta" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/satsuta/jd01_01" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/savelyeva" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/senchenko" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/sukora" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/tsiamruk" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/tsydzik" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/vashukevich" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/yarosh" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
