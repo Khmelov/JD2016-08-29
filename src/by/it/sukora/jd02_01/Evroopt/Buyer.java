@@ -6,7 +6,7 @@ import com.sun.corba.se.impl.orbutil.threadpool.ThreadPoolImpl;
 import java.util.regex.Matcher;
 
 public class Buyer implements Runnable, IBuyer, IBacket {
-
+//это старое
     private int number;
 
     public String getName() {
