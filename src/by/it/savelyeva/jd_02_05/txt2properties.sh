@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-LANGPATH=/home/nato/java/idea/JD2016-08-29/src/by/it/savelyeva/jd_02_05
+LANGPATH=$(pwd)
+echo $LANGPATH
 rm -f $LANGPATH/*.properties
 for file in $LANGPATH/language*.txt;
     do echo "Processing $file ..";
