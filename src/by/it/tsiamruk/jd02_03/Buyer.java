@@ -4,6 +4,15 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     private int number;
     private String name;
+    private boolean pensioner;
+
+    public boolean isPensioner() {
+        return pensioner;
+    }
+
+    public void setPensioner(boolean pensioner) {
+        this.pensioner = pensioner;
+    }
 
     public String getName() {
         return name;
@@ -14,6 +23,7 @@ public class Buyer implements Runnable, IBuyer, IBacket {
     }
 
     public Buyer(int number) {
+        this.isPensioner();
         this.number = number;
         this.setName("Buyer №" + number);
     }
@@ -34,10 +44,14 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void chooseGoods() {
+        double totalAmount = 0;
         for (int i = 1; i < Helper.rnd(1, 4); i++) {
             Helper.sleep(Helper.rnd(100, 200));
             String goodName = Goods.random();
-            System.out.println(this + " choosed good: " + goodName);
+            double priceOfGood = Goods.getPrice();
+            System.out.format("%s choose good: %s price: %.2f%n", this, goodName, priceOfGood);
+            totalAmount += priceOfGood;
+            System.out.format("%.2f is total amount of %s%n", totalAmount, this);
             putGoodsToBacket();
         }
     }
@@ -48,7 +62,6 @@ public class Buyer implements Runnable, IBuyer, IBacket {
             QueueBuyers.add(this);
             System.out.println(this + " added to QueueBuyers");
         }
-
         synchronized (this) {
             try {
                 this.wait();
@@ -60,13 +73,15 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void goToOut() {
-        Dispatcher.countOutBuyers.incrementAndGet();
         System.out.println(this + " go to out from Market");
     }
 
     @Override
     public String toString() {
-        return "Buyer №" + number;
+        if (this.isPensioner())
+            return "Pensioner";
+        else
+            return "Buyer №" + number;
         //return this.getName();
     }
 

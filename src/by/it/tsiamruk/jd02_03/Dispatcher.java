@@ -1,30 +1,31 @@
 package by.it.tsiamruk.jd02_03;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicInteger;
-
+/**
+ * Created by user on 05.10.2016.
+ */
 public class Dispatcher {
-    static ExecutorService poolCashiers = Executors.newFixedThreadPool(5);
+    //for synchro
+    static final Integer monitorCountCashies = 0;
+    static int countCashiers = 0;
+    private static final int planCount = 5;
+    static int countBuyers = 0;
+    static int countCompleteBuyers = 0;
 
-
-    static public AtomicInteger countCashiers = new AtomicInteger(0);
-    static AtomicInteger countBuyers = new AtomicInteger(0);
-    static AtomicInteger countOutBuyers = new AtomicInteger(0);
-    static final int PLAN_COUNT_BUYERS = 100;
-
-    static boolean isFinished() {
-        return (countOutBuyers.get() >= PLAN_COUNT_BUYERS);
+    static boolean planComplete() {
+        return countBuyers >= planCount;
     }
 
-    static boolean needCashiers() {
-        boolean res = (countCashiers.get() * 2 < QueueBuyers.getSize());
-        if (!res && countCashiers.get() == 1)
-            res = !Dispatcher.isFinished();
-        if (countCashiers.get() >= 5 && res)
-            res = false;
-        return res;
+    static boolean finish() {
+        return countCompleteBuyers >= planCount;
     }
-    //
+
+    //just for minimize code in other Objects
+    static void sleep(int milis) {
+        try {
+            Thread.sleep(milis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
