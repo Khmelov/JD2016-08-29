@@ -34,9 +34,9 @@ public class TaskB3 {
     public static void main(String[] args)
     {
         System.out.println("--------Исходный текст---------");
-        System.out.println(Data.POEM);
+        System.out.println(by.it.artiuschik.jd_01_06.Data.POEM);
         System.out.println("--------Результат---------");
-        String [] mas=sortBySymbol(Util.words(Data.POEM),'а');
+        String [] mas=sortBySymbol(by.it.artiuschik.jd_01_06.Util.words(Data.POEM),'а');
         for (int i = 0; i <mas.length ; i++) {
             System.out.println(mas[i]);
         }

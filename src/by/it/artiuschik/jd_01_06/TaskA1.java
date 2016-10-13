@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class TaskA1 {
     public static void main(String[] args){
-        StringBuilder sb=new StringBuilder(Data.POEM);
+        StringBuilder sb=new StringBuilder(by.it.artiuschik.jd_01_06.Data.POEM);
         System.out.println("------Исходный текст----");
         System.out.println(sb.toString());
         Pattern p= Pattern.compile("[а-яА-ЯёЁ]{5,}");

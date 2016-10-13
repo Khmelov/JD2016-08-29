@@ -7,7 +7,7 @@ public class TaskA {
     public static void main(String[] args){
         String line;
         double sum=0;
-        while(!(line=Util.oneLine()).equals("END"))
+        while(!(line= by.it.artiuschik.jd_01_13.Util.oneLine()).equals("END"))
         {
             try {
                 double value = Double.valueOf(line.trim());

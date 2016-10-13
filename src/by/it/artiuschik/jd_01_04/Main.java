@@ -1,4 +1,5 @@
 package by.it.artiuschik.jd_01_04;
+
 public class Main
 {
     public static void main(String[] args)
@@ -14,7 +15,7 @@ public class Main
         System.out.println("Столбец свободных членов: ");
         double y[]={20,11,40,37};
         InOut.printArr(y,"Y",1);
-        double x[]=Helper.findRoot(a,y);
+        double x[]= Helper.findRoot(a,y);
         System.out.println("Корни уравнения: ");
         InOut.printArr(x,"X",1);
         System.out.println("Проверка: ");

@@ -13,7 +13,7 @@ public class TaskA3 {
     }
 
     public static void main(String[] args) {
-        StringBuilder text = new StringBuilder(Data.POEM);
+        StringBuilder text = new StringBuilder(by.it.artiuschik.jd_01_06.Data.POEM);
         Pattern p = Pattern.compile("[а-яА-ЯёЁ]+");
         Matcher m = p.matcher(text);
         int counter = 0;

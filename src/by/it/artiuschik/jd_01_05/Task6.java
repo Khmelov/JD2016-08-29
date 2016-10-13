@@ -1,5 +1,4 @@
 package by.it.artiuschik.jd_01_05;
-import by.it.artiuschik.jd_01_02.*;
 
 import static java.lang.Math.*;
 public class Task6 {
@@ -34,10 +33,7 @@ public class Task6 {
         double srednGeom=1;
         for(int i=0;i<mas.length;i++)
         {
-            if((mas[i]*10000)%2==0)
-            {
-                srednGeom*=mas[i];
-            }
+            srednGeom=((mas[i]*10000)%2==0)? srednGeom*mas[i]:srednGeom;
 
         }
         return srednGeom;

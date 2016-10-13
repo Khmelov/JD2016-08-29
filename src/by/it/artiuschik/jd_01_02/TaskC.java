@@ -1,4 +1,5 @@
 package by.it.artiuschik.jd_01_02;
+
 import java.util.Random;
 
 public class TaskC
@@ -60,21 +61,17 @@ public class TaskC
                     flag=!flag;
                     continue;
                 }
-                    if(flag)
-                    {
-                        strSum+=matrix[i][j];
-                    }
+               strSum= (flag)?(strSum+matrix[i][j]):strSum;
             }
-            if(flag==true)
+
+            if(flag)
             {
                 strSum=0;
-                //System.out.println("Сумма элементов в "+i+" строке "+strSum);
                 flag=false;
             }
             else
             {
                 sum+=strSum;
-                //System.out.println("Сумма элементов в "+i+" строке "+strSum);
                 strSum=0;
             }
         }
@@ -100,14 +97,14 @@ public class TaskC
     {
         for(int i=0;i<n;i++)
         {
-            matrix[i]=Util.reverseMas(matrix[i]);
+            matrix[i]= by.it.artiuschik.jd_01_02.Util.reverseMas(matrix[i]);
         }
         matrix=TaskC.transponMatrix(matrix,n);
         return matrix;
     }
     static int[][] moveMinElement(int[][] matrix,int n)
     {
-        int[] min=Util.matrixMinMaxElement(matrix,n,true);
+        int[] min= by.it.artiuschik.jd_01_02.Util.matrixMinMaxElement(matrix,n,true);
         int oldX=min[0];
         int oldY=min[1];
         int[] tempStr;
@@ -131,16 +128,16 @@ public class TaskC
                 r[i][j] = matrix[i][j];
             }
         }
-        int max[] = Util.matrixMinMaxElement(matrix, matrix.length, false);
+        int max[] = by.it.artiuschik.jd_01_02.Util.matrixMinMaxElement(matrix, matrix.length, false);
         int maxElem = max[2];
-        int iMax = max[0];
-        int jMax = max[1];
+        int iMax;
+        int jMax;
         int it, jt;
-        while (maxElem == Util.matrixMinMaxElement(r, r.length, false)[2]) {
+        while (maxElem == by.it.artiuschik.jd_01_02.Util.matrixMinMaxElement(r, r.length, false)[2]) {
             int rows = r.length;
             int cols = r[0].length;
-            iMax = Util.matrixMinMaxElement(r, r.length, false)[0];
-            jMax = Util.matrixMinMaxElement(r, r.length, false)[1];
+            iMax = by.it.artiuschik.jd_01_02.Util.matrixMinMaxElement(r, r.length, false)[0];
+            jMax = by.it.artiuschik.jd_01_02.Util.matrixMinMaxElement(r, r.length, false)[1];
             int[][] newMatrix = new int[rows - 1][cols - 1];
             it = 0;
             jt = 0;
@@ -166,7 +163,7 @@ public class TaskC
     {
         for(int i=0;i<n;i++)
         {
-            matrix[i]=Util.moveZerosToEnd(matrix[i]);
+            matrix[i]= by.it.artiuschik.jd_01_02.Util.moveZerosToEnd(matrix[i]);
         }
         return matrix;
     }
@@ -177,7 +174,7 @@ public class TaskC
         {
             for(int j=0;j<matrix[i].length;j++)
             {
-                res[i][j]=matrix[i][j]-Util.srednArifm(matrix[i]);
+                res[i][j]=matrix[i][j]- by.it.artiuschik.jd_01_02.Util.srednArifm(matrix[i]);
             }
         }
         return res;

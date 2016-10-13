@@ -3,7 +3,7 @@ package by.it.artiuschik.jd_01_08;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public abstract class Book implements IEdition {
+abstract class Book implements IEdition {
     private String[] authors;
     private String name;
     private int year;
@@ -12,17 +12,15 @@ public abstract class Book implements IEdition {
     private int bookMark = 0;//закладка (номер страницы)
     private boolean reading = false;//читают ли книгу сейчас
 
-    public Book(String name, int year, int pages, String... authors) {
+    Book(String name, int year, int pages, String... authors) {
         this.name = name;
         this.year = year;
         this.pages = pages;
         this.authors = new String[authors.length];
-        for (int i = 0; i < authors.length; i++) {
-            this.authors[i] = authors[i];
-        }
+        System.arraycopy(authors, 0, this.authors, 0, authors.length);
     }
 
-    public Book() {
+    Book() {
         this.authors = null;
         this.name = "unknown";
         this.year = 0;
@@ -34,26 +32,13 @@ public abstract class Book implements IEdition {
         return name;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public int getPages() {
-        return pages;
-    }
-
-    public String[] getAuthors() {
-
-        return authors;
-    }
-
     @Override
     public void open(int page) throws IncorrectBookPageException {
         isOpened = true;
     }
 
     @Override
-    public void open() throws IncorrectBookPageException{
+    public void open() throws IncorrectBookPageException {
         if (bookMark != 0) {
             this.open(bookMark);
         } else {
@@ -90,8 +75,8 @@ public abstract class Book implements IEdition {
 
     @Override
     public boolean isAuthor(String author) {
-        for (int i = 0; i < authors.length; i++) {
-            if (authors[i].equals(author)) {
+        for (String author1 : authors) {
+            if (author1.equals(author)) {
                 return true;
             }
         }
@@ -104,8 +89,8 @@ public abstract class Book implements IEdition {
         System.out.println("Название: " + this.name);
         System.out.println("Год издания: " + this.year);
         System.out.print("Авторы: ");
-        for (int i = 0; i < authors.length; i++) {
-            System.out.print(authors[i] + " ");
+        for (String author : authors) {
+            System.out.print(author + " ");
         }
         System.out.println();
     }
@@ -113,5 +98,13 @@ public abstract class Book implements IEdition {
     @Override
     public String toString() {
         return "Book " + name;
+    }
+
+    protected void finalize() throws Throwable {
+        try {
+            System.out.println("объект " + this + " будет удален");
+        } finally {
+            super.finalize();
+        }
     }
 }

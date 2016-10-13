@@ -6,7 +6,7 @@ import by.it.artiuschik.jd_01_09.mathlab.utils.Patterns;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class VarM extends Var {
+public class VarM extends by.it.artiuschik.jd_01_09.mathlab.vars.Var {
     public double[][] matrix;
 
     public VarM(double[][] mas)//? лучше копировать из  mas  в  matrix

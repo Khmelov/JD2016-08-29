@@ -6,7 +6,7 @@ import java.util.Map;
 public class TaskB1 {
     public static void wordFrequency(String text) {
         HashMap<String, Integer> wordFrequency = new HashMap<>();
-        String[] words = Util.words(text);
+        String[] words = by.it.artiuschik.jd_01_12.Util.words(text);
         for (String word : words) {
                 if (wordFrequency.containsKey(word)) {
                     wordFrequency.put(word, wordFrequency.get(word) + 1);

@@ -1,6 +1,6 @@
 package by.it.artiuschik.jd_01_09.mathlab.vars;
 
-public class VarF extends Var {
+public class VarF extends by.it.artiuschik.jd_01_09.mathlab.vars.Var {
     public double value;
     public VarF(double value) {
         this.value = value;
