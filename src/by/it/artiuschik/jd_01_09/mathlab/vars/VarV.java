@@ -6,7 +6,7 @@ import by.it.artiuschik.jd_01_09.mathlab.utils.Patterns;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class VarV extends Var {
+public class VarV extends by.it.artiuschik.jd_01_09.mathlab.vars.Var {
     public double[] value;
 
     public VarV(double[] value) {

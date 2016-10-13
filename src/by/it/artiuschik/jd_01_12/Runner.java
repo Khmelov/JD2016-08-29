@@ -6,7 +6,7 @@ public class Runner {
     public static void main(String[] args)
     {
        //TaskA1
-        ArrayList<ArrayList> result=TaskA1.marksArray(20);
+        ArrayList<ArrayList> result= TaskA1.marksArray(20);
         System.out.println("Первоначальный список: "+result.get(0));
         System.out.println("Список без неудовлетворительных оценок: "+result.get(1));
         //TaskA2
@@ -19,11 +19,11 @@ public class Runner {
         System.out.println("Cross="+cross);
         System.out.println("Union="+union);
         //TaskA3
-        result=TaskA3.moveNegativeToEnd(20);
+        result= TaskA3.moveNegativeToEnd(20);
         System.out.println("Первоначальный список: "+result.get(0));
         System.out.println("Полученный список: "+result.get(1));
         //TaskB1
-        TaskB1.wordFrequency(Data.TEXT);
+        TaskB1.wordFrequency(by.it.artiuschik.jd_01_12.Data.TEXT);
         //TaskB2
         long start=System.nanoTime();
         TaskB2.processArray(5);
@@ -34,7 +34,7 @@ public class Runner {
         end=System.nanoTime();
         System.out.println("LinkedList time="+(end-start));
         //TaskC1
-        System.out.println(TaskC1.buildList(Data.OBJECT_NAMES));
+        System.out.println(TaskC1.buildList(by.it.artiuschik.jd_01_12.Data.OBJECT_NAMES));
         System.out.println(TaskC1.deleteEqual(TaskC1.buildList(Data.OBJECT_NAMES)));
         //TaskC2
         MyGeneralCollect<Character> collect1=new MyGeneralCollect<>('q','r','u','c','a');

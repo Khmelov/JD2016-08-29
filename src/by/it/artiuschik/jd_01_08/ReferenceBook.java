@@ -1,6 +1,6 @@
 package by.it.artiuschik.jd_01_08;
 
-public class ReferenceBook extends Book {
+public class ReferenceBook extends by.it.artiuschik.jd_01_08.Book {
     private String subject;//информацию по какому вопросу содержит справочник
 
     public ReferenceBook() {

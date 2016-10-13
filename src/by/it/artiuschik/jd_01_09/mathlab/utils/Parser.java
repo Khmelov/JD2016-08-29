@@ -1,6 +1,5 @@
 package by.it.artiuschik.jd_01_09.mathlab.utils;
 
-import by.it.artiuschik.jd_01_09.mathlab.utils.Patterns;
 import by.it.artiuschik.jd_01_09.mathlab.vars.*;
 
 import java.util.ArrayList;

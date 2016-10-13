@@ -55,7 +55,7 @@ public class VarMOperations {
 
     //вычесть из матрицы  число
     public static Var sub(VarM v1, VarF v2) {
-        return add(v1, (VarF) VarFOperations.mul(v2, new VarF(-1)));
+        return add(v1, (VarF) by.it.artiuschik.jd_01_09.mathlab.operations.VarFOperations.mul(v2, new VarF(-1)));
     }
 
     //--------------Умножение
