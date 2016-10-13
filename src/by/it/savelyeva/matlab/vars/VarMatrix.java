@@ -62,7 +62,7 @@ public class VarMatrix extends Var implements IVariable {
             }
             return res;
         }
-        else if (var instanceof VarMatrix) { 
+        else if (var instanceof VarMatrix) {
             if (((VarMatrix) var).value.length != value.length ||
         		((VarMatrix) var).value[0].length != value[0].length)
                 throw new VarDimensionException("Cannot substract matrices: dimensions not match.");
@@ -108,7 +108,7 @@ public class VarMatrix extends Var implements IVariable {
             double[][] v = new double[value.length][((VarMatrix) var).value[0].length];
             VarMatrix res = new VarMatrix(v);
             for (int i=0; i<value.length; i++) {
-                for (int j=0; j<((VarMatrix) var).value[0].length; j++) {
+                for (int j = 0; j<((VarMatrix) var).value[0].length; j++) {
                 	for (int k=0; k<value[0].length; k++)
                 		res.value[i][j] += value[i][k] * ((VarMatrix) var).value[k][j];
                 }
@@ -136,23 +136,17 @@ public class VarMatrix extends Var implements IVariable {
     }
 
     @Override
-    public Var assign(String s) {
-        return new VarMatrix(this.value);
-    }
-
-    @Override
     public String toString() {
         StringBuilder res = new StringBuilder("[");
         for (int i=0; i<value.length; i++) {
-            res.append(Arrays.toString(value[i]));
-            if (i<value.length-1) res.append(", ");
+            res.append(Arrays.toString(value[i]).replace(" ",""));
+            if (i<value.length-1) res.append(",");
         }
         res.append("]");
         return res.toString();
     }
 
-    @Override
-    public Var fromString(String s) {
+    public static Var fromString(String s) {
         String[] rows = s.split(Parser.splitterMatrix);
         double[][] res = new double[rows.length][rows[0].split(Parser.splitterVector).length];
         Pattern pattern = Pattern.compile(Parser.patternFloat);

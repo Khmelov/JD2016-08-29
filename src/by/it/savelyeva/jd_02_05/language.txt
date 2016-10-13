@@ -1,0 +1,6 @@
+message.welcome=Welcome!
+message.username=Natallia Savelyeva
+message.question=How are you?
+prompt.hint=To switch between languages - enter 'en', 'be', 'ru' or 'END' to exit the program.
+prompt.error=Wrong choice! English locale will be used.
+prompt.exit=Good bye!

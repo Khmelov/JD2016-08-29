@@ -48,6 +48,12 @@ public class Main {
 		as.makeReport(patients); printMethodSeparator(); // inheritance: call a method inherited from the superclass
 
 
+		// ======== Demo of asking Garbage Collector to do its stuff =======
+		p1 = p2; 	// p1 is lost (Patricia), but p2 still will be there (Peter)
+		as = null; 	// Albert will be removed
+		System.gc(); // does not guarantee actual destruction of objects at this time
+
+
 		System.out.println("\n======== Demo of dynamic polymorphism =======");
 
 		NeuroSurgeon mns = new MilitaryNeuroSurgeon("Michael", 1980, 2, "a1"); // static polymorphism inside constructor.

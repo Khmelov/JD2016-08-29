@@ -32,9 +32,4 @@ public abstract class Var implements IOperable {
         return null;
     }
 
-    @Override
-    public Var assign(String s) {
-        new Error("Assignment is impossible");
-        return null;
-    }
 }

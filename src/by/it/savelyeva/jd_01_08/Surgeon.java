@@ -114,4 +114,13 @@ public abstract class Surgeon implements IDoctor {
 		return sb;
 	}
 
+	protected void finalize() throws Throwable {
+		try {
+			System.out.printf("\n\n%s Object of '%s' class will be removed (%s) %s\n\n",
+					"***************", this.getClass().getSimpleName(), this.name, "***************");
+		} finally {
+			super.finalize(); // finalize() of class Object will be called
+		}
+	}
+
 }

@@ -101,7 +101,7 @@ public class VarVector extends Var implements IVariable {
             double[] v = new double[value.length];
             VarVector res = new VarVector(v);
            	for (int i=0; i<value.length; i++) {
-           		for (int j=0; j<((VarMatrix) var).getValue().length; j++) {
+           		for (int j = 0; j<((VarMatrix) var).getValue().length; j++) {
            			res.value[i] += value[j] * ((VarMatrix) var).getValue()[j][i];
             	}
            	} 
@@ -125,15 +125,9 @@ public class VarVector extends Var implements IVariable {
     }
 
     @Override
-    public Var assign(String s) {
-        return new VarVector(this.value);
-    }
+    public String toString() { return Arrays.toString(value).replace(" ",""); }
 
-    @Override
-    public String toString() { return Arrays.toString(value); }
-
-    @Override
-    public Var fromString(String s) {
+    public static Var fromString(String s) {
         String[] elems = s.split(Parser.splitterVector);
         double[] res = new double[elems.length];
         Pattern pattern = Pattern.compile(Parser.patternFloat);
