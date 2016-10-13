@@ -1,4 +1,4 @@
-package by.it.rudzko.jd_02_03;
+package by.it.rudzko.jd02_03;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -12,22 +12,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     private boolean pensioner;
     static final int AMOUNT_OF_BUYERS = 100;
     static AtomicInteger countBuyers = new AtomicInteger(0);
-    Map<String, Double> choice = new HashMap<String, Double>() {
-        @Override
-        public String toString() {
-            StringBuilder sb = new StringBuilder();
-            ArrayList<String> list = new ArrayList<>(this.keySet());
-            for (int i = 0; i < list.size(); i++) {
-                int l = list.get(i).toCharArray().length;
-                StringBuilder sb2 = new StringBuilder();
-                for (int j = 0; j < 10 - l; j++) {
-                    sb2.append(" ");
-                }
-                sb.append(list.get(i) + sb2 + this.get(list.get(i)) + "\n");
-            }
-            return sb.deleteCharAt(sb.length() - 1).toString();
-        }
-    };
+    Map<String, Double> choice = new HashMap<>();
 
     public Buyer(int number, boolean pensioner) {
         this.number = number;
@@ -65,11 +50,11 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     @Override
     public void chooseGoods() {
         Map<String, Double> goods = new HashMap<>();
-        goods.put("milk", 1.0);         goods.put("butter", 2.0);       goods.put("eggs", 1.5);
-        goods.put("meat", 10.0);        goods.put("cheese", 8.5);       goods.put("sweets", 3.0);
-        goods.put("fish", 15.0);        goods.put("water", 2.0);        goods.put("fruits", 3.0);
-        goods.put("porridge", 3.0);     goods.put("bread", 1.0);        goods.put("tea", 2.5);
-        goods.put("napkins", 1.0);      goods.put("sauce", 2.5);        goods.put("oil", 2.5);
+        goods.put("milk", 1.0);          goods.put("butter", 2.0);       goods.put("eggs", 1.5);
+        goods.put("meat", 10.0);         goods.put("cheese", 8.5);       goods.put("sweets", 3.0);
+        goods.put("fish", 15.0);         goods.put("water", 2.0);        goods.put("fruits", 3.0);
+        goods.put("porridge", 3.0);      goods.put("bread", 1.0);        goods.put("tea", 2.5);
+        goods.put("napkins", 1.0);       goods.put("sauce", 2.5);        goods.put("oil", 2.5);
         List<String> list = new ArrayList<>(goods.keySet());
 
         int amount = Helper.random(4);
@@ -121,7 +106,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
         System.out.println(this.getName() + " put " + goods + " in basket.");
     }
 
-    public boolean getPensioner() {
+    boolean getPensioner() {
         return this.pensioner;
     }
 
