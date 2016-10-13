@@ -1,0 +1,3 @@
+message.welcome=Сардэчна запрашаем!
+message.username=Дзмітрый Емяльянаў.
+message.question=Як справы?
