@@ -11,5 +11,4 @@ public interface IOperable {
     Var sub(Var var) throws VarDimensionException;
     Var mul(Var var) throws VarDimensionException;
     Var div(Var var);
-    Var assign(String s);
 }
