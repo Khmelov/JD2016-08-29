@@ -50,10 +50,9 @@ public class TaskA12 {
             arrayList.add(i, (int) (Math.random() * 20 - 11));
         }
         System.out.println(arrayList);
-        arrayList.sort(Comparator.<Integer>naturalOrder());
+        Collections.sort(arrayList);
         Collections.reverse(arrayList);
         System.out.println(arrayList);
     }
-
 
 }

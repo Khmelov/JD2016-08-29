@@ -11,14 +11,14 @@ import java.util.regex.Pattern;
  * Created by vseotdala on 9/30/2016.
  */
 public class Task15B {
-    public static void main(String[] args) {
+    public static void taskB() {
         /*
         * @param
         *
         *
         * */
         String src = System.getProperty("user.dir");
-        //C:\Users\vseotdala\Desktop\java lab\java pract\JD2016-08-29\JD2016-08-29\src\by\it\laurynovich\jd01_15\test
+
         src = src.concat("\\src\\by\\it\\laurynovich\\");  //get folder
         String fn = src + "\\jd01_15\\Task15B.java";                  //get file path
         System.out.println(fn);
@@ -39,7 +39,7 @@ public class Task15B {
         Pattern pattern = Pattern.compile("/\\*((.|\\n)+\\*/)?/");
         Matcher matcher = pattern.matcher(sb);
         int pos = 0;
-        while (matcher.find(pos)){
+        while (matcher.find(pos)) {
             sb.delete(matcher.start(), matcher.end());
             pos = matcher.start();
 
