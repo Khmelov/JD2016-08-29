@@ -9,7 +9,7 @@ public class Cashier implements Runnable {
 
     @Override
     public String toString() {
-        return "Cashier" + number;
+        return "Кассир №" + number;
     }
 
     @Override
@@ -17,21 +17,20 @@ public class Cashier implements Runnable {
 
         System.out.printf("%s %d открыл кассу%n", this, number);
 
-        while (!Dispatcher.finish()) {
+        while (QueueBuyers.needService()) {
             Buyer b = QueueBuyers.pool();
             if (b != null)
                 synchronized (b) {
-                    System.out.println("Start service " + b);
+                    System.out.println("Доброй пожаловать в Евроопт " + b);
                     Helper.sleep(Helper.rnd(1000));
-                    System.out.println("Billing ... " + b);
+                    System.out.println("Рассчитываю ... " + b);
+                    Dispatcher.completeBuyersCount.incrementAndGet();
+                    ++Dispatcher.countCompleteBuyers;
                     b.notify();
                 }
             else
                 Dispatcher.sleep(1000);
         }
-        System.out.println("Cashier handled this Buyer");
-//        synchronized (Dispatcher.monitorCountCashies) {
-//            Dispatcher.countCashiers--;
-//        }
+        System.out.printf("%s %d закрыл кассу%n", this, number);
     }
 }

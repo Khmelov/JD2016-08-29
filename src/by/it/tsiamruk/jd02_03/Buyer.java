@@ -4,15 +4,6 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     private int number;
     private String name;
-    private boolean pensioner;
-
-    public boolean isPensioner() {
-        return pensioner;
-    }
-
-    public void setPensioner(boolean pensioner) {
-        this.pensioner = pensioner;
-    }
 
     public String getName() {
         return name;
@@ -23,9 +14,8 @@ public class Buyer implements Runnable, IBuyer, IBacket {
     }
 
     public Buyer(int number) {
-        this.isPensioner();
         this.number = number;
-        this.setName("Buyer №" + number);
+        this.setName("Покупатель №" + number);
     }
 
     @Override
@@ -39,7 +29,7 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void enterToMarket() {
-        System.out.println(this + " enter to Market");
+        System.out.println(this + " зашел в магазин");
     }
 
     @Override
@@ -49,9 +39,9 @@ public class Buyer implements Runnable, IBuyer, IBacket {
             Helper.sleep(Helper.rnd(100, 200));
             String goodName = Goods.random();
             double priceOfGood = Goods.getPrice();
-            System.out.format("%s choose good: %s price: %.2f%n", this, goodName, priceOfGood);
+            System.out.format("%s выбрал товар: %s цена: %.2f%n", this, goodName, priceOfGood);
             totalAmount += priceOfGood;
-            System.out.format("%.2f is total amount of %s%n", totalAmount, this);
+            System.out.format("%.2f стоят покупки %s%n", totalAmount, this);
             putGoodsToBacket();
         }
     }
@@ -59,7 +49,7 @@ public class Buyer implements Runnable, IBuyer, IBacket {
     @Override
     public void goToQueue() {
         QueueBuyers.add(this);
-        System.out.println(this + " added to QueueBuyers");
+        System.out.println(this + " встал в очередь");
         synchronized (this) {
             try {
                 this.wait();
@@ -71,29 +61,26 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void goToOut() {
-        System.out.println(this + " go to out from Market");
+        System.out.println(this + " Вышел из магазина");
         ++Dispatcher.countCompleteBuyers;
     }
 
     @Override
     public String toString() {
-        if (this.isPensioner())
-            return "Pensioner";
-        else
-            return "Buyer №" + number;
+        return "Покупатель №" + number;
         //return this.getName();
     }
 
     @Override
     public void takeBacket() {
         Helper.sleep(Helper.rnd(100, 200));
-        System.out.println(this + " take backet");
+        System.out.println(this + " взял корзину");
     }
 
     @Override
     public void putGoodsToBacket() {
         Helper.sleep(Helper.rnd(100, 200));
-        System.out.println(this + " put goods to backet");
+        System.out.println(this + " положил товар в корзину");
     }
 
 }

@@ -1,14 +1,11 @@
 package by.it.tsiamruk.jd02_03;
 
-import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 class QueueBuyers {
-    private static ConcurrentLinkedDeque<Buyer> queue = new ConcurrentLinkedDeque<>();
+    private static ConcurrentLinkedQueue<Buyer> queue = new ConcurrentLinkedQueue<>();
 
     public static void add(Buyer b) {
-        if (b.isPensioner())
-            queue.addFirst(b);
-        else
             queue.add(b);
         if (Dispatcher.countCashiers < 5) {
             new Thread(new Cashier()).start();

@@ -13,13 +13,12 @@ public class Runner {
             int n = Helper.rnd(2);
             for (int i = 0; i < n; i++) {
                 Buyer buyer = new Buyer(++Dispatcher.countBuyers);
-                if (Dispatcher.countBuyers % 4 == 0)
-                    buyer.setPensioner(true);
                 Thread th = new Thread(buyer);
                 th.start();
                 if (Dispatcher.planComplete())
                     break;
             }
+            Dispatcher.sleep(1000);
         }
         executor.shutdown();
     }
