@@ -4,10 +4,9 @@ package by.it.tsiamruk.jd02_03;
  * Created by user on 05.10.2016.
  */
 public class Dispatcher {
-    //for synchro
     static final Integer monitorCountCashies = 0;
     static int countCashiers = 0;
-    private static final int planCount = 5;
+    private static final int planCount = 100;
     static int countBuyers = 0;
     static int countCompleteBuyers = 0;
 

@@ -9,19 +9,18 @@ public class Runner {
         executor.execute(new Cashier());
         executor.execute(new Cashier());
 
-        int countBuyer = 0;
         while (!Dispatcher.planComplete()) {
             int n = Helper.rnd(2);
             for (int i = 0; i < n; i++) {
-                Buyer buyer = new Buyer(++countBuyer);
-                if (countBuyer % 4 == 0)
+                Buyer buyer = new Buyer(++Dispatcher.countBuyers);
+                if (Dispatcher.countBuyers % 4 == 0)
                     buyer.setPensioner(true);
                 Thread th = new Thread(buyer);
                 th.start();
                 if (Dispatcher.planComplete())
                     break;
             }
-            executor.shutdown();
         }
+        executor.shutdown();
     }
 }

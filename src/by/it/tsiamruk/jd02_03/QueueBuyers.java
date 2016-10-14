@@ -1,18 +1,18 @@
 package by.it.tsiamruk.jd02_03;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 class QueueBuyers {
-    static final Integer monitorQueueBuyers = 0;
-    private static ConcurrentLinkedQueue<Buyer> queue = new ConcurrentLinkedQueue<>();
+    private static ConcurrentLinkedDeque<Buyer> queue = new ConcurrentLinkedDeque<>();
 
     public static void add(Buyer b) {
-        queue.add(b);
+        if (b.isPensioner())
+            queue.addFirst(b);
+        else
+            queue.add(b);
         if (Dispatcher.countCashiers < 5) {
-            synchronized (Dispatcher.monitorCountCashies) {
-                new Thread(new Cashier()).start();
-                Dispatcher.countCashiers++;
-            }
+            new Thread(new Cashier()).start();
+            Dispatcher.countCashiers++;
         }
     }
 
@@ -26,9 +26,7 @@ class QueueBuyers {
 
     static boolean needService() {
         boolean needService;
-        synchronized (monitorQueueBuyers) {
             needService = !queue.isEmpty();
-        }
         return needService;
     }
 }

@@ -58,10 +58,8 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void goToQueue() {
-        synchronized (QueueBuyers.monitorQueueBuyers) {
-            QueueBuyers.add(this);
-            System.out.println(this + " added to QueueBuyers");
-        }
+        QueueBuyers.add(this);
+        System.out.println(this + " added to QueueBuyers");
         synchronized (this) {
             try {
                 this.wait();
@@ -74,6 +72,7 @@ public class Buyer implements Runnable, IBuyer, IBacket {
     @Override
     public void goToOut() {
         System.out.println(this + " go to out from Market");
+        ++Dispatcher.countCompleteBuyers;
     }
 
     @Override
