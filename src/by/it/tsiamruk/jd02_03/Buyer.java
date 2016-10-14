@@ -4,6 +4,7 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     private int number;
     private String name;
+    public boolean iWait = false;
 
     public String getName() {
         return name;
@@ -48,11 +49,12 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void goToQueue() {
-        QueueBuyers.add(this);
-        System.out.println(this + " встал в очередь");
         synchronized (this) {
-            try {
-                this.wait();
+            QueueBuyers.add(this);
+            System.out.println(this + " встал в очередь");
+            iWait = true;
+            while (iWait) try {
+                wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -62,7 +64,6 @@ public class Buyer implements Runnable, IBuyer, IBacket {
     @Override
     public void goToOut() {
         System.out.println(this + " Вышел из магазина");
-        ++Dispatcher.countCompleteBuyers;
     }
 
     @Override

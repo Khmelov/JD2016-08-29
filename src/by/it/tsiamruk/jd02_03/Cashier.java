@@ -14,10 +14,8 @@ public class Cashier implements Runnable {
 
     @Override
     public void run() {
-
         System.out.printf("%s %d открыл кассу%n", this, number);
-
-        while (QueueBuyers.needService()) {
+        while (!Dispatcher.finish()) {
             Buyer b = QueueBuyers.pool();
             if (b != null)
                 synchronized (b) {
@@ -26,10 +24,12 @@ public class Cashier implements Runnable {
                     System.out.println("Рассчитываю ... " + b);
                     Dispatcher.completeBuyersCount.incrementAndGet();
                     ++Dispatcher.countCompleteBuyers;
+                    b.iWait = false;
                     b.notify();
+                    System.out.printf("%s обслужил покупателя %s%n", this, b);
                 }
             else
-                Dispatcher.sleep(1000);
+                Helper.sleep(1000);
         }
         System.out.printf("%s %d закрыл кассу%n", this, number);
     }
