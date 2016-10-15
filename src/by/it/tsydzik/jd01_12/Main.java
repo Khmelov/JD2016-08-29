@@ -7,7 +7,7 @@ package by.it.tsydzik.jd01_12;
 public class Main {
     public static void main(String[] args) {
 //        TaskA1.task(20);
-        MyCollect.task();
-//        TaskA3.task();
+//        MyCollect.task();
+        TaskA3.task();
     }
 }
