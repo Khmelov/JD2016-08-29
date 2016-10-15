@@ -6,7 +6,7 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     private int number;
     private String name;
-    public boolean iWait = false;
+    boolean iWait = false;
     private boolean pensioner;
     double totalAmount = 0;
 
