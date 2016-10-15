@@ -14,20 +14,22 @@ public class MyCollect {
         Set<Integer> secondSet = new HashSet<>(Arrays.asList(3, 4, 5, 6));
 
         //TODO you must create a copy
-        getCross(firstSet, secondSet);
+        Set<Integer> cross = getCross(firstSet, secondSet);
+        System.out.println(cross);
 
-        getUnion(firstSet, secondSet);
+        Set<Integer> union = getUnion(firstSet, secondSet);
+        System.out.println(union);
     }
 
-    public static void getCross(Set<Integer> firstSet, Set<Integer> secondSet) {
+    public static Set<Integer> getCross(Set<Integer> firstSet, Set<Integer> secondSet) {
         HashSet<Integer> crossSet = new HashSet<>(firstSet);
         crossSet.retainAll(secondSet);
-        System.out.println(crossSet);
+        return crossSet;
     }
 
-    public static void getUnion(Set<Integer> firstSet, Set<Integer> secondSet) {
+    public static Set<Integer> getUnion(Set<Integer> firstSet, Set<Integer> secondSet) {
         HashSet<Integer> unionSet = new HashSet<>(firstSet);
         unionSet.addAll(secondSet);
-        System.out.println(unionSet);
+        return unionSet;
     }
 }
