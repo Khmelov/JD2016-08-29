@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.*;
 
 /**
- * @author Dmitry Tsydzik
+ * @author Eugene Tsydzik
  * @since 15.10.16.
  */
 public class TaskB1 {
