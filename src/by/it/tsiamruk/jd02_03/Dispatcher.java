@@ -10,6 +10,7 @@ public class Dispatcher {
     private static final int planCount = 40;
     static int countBuyers = 0;
     static int countCompleteBuyers = 0;
+    static double[] amount = new double[5];
     static AtomicInteger completeBuyersCount = new AtomicInteger(0);
 
     static boolean planComplete() {

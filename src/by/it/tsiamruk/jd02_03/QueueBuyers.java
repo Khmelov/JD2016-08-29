@@ -1,29 +1,16 @@
 package by.it.tsiamruk.jd02_03;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
-
 class QueueBuyers {
-    private static ConcurrentLinkedQueue<Buyer> queue = new ConcurrentLinkedQueue<>();
 
     public static void add(Buyer b) {
-            queue.add(b);
-        if (Dispatcher.countCashiers < 5) {
-            new Thread(new Cashier()).start();
-            Dispatcher.countCashiers++;
-        }
+        Buyer.queue.add(b);
+
     }
 
     static Buyer pool() {
-        if (queue.isEmpty())
+        if (Buyer.queue.isEmpty())
             return null;
         else
-            return queue.poll();
-    }
-
-
-    static boolean needService() {
-        boolean needService;
-            needService = !queue.isEmpty();
-        return needService;
+            return Buyer.queue.poll();
     }
 }
