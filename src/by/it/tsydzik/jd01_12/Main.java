@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args) {
 //        TaskA1.task(20);
 //        MyCollect.task();
-        TaskA3.task();
+//        TaskA3.task();
+        TaskB1.task();
     }
 }
