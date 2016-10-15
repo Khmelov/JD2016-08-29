@@ -1,43 +1,48 @@
 package by.it.tsiamruk.jd02_03;
 
 public class Cashier implements Runnable {
-
     private int number;
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
+    private double check = 0;
+    private double totalChek = 0;
 
     public Cashier() {
-        number = Dispatcher.countCashiers.incrementAndGet();
-    }
-
-    @Override
-    public void run() {
-
-        do {
-            if (QueueBuyers.needService()) {
-                Buyer buyer = QueueBuyers.extract();
-                System.out.println(this + "Start service " + buyer);
-                Helper.sleep(Helper.rnd(1000));
-                System.out.println(this + "Billing ... " + buyer);
-                System.out.println(this + "Stop service " + buyer);
-                synchronized (buyer) {
-                    buyer.notify();
-                }
-            }
-        }
-        while (Dispatcher.needCashiers());
-        System.out.println(this + " stop");
-        Dispatcher.countCashiers.decrementAndGet();
+        this.number = ++Dispatcher.countCashiers;
     }
 
     @Override
     public String toString() {
-        return "Cashier №" + number;
+        return "Кассир №" + number;
+    }
+
+    @Override
+    public void run() {
+        System.out.printf("%s  открыл кассу%n", this);
+        while (!Dispatcher.finish()) {
+            Buyer b = QueueBuyers.pool();
+            if (b != null) {
+                synchronized (b) {
+                    System.out.println("Доброй пожаловать в Евроопт " + b);
+                    Helper.sleep(Helper.rnd(1000));
+                    System.out.printf("%s Рассчитываю ... %s%n", this, b);
+                    Dispatcher.completeBuyersCount.incrementAndGet();
+                    ++Dispatcher.countCompleteBuyers;
+                    b.iWait = false;
+                    b.notify();
+                    check = b.totalAmount;
+                    double sum = 0;
+                    for (int i = 0; i < Dispatcher.amount.length; i++) {
+                        System.out.printf("Кассир №%d %.2f||", i + 1, Dispatcher.amount[i]);
+                        sum += Dispatcher.amount[i];
+                    }
+                    System.out.printf("Кол-во людей в очереди %d", Buyer.queue.size());
+                    System.out.printf("||Общая выручка магазина %.2f||%n ", sum);
+                    System.out.printf("%s обслужил покупателя %s%n", this, b);
+                    Dispatcher.amount[number - 1] += check;
+                }
+            } else
+                Helper.sleep(1000);
+
+        }
+        System.out.printf("%s закрыл кассу%n", this);
     }
 }

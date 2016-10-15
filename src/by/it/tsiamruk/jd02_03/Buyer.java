@@ -1,9 +1,25 @@
 package by.it.tsiamruk.jd02_03;
 
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 public class Buyer implements Runnable, IBuyer, IBacket {
 
     private int number;
     private String name;
+    public boolean iWait = false;
+    private boolean pensioner;
+    double totalAmount = 0;
+
+    public boolean isPensioner() {
+        return pensioner;
+    }
+
+    public void setPensioner(boolean pensioner) {
+        this.pensioner = pensioner;
+    }
+
+    protected static ConcurrentLinkedQueue<Buyer> queue = new ConcurrentLinkedQueue<>();
+
 
     public String getName() {
         return name;
@@ -14,8 +30,12 @@ public class Buyer implements Runnable, IBuyer, IBacket {
     }
 
     public Buyer(int number) {
+        if (number % 4 == 0)
+            setPensioner(true);
         this.number = number;
-        this.setName("Buyer №" + number);
+        if (isPensioner())
+            this.setName("Пенсионер №" + number);
+        this.setName("Покупатель №" + number);
     }
 
     @Override
@@ -29,29 +49,33 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void enterToMarket() {
-        System.out.println(this + " enter to Market");
+        System.out.println(this + " зашел в магазин");
     }
 
     @Override
     public void chooseGoods() {
         for (int i = 1; i < Helper.rnd(1, 4); i++) {
-            Helper.sleep(Helper.rnd(100, 200));
+            if (isPensioner())
+                Helper.sleep(Helper.rnd(150, 300));
+            else
+                Helper.sleep(Helper.rnd(100, 200));
             String goodName = Goods.random();
-            System.out.println(this + " choosed good: " + goodName);
+            double priceOfGood = Goods.getPrice();
+            System.out.format("%s выбрал товар: %s цена: %.2f%n", this, goodName, priceOfGood);
+            totalAmount += priceOfGood;
+            System.out.format("%.2f стоят покупки %s%n", totalAmount, this);
             putGoodsToBacket();
         }
     }
 
     @Override
     public void goToQueue() {
-        synchronized (QueueBuyers.monitorQueueBuyers) {
-            QueueBuyers.add(this);
-            System.out.println(this + " added to QueueBuyers");
-        }
-
         synchronized (this) {
-            try {
-                this.wait();
+            QueueBuyers.add(this);
+            System.out.println(this + " встал в очередь");
+            iWait = true;
+            while (iWait) try {
+                wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -60,26 +84,34 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void goToOut() {
-        Dispatcher.countOutBuyers.incrementAndGet();
-        System.out.println(this + " go to out from Market");
+        System.out.println(this + " Вышел из магазина");
     }
 
     @Override
     public String toString() {
-        return "Buyer №" + number;
+        if (isPensioner())
+            return "Пенсионер №" + number;
+        else
+            return "Покупатель №" + number;
         //return this.getName();
     }
 
     @Override
     public void takeBacket() {
-        Helper.sleep(Helper.rnd(100, 200));
-        System.out.println(this + " take backet");
+        if (isPensioner())
+            Helper.sleep(Helper.rnd(150, 300));
+        else
+            Helper.sleep(Helper.rnd(100, 200));
+        System.out.println(this + " взял корзину");
     }
 
     @Override
     public void putGoodsToBacket() {
-        Helper.sleep(Helper.rnd(100, 200));
-        System.out.println(this + " put goods to backet");
+        if (isPensioner())
+            Helper.sleep(Helper.rnd(150, 300));
+        else
+            Helper.sleep(Helper.rnd(100, 200));
+        System.out.println(this + " положил товар в корзину");
     }
 
 }
