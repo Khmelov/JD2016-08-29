@@ -8,16 +8,24 @@ import java.util.Set;
  * @author Eugene Tsydzik
  * @since 15.10.16.
  */
-public class TaskA2 {
+public class MyCollect {
     public static void task() {
         Set<Integer> firstSet = new HashSet<>(Arrays.asList(1, 2, 3, 4));
         Set<Integer> secondSet = new HashSet<>(Arrays.asList(3, 4, 5, 6));
 
-        //TODO create copy
+        //TODO you must create a copy
+        getCross(firstSet, secondSet);
+
+        getUnion(firstSet, secondSet);
+    }
+
+    public static void getCross(Set<Integer> firstSet, Set<Integer> secondSet) {
         HashSet<Integer> crossSet = new HashSet<>(firstSet);
         crossSet.retainAll(secondSet);
         System.out.println(crossSet);
+    }
 
+    public static void getUnion(Set<Integer> firstSet, Set<Integer> secondSet) {
         HashSet<Integer> unionSet = new HashSet<>(firstSet);
         unionSet.addAll(secondSet);
         System.out.println(unionSet);
