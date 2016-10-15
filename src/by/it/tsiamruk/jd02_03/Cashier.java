@@ -3,10 +3,9 @@ package by.it.tsiamruk.jd02_03;
 public class Cashier implements Runnable {
     private int number;
     private double check = 0;
-    private double totalChek = 0;
 
     public Cashier() {
-        this.number = ++Dispatcher.countCashiers;
+        this.number = Dispatcher.countCashiers.incrementAndGet();
     }
 
     @Override
@@ -25,7 +24,6 @@ public class Cashier implements Runnable {
                     Helper.sleep(Helper.rnd(1000));
                     System.out.printf("%s Рассчитываю ... %s%n", this, b);
                     Dispatcher.completeBuyersCount.incrementAndGet();
-                    ++Dispatcher.countCompleteBuyers;
                     b.iWait = false;
                     b.notify();
                     check = b.totalAmount;
