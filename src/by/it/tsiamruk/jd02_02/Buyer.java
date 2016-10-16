@@ -1,84 +1,100 @@
 package by.it.tsiamruk.jd02_02;
 
-/**
- * Created by waldemar on 03/10/2016.
- */
-public class Buyer extends Thread implements IBuyer, IBucket {
+public class Buyer implements Runnable, IBuyer, IBacket {
+
     private int number;
+    private String name;
     private boolean pensioner;
-
-    public void setPensioner(boolean pensioner) {
-        this.pensioner = pensioner;
-    }
-
 
     public boolean isPensioner() {
         return pensioner;
     }
 
-    public Buyer(int number) {
-        this.number = number;
-        this.setName("Buyer # " + number);
-        this.isPensioner();
+    public void setPensioner(boolean pensioner) {
+        this.pensioner = pensioner;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Buyer(int number) {
+        this.isPensioner();
+        this.number = number;
+        this.setName("Buyer №" + number);
     }
 
     @Override
     public void run() {
         enterToMarket();
-        takeBucket();
+        takeBacket();
         chooseGoods();
+        goToQueue();
         goToOut();
     }
 
     @Override
     public void enterToMarket() {
-        System.out.println(this + " зашел в магазин.");
+        System.out.println(this + " enter to Market");
     }
 
     @Override
     public void chooseGoods() {
+        double totalAmount = 0;
         for (int i = 1; i < Helper.rnd(1, 4); i++) {
-            if (pensioner) {
-                Helper.sleep(Helper.rnd(150, 300));
-            } else {
-                Helper.sleep(Helper.rnd(100, 200));
-            }
-            String goodsName = Goods.random();
-            System.out.println(this + " выбрал товары: " + goodsName);
-            this.putGoodsToBucket();
+            Helper.sleep(Helper.rnd(100, 200));
+            String goodName = Goods.random();
+            double priceOfGood = Goods.getPrice();
+            System.out.format("%s choose good: %s price: %.2f%n", this, goodName, priceOfGood);
+            totalAmount += priceOfGood;
+            System.out.format("%.2f is total amount of %s%n", totalAmount, this);
+            putGoodsToBacket();
         }
+    }
 
+    @Override
+    public void goToQueue() {
+        synchronized (QueueBuyers.monitorQueueBuyers) {
+            QueueBuyers.add(this);
+            System.out.println(this + " added to QueueBuyers");
+        }
+        synchronized (this) {
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
     public void goToOut() {
-        System.out.println(this + " вышел из магазина.");
+        System.out.println(this + " go to out from Market");
     }
 
     @Override
     public String toString() {
-        if (pensioner)
-            return "Pensioner #" + number;
-        return "Buyer #" + number;
-        //this.getName();
+        if (this.isPensioner())
+            return "Pensioner";
+        else
+            return "Buyer №" + number;
+        //return this.getName();
     }
 
     @Override
-    public void takeBucket() {
-        if (pensioner)
-            Helper.sleep(Helper.rnd(150, 300));
-        else
-            Helper.sleep(Helper.rnd(100, 200));
-        System.out.println(this + " взял корзину для продуктов.");
+    public void takeBacket() {
+        Helper.sleep(Helper.rnd(100, 200));
+        System.out.println(this + " take backet");
     }
 
     @Override
-    public void putGoodsToBucket() {
-        if (pensioner)
-            Helper.sleep(Helper.rnd(150, 300));
-        else
-            Helper.sleep(Helper.rnd(100, 200));
-        System.out.println(this + " кладёт товар в корзину.");
+    public void putGoodsToBacket() {
+        Helper.sleep(Helper.rnd(100, 200));
+        System.out.println(this + " put goods to backet");
     }
+
 }

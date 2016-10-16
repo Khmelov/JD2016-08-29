@@ -1,8 +1,6 @@
 package by.it.tsiamruk.jd02_03;
 
-/**
- * Created by user on 03.10.2016.
- */
+
 public class Helper {
     protected static int rnd(int from, int to) {
         return from + (int) (Math.round(Math.random() * (to - from)));
