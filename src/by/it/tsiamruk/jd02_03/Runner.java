@@ -2,8 +2,7 @@ package by.it.tsiamruk.jd02_03;
 
 public class Runner {
     public static void main(String[] args) {
-
-
+        //TODO: сделать так чтобы число покупателей изменялось - менее 10 в начале каждой минуты, и до 40 на 30 секунде каждой минуты
         while (!Dispatcher.planComplete()) {
             Dispatcher.needCashiers();
             Helper.sleep(1000);
