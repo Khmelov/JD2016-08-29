@@ -1,9 +1,18 @@
-package by.it.artiuschik.jd_01_09.mathlab.operations;
+package by.it.artiuschik.jd_02_04.mathlab.operations;
 
-import by.it.artiuschik.jd_01_09.Error;
-import by.it.artiuschik.jd_01_09.mathlab.vars.*;
+import by.it.artiuschik.jd_02_04.mathlab.data.Vars;
+import by.it.artiuschik.jd_02_04.mathlab.errors.Error;
+import by.it.artiuschik.jd_02_04.mathlab.vars.Var;
+import by.it.artiuschik.jd_02_04.mathlab.vars.VarF;
+import by.it.artiuschik.jd_02_04.mathlab.vars.VarM;
+import by.it.artiuschik.jd_02_04.mathlab.vars.VarV;
 
 public class VarVOperations {
+    //Присваивание
+    public static void assign(String vectorName,VarV vector)
+    {
+        Vars.vars.put(vectorName, vector);
+    }
 
     //-------------------Сложение
     public static Var add(VarV v1, VarV v2) {

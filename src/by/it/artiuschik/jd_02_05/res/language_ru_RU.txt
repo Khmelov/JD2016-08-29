@@ -1,0 +1,3 @@
+message.welcome=Добрый день!
+message.username=Артющик Елена
+message.question=Как ваши дела?
