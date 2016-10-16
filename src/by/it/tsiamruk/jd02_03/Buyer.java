@@ -1,6 +1,7 @@
 package by.it.tsiamruk.jd02_03;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Buyer implements Runnable, IBuyer, IBacket {
 
@@ -8,7 +9,10 @@ public class Buyer implements Runnable, IBuyer, IBacket {
     private String name;
     boolean iWait = false;
     private boolean pensioner;
+    double priceOfGood = 0;
     double totalAmount = 0;
+    String goodName;
+    Map<String, Double> backet = new HashMap<>();
 
     public boolean isPensioner() {
         return pensioner;
@@ -18,7 +22,7 @@ public class Buyer implements Runnable, IBuyer, IBacket {
         this.pensioner = pensioner;
     }
 
-    protected static ConcurrentLinkedQueue<Buyer> queue = new ConcurrentLinkedQueue<>();
+
 
 
     public String getName() {
@@ -59,8 +63,8 @@ public class Buyer implements Runnable, IBuyer, IBacket {
                 Helper.sleep(Helper.rnd(150, 300));
             else
                 Helper.sleep(Helper.rnd(100, 200));
-            String goodName = Goods.random();
-            double priceOfGood = Goods.getPrice();
+            goodName = Goods.random();
+            priceOfGood = Goods.getPrice();
             System.out.format("%s выбрал товар: %s цена: %.2f%n", this, goodName, priceOfGood);
             totalAmount += priceOfGood;
             System.out.format("%.2f стоят покупки %s%n", totalAmount, this);
@@ -107,6 +111,7 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void putGoodsToBacket() {
+        backet.put(goodName, priceOfGood);
         if (isPensioner())
             Helper.sleep(Helper.rnd(150, 300));
         else
