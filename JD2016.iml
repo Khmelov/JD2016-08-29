@@ -7,7 +7,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/out" />
       <excludeFolder url="file://$MODULE_DIR$/src/by/it/savelyeva/jd_01_12" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/sukora" />
       <excludeFolder url="file://$MODULE_DIR$/src/by/it/tsiamruk/jd01_12" />
     </content>
     <orderEntry type="inheritedJdk" />
