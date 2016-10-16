@@ -1,7 +1,7 @@
 package by.it.tsydzik.jd01_12;
 
 /**
- * @author Dmitry Tsydzik
+ * @author Eugene Tsydzik
  * @since 16.10.16.
  */
 public class Data {
