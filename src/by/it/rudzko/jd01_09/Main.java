@@ -13,7 +13,7 @@ public class Main {
             p3.go();
             Parser p4 = new Parser("{{1,2}, {8,3}}+{{1,2}, {8,3}}");
             p4.go();
-            Parser p5 = new Parser("16*(39-3)/6");
+            Parser p5 = new Parser("16*(39-3)/(4+2)");
             p5.go();
             Parser p6 = new Parser("{4,2}*{{1,3}, {2,0}}");
             p6.go();

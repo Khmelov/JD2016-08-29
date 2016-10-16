@@ -91,33 +91,46 @@ public class Parser {
             int start = 0;
             int end = sb.length();
             Var r = null;
-            for (int i = 0; i < oper.size(); i++) {
-                String one = variables[i];
-
+            if (oper.contains("*")){
+                int pos=oper.indexOf("*");
+                String one = variables[pos];
                 Var first = (one.charAt(0) != '{') ? new VarNum(one) : (one.charAt(1) != '{') ? new VarVec(one) : new VarMat(one);
-                String two = variables[i + 1];
-                Var second = (one.charAt(0) != '{') ? new VarNum(two) : (one.charAt(1) != '{') ? new VarVec(two) : new VarMat(two);
+                String two = variables[pos + 1];
+                Var second = (two.charAt(0) != '{') ? new VarNum(two) : (two.charAt(1) != '{') ? new VarVec(two) : new VarMat(two);
                 start = sb.indexOf(one);
-
                 end = sb.indexOf(two) + two.length();
-                switch (oper.get(i)) {
-                    case "*":
-                        r = get.mul(first, second);
-                        break;
-                    case "/":
-                        r = get.div(first, second);
-                        break;
-                    case "+":
-                        r = get.add(first, second);
-                        break;
-                    case "-":
-                        r = get.sub(first, second);
-                        break;
-                    default:
-                        System.out.println("Can't count.");
+                r = get.mul(first, second);
+            } else if(oper.contains("/")){
+                int pos=oper.indexOf("*");
+                String one = variables[pos];
+                Var first = (one.charAt(0) != '{') ? new VarNum(one) : (one.charAt(1) != '{') ? new VarVec(one) : new VarMat(one);
+                String two = variables[pos + 1];
+                Var second = (two.charAt(0) != '{') ? new VarNum(two) : (two.charAt(1) != '{') ? new VarVec(two) : new VarMat(two);
+                start = sb.indexOf(one);
+                end = sb.indexOf(two) + two.length();
+                r = get.div(first, second);
+            }else {
+                for (int i = 0; i < oper.size(); i++) {
+                    String one = variables[i];
+                    Var first = (one.charAt(0) != '{') ? new VarNum(one) : (one.charAt(1) != '{') ? new VarVec(one) : new VarMat(one);
+                    String two = variables[i + 1];
+                    Var second = (two.charAt(0) != '{') ? new VarNum(two) : (two.charAt(1) != '{') ? new VarVec(two) : new VarMat(two);
+                    start = sb.indexOf(one);
+                    end = sb.indexOf(two) + two.length();
+                    switch (oper.get(i)) {
+                        case "+":
+                            r = get.add(first, second);
+                            break;
+                        case "-":
+                            r = get.sub(first, second);
+                            break;
+                        default:
+                            System.out.println("Can't count.");
+                    }
+                    break;
                 }
-                break;
             }
+
             s = sb.delete(start, end).insert(start, r.toString()).toString();
         }
 
