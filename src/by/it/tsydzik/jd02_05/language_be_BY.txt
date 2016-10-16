@@ -1,3 +1,6 @@
 message.welcome=Добрый дзень!
 message.username=Цыдзiк Яуген
 message.question=Як вашы справы?
+helper.hint=Каб пераключыць мову - увядзiце 'ru', 'be', 'en' або 'END' для выхаду з праграмы.
+helper.error=Няма такой каманды! Будзе выкарыстана англiйская лакаль.
+helper.exit=Да пабачэння, мой дружа!
