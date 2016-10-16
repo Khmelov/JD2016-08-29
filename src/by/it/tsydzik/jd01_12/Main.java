@@ -13,6 +13,7 @@ public class Main {
         TaskB1.task();
         TaskB2.task(10000);
         TaskC1.task();
+        TaskC2.task();
         TaskC3.task("{{}}()");
     }
 }

@@ -21,14 +21,14 @@ public class MyCollect {
         System.out.println(union);
     }
 
-    public static Set<Integer> getCross(Set<Integer> firstSet, Set<Integer> secondSet) {
-        HashSet<Integer> crossSet = new HashSet<>(firstSet);
+    public static <T> Set<T> getCross(Set<T> firstSet, Set<T> secondSet) {
+        HashSet<T> crossSet = new HashSet<>(firstSet);
         crossSet.retainAll(secondSet);
         return crossSet;
     }
 
-    public static Set<Integer> getUnion(Set<Integer> firstSet, Set<Integer> secondSet) {
-        HashSet<Integer> unionSet = new HashSet<>(firstSet);
+    public static <T> Set<T> getUnion(Set<T> firstSet, Set<T> secondSet) {
+        HashSet<T> unionSet = new HashSet<>(firstSet);
         unionSet.addAll(secondSet);
         return unionSet;
     }
