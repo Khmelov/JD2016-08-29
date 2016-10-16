@@ -7,8 +7,8 @@ class QueueBuyers {
     protected static ConcurrentLinkedQueue<Buyer> queue = new ConcurrentLinkedQueue<>();
 
     public static void add(Buyer b) {
-        queue.add(b);
-
+        if (queue.size() < 40)
+            queue.add(b);
     }
 
     static Buyer pool() {

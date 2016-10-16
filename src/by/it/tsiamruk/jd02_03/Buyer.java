@@ -2,6 +2,7 @@ package by.it.tsiamruk.jd02_03;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Semaphore;
 
 public class Buyer implements Runnable, IBuyer, IBacket {
 
@@ -13,6 +14,8 @@ public class Buyer implements Runnable, IBuyer, IBacket {
     double totalAmount = 0;
     String goodName;
     Map<String, Double> backet = new HashMap<>();
+    Semaphore buyersChoosingGoods = new Semaphore(10);
+
 
     public boolean isPensioner() {
         return pensioner;
@@ -58,17 +61,22 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void chooseGoods() {
-        for (int i = 1; i < Helper.rnd(1, 4); i++) {
-            if (isPensioner())
-                Helper.sleep(Helper.rnd(150, 300));
-            else
-                Helper.sleep(Helper.rnd(100, 200));
-            goodName = Goods.random();
-            priceOfGood = Goods.getPrice();
-            System.out.format("%s выбрал товар: %s цена: %.2f%n", this, goodName, priceOfGood);
-            totalAmount += priceOfGood;
-            System.out.format("%.2f стоят покупки %s%n", totalAmount, this);
-            putGoodsToBacket();
+        try {
+            buyersChoosingGoods.acquire();
+            for (int i = 1; i < Helper.rnd(1, 4); i++) {
+                if (isPensioner())
+                    Helper.sleep(Helper.rnd(150, 300));
+                else
+                    Helper.sleep(Helper.rnd(100, 200));
+                goodName = Goods.random();
+                priceOfGood = Goods.getPrice();
+                System.out.format("%s выбрал товар: %s цена: %.2f%n", this, goodName, priceOfGood);
+                totalAmount += priceOfGood;
+                System.out.format("%.2f стоят покупки %s%n", totalAmount, this);
+                putGoodsToBacket();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -102,6 +110,7 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void takeBacket() {
+
         if (isPensioner())
             Helper.sleep(Helper.rnd(150, 300));
         else
@@ -111,6 +120,7 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void putGoodsToBacket() {
+        buyersChoosingGoods.release();
         backet.put(goodName, priceOfGood);
         if (isPensioner())
             Helper.sleep(Helper.rnd(150, 300));
