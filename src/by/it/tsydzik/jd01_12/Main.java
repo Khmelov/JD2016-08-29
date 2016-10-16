@@ -6,14 +6,14 @@ package by.it.tsydzik.jd01_12;
  */
 public class Main {
     public static void main(String[] args) {
-        TaskA1.task(20);
-        TaskA1.taskJ8(20);
-        MyCollect.task();
-        TaskA3.task();
-        TaskB1.task();
-        TaskB2.task(10000);
+//        TaskA1.task(20);
+//        TaskA1.taskJ8(20);
+//        MyCollect.task();
+//        TaskA3.task();
+//        TaskB1.task();
+//        TaskB2.task(10000);
         TaskC1.task();
-        TaskC2.task();
-        TaskC3.task("{{}}()");
+//        TaskC2.task();
+//        TaskC3.task("{{}}()");
     }
 }
