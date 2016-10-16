@@ -12,5 +12,6 @@ public class Main {
         TaskA3.task();
         TaskB1.task();
         TaskB2.task(10000);
+        TaskC1.task();
     }
 }
