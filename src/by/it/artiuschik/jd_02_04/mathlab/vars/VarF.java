@@ -1,6 +1,6 @@
-package by.it.artiuschik.jd_01_09.mathlab.vars;
+package by.it.artiuschik.jd_02_04.mathlab.vars;
 
-public class VarF extends by.it.artiuschik.jd_01_09.mathlab.vars.Var {
+public class VarF extends Var {
     public double value;
     public VarF(double value) {
         this.value = value;
@@ -18,7 +18,7 @@ public class VarF extends by.it.artiuschik.jd_01_09.mathlab.vars.Var {
 
     @Override
     public String toString() {
-        return "VarF:\n"+this.value;
+        return ((Double)value).toString();
     }
 }
 

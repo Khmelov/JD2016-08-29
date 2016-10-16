@@ -1,20 +1,28 @@
-package by.it.artiuschik.jd_01_09.mathlab.operations;
+package by.it.artiuschik.jd_02_04.mathlab.operations;
 
-import by.it.artiuschik.jd_01_09.Error;
-import by.it.artiuschik.jd_01_09.mathlab.utils.Parser;
-import by.it.artiuschik.jd_01_09.mathlab.vars.*;
+import by.it.artiuschik.jd_02_04.mathlab.errors.Error;
+import by.it.artiuschik.jd_02_04.mathlab.vars.Var;
+import by.it.artiuschik.jd_02_04.mathlab.vars.VarF;
+import by.it.artiuschik.jd_02_04.mathlab.vars.VarM;
+import by.it.artiuschik.jd_02_04.mathlab.vars.VarV;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 //операции с  Var
 public class Calculator {
-    private static HashMap<String,Var> varibles=new HashMap<>();
-    public static HashMap getVaribles()
-    {
-        return varibles;
+   //лучше  hashmap  сделать здесь
+    public static void assign(String varName, Var var) {
+        if (var instanceof VarF) {
+            VarFOperations.assign(varName, (VarF) var);
+        }
+        if (var instanceof VarV) {
+            VarVOperations.assign(varName, (VarV) var);
+        }
+        if (var instanceof VarF) {
+            VarMOperations.assign(varName, (VarM) var);
+        }
+
     }
+
     public static Var add(Var v1, Var v2) {
         if (v1 instanceof VarF) {
             if (v2 instanceof VarF) {
@@ -184,29 +192,4 @@ public class Calculator {
         return null;
     }
 
-    public static Var calculate(String expression) {
-        List<Object> list = new ArrayList(Parser.ParseFromString(expression));
-        List<Object> vars = new ArrayList((ArrayList) list.get(1));
-        String oper = (String) list.get(0);
-        switch (oper)//зачем в  switch break?
-        {
-            case "+": {
-                return add((Var)vars.get(0), (Var)vars.get(1));
-            }
-            case "-": {
-                return sub((Var)vars.get(0), (Var)vars.get(1));
-            }
-            case "*": {
-                return mul((Var)vars.get(0), (Var)vars.get(1));
-            }
-            case "/": {
-                return div((Var)vars.get(0), (Var)vars.get(1));
-            }
-            case "=": {
-                varibles.put((String)vars.get(0),(Var) vars.get(1));
-            }
-            default:
-                return null;
-        }
-    }
 }

@@ -1,10 +1,19 @@
-package by.it.artiuschik.jd_01_09.mathlab.operations;
+package by.it.artiuschik.jd_02_04.mathlab.operations;
 
-import by.it.artiuschik.jd_01_09.Error;
-import by.it.artiuschik.jd_01_09.mathlab.vars.*;
+import by.it.artiuschik.jd_02_04.mathlab.data.Vars;
+import by.it.artiuschik.jd_02_04.mathlab.errors.Error;
+import by.it.artiuschik.jd_02_04.mathlab.vars.Var;
+import by.it.artiuschik.jd_02_04.mathlab.vars.VarF;
+import by.it.artiuschik.jd_02_04.mathlab.vars.VarM;
+import by.it.artiuschik.jd_02_04.mathlab.vars.VarV;
 
 //операции с  VarM
 public class VarMOperations {
+    //Присваивание
+    public static void assign(String matrixName,VarM matrix)
+    {
+        Vars.vars.put(matrixName, matrix);
+    }
     //-------------------Сложение
     //Сложить матрицу с  матрицей
     public static Var add(VarM v1, VarM v2) {
@@ -55,7 +64,7 @@ public class VarMOperations {
 
     //вычесть из матрицы  число
     public static Var sub(VarM v1, VarF v2) {
-        return add(v1, (VarF) by.it.artiuschik.jd_01_09.mathlab.operations.VarFOperations.mul(v2, new VarF(-1)));
+        return add(v1, (VarF) VarFOperations.mul(v2, new VarF(-1)));
     }
 
     //--------------Умножение

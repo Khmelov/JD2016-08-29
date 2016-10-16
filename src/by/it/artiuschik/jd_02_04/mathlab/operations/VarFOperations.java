@@ -1,9 +1,18 @@
-package by.it.artiuschik.jd_01_09.mathlab.operations;
+package by.it.artiuschik.jd_02_04.mathlab.operations;
 
-import by.it.artiuschik.jd_01_09.mathlab.vars.*;
+import by.it.artiuschik.jd_02_04.mathlab.data.Vars;
+import by.it.artiuschik.jd_02_04.mathlab.vars.Var;
+import by.it.artiuschik.jd_02_04.mathlab.vars.VarF;
+import by.it.artiuschik.jd_02_04.mathlab.vars.VarM;
+import by.it.artiuschik.jd_02_04.mathlab.vars.VarV;
 
 //операции с  VarF
 public class VarFOperations {
+    //Присваивание
+    public static void assign(String scalarName,VarF scalar)
+    {
+        Vars.vars.put(scalarName,scalar);
+    }
     //-------------------Сложение
     //Сложить число с числом
     public static Var add(VarF v1, VarF v2) {
