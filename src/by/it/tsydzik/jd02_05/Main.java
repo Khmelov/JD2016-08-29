@@ -7,6 +7,7 @@ import java.util.Locale;
  * @since 12.10.2016.
  */
 public class Main implements Messages, Helper {
+
     public static void main(String[] args) {
         Locale locale = LanguageManager.getLocale();
         if (args.length == 2) {

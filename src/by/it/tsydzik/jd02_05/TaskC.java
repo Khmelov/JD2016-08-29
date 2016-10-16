@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 /**
- * @author Dmitry Tsydzik
+ * @author Eugene Tsydzik
  * @since 16.10.16.
  */
 public class TaskC implements Helper{
