@@ -49,7 +49,14 @@ public class Buyer implements Runnable, IBuyer, IBacket {
     public void run() {
         enterToMarket();
         takeBacket();
-        chooseGoods();
+        try {
+            buyersChoosingGoods.acquire();
+            chooseGoods();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            buyersChoosingGoods.release();
+        }
         goToQueue();
         goToOut();
     }
@@ -61,8 +68,6 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void chooseGoods() {
-        try {
-            buyersChoosingGoods.acquire();
             for (int i = 1; i < Helper.rnd(1, 4); i++) {
                 if (isPensioner())
                     Helper.sleep(Helper.rnd(150, 300));
@@ -75,9 +80,6 @@ public class Buyer implements Runnable, IBuyer, IBacket {
                 System.out.format("%.2f стоят покупки %s%n", totalAmount, this);
                 putGoodsToBacket();
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -120,7 +122,6 @@ public class Buyer implements Runnable, IBuyer, IBacket {
 
     @Override
     public void putGoodsToBacket() {
-        buyersChoosingGoods.release();
         backet.put(goodName, priceOfGood);
         if (isPensioner())
             Helper.sleep(Helper.rnd(150, 300));
