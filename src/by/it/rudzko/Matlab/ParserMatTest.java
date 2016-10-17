@@ -11,7 +11,7 @@ public class ParserMatTest {
         Parser p=new Parser("{{2,3}, {6,10}}+{{1,0}, {4,28}}");
         p.go();
         String s=p.getResult().toString();
-        assertEquals("{{3, 3}, {10, 38}}", s);
+        assertEquals("{{3.0, 3.0}, {10.0, 38.0}}", s);
     }
 
     @Test
