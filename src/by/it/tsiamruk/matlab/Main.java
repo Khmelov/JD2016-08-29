@@ -1,9 +1,11 @@
 package by.it.tsiamruk.matlab;
 
 import by.it.tsiamruk.matlab.operations.VarFOperations;
+import by.it.tsiamruk.matlab.operations.VarMOperations;
 import by.it.tsiamruk.matlab.operations.VarVOperations;
 import by.it.tsiamruk.matlab.vars.Var;
 import by.it.tsiamruk.matlab.vars.VarF;
+import by.it.tsiamruk.matlab.vars.VarM;
 import by.it.tsiamruk.matlab.vars.VarV;
 
 
@@ -39,6 +41,13 @@ public class Main {
         printOneVar(new VarVOperations(vec).sub(new VarV(vec)));
         printOneVar(new VarVOperations(vec).mul(new VarV(vec)));
         printOneVar(new VarVOperations(vec).div(new VarV(vec)));
+
+        String matrix = "[[1,2],[0,4],[5,6]]";
+        System.out.println("\nпроверка +-*/ с матрицами и матрицами");
+        printOneVar(new VarMOperations(matrix).add(new VarM(matrix)));
+        printOneVar(new VarMOperations(matrix).sub(new VarM(matrix)));
+        printOneVar(new VarMOperations(matrix).mul(new VarM(matrix)));
+        printOneVar(new VarMOperations(matrix).div(new VarM(matrix)));
 
     }
 }
