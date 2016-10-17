@@ -1,11 +1,11 @@
-package by.it.rudzko.Matlab.Vars;
+package by.it.rudzko.jd01_09.Vars;
 
-import by.it.rudzko.Matlab.Patterns;
+import by.it.rudzko.jd01_09.Patterns;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class VarVec extends Var {
+public class VarVec extends Var{
 
     private double[] vec;
 
