@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Persons SYSTEM "RentCarTaskB.dtd" >
+<Persons>
+    <Person id="12">
+        <FirstName>Alexander</FirstName>
+        <LastName>Ivanov</LastName>
+        <Sex>M</Sex>
+        <DateOfBirth>1979-09-12</DateOfBirth>
+        <Passport>BM1932121</Passport>
+        <IssuedBy>Minsk ROVD</IssuedBy>
+        <IssuedDate>2010-12-15</IssuedDate>
+        <Login>ivan1979</Login>
+        <Password>password1</Password>
+        <Phone>+375294586954</Phone>
+        <Address>
+            <Country>Belarus</Country>
+            <City>Minsk</City>
+            <Street>Lenina</Street>
+            <Building>3</Building>
+            <Flat>21</Flat>
+        </Address>
+        <DriverLicence>
+				<Serial>AB1252215</Serial>
+				<Cathegory>B</Cathegory>
+				<Active>true</Active>
+				<Issued>2010-12-20</Issued>
+				<Expire>2020-12-20</Expire>
+		</DriverLicence>
+		<Orders>
+			<Car id="21">
+				<Available>true</Available>
+				<RecentInsurance>active</RecentInsurance>
+				<Manufacturer>Suzuki</Manufacturer>
+				<Model>SX4</Model>
+				<Year>2010</Year>
+				<Color>black</Color>
+				<Transmission>Auto</Transmission>
+				<Photos>
+					<Photo href="http://site.com/cars/photos/?pic=231" />
+					<Photo href="http://site.com/cars/photos/?pic=235" />
+				</Photos>
+				<Rents>
+					<Rent id="222">
+						<BeginDate>2012-02-10</BeginDate>
+						<EndDate>2012-03-10</EndDate>
+					</Rent>
+					<Rent id="431">
+						<BeginDate>2012-06-11</BeginDate>
+						<EndDate>2012-06-15</EndDate>
+					</Rent>
+				</Rents>
+			</Car>
+		</Orders>
+    </Person>
+</Persons>
