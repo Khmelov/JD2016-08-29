@@ -1,4 +1,4 @@
-package by.it.rudzko.jd01_09;
+package by.it.rudzko.Matlab;
 
 import org.junit.Test;
 
@@ -11,7 +11,7 @@ public class ParserVecTest {
         Parser p=new Parser("{23,4,17}+{0,6,10}");
         p.go();
         String s=p.getResult().toString();
-        assertEquals("{23, 10, 27}", s);
+        assertEquals("{23.0, 10.0, 27.0}", s);
     }
 
     @Test

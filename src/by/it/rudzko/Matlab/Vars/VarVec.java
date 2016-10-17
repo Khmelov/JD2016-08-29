@@ -1,6 +1,6 @@
-package by.it.rudzko.jd01_09.Vars;
+package by.it.rudzko.Matlab.Vars;
 
-import by.it.rudzko.jd01_09.Patterns;
+import by.it.rudzko.Matlab.Patterns;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

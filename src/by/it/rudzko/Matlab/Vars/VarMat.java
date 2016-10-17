@@ -1,6 +1,6 @@
-package by.it.rudzko.jd01_09.Vars;
+package by.it.rudzko.Matlab.Vars;
 
-import by.it.rudzko.jd01_09.Patterns;
+import by.it.rudzko.Matlab.Patterns;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -57,7 +57,7 @@ public class VarMat extends Var {
 
     @Override
     public String toString() {
-        StringBuilder res=new StringBuilder("{");
+        StringBuilder res=new StringBuilder("{{");
         for (int i=0; i<mat.length; i++) {
             for(int j=0; j<mat[0].length; j++) {
                 String str=Double.toString(mat[i][j]);
@@ -65,6 +65,6 @@ public class VarMat extends Var {
             }
             res.append("}, {");
         }
-        return res.delete(res.length()-3, res.length()).toString();
+        return res.delete(res.length()-3, res.length()).append('}').toString();
     }
 }

@@ -1,10 +1,10 @@
-package by.it.rudzko.jd01_09;
+package by.it.rudzko.Matlab;
 
 
-import by.it.rudzko.jd01_09.Vars.Var;
-import by.it.rudzko.jd01_09.Vars.VarMat;
-import by.it.rudzko.jd01_09.Vars.VarNum;
-import by.it.rudzko.jd01_09.Vars.VarVec;
+import by.it.rudzko.Matlab.Vars.Var;
+import by.it.rudzko.Matlab.Vars.VarMat;
+import by.it.rudzko.Matlab.Vars.VarNum;
+import by.it.rudzko.Matlab.Vars.VarVec;
 
 import java.util.ArrayList;
 
