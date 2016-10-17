@@ -1,6 +1,12 @@
 package by.it.savelyeva.matlab;
 
-import by.it.savelyeva.matlab.inout.Parser;
+import by.it.savelyeva.matlab.reporters.BriefReportBuilder;
+import by.it.savelyeva.matlab.reporters.ExtendedReportBuilder;
+import by.it.savelyeva.matlab.reporters.ReportBuilder;
+import by.it.savelyeva.matlab.reporters.Reporter;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by nato on 9/16/16.
@@ -8,10 +14,15 @@ import by.it.savelyeva.matlab.inout.Parser;
 public class Main {
 
     public static void main(String[] args) {
+        Date startDate = new Date();
+        ArrayList<String> operations = new ArrayList<>();
+        SingletonLogger logger = SingletonLogger.getInstance();
+
+
         String[] tasks = new String[] {"2.1/0", "10/4", "a=7+10", "bb=15.7", "c=bb+a*2+3*0", "3.0+0", "6.8-0",
                 "{1,2}/0", "{1,2}/{3,4}", "{3,4,5}*{1,2}", "{1,2}+{1,2,3}","{1,2,3}-{1,2}",
                 "V={1,2}-{3,4}", "{1,2}*{3,4}",
-                "-2*(-3)*(-1)*({1,2}+({3,4}-{0,1}))+10/2+V+{{2,0},{0,2}}*{{1,1}}", //quite strong expression w/ variable V
+                "-2*(-3)*(-1)*({1,2}+({3,4}-{0,1}))+10/2+V+{{2,0},{0,2}}*{1,1}", //quite strong expression w/ variable V
                 "{{1,2},{-8,3}}/0", "{{1,2},{8,3}}/{1,2}", "{{1,2},{8,3}}*{1,2,3}",
                 "{{1,2},{8,3}}*{{5,1},{1,2},{8,3}}", "{{1,2},{8,3}}*{1,2}", "{{1,2},{8,3}}*{{1,2},{8,3}}",
                 "{{1,2},{8,3}}+{{1,2},{8,3},{1,0}}", "{{1,2},{8,3}}-{{1,2},{8,3},{1,0}}",
@@ -22,27 +33,39 @@ public class Main {
         for (String expression: tasks) {
             System.out.println("***************");
             try {
-                c.calculate(expression);
+                String res = expression + " = " + c.calculate(expression);
+                operations.add(res.toString());
             } catch (ArithmeticException e) {
+                logger.log(e.getMessage());
+                operations.add(expression + ": " + e.getMessage());
                 System.out.println(e.getMessage());
             } catch (VarDimensionException e) {
+                logger.log(e.getMessage());
+                operations.add(expression + ": " + e.getMessage());
                 System.out.println(e.getMessage());
             }
         }
 
         c.backupCalc("backup.txt");
 
-        Parser.parseConsoleCommand(c);
+        /*Parser.parseConsoleCommand(c);
 
         try {
             assignmentDemo();
             detailedDemo();
         } catch (ArithmeticException e) {
+            logger.log(e.getMessage());
             System.out.println(e.getMessage());
         } catch (VarDimensionException e) {
+            logger.log(e.getMessage());
             System.out.println(e.getMessage());
         }
-
+*/
+        Date endDate = new Date();
+        Reporter reporter = new Reporter();
+        ReportBuilder reportBuilder = (Math.random() > 0.5) ? new ExtendedReportBuilder() : new BriefReportBuilder();
+        reporter.setReportBuilder(reportBuilder);
+        reporter.constructReport(startDate, operations, endDate);
 
     }
 

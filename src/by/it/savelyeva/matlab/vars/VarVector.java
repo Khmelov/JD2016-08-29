@@ -33,21 +33,19 @@ public class VarVector extends Var implements IVariable {
     @Override
     public Var add(Var var) throws VarDimensionException {
         if (var instanceof VarFloat) {
-        	VarVector res = new VarVector(value);
-            for (int i=0; i<value.length; i++) {
-                res.value[i] = res.value[i] + ((VarFloat) var).getValue();
+        	for (int i=0; i<this.value.length; i++) {
+                this.value[i] = this.value[i] + ((VarFloat) var).getValue();
             }
-            return res;
+            return this;
         }
         else if (var instanceof VarVector) {
         	if (((VarVector) var).value.length != value.length)
         	    throw new VarDimensionException("Cannot add vectors: dimensions not match.");
 
-        	VarVector res = new VarVector(value);
-            for (int i=0; i<value.length; i++) {
-                res.value[i] = res.value[i] + ((VarVector) var).value[i];
+        	for (int i=0; i<this.value.length; i++) {
+                this.value[i] = this.value[i] + ((VarVector) var).value[i];
             }
-            return res;
+            return this;
         }
         else return super.add(this);
     }
@@ -55,21 +53,19 @@ public class VarVector extends Var implements IVariable {
     @Override
     public Var sub(Var var) throws VarDimensionException {
         if (var instanceof VarFloat) {
-        	VarVector res = new VarVector(value);
-            for (int i=0; i<value.length; i++) {
-                res.value[i] = res.value[i] - ((VarFloat) var).getValue();
+        	for (int i=0; i<this.value.length; i++) {
+                this.value[i] = this.value[i] - ((VarFloat) var).getValue();
             }
-            return res;
+            return this;
         }
         else if (var instanceof VarVector) {
         	if (((VarVector) var).value.length != value.length)
-        	    throw new VarDimensionException("Cannot substract vectors: dimensions not match.");
+        	    throw new VarDimensionException("Cannot subtract vectors: dimensions not match.");
 
-        	VarVector res = new VarVector(value);
-            for (int i=0; i<value.length; i++) {
-                res.value[i] = res.value[i] - ((VarVector) var).value[i];
+        	for (int i=0; i<this.value.length; i++) {
+                this.value[i] = this.value[i] - ((VarVector) var).value[i];
             }
-            return res;
+            return this;
         } 
         else return super.sub(this);
     }
@@ -77,32 +73,31 @@ public class VarVector extends Var implements IVariable {
     @Override
     public Var mul(Var var) throws VarDimensionException {
         if (var instanceof VarFloat) {
-        	VarVector res = new VarVector(value);
-            for (int i=0; i<value.length; i++) {
-                res.value[i] = res.value[i] * ((VarFloat) var).getValue();
+        	for (int i=0; i<this.value.length; i++) {
+                this.value[i] = this.value[i] * ((VarFloat) var).getValue();
             }
-            return res;
+            return this;
         }
         else if (var instanceof VarVector) {
-        	if (value.length != ((VarVector) var).value.length)
-        	    throw new VarDimensionException("Cannot multiplicate vectors: dimensions not match.");
+        	if (this.value.length != ((VarVector) var).value.length)
+        	    throw new VarDimensionException("Cannot multiply vectors: dimensions not match.");
 
            	double[] v = new double[1];
            	VarVector res = new VarVector(v);
-           	for (int i=0; i<value.length; i++) {
-                res.value[0] += value[i] * ((VarVector) var).value[i];
+           	for (int i=0; i<this.value.length; i++) {
+                res.value[0] += this.value[i] * ((VarVector) var).value[i];
             }
             return res;     	
         }
         else if (var instanceof VarMatrix) {
-        	if (value.length != ((VarMatrix) var).getValue().length)
+        	if (this.value.length != ((VarMatrix) var).getValue().length)
         	    throw new VarDimensionException("Cannot multiply vector*matrix: dimensions not match.");
 
-            double[] v = new double[value.length];
+            double[] v = new double[this.value.length];
             VarVector res = new VarVector(v);
-           	for (int i=0; i<value.length; i++) {
+           	for (int i=0; i<this.value.length; i++) {
            		for (int j = 0; j<((VarMatrix) var).getValue().length; j++) {
-           			res.value[i] += value[j] * ((VarMatrix) var).getValue()[j][i];
+           			res.value[i] += this.value[j] * ((VarMatrix) var).getValue()[j][i];
             	}
            	} 
            	return res; 
@@ -115,11 +110,10 @@ public class VarVector extends Var implements IVariable {
             if ((int)((VarFloat) var).getValue() == 0)
                 throw new ArithmeticException("Caught error: division by zero!");
 
-            VarVector res = new VarVector(value);
-            for (int i=0; i<value.length; i++) {
-                res.value[i] = res.value[i] / ((VarFloat) var).getValue();
+            for (int i=0; i<this.value.length; i++) {
+                this.value[i] = this.value[i] / ((VarFloat) var).getValue();
             }
-            return res;
+            return this;
         }
         else return super.div(this);
     }

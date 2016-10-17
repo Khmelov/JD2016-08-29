@@ -62,7 +62,7 @@ public class CalcTest {
     @Test
     public void testCalculateWithVariables() throws Exception {
         String[] expressions = new String[] {"V={1,2}-{3,5.5}", "{1,2}*{3,4}",
-                "-2*(-3)*(-1)*({1,2}+({3,4}-{0,1}))+10/2+V+{{2,0},{0,2}}*{{1,1}}"};
+                "-2*(-3)*(-1)*({1,2}+({3,4}-{0,1}))+10/2+V+{{2,0},{0,2}}*{1,1}"};
         String[] results = new String[] {"[-2.0,-3.5]", "[11.0]", "[-19.0,-26.5]"};
         for (int i=0; i<expressions.length; i++) {
             String res = Calc.calculate(expressions[i]);
@@ -73,7 +73,7 @@ public class CalcTest {
     @Test
     public void testCalculateNoVariables() throws Exception {
         String[] expressions = new String[] {"{1,2}-{3,5.5}", "{1,2}*{3,4}",
-                "-2*(-3)*(-1)*({1,2}+({3,4}-{0,1}))+10/2+({1,2}-{3,5.5})+{{2,0},{0,2}}*{{1,1}}"};
+                "-2*(-3)*(-1)*({1,2}+({3,4}-{0,1}))+10/2+({1,2}-{3,5.5})+{{2,0},{0,2}}*{1,1}"};
         String[] results = new String[] {"[-2.0,-3.5]", "[11.0]", "[-19.0,-26.5]"};
         for (int i=0; i<expressions.length; i++) {
             String res = Calc.calculate(expressions[i]);

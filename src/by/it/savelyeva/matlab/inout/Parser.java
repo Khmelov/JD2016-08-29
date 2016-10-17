@@ -1,10 +1,8 @@
 package by.it.savelyeva.matlab.inout;
 
 import by.it.savelyeva.matlab.Calc;
+import by.it.savelyeva.matlab.vars.CreatorVar;
 import by.it.savelyeva.matlab.vars.Var;
-import by.it.savelyeva.matlab.vars.VarFloat;
-import by.it.savelyeva.matlab.vars.VarMatrix;
-import by.it.savelyeva.matlab.vars.VarVector;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -166,15 +164,8 @@ public class Parser {
     }
 
     public static Var parseOneVar(String s) {
-        Var var = null;
-        Pattern pattern = Pattern.compile(patternFloat);
-        Matcher matcher = pattern.matcher(s);
-        if (matcher.find()) var = new VarFloat(matcher.group());
-        else {
-            String[] rows = s.split(splitterMatrix);
-            if (rows.length > 1) var = new VarMatrix(s);
-            else var = new VarVector(s);
-        }
+        CreatorVar creatorVar = new CreatorVar();
+        Var var = creatorVar.getVar(s);
         return var;
     }
 

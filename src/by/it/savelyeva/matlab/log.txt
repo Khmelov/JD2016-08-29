@@ -1,0 +1,10 @@
+Mon Oct 17 20:48:50 MSK 2016: Caught error: division by zero!
+Mon Oct 17 20:48:50 MSK 2016: Caught error: division by zero!
+Mon Oct 17 20:48:50 MSK 2016: Cannot multiply vectors: dimensions not match.
+Mon Oct 17 20:48:50 MSK 2016: Cannot add vectors: dimensions not match.
+Mon Oct 17 20:48:50 MSK 2016: Cannot subtract vectors: dimensions not match.
+Mon Oct 17 20:48:50 MSK 2016: Caught error: division by zero!
+Mon Oct 17 20:48:50 MSK 2016: Cannot multiply matrix*vector: dimensions not match.
+Mon Oct 17 20:48:50 MSK 2016: Cannot multiply matrices: dimensions not match.
+Mon Oct 17 20:48:50 MSK 2016: Cannot add matrices: dimensions not match.
+Mon Oct 17 20:48:50 MSK 2016: Cannot subtract matrices: dimensions not match.
