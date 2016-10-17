@@ -1,7 +1,7 @@
 package by.it.tsydzik.jd01_05;
 
 /**
- * @author Dmitry Tsydzik
+ * @author Eugene Tsydzik
  * @since 11.9.16.
  */
 public class Main {

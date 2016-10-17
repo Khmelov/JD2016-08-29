@@ -3,7 +3,7 @@ package by.it.tsydzik.jd01_05;
 import static java.lang.Math.*;
 
 /**
- * @author Dmitry Tsydzik
+ * @author Eugene Tsydzik
  * @since 11.9.16.
  */
 public class Task3 {
