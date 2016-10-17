@@ -10,10 +10,7 @@ import by.it.rudzko.jd01_09.Vars.VarNum;
 import by.it.rudzko.jd01_09.Vars.VarVec;
 
 
-/**
- * Created by Leta on 23.09.2016.
- */
-public class Calculator implements IAdd, IDiv, IMul, ISub {
+class Calculator implements IAdd, IDiv, IMul, ISub {
 
     @Override
     public Var div(Var v1, Var v2) {

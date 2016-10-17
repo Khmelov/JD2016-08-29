@@ -67,5 +67,5 @@ public class NeuroSurgeon extends Surgeon {
 	 *  Methods consultPatient(Patient), consultPatient(String), isPatientIll(), diagnoseDesease() are not overridden,
 	 *  they are inherited and can be called on the object of this class.
 	 */
-	
+
 }

@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class VarMat extends Var {
 
-    public double [][] mat;
+    private double [][] mat;
 
     public VarMat(String str) { //конструктор из строки
         setFrom(str);

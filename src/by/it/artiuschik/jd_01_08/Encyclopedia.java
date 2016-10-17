@@ -1,19 +1,12 @@
 package by.it.artiuschik.jd_01_08;
 
-public class Encyclopedia extends Book {
+   class Encyclopedia extends by.it.artiuschik.jd_01_08.Book {
     private int tomes;//количество томов
-    private int tomeOpened=0;
     private int tomeBookMark=0;
-    public Encyclopedia(String name, int year, int pages, int tomes, String... authors) {
+    Encyclopedia(String name, int year, int pages, int tomes, String... authors) {
         super(name, year, pages, authors);
         this.tomes = tomes;
     }
-
-    public Encyclopedia() {
-        super();
-        this.tomes = 0;
-    }
-
     @Override
     public void open(int page) throws IncorrectBookPageException  {
         if(page<0)
@@ -22,11 +15,6 @@ public class Encyclopedia extends Book {
         }
         super.open(page);
         System.out.println("Encyclopedia is opened on page " + page);
-    }
-    public void open(int tome,int page) throws IncorrectBookPageException {
-        super.open(page);
-        tomeOpened=tome;
-        System.out.println("Encyclopedia is opened on tome "+tomeOpened+" page " + page);
     }
 
     @Override
@@ -55,7 +43,7 @@ public class Encyclopedia extends Book {
         super.doBookmark(page);
         System.out.println("You add a bookmark to your encyclopedia " + getName() + " on page " + page);
     }
-    public void doBookmark(int tome,int page) {
+    void doBookmark(int tome,int page) {
         super.doBookmark(page);
         tomeBookMark=tome;
         System.out.println("You add a bookmark to your encyclopedia " + getName() + " on tome " + tomeBookMark+" on page " + page);

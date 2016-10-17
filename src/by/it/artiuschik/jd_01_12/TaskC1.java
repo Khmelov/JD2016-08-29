@@ -4,7 +4,7 @@ import java.util.*;
 
 public class TaskC1 {
     public static List<MyObject> buildList(String str){
-        String[] objectNames = Util.words(str);
+        String[] objectNames = by.it.artiuschik.jd_01_12.Util.words(str);
         List<MyObject> objectLinkedList=new LinkedList<>();
         for(String name:objectNames)
         {

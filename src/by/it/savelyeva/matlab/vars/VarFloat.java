@@ -61,12 +61,6 @@ public class VarFloat extends Var implements IVariable {
     }
 
     @Override
-    public Var assign(String s) {
-        return new VarFloat(this.value);
-    }
-
-
-    @Override
     public String toString() {
         return ((Double) value).toString();
     }
@@ -75,9 +69,9 @@ public class VarFloat extends Var implements IVariable {
         return String.format(format, (Double) this.value);
     }
 
-    @Override
-    public Var fromString(String s) {
+    public static Var fromString(String s) {
         return (Var) new VarFloat(Double.parseDouble(s));
     }
+
 }
 

@@ -1,0 +1,4 @@
+message.welcome=Welcome,
+message.username=Olga Rudzko!
+message.question=How are you?
+message.chooselanguage=Please enter 'en', 'by' or 'ru' to choose language. Enter 'stop' to exit.

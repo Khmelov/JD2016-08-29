@@ -1,0 +1,3 @@
+message.welcome = Добрый дзень!
+message.username = Вальдемар Цямрук
+message.question = Як ваши справы?

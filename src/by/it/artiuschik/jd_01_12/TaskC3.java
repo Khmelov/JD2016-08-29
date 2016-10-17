@@ -1,38 +1,42 @@
 package by.it.artiuschik.jd_01_12;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
 
 public class TaskC3 {
     public static boolean isBracketsCorrect(String str) {
-        StringBuilder s = new StringBuilder(str);
-        Deque<Character> brackets = new LinkedList<>();
-        char openBr = '(';
-        char closeBr = ')';
-        for (int i = 0; i < s.length(); i++) {
-            switch (s.charAt(i)) {
-                case '(': {
-                    brackets.addFirst(openBr);
-                    break;
+        Stack<Character> bracketsStack = new Stack<>();
+        try {
+            for (int i = 0; i < str.length(); i++) {//проход по всем символам строки
+                char c = str.charAt(i);
+                switch (c) {
+                    case '(':
+                    case '{':
+                    case '[':
+                        bracketsStack.push(c);
+                        break;
+                /*как только встретили закрывающую скобку-проверяем была ли перед ней
+                открывающая-она должна быть на верхушке стека
+                 */
+                    case ')':
+                        if (bracketsStack.pop().charValue() != '(') {
+                            return false;
+                        }
+                        break;
+                    case '}':
+                        if (bracketsStack.pop().charValue() != '{') {
+                            return false;
+                        }
+                        break;
+                    case ']':
+                        if (bracketsStack.pop().charValue() != ']') {
+                            return false;
+                        }
+                        break;
                 }
-                case ')':
-                    brackets.addLast(closeBr);
-                    break;
-                default:
-                    break;
             }
-
+            return bracketsStack.isEmpty();//если стек пустой, то все корректно
+        } catch (EmptyStackException e) {
+            return false;//пытались найти открывающую скобку, а стек пуст
         }
-        while ((brackets.peekFirst() == '(') && (brackets.peekLast() == ')')) {
-            brackets.removeFirst();
-            brackets.removeLast();
-            if(brackets.isEmpty())
-            {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

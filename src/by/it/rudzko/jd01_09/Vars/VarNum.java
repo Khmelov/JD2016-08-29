@@ -1,11 +1,8 @@
 package by.it.rudzko.jd01_09.Vars;
 
-/**
- * Created by Leta on 23.09.2016.
- */
 public class VarNum extends Var {
 
-    public double num;
+    private double num;
 
     public VarNum(String str) {
         setFrom(str);

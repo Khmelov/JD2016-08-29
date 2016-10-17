@@ -70,9 +70,9 @@ public class TaskC3 {
     }
     public static void main(String[] args) {
         System.out.println("--------Исходный текст---------");
-        System.out.println(Data.POEM);
+        System.out.println(by.it.artiuschik.jd_01_06.Data.POEM);
         System.out.println("--------Результат---------");
-        printWords(sortByLength(Util.words(Data.POEM)));
+        printWords(sortByLength(by.it.artiuschik.jd_01_06.Util.words(Data.POEM)));
     }
 
 }

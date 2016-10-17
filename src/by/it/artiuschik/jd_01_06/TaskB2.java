@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 
 public class TaskB2 {
     public static void main(String args[]) {
-        System.out.println(Data.POEM);
-        String stroka = Data.POEM;
+        System.out.println(by.it.artiuschik.jd_01_06.Data.POEM);
+        String stroka = by.it.artiuschik.jd_01_06.Data.POEM;
         Pattern p = Pattern.compile("\\n");
         Matcher m = p.matcher(stroka);
         stroka = m.replaceAll(" ");

@@ -5,12 +5,9 @@ import by.it.rudzko.jd01_09.Patterns;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Leta on 23.09.2016.
- */
 public class VarVec extends Var{
 
-    public double[] vec;
+    private double[] vec;
 
     public VarVec(String str) { //конструктор из строки
         setFrom(str);

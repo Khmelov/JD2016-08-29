@@ -1,13 +1,29 @@
 package by.it.tsiamruk.jd02_02;
 
-/**
- * Created by waldemar on 03/10/2016.
- */
+public class Buyer implements Runnable, IBuyer, IBacket {
 
-public class Buyer extends Thread implements IBuyer, IBacket {
     private int number;
+    private String name;
+    private boolean pensioner;
+
+    public boolean isPensioner() {
+        return pensioner;
+    }
+
+    public void setPensioner(boolean pensioner) {
+        this.pensioner = pensioner;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Buyer(int number) {
+        this.isPensioner();
         this.number = number;
         this.setName("Buyer №" + number);
     }
@@ -15,7 +31,7 @@ public class Buyer extends Thread implements IBuyer, IBacket {
     @Override
     public void run() {
         enterToMarket();
-        takeBacked();
+        takeBacket();
         chooseGoods();
         goToQueue();
         goToOut();
@@ -23,43 +39,28 @@ public class Buyer extends Thread implements IBuyer, IBacket {
 
     @Override
     public void enterToMarket() {
-        System.out.println(this + " зашел в магазин.");
+        System.out.println(this + " enter to Market");
     }
 
     @Override
     public void chooseGoods() {
+        double totalAmount = 0;
         for (int i = 1; i < Helper.rnd(1, 4); i++) {
             Helper.sleep(Helper.rnd(100, 200));
-            String goodsName = Goods.random();
-            System.out.println(this + " выбрал товары: " + goodsName);
+            String goodName = Goods.random();
+            double priceOfGood = Goods.getPrice();
+            System.out.format("%s choose good: %s price: %.2f%n", this, goodName, priceOfGood);
+            totalAmount += priceOfGood;
+            System.out.format("%.2f is total amount of %s%n", totalAmount, this);
             putGoodsToBacket();
         }
-
-    }
-
-    @Override
-    public String toString() {
-        return "Buyer №" + number;
-        //this.getName();
-    }
-
-    @Override
-    public void takeBacked() {
-        Helper.sleep(Helper.rnd(100, 200));
-        System.out.println(this + " взял корзину для продуктов.");
-    }
-
-    @Override
-    public void putGoodsToBacket() {
-        Helper.sleep(Helper.rnd(100, 200));
-        System.out.println(this + " кладёт товар в корзину.");
     }
 
     @Override
     public void goToQueue() {
         synchronized (QueueBuyers.monitorQueueBuyers) {
             QueueBuyers.add(this);
-            System.out.println(this + " stand in Queue");
+            System.out.println(this + " added to QueueBuyers");
         }
         synchronized (this) {
             try {
@@ -72,6 +73,28 @@ public class Buyer extends Thread implements IBuyer, IBacket {
 
     @Override
     public void goToOut() {
-        System.out.println(this + " вышел из магазина.");
+        System.out.println(this + " go to out from Market");
     }
+
+    @Override
+    public String toString() {
+        if (this.isPensioner())
+            return "Pensioner";
+        else
+            return "Buyer №" + number;
+        //return this.getName();
+    }
+
+    @Override
+    public void takeBacket() {
+        Helper.sleep(Helper.rnd(100, 200));
+        System.out.println(this + " take backet");
+    }
+
+    @Override
+    public void putGoodsToBacket() {
+        Helper.sleep(Helper.rnd(100, 200));
+        System.out.println(this + " put goods to backet");
+    }
+
 }
