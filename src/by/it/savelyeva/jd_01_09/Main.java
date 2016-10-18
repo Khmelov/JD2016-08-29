@@ -12,7 +12,7 @@ public class Main {
          * Multiple operations in a string not yet supported.
          */
 
-        // Demo of:
+        // demo_no_git of:
         // - new operation "=" (assignment) is working,
         // - printvar, sortvar commands work, and
         // - no regression occurs (if needed, uncomment detailedDemo() call below)

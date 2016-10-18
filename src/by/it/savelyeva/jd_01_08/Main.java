@@ -23,7 +23,7 @@ public class Main {
 		NeuroSurgeon ns = new NeuroSurgeon("Nigel", 1983, 5); // static polymorphism inside NeuroSurgeon() constructor.
 		AbdominalSurgeon as = new AbdominalSurgeon("Albert", 1990, 2); // static polymorphism inside AbdominalSurgeon()
 
-		System.out.println("======== Demo that methods work =======");
+		System.out.println("======== demo_no_git that methods work =======");
 		for (Patient p: patients) {
 			System.out.println("\nWORK WITH PATIENT " + p.name);
 			ns.registerPatient(p);	printMethodSeparator(); // call a method that overrides the method in the superclass
@@ -48,13 +48,13 @@ public class Main {
 		as.makeReport(patients); printMethodSeparator(); // inheritance: call a method inherited from the superclass
 
 
-		// ======== Demo of asking Garbage Collector to do its stuff =======
+		// ======== demo_no_git of asking Garbage Collector to do its stuff =======
 		p1 = p2; 	// p1 is lost (Patricia), but p2 still will be there (Peter)
 		as = null; 	// Albert will be removed
 		System.gc(); // does not guarantee actual destruction of objects at this time
 
 
-		System.out.println("\n======== Demo of dynamic polymorphism =======");
+		System.out.println("\n======== demo_no_git of dynamic polymorphism =======");
 
 		NeuroSurgeon mns = new MilitaryNeuroSurgeon("Michael", 1980, 2, "a1"); // static polymorphism inside constructor.
 		//Note both 'ns' and 'mns' are of type 'NeuroSurgeon'
@@ -62,13 +62,13 @@ public class Main {
 		ns.performTreatment(p1);  // NeuroSurgeon's method will be called ('nothing to do', because p1 is healthy now)
 		mns.performTreatment(p2); // MilitaryNeuroSurgeon's method will be called ('nothing to do', because p2 is also healthy now)
 
-		System.out.println("\n======== Demo of encapsulation =======");
+		System.out.println("\n======== demo_no_git of encapsulation =======");
 		//System.out.println(((MilitaryNeuroSurgeon) mns).unit); // error, unit is not recognized, it is hidden from the object
 		// We can work with unit value through public methods, e.g. getters & setters
 		((MilitaryNeuroSurgeon) mns).setUnit("b2"); // 'a1' will be changed to 'b2'
 		System.out.println("Unit 'a1' was changed to " + ((MilitaryNeuroSurgeon) mns).getUnit());
 
-		System.out.println("\n======== Demo of static polymorphism =======");
+		System.out.println("\n======== demo_no_git of static polymorphism =======");
 		// based on methods' signatures corresponding methods will be called:
 		ns.consultPatient(p1);
 		ns.consultPatient("info");

@@ -9,7 +9,7 @@ import java.util.*;
 public class Main {
 
 	public static void main(String[] args) {
-		// Demo for:
+		// demo_no_git for:
 		// - custom annotation GetElapsedTime
 		// - timings of creation and navigation for different maps types
 		Benchmark<Integer> objInteger = new Benchmark<>();
