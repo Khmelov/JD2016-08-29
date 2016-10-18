@@ -70,7 +70,7 @@ public class Main {
     }
 
     public static void assignmentDemo() throws VarDimensionException {
-        // Demo of:
+        // demo_no_git of:
         // - new operation "=" (assignment) is working,
         // - printvar, sortvar commands work, and
         // - no regression occurs (if needed, uncomment detailedDemo() call below)
