@@ -56,8 +56,6 @@ public class VarVOperations extends VarV implements IAdd, IMul, IDiv, ISub {
             }
             return v1;                                      //выводим итог
         }
-        if (var instanceof VarM)
-            return new VarMOperations(((VarM) var).getValue()).add(this);
         else
             return super.add(var);
     }
@@ -80,8 +78,6 @@ public class VarVOperations extends VarV implements IAdd, IMul, IDiv, ISub {
             }
             return v1;
         }
-        if (var instanceof VarM)
-            return new VarMOperations(((VarM) var).getValue()).sub(this);
         else
             return super.sub(var);
     }
@@ -104,7 +100,10 @@ public class VarVOperations extends VarV implements IAdd, IMul, IDiv, ISub {
                 v1.getVector()[i] *= v2;
             }
             return v1;
-        } else
+        }
+        if (var instanceof VarM)
+            return new VarMOperations(((VarM) var).getValue()).mul(this);
+        else
             return super.mul(var);
     }
 

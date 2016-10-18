@@ -42,7 +42,7 @@ public class Main {
         printOneVar(new VarVOperations(vec).mul(new VarV(vec)));
         printOneVar(new VarVOperations(vec).div(new VarV(vec)));
 
-        String matrix = "{{1.24,2.12,4.1}{1.23,4.13,5.33}{5.43,6.43,7.23}}";
+        String matrix = "{{1.24,1.12,4.1}{1.23,4.13,5.33}{5.43,6.43,7.23}}";
         System.out.println("\nпроверка +-*/ с матрицами и матрицами");
         printOneVar(new VarMOperations(matrix).add(new VarM(matrix)));
         printOneVar(new VarMOperations(matrix).sub(new VarM(matrix)));
