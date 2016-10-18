@@ -6,6 +6,7 @@ import by.it.tsiamruk.matlab.interfaces.IMul;
 import by.it.tsiamruk.matlab.interfaces.ISub;
 import by.it.tsiamruk.matlab.vars.Var;
 import by.it.tsiamruk.matlab.vars.VarF;
+import by.it.tsiamruk.matlab.vars.VarM;
 import by.it.tsiamruk.matlab.vars.VarV;
 
 /**
@@ -54,7 +55,8 @@ public class VarVOperations extends VarV implements IAdd, IMul, IDiv, ISub {
                 v1.getVector()[i] += v2;           //основная операция
             }
             return v1;                                      //выводим итог
-        } else
+        }
+        else
             return super.add(var);
     }
 
@@ -75,7 +77,8 @@ public class VarVOperations extends VarV implements IAdd, IMul, IDiv, ISub {
                 v1.getVector()[i] -= v2;
             }
             return v1;
-        } else
+        }
+        else
             return super.sub(var);
     }
 
@@ -97,7 +100,10 @@ public class VarVOperations extends VarV implements IAdd, IMul, IDiv, ISub {
                 v1.getVector()[i] *= v2;
             }
             return v1;
-        } else
+        }
+        if (var instanceof VarM)
+            return new VarMOperations(((VarM) var).getValue()).mul(this);
+        else
             return super.mul(var);
     }
 
