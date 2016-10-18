@@ -3,6 +3,7 @@ package by.it.tsiamruk.matlab.vars;
 
 import by.it.tsiamruk.matlab.interfaces.IVar;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,7 +18,7 @@ public class VarM extends Var implements IVar {
     }
 
     public VarM(String str) {
-        setFrom(str);
+        this.value = ((VarM) setFromString(str)).getValue();
     }
 
     //getters and setters
@@ -34,25 +35,30 @@ public class VarM extends Var implements IVar {
      *
      * @param str input string
      */
-    @Override
-    public void setFrom(String str) {
+    public Var setFromString(String str) {
         //разбиваю на строку на "ряды массива"
-        String[] rows = str.split("[\\]}]{1}[,]{1}[{\\[]{1}");
+        Pattern rows = Pattern.compile("([0-9].?[0-9]*,?)+");
+        Matcher matchRows = rows.matcher(str);
+        ArrayList<String> row = new ArrayList<>();
+        while (matchRows.find()) {
+            row.add(matchRows.group());
+        }
         //иницализация будущей матрицы
-        double[][] result = new double[rows.length][rows[0].split(",").length];
+        double[][] result = new double[row.size()][(row.get(0)).split(",").length];
         //regex для поиска чисел в строке
         Pattern pattern = Pattern.compile("^[-]?[0-9]*[.]?[0-9]*$");
         Matcher matcher;
-        for (int i = 0; i < rows.length; i++) {
-            String[] elements = rows[i].split(",");
+        for (int i = 0; i < row.size(); i++) {
+            String[] elements = row.get(i).split(",");
             for (int j = 0; j < elements.length; j++) {
-                StringBuilder sb = new StringBuilder(elements[j].replaceAll("[\\[{}\\]]", ""));
+                StringBuilder sb = new StringBuilder(elements[j]);
                 matcher = pattern.matcher(sb);
                 if (matcher.find()) {
                     result[i][j] = Double.parseDouble(matcher.group());
                 }
             }
         }
+        return new VarM(result);
     }
 
     /**
@@ -62,12 +68,17 @@ public class VarM extends Var implements IVar {
      */
     @Override
     public String toString() {
-        StringBuilder res = new StringBuilder("[");
+        StringBuilder res = new StringBuilder("{");
         for (int i = 0; i < value.length; i++) {
             res.append(Arrays.toString(value[i]).replace(" ", ""));
             if (i < value.length - 1) res.append(",");
         }
-        res.append("]");
+        res.append("}");
         return res.toString();
+    }
+
+    @Override
+    public void setFrom(String str) {
+
     }
 }

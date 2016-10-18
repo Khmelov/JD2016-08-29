@@ -79,6 +79,7 @@ public class VarMOperations extends VarM implements IAdd, ISub, IMul, IDiv {
                     res.getValue()[i][j] -= ((VarM) var).getValue()[i][j];
                 }
             }
+            return res;
         }
         return super.sub(var);
     }
