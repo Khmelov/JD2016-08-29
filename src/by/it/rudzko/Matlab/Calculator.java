@@ -1,13 +1,13 @@
-package by.it.rudzko.jd01_09;
+package by.it.rudzko.Matlab;
 
-import by.it.rudzko.jd01_09.Interfaces.IAdd;
-import by.it.rudzko.jd01_09.Interfaces.IDiv;
-import by.it.rudzko.jd01_09.Interfaces.IMul;
-import by.it.rudzko.jd01_09.Interfaces.ISub;
-import by.it.rudzko.jd01_09.Vars.Var;
-import by.it.rudzko.jd01_09.Vars.VarMat;
-import by.it.rudzko.jd01_09.Vars.VarNum;
-import by.it.rudzko.jd01_09.Vars.VarVec;
+import by.it.rudzko.Matlab.Interfaces.IAdd;
+import by.it.rudzko.Matlab.Interfaces.IDiv;
+import by.it.rudzko.Matlab.Interfaces.IMul;
+import by.it.rudzko.Matlab.Interfaces.ISub;
+import by.it.rudzko.Matlab.Vars.Var;
+import by.it.rudzko.Matlab.Vars.VarMat;
+import by.it.rudzko.Matlab.Vars.VarNum;
+import by.it.rudzko.Matlab.Vars.VarVec;
 
 
 class Calculator implements IAdd, IDiv, IMul, ISub {

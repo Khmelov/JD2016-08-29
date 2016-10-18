@@ -1,4 +1,4 @@
-package by.it.rudzko.jd01_09;
+package by.it.rudzko.Matlab;
 
 import org.junit.Test;
 
@@ -11,7 +11,7 @@ public class ParserMatTest {
         Parser p=new Parser("{{2,3}, {6,10}}+{{1,0}, {4,28}}");
         p.go();
         String s=p.getResult().toString();
-        assertEquals("{{3, 3}, {10, 38}}", s);
+        assertEquals("{{3.0, 3.0}, {10.0, 38.0}}", s);
     }
 
     @Test
@@ -19,7 +19,7 @@ public class ParserMatTest {
         Parser p=new Parser("{{12,6}, {6,5}}-{{5,1}, {4,5}}");
         p.go();
         String s=p.getResult().toString();
-        assertEquals("{{7, 5}, {2, 0}}", s);
+        assertEquals("{{7.0, 5.0}, {2.0, 0.0}}", s);
     }
 
     @Test

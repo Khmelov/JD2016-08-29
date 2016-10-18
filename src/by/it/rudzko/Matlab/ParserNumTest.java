@@ -1,4 +1,4 @@
-package by.it.rudzko.jd01_09;
+package by.it.rudzko.Matlab;
 
 import org.junit.Test;
 

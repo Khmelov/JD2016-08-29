@@ -1,4 +1,4 @@
-package by.it.rudzko.jd01_09.Vars;
+package by.it.rudzko.Matlab.Vars;
 
 public abstract class Var{
 
