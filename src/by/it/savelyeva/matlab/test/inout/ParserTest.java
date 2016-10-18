@@ -93,7 +93,7 @@ public class ParserTest {
     @Test
     public void testParseOneVarMatrix() throws Exception {
         double[][] expected = {{0, 1},{-1.12, 10}};
-        Var value = Parser.parseOneVar("{0,1},{-1.12,10}}");
+        Var value = Parser.parseOneVar("{{0,1},{-1.12,10}}");
         assertTrue(value instanceof VarMatrix);
         double[][] actual = ((VarMatrix) value).getValue();
         assertTrue(TestUtils.matricesEqual(actual, expected));

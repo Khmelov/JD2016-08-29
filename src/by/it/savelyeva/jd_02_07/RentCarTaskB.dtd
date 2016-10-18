@@ -1,0 +1,44 @@
+<!ELEMENT Persons (Person)+>
+<!ELEMENT Person (FirstName, LastName, MiddleName?, Sex, DateOfBirth, Passport, IssuedBy, IssuedDate, Login, Password, Phone, Address, DriverLicence, Orders)>
+<!ATTLIST Person id CDATA #REQUIRED>
+<!ELEMENT FirstName (#PCDATA)>
+<!ELEMENT LastName (#PCDATA)>
+<!ELEMENT MiddleName (#PCDATA)>
+<!ELEMENT Sex (#PCDATA)>
+<!ELEMENT DateOfBirth (#PCDATA)>
+<!ELEMENT Passport (#PCDATA)>
+<!ELEMENT IssuedBy (#PCDATA)>
+<!ELEMENT IssuedDate (#PCDATA)>
+<!ELEMENT Login (#PCDATA)>
+<!ELEMENT Password (#PCDATA)>
+<!ELEMENT Phone (#PCDATA)>
+<!ELEMENT Address (Country, City, Street, Building, Flat)>
+<!ELEMENT DriverLicence (Serial, Cathegory, Active, Issued, Expire)>
+<!ELEMENT Orders (Car)+>
+<!ELEMENT Country (#PCDATA)>
+<!ELEMENT City (#PCDATA)>
+<!ELEMENT Street (#PCDATA)>
+<!ELEMENT Building (#PCDATA)>
+<!ELEMENT Flat (#PCDATA)>
+<!ELEMENT Serial (#PCDATA)>
+<!ELEMENT Cathegory (#PCDATA)>
+<!ELEMENT Active (#PCDATA)>
+<!ELEMENT Issued (#PCDATA)>
+<!ELEMENT Expire (#PCDATA)>
+<!ELEMENT Car (Available, RecentInsurance, Manufacturer, Model, Year, Color, Transmission, Photos, Rents)>
+<!ATTLIST Car id CDATA #REQUIRED>
+<!ELEMENT Available (#PCDATA)>
+<!ELEMENT RecentInsurance (#PCDATA)>
+<!ELEMENT Manufacturer (#PCDATA)>
+<!ELEMENT Model (#PCDATA)>
+<!ELEMENT Year (#PCDATA)>
+<!ELEMENT Color (#PCDATA)>
+<!ELEMENT Transmission (#PCDATA)>
+<!ELEMENT Photos (Photo)+>
+<!ELEMENT Photo EMPTY>
+<!ATTLIST Photo href CDATA #REQUIRED>
+<!ELEMENT Rents (Rent)+>
+<!ELEMENT Rent (BeginDate, EndDate)>
+<!ATTLIST Rent id CDATA #REQUIRED>
+<!ELEMENT BeginDate (#PCDATA)>
+<!ELEMENT EndDate (#PCDATA)>

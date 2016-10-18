@@ -27,26 +27,24 @@ public class VarMatrix extends Var implements IVariable {
     @Override
     public Var add(Var var) throws VarDimensionException {
         if (var instanceof VarFloat) {
-        	VarMatrix res = new VarMatrix(value);
-            for (int i=0; i<value.length; i++) {
-            	for (int j=0; j<value[0].length; j++) {
-            		res.value[i][j] = res.value[i][j] + ((VarFloat) var).getValue();
+        	for (int i=0; i<this.value.length; i++) {
+            	for (int j=0; j<this.value[0].length; j++) {
+            		this.value[i][j] = this.value[i][j] + ((VarFloat) var).getValue();
             	}
             }
-            return res;
+            return this;
         }
         else if (var instanceof VarMatrix) {
-        	if (((VarMatrix) var).value.length != value.length ||
-        		((VarMatrix) var).value[0].length != value[0].length)
+        	if (((VarMatrix) var).value.length != this.value.length ||
+        		((VarMatrix) var).value[0].length != this.value[0].length)
         	    throw new VarDimensionException("Cannot add matrices: dimensions not match.");
 
-        	VarMatrix res = new VarMatrix(value);
-            for (int i=0; i<value.length; i++) {
-            	for (int j=0; j<value[0].length; j++) {
-            		res.value[i][j] = res.value[i][j] + ((VarMatrix) var).value[i][j];
+        	for (int i=0; i<this.value.length; i++) {
+            	for (int j=0; j<this.value[0].length; j++) {
+            		this.value[i][j] = this.value[i][j] + ((VarMatrix) var).value[i][j];
             	}
             }
-            return res;
+            return this;
         }
         else return super.add(this);
     }
@@ -54,26 +52,24 @@ public class VarMatrix extends Var implements IVariable {
     @Override
     public Var sub(Var var) throws VarDimensionException {
         if (var instanceof VarFloat) {
-        	VarMatrix res = new VarMatrix(value);
-            for (int i=0; i<value.length; i++) {
-            	for (int j=0; j<value[0].length; j++) {
-            		res.value[i][j] = res.value[i][j] - ((VarFloat) var).getValue();
+        	for (int i=0; i<this.value.length; i++) {
+            	for (int j=0; j<this.value[0].length; j++) {
+            		this.value[i][j] = this.value[i][j] - ((VarFloat) var).getValue();
             	}
             }
-            return res;
+            return this;
         }
         else if (var instanceof VarMatrix) {
-            if (((VarMatrix) var).value.length != value.length ||
-        		((VarMatrix) var).value[0].length != value[0].length)
-                throw new VarDimensionException("Cannot substract matrices: dimensions not match.");
+            if (((VarMatrix) var).value.length != this.value.length ||
+        		((VarMatrix) var).value[0].length != this.value[0].length)
+                throw new VarDimensionException("Cannot subtract matrices: dimensions not match.");
 
-        	VarMatrix res = new VarMatrix(value);
-            for (int i=0; i<value.length; i++) {
-            	for (int j=0; j<value[0].length; j++) {
-            		res.value[i][j] = res.value[i][j] - ((VarMatrix) var).value[i][j];
+        	for (int i=0; i<this.value.length; i++) {
+            	for (int j=0; j<this.value[0].length; j++) {
+            		this.value[i][j] = this.value[i][j] - ((VarMatrix) var).value[i][j];
             	}
             }
-            return res;
+            return this;
         }
         else return super.sub(this);
     }
@@ -81,39 +77,38 @@ public class VarMatrix extends Var implements IVariable {
     @Override
     public Var mul(Var var) throws VarDimensionException {
         if (var instanceof VarFloat) {
-        	VarMatrix res = new VarMatrix(value);
-            for (int i=0; i<value.length; i++) {
-            	for (int j=0; j<value[0].length; j++) {
-            		res.value[i][j] = res.value[i][j] * ((VarFloat) var).getValue();
+        	for (int i=0; i<this.value.length; i++) {
+            	for (int j=0; j<this.value[0].length; j++) {
+            		this.value[i][j] = this.value[i][j] * ((VarFloat) var).getValue();
             	}
+            }
+            return this;
+        }
+        else if (var instanceof VarVector) {
+            if (this.value[0].length != ((VarVector) var).getValue().length)
+                throw new VarDimensionException("Cannot multiply matrix*vector: dimensions not match.");
+
+            double[] v = new double[this.value.length];
+            VarVector res = new VarVector(v);
+            for (int i=0; i<this.value.length; i++) {
+             	for (int k=0; k<this.value[0].length; k++)
+            		res.getValue()[i] += this.value[i][k] * ((VarVector) var).getValue()[k];
             }
             return res;
         }
-        else if (var instanceof VarVector) {
-            if (value[0].length != ((VarVector) var).getValue().length)
-                throw new VarDimensionException("Cannot multiply matrix*vector: dimensions not match.");
-
-            double[] v = new double[value.length];
-            VarVector res = new VarVector(v);
-            for (int i=0; i<value.length; i++) {
-             	for (int k=0; k<value[0].length; k++)
-            		res.getValue()[i] += value[i][k] * ((VarVector) var).getValue()[k];
-            }
-            return res;     	
-        }
         else if (var instanceof VarMatrix) {
-            if (value[0].length != ((VarMatrix) var).value.length)
+            if (this.value[0].length != ((VarMatrix) var).value.length)
                 throw new VarDimensionException("Cannot multiply matrices: dimensions not match.");
 
-            double[][] v = new double[value.length][((VarMatrix) var).value[0].length];
+            double[][] v = new double[this.value.length][((VarMatrix) var).value[0].length];
             VarMatrix res = new VarMatrix(v);
-            for (int i=0; i<value.length; i++) {
+            for (int i=0; i<this.value.length; i++) {
                 for (int j = 0; j<((VarMatrix) var).value[0].length; j++) {
-                	for (int k=0; k<value[0].length; k++)
-                		res.value[i][j] += value[i][k] * ((VarMatrix) var).value[k][j];
+                	for (int k=0; k<this.value[0].length; k++)
+                		res.value[i][j] += this.value[i][k] * ((VarMatrix) var).value[k][j];
                 }
             }
-            return res;     	
+            return res;
         }
         else return super.mul(this);
     }
@@ -124,13 +119,12 @@ public class VarMatrix extends Var implements IVariable {
             if ((int)((VarFloat) var).getValue() == 0)
                 throw new ArithmeticException("Caught error: division by zero!");
 
-            VarMatrix res = new VarMatrix(value);
-            for (int i=0; i<value.length; i++) {
-                for (int j=0; j<value[0].length; j++) {
-                    res.value[i][j] = res.value[i][j] / ((VarFloat) var).getValue();
+            for (int i=0; i<this.value.length; i++) {
+                for (int j=0; j<this.value[0].length; j++) {
+                    this.value[i][j] = this.value[i][j] / ((VarFloat) var).getValue();
                 }
             }
-            return res;
+            return this;
         }
         else return super.div(this);
     }

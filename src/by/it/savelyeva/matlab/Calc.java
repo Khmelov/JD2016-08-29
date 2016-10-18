@@ -54,6 +54,7 @@ public class Calc {
 	}
 
 	public static String calculate(String expression) throws VarDimensionException {
+		String resultStr = "... : Operation is impossible";
 		String strReversePolishNotation = Parser.sortingStation(expression, hm);
 		updateHashMap(Parser.getStoredVariables());
 		Stack<Var> stackVar = new Stack<>();
@@ -101,10 +102,13 @@ public class Calc {
 			}
 			i++;
 		}
-		if (stackVar.size() != 1)
-			throw new IllegalStateException("Expression syntax Error");
+		if (stackVar.size() != 1) {
+			String msg = "Expression syntax Error";
+			resultStr = msg;
+			throw new IllegalStateException(msg);
+		}
 		if (stackVar.peek() != null) return stackVar.pop().toString();
-		else return "";
+		else return resultStr;
 	}
 
 	public static Calc restoreCalc(String filename) {

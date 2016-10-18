@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns:Persons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:ns="http://savelyeva.it-academy.by/xml/persons"
+          xsi:schemaLocation="http://savelyeva.it-academy.by/xml/RentCarTaskC.xsd">
+
+    <ns:Person id="12">
+        <ns:FirstName>Alexander</ns:FirstName>
+        <ns:LastName>Ivanov</ns:LastName>
+        <ns:Sex>M</ns:Sex>
+        <ns:DateOfBirth>1979-09-12</ns:DateOfBirth>
+        <ns:Passport>BM1932121</ns:Passport>
+        <ns:IssuedBy>Minsk ROVD</ns:IssuedBy>
+        <ns:IssuedDate>2010-12-15</ns:IssuedDate>
+        <ns:Login>ivan1979</ns:Login>
+        <ns:Password>password1</ns:Password>
+        <ns:Phone>+375294586954</ns:Phone>
+        <ns:Address>
+            <ns:Country>Belarus</ns:Country>
+            <ns:City>Minsk</ns:City>
+            <ns:Street>Lenina</ns:Street>
+            <ns:Building>3</ns:Building>
+            <ns:Flat>21</ns:Flat>
+        </ns:Address>
+        <ns:DriverLicence>
+				<ns:Serial>AB1252215</ns:Serial>
+				<ns:Cathegory>B</ns:Cathegory>
+				<ns:Active>true</ns:Active>
+				<ns:Issued>2010-12-20</ns:Issued>
+				<ns:Expire>2020-12-20</ns:Expire>
+		</ns:DriverLicence>
+		<ns:Orders>
+			<ns:Car id="21">
+				<ns:Available>true</ns:Available>
+				<ns:RecentInsurance>active</ns:RecentInsurance>
+				<ns:Manufacturer>Suzuki</ns:Manufacturer>
+				<ns:Model>SX4</ns:Model>
+				<ns:Year>2010</ns:Year>
+				<ns:Color>black</ns:Color>
+				<ns:Transmission>Auto</ns:Transmission>
+				<ns:Photos>
+					<ns:Photo href="http://site.com/cars/photos/?pic=231" />
+					<ns:Photo href="http://site.com/cars/photos/?pic=235" />
+				</ns:Photos>
+				<ns:Rents>
+					<ns:Rent id="222">
+						<ns:BeginDate>2012-02-10</ns:BeginDate>
+						<ns:EndDate>2012-03-10</ns:EndDate>
+					</ns:Rent>
+					<ns:Rent id="431">
+						<ns:BeginDate>2012-06-11</ns:BeginDate>
+						<ns:EndDate>2012-06-15</ns:EndDate>
+					</ns:Rent>
+				</ns:Rents>
+			</ns:Car>
+		</ns:Orders>
+    </ns:Person>
+</ns:Persons>
