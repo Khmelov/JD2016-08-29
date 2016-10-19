@@ -1,16 +1,39 @@
 package by.it.rudzko.Matlab;
 
 
-import by.it.rudzko.Matlab.Vars.Var;
+import by.it.rudzko.Matlab.Interfaces.IMessages;
+import by.it.rudzko.Matlab.Interfaces.IVar;
 import by.it.rudzko.Matlab.Vars.VarMat;
 import by.it.rudzko.Matlab.Vars.VarNum;
+import by.it.rudzko.Matlab.Vars.VarSelector;
 import by.it.rudzko.Matlab.Vars.VarVec;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class Parser {
     private String str;
-    private Var result;
+    private IVar result;
+
+    private static HashMap<String,String> operations=new HashMap<String, String>(){
+        @Override
+        public String toString() {
+            StringBuilder sb=new StringBuilder();
+            int i=1;
+            for (Entry<String, String> x : this.entrySet()) {
+                sb.append(IMessages.UNDERLINED).append(i).append(IMessages.UNDERLINED).append("\n");
+                sb.append(IMessages.DATA).append(x.getKey()).append("\n").append(IMessages.RESULT).append(x.getValue()).append("\n\n");
+                i++;
+            }
+            return sb.toString();
+        }
+    };
+    private String key=null;
+
+    public static HashMap<String, String> getOperations() {
+        return operations;
+    }
 
     public Parser(String s) {
         setFrom(s);
@@ -20,18 +43,19 @@ public class Parser {
         this.str = s;
     }
 
-    public Var getResult() {
+    public IVar getResult() {
         return result;
     }
 
-    Var go() {
-        delSpaces();
+    public IVar goParse() {
+        format();
         findBracket();
         System.out.println("Result is " + result + "\n");
+        operations.put(key, result.toString());
         return result;
     }
 
-    private void delSpaces() {
+    private void format() {
         StringBuilder sb = new StringBuilder(str);
 
         for (int i = 0; i < sb.length(); i++) {
@@ -39,6 +63,7 @@ public class Parser {
                 sb.deleteCharAt(i);
         }
         System.out.println("Expression: " + sb);
+        key=sb.toString();
         sb.insert(0, '(');
         sb.append(')');
         str = sb.toString();
@@ -63,7 +88,7 @@ public class Parser {
             }
             String subStr = sb.substring(start, end);
             sb = sb.delete(start - 1, end + 1);
-            Var v = calc(subStr);
+            IVar v = calc(subStr);
             if (start > 1) {
                 sb = sb.insert(start - 1, v.toString());
             } else {
@@ -71,14 +96,14 @@ public class Parser {
             }
             str = sb.toString();
         }
-        result = (str.charAt(0) != '{') ? new VarNum(str) : (str.charAt(1) != '{') ? new VarVec(str) : new VarMat(str);
+        result = VarSelector.getVar(str);
 
     }
 
-    private Var calc(String s) throws RuntimeException {
+    private IVar calc(String s) throws RuntimeException {
         Calculator get = new Calculator();
         String[] variables;
-        Var res;
+        IVar res;
         while ((variables = s.split("[-+*/]")).length > 2) {
             ArrayList<String> oper = new ArrayList<>();
             for (int i = 0; i < s.length(); i++) {
@@ -90,34 +115,42 @@ public class Parser {
             StringBuilder sb = new StringBuilder(s);
             int start = 0;
             int end = sb.length();
-            Var r = null;
+            IVar r = null;
             if (oper.contains("*")){
                 int pos=oper.indexOf("*");
                 String one = variables[pos];
-                Var first = (one.charAt(0) != '{') ? new VarNum(one) : (one.charAt(1) != '{') ? new VarVec(one) : new VarMat(one);
+                IVar first = VarSelector.getVar(one);
                 String two = variables[pos + 1];
-                Var second = (two.charAt(0) != '{') ? new VarNum(two) : (two.charAt(1) != '{') ? new VarVec(two) : new VarMat(two);
-                start = sb.indexOf(one);
-                end = sb.indexOf(two) + two.length();
+                IVar second = VarSelector.getVar(two);
+                int findFrom=0;
+                for (int i=0; i<pos; i++){
+                    findFrom+=variables[i].length();
+                }
+                start = sb.indexOf(one, findFrom);
+                end = sb.indexOf(two, start+one.length()) + two.length();
                 r = get.mul(first, second);
             } else if(oper.contains("/")){
-                int pos=oper.indexOf("*");
+                int pos=oper.indexOf("/");
                 String one = variables[pos];
-                Var first = (one.charAt(0) != '{') ? new VarNum(one) : (one.charAt(1) != '{') ? new VarVec(one) : new VarMat(one);
+                IVar first = VarSelector.getVar(one);
                 String two = variables[pos + 1];
-                Var second = (two.charAt(0) != '{') ? new VarNum(two) : (two.charAt(1) != '{') ? new VarVec(two) : new VarMat(two);
-                start = sb.indexOf(one);
-                end = sb.indexOf(two) + two.length();
+                IVar second = VarSelector.getVar(two);
+                int findFrom=0;
+                for (int i=0; i<pos; i++){
+                    findFrom+=variables[i].length();
+                }
+                start = sb.indexOf(one, findFrom);
+                end = sb.indexOf(two, start+one.length()) + two.length();
                 r = get.div(first, second);
             }else {
-                for (int i = 0; i < oper.size(); i++) {
-                    String one = variables[i];
-                    Var first = (one.charAt(0) != '{') ? new VarNum(one) : (one.charAt(1) != '{') ? new VarVec(one) : new VarMat(one);
-                    String two = variables[i + 1];
-                    Var second = (two.charAt(0) != '{') ? new VarNum(two) : (two.charAt(1) != '{') ? new VarVec(two) : new VarMat(two);
-                    start = sb.indexOf(one);
-                    end = sb.indexOf(two) + two.length();
-                    switch (oper.get(i)) {
+                    String one = variables[0];
+                    IVar first = VarSelector.getVar(one);
+                    String two = variables[1];
+                    IVar second = VarSelector.getVar(two);
+                    int findFrom=variables[1].length();
+                    start = sb.indexOf(one, findFrom);
+                    end = sb.indexOf(two, start+one.length()) + two.length();
+                    switch (oper.get(0)) {
                         case "+":
                             r = get.add(first, second);
                             break;
@@ -127,17 +160,14 @@ public class Parser {
                         default:
                             System.out.println("Can't count.");
                     }
-                    break;
-                }
             }
-
-            s = sb.delete(start, end).insert(start, r.toString()).toString();
+            s = sb.delete(start, end).insert(start, r != null ? r.toString() : null).toString();
         }
 
         String one = variables[0];
-        Var first = (one.charAt(0) != '{') ? new VarNum(one) : (one.charAt(1) != '{') ? new VarVec(one) : new VarMat(one);
+        IVar first = VarSelector.getVar(one);
         String two = variables[1];
-        Var second = (two.charAt(0) != '{') ? new VarNum(two) : (two.charAt(1) != '{') ? new VarVec(two) : new VarMat(two);
+        IVar second = VarSelector.getVar(two);
         res = (s.contains("*")) ? get.mul(first, second) : (s.contains("/")) ? get.div(first, second) :
                 (s.contains("+")) ? get.add(first, second) : get.sub(first, second);
         return res;
@@ -146,8 +176,8 @@ public class Parser {
 
     private static boolean brackets(String s) throws RuntimeException {
         char[] chars = s.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            if (chars[i] == '(') {
+        for (char aChar : chars) {
+            if (aChar == '(') {
                 return true;
             }
         }

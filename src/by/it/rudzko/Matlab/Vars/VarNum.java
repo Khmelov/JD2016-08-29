@@ -1,6 +1,8 @@
 package by.it.rudzko.Matlab.Vars;
 
-public class VarNum extends Var {
+import by.it.rudzko.Matlab.Interfaces.IVar;
+
+public class VarNum implements IVar {
 
     private double num;
 
