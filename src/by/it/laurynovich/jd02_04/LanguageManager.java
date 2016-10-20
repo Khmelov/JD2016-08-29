@@ -1,4 +1,4 @@
-package by.it.laurynovich.jd02_01;
+package by.it.laurynovich.jd02_04;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
  * Created by nadabratb on 12.10.2016.
  */
 public class LanguageManager {
-    public static final String Path_I18N = "by.it.laurynovich.jd02_01.languege";
+    public static final String Path_I18N = "by.it.laurynovich.jd02_04.languege";
     private static Locale locale = Locale.ENGLISH;
     private static  ResourceBundle resourceBundle = setResource(locale);
 

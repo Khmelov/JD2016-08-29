@@ -1,4 +1,4 @@
-package by.it.laurynovich.jd01_14;
+package by.it.laurynovich.jd01.jd01_14;
 
 import java.io.*;
 import java.util.ArrayList;

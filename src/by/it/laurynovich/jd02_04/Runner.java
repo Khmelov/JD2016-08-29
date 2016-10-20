@@ -1,4 +1,4 @@
-package by.it.laurynovich.jd02_01;
+package by.it.laurynovich.jd02_04;
 
 import java.text.DateFormat;
 import java.util.Date;
