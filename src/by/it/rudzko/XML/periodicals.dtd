@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT periodicals (journals, papers)>
+<!ELEMENT journals (journal)+>
+<!ELEMENT papers (paper)+>
+<!ELEMENT journal (name, topic, frequency, site, index)>
+<!ATTLIST journal language (blr|ru|ru_blr) #REQUIRED>
+<!ELEMENT paper (name, topic, frequency, site, index)>
+<!ATTLIST paper language (blr|ru|ru_blr) #REQUIRED>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT topic (#PCDATA)>
+<!ELEMENT frequency (#PCDATA)>
+<!ELEMENT site (#PCDATA)>
+<!ELEMENT index (#PCDATA)>
