@@ -1,11 +1,12 @@
 package by.it.rudzko.Matlab.Vars;
 
-import by.it.rudzko.Matlab.Patterns;
+
+import by.it.rudzko.Matlab.Interfaces.IVar;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class VarMat extends Var {
+public class VarMat implements IVar {
 
     private double [][] mat;
 
@@ -37,7 +38,7 @@ public class VarMat extends Var {
         String[] rows=str.trim().split("},");
         String[] cols=rows[0].split(",");
         mat=new double[rows.length][cols.length];
-        Matcher m= Pattern.compile(Patterns.exVal).matcher(str);
+        Matcher m= Pattern.compile("((-?)([0-9.])+)").matcher(str);
         double [] ex=new double[rows.length*cols.length];
         int exC=0;
         while (m.find()) {
