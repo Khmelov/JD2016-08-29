@@ -1,0 +1,3 @@
+message.welcome=Добры дзень!
+message.username=Уладзимир Вашукевич
+message.question=Што ты робиш?
