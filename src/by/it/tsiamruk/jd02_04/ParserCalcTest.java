@@ -16,4 +16,12 @@ public class ParserCalcTest {
         assertTrue("Parser Calc Error", res);
     }
 
+    @Test
+    public void calcMatrix() throws Exception {
+        Parser p = new Parser();
+        Var var = p.calculation("{(2,3,5),(1,2,3),(2,3,5)} * {1,2,3}");
+        Boolean res = var.toString().equals("{5.0, 6.0, 15.0}");
+        assertTrue("Parser calc Error", res);
+    }
+
 }
