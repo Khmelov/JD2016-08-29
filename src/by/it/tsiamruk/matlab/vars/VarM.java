@@ -70,7 +70,7 @@ public class VarM extends Var implements IVar {
     public String toString() {
         StringBuilder res = new StringBuilder("{");
         for (int i = 0; i < value.length; i++) {
-            res.append(Arrays.toString(value[i]).replace(" ", ""));
+            res.append(Arrays.toString(value[i]).replace(" ", "").replace("[", "(").replace("]", ")"));
             if (i < value.length - 1) res.append(",");
         }
         res.append("}");
