@@ -14,9 +14,9 @@ import java.io.IOException;
 
 public class My_Validator {
     public static void main(String[] args) {
-        String xml="src/by/it/rudzko/XML/periodicals+XSD.xml";
+        String xml="src/by/it/rudzko/XML/xml_dtd_xsd/periodicals+XSD.xml";
         SchemaFactory create=SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        File xsd=new File("src/by/it/rudzko/XML/periodicals.xsd");
+        File xsd=new File("src/by/it/rudzko/XML/xml_dtd_xsd/periodicals.xsd");
         try {
             Schema schema=create.newSchema(xsd);
             Validator v=schema.newValidator();
