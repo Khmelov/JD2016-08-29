@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <myxsd:schema   xmlns="http://www.w3.org/2001/XMLSchema"
                 xmlns:myxsd="http://www.w3.org/2001/XMLSchema"
-                targetNamespace="by.it.rudzko.XML"
-                xmlns:ok="by.it.rudzko.XML"
+                targetNamespace="http://xml_dtd_xsd.XML.rudzko.it.by/"
+                xmlns:ok="http://xml_dtd_xsd.XML.rudzko.it.by/"
                 elementFormDefault="qualified">
 
     <myxsd:group name="characteristics">

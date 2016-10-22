@@ -1,4 +1,4 @@
-package by.it.rudzko.XML.SAX_StAX_DOM;
+package by.it.rudzko.XML.jd02_08_SAX_StAX_DOM;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

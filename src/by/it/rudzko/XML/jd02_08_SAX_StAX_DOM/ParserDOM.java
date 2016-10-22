@@ -1,7 +1,5 @@
-package by.it.rudzko.XML.SAX_StAX_DOM;
+package by.it.rudzko.XML.jd02_08_SAX_StAX_DOM;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 

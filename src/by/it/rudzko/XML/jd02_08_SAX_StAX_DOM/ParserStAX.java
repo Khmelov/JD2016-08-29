@@ -1,11 +1,11 @@
-package by.it.rudzko.XML.SAX_StAX_DOM;
+package by.it.rudzko.XML.jd02_08_SAX_StAX_DOM;
 
 import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import javax.xml.stream.XMLStreamConstants;
 
 public class ParserStAX {
     private static StringBuilder sb=new StringBuilder();
@@ -14,12 +14,13 @@ public class ParserStAX {
         return sb;
     }
 
-    public static void parseStax(String fromFile){
+    public static void parseStax(String fromFile) throws XMLStreamException {
         System.out.println("StAX parsing...");
         String tab="";
+        XMLStreamReader read=null;
         try{
             XMLInputFactory inpF=XMLInputFactory.newInstance();
-            XMLStreamReader read=inpF.createXMLStreamReader(new FileInputStream(fromFile));
+            read=inpF.createXMLStreamReader(new FileInputStream(fromFile));
             StringBuilder text=new StringBuilder();
             while (read.hasNext()){
                 int type=read.next();
@@ -48,10 +49,16 @@ public class ParserStAX {
                 }
             }
             System.out.println("StAX finished and wrote parsed data to txt file.");
+
         } catch (FileNotFoundException e) {
             System.out.println("File not found.");
         } catch (XMLStreamException e) {
             System.out.println("In-Out exception"+e.getMessage());
+        }
+        finally {
+                if (read != null) {
+                    read.close();
+                }
         }
     }
 }

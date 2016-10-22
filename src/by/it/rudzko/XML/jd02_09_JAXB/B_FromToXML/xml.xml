@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<periodicals xmlns="by.it.rudzko.XML"
-             xmlns:okr="http://www.w3.org/2001/XMLSchema-instance"
-             okr:schemaLocation="by.it.rudzko.XML periodicals.xsd">
+<periodicals>
     <journals>
 
         <journal language="blr">
