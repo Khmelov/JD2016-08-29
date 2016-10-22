@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://savelyeva.it.by/jd_02_09/task_c/xml/persons"
+        xmlns:tns="http://savelyeva.it.by/jd_02_09/task_c/xml/persons"
+        elementFormDefault="qualified">
+
+    <element name="Persons">
+        <complexType>
+            <sequence>
+                <element name="Person" 
+                         type="tns:Person" 
+                         minOccurs="1" 
+                         maxOccurs="unbounded" />
+            </sequence>
+        </complexType>
+    </element>    
+    <complexType name="Person">
+        <sequence>
+            <element name="FirstName" type="tns:Name" />
+            <element name="LastName" type="tns:Name" />
+            <element name="MiddleName" type="tns:Name" minOccurs="0" maxOccurs="1"/>
+            <element name="Sex">
+            	<simpleType>
+                	<restriction base="string">
+                    	<enumeration value="M"/>
+                    	<enumeration value="F"/>
+                	</restriction>
+            	</simpleType>
+            </element>
+            <element name="DateOfBirth" type="date" />
+            <element name="Passport" type="tns:Serial" />
+            <element name="IssuedBy" type="string" />
+            <element name="IssuedDate" type="date" />
+            <element name="Login" type="tns:Login" />
+            <element name="Password" type="string" />
+            <element name="Phone" type="tns:Phone" minOccurs="1" maxOccurs="5" />
+            <element name="Address" type="tns:Address" minOccurs="1" maxOccurs="3" />
+            <element name="DriverLicence" type="tns:DriverLicence" />
+            <element name="Orders" type="tns:Orders" />
+        </sequence>
+        <attribute name="id" type="positiveInteger" use="required" />
+    </complexType>
+    <simpleType name="Name">
+        <restriction base="string">
+            <pattern value="[A-Z]{1}[a-z]{1,20}" />
+        </restriction>
+    </simpleType>
+        <simpleType name="NameOptional">
+        <restriction base="string">
+            <pattern value="|[A-Z]{1}[a-z]{1,20}" />
+        </restriction>
+    </simpleType>
+    <simpleType name="Serial">
+        <restriction base="string">
+            <pattern value="[A-Z]{2}[0-9]{7}" />
+        </restriction>
+    </simpleType>
+    <simpleType name="Login">
+        <restriction base="string">
+            <pattern value="([a-zA-Z])[a-zA-Z0-9]{1,19}" />
+        </restriction>
+    </simpleType>
+    <simpleType name="Phone">
+        <restriction base="string">
+            <pattern value="\+[0-9]{12}" />
+        </restriction>
+    </simpleType>
+    <simpleType name="Year">
+         <restriction base="positiveInteger">
+               <minInclusive value="1980"/>
+               <maxInclusive value="2020"/>
+         </restriction>
+    </simpleType>
+    <complexType name="Address">
+        <sequence>
+            <element name="Country" type="string" />
+            <element name="City" type="tns:Name" />
+            <element name="Street" type="tns:Name" />
+            <element name="Building" type="string" />
+            <element name="Flat" type="string" />
+        </sequence>
+    </complexType>
+    <complexType name="DriverLicence">
+        <sequence>
+            <element name="Serial" type="tns:Serial" />
+            <element name="Cathegory">
+                <simpleType>
+                	<restriction base="string">
+                    	<pattern value="[A]?[B]?[C]?[D]?[E]?[AM]?" />
+                	</restriction>
+            	</simpleType>
+            </element>
+            <element name="Active" type="boolean" />
+            <element name="Issued" type="date" />
+            <element name="Expire" type="date" />
+        </sequence>
+    </complexType>
+    <complexType name="Orders">
+        <sequence>
+            <element name="Car" type="tns:Car" />
+        </sequence>
+    </complexType>
+    <complexType name="Car">
+        <sequence>
+            <element name="Available" type="boolean" />
+            <element name="RecentInsurance">
+                <simpleType>
+                	<restriction base="string">
+                    	<enumeration value="active"/>
+                    	<enumeration value="expired"/>
+                    	<enumeration value="none"/>
+                	</restriction>
+            	</simpleType>
+            </element>
+            <element name="Manufacturer" type="tns:Name" />
+            <element name="Model" type="string" />
+            <element name="Year" type="tns:Year" />
+            <element name="Color" type="string" />
+            <element name="Transmission">
+                <simpleType>
+                	<restriction base="string">
+                    	<enumeration value="Auto"/>
+                    	<enumeration value="Mechanic"/>
+                	</restriction>
+            	</simpleType>
+            </element>
+            <element name="Photos" type="tns:Photos" />
+            <element name="Rents" type="tns:Rents" />
+        </sequence>
+        <attribute name="id" type="positiveInteger" use="required" />
+    </complexType>
+    <complexType name="Photos">
+        <sequence>
+            <element name="Photo" 
+            		type="tns:Photo"  
+            		minOccurs="1" 
+                    maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <complexType name="Photo">
+        <attribute name="href" type="string" use="required" />
+    </complexType>
+    <complexType name="Rents">
+        <sequence>
+            <element name="Rent" 
+            		type="tns:Rent"  
+            		minOccurs="0" 
+                    maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <complexType name="Rent">
+        <sequence>
+            <element name="BeginDate" type="date" />
+            <element name="EndDate" type="date" />
+        </sequence>
+		<attribute name="id" type="positiveInteger" use="required" />
+    </complexType>
+</schema>
