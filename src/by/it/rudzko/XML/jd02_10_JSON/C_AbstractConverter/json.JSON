@@ -1,0 +1,90 @@
+{
+  "journals": {
+    "journal": [
+      {
+        "name": "Дзеяслоў",
+        "topic": "Literature and Art",
+        "frequency": "2 months",
+        "site": "http://dziejaslou.by/",
+        "index": 74813,
+        "language": "BLR"
+      },
+      {
+        "name": "Маладосць",
+        "topic": "Literature and Art",
+        "frequency": "month",
+        "site": "http://zviazda.by/be/edition/maladosc/",
+        "index": 74957,
+        "language": "BLR"
+      },
+      {
+        "name": "Алеся",
+        "topic": "For Women",
+        "frequency": "month",
+        "site": "http://www.alesyamag.by/",
+        "index": 74995,
+        "language": "RU_BLR"
+      },
+      {
+        "name": "Планета",
+        "topic": "Politics",
+        "frequency": "month",
+        "site": "http://planeta.by/",
+        "index": 75036,
+        "language": "RU"
+      },
+      {
+        "name": "Женский Журнал",
+        "topic": "For Women",
+        "frequency": "month",
+        "site": "http://ladys.by/",
+        "index": 74810,
+        "language": "RU"
+      }
+    ]
+  },
+  "papers": {
+    "paper": [
+      {
+        "name": "Наша Ніва",
+        "topic": "Politics and Society",
+        "frequency": "month",
+        "site": "http://nn.by/",
+        "index": 63125,
+        "language": "BLR"
+      },
+      {
+        "name": "Культура",
+        "topic": "Educational",
+        "frequency": "week",
+        "site": "http://kimpress.by/",
+        "index": 63875,
+        "language": "BLR"
+      },
+      {
+        "name": "Беларусь Сегодня",
+        "topic": "Politics and Society",
+        "frequency": "5 times a week",
+        "site": "http://www.sb.by/",
+        "index": 63889,
+        "language": "RU_BLR"
+      },
+      {
+        "name": "Минский курьер",
+        "topic": "Society",
+        "frequency": "3 times a week",
+        "site": "http://mk.by/",
+        "index": 63395,
+        "language": "RU"
+      },
+      {
+        "name": "Прессбол",
+        "topic": "Sports",
+        "frequency": "3 times a week",
+        "site": "http://www.pressball.by/",
+        "index": 63115,
+        "language": "RU"
+      }
+    ]
+  }
+}
