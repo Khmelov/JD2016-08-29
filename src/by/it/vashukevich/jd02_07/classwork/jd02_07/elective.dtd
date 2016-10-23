@@ -1,0 +1,11 @@
+<!ELEMENT Elective (Course)+>
+<!ELEMENT Course (Title,Teachers,SumStudents,NumberOfHours,CourseStart)>
+<!ELEMENT Title (#PCDATA)>
+<!ELEMENT Teachers (Teacher)+>
+<!ELEMENT Teacher (SurName,Name,Patronymic)>
+<!ELEMENT SurName (#PCDATA)>
+<!ELEMENT Name (#PCDATA)>
+<!ELEMENT Patronymic (#PCDATA)>
+<!ELEMENT SumStudents (#PCDATA)>
+<!ELEMENT NumberOfHours (#PCDATA)>
+<!ELEMENT CourseStart (#PCDATA)>
