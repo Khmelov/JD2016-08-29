@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://artiuschik.it-academy.by/xml/students"
+        xmlns:tns="http://artiuschik.it-academy.by/xml/students"
+        elementFormDefault="qualified">
+    <element name="Students">
+        <complexType>
+            <sequence>
+                <element name="Student"
+                         type="tns:Student"
+                         minOccurs="1"
+                         maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="Student">
+        <sequence>
+            <element name="Name" type="string"/>
+            <element name="Surname" type="string"/>
+            <element name="Course" type="string"/>
+            <element name="Tests"  type="tns:Tests"/>
+            <element name="Results" type="tns:Results"/>
+        </sequence>
+        <attribute name="id" type="positiveInteger"></attribute>
+    </complexType>
+    <complexType name="Tests">
+        <sequence>
+        <element name="Test" type="tns:Test" maxOccurs="unbounded"/>
+        </sequence>
+            </complexType>
+    <complexType name="Test">
+        <sequence>
+            <element name="question" maxOccurs="unbounded">
+            <complexType>
+                <simpleContent>
+                    <extension base="string">
+                        <attribute name="complexity"/>
+                    </extension>
+                </simpleContent>
+            </complexType>
+        </element>
+        </sequence>
+        <attribute name="subject" type="string"></attribute>
+    </complexType>
+    <complexType name="Results">
+        <sequence>
+            <element name="result" maxOccurs="unbounded">
+                <complexType>
+                    <simpleContent>
+                        <extension base="string">
+                            <attribute name="subject"/>
+                        </extension>
+                    </simpleContent>
+                </complexType>
+            </element>
+        </sequence>
+    </complexType>
+</schema>
