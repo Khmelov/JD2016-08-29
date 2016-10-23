@@ -1,6 +1,7 @@
 package by.it.tsiamruk.matlab.vars;
 
 
+import by.it.tsiamruk.matlab.Patterns;
 import by.it.tsiamruk.matlab.interfaces.IVar;
 
 import java.util.ArrayList;
@@ -18,7 +19,10 @@ public class VarM extends Var implements IVar {
     }
 
     public VarM(String str) {
-        this.value = ((VarM) setFromString(str)).getValue();
+        if (!str.equals(""))
+            setFrom(str);
+        else
+            System.out.println("Пустая строка");
     }
 
     //getters and setters
@@ -35,30 +39,25 @@ public class VarM extends Var implements IVar {
      *
      * @param str input string
      */
-    public Var setFromString(String str) {
-        //разбиваю на строку на "ряды массива"
-        Pattern rows = Pattern.compile("([0-9].?[0-9]*,?)+");
-        Matcher matchRows = rows.matcher(str);
-        ArrayList<String> row = new ArrayList<>();
-        while (matchRows.find()) {
-            row.add(matchRows.group());
-        }
-        //иницализация будущей матрицы
-        double[][] result = new double[row.size()][(row.get(0)).split(",").length];
-        //regex для поиска чисел в строке
-        Pattern pattern = Pattern.compile("^[-]?[0-9]*[.]?[0-9]*$");
-        Matcher matcher;
-        for (int i = 0; i < row.size(); i++) {
-            String[] elements = row.get(i).split(",");
-            for (int j = 0; j < elements.length; j++) {
-                StringBuilder sb = new StringBuilder(elements[j]);
-                matcher = pattern.matcher(sb);
-                if (matcher.find()) {
-                    result[i][j] = Double.parseDouble(matcher.group());
-                }
+    @Override
+    public void setFrom(String str) {
+        ArrayList<String> rows = new ArrayList<>();
+        Pattern findRow = Pattern.compile(Patterns.exVec);
+        Matcher m = findRow.matcher(str);
+        while (m.find())
+            rows.add(m.group());
+        value = new double[rows.size()][];
+        for (int i = 0; i < rows.size(); i++) {
+            String[] elem = rows.get(i).split(",");
+            double[] values = new double[elem.length];
+            m = Pattern.compile(Patterns.exVal).matcher(rows.get(i));
+            int j = 0;
+            while (m.find()) {
+                values[j] = Double.parseDouble(m.group());
+                ++j;
             }
+            value[i] = values;
         }
-        return new VarM(result);
     }
 
     /**
@@ -70,15 +69,12 @@ public class VarM extends Var implements IVar {
     public String toString() {
         StringBuilder res = new StringBuilder("{");
         for (int i = 0; i < value.length; i++) {
-            res.append(Arrays.toString(value[i]).replace(" ", ""));
+            res.append(Arrays.toString(value[i]).replace(" ", "").replace("[", "{").replace("]", "}"));
             if (i < value.length - 1) res.append(",");
         }
         res.append("}");
         return res.toString();
     }
 
-    @Override
-    public void setFrom(String str) {
 
-    }
 }
