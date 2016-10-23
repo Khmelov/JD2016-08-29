@@ -6,7 +6,7 @@ class ConverterFactory {
     }
 
     AbstractConverter createConverterBuilder(String typeParser, Class beanClass){
-        Direction direction= Direction.valueOf(typeParser.toUpperCase());
+        Direction direction=Direction.valueOf(typeParser.toUpperCase());
         switch (direction) {
             case XML_TO_JSON:
             {
