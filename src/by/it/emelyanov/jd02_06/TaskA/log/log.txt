@@ -1,0 +1,14 @@
+Exceptions:
+
+Деление на 0:  java.lang.ArithmeticException: / by zero Oct 19, 2016 3:26:22 PM
+Недопустимый размер буфера:  java.lang.NegativeArraySizeException Oct 19, 2016 3:26:29 PM
+Недопустимый размер буфера:  java.lang.NegativeArraySizeException Oct 19, 2016 3:26:30 PM
+
+Недопустимый размер буфера:  java.lang.NegativeArraySizeException Oct 22, 2016 12:51:45 PM
+Недопустимый размер буфера:  java.lang.NegativeArraySizeException Oct 22, 2016 12:51:47 PM
+Недопустимый размер буфера:  java.lang.NegativeArraySizeException Oct 22, 2016 1:09:36 PM
+Недопустимый размер буфера:  java.lang.NegativeArraySizeException Oct 22, 2016 1:09:39 PM
+Деление на 0:  java.lang.ArithmeticException: / by zero Oct 22, 2016 1:09:40 PM
+Недопустимый размер буфера:  java.lang.NegativeArraySizeException Oct 22, 2016 1:09:42 PM
+Недопустимый размер буфера:  java.lang.NegativeArraySizeException Oct 22, 2016 1:09:43 PM
+Недопустимый размер буфера:  java.lang.NegativeArraySizeException Oct 22, 2016 1:09:44 PM
