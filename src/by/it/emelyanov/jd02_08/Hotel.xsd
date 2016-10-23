@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://jd02_08.emelyanov.it.by/xml/Hotels"
+        xmlns:tns="http://jd02_08.emelyanov.it.by/xml/Hotels"
+        elementFormDefault="qualified">
+
+    <element name="Hotels">
+        <complexType>
+            <sequence>
+                <element name="Hotel"
+                         type="tns:Hotel"
+                         maxOccurs="unbounded">
+
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Hotel">
+        <sequence>
+
+            <element name="Clients">
+                <complexType>
+                    <sequence>
+                        <element name="client" maxOccurs="unbounded" minOccurs="0">
+                            <complexType>
+                                <sequence>
+                                    <element type="string" name="name"/>
+                                    <element type="string" name="surname"/>
+                                    <element type="string" name="middleName"/>
+                                    <element type="string" name="email"/>
+                                    <element type="string" name="passport"/>
+                                    <element type="string" name="login"/>
+                                    <element type="string" name="password"/>
+                                </sequence>
+                                <attribute type="byte" name="client_id" use="optional"/>
+                            </complexType>
+                        </element>
+                    </sequence>
+                </complexType>
+            </element>
+
+            <element name="Apartments">
+                <complexType>
+                    <sequence>
+                        <element name="apartment" maxOccurs="unbounded" minOccurs="0">
+                            <complexType>
+                                <sequence>
+                                    <element type="float" name="floor"/>
+                                    <element type="float" name="room_number"/>
+                                    <element type="float" name="places"/>
+                                    <element type="string" name="category"/>
+                                    <element type="float" name="cost"/>
+                                    <element type="string" name="status"/>
+                                </sequence>
+                                <attribute type="byte" name="apartment_id" use="optional"/>
+                            </complexType>
+                        </element>
+                    </sequence>
+                </complexType>
+            </element>
+
+            <element name="Orders">
+                <complexType>
+                    <sequence>
+                        <element name="order" maxOccurs="unbounded" minOccurs="0">
+                            <complexType>
+                                <sequence>
+                                    <element type="float" name="user_id"/>
+                                    <element type="float" name="apartment_id"/>
+                                    <element type="string" name="arrive_date"/>
+                                    <element type="string" name="return_date"/>
+                                    <element type="float" name="bill"/>
+                                </sequence>
+                                <attribute type="byte" name="order_id" use="optional"/>
+                            </complexType>
+                        </element>
+                    </sequence>
+                </complexType>
+            </element>
+
+        </sequence>
+        <attribute type="string" name="name"/>
+    </complexType>
+
+</schema>

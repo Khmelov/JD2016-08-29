@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Hotels xmlns="http://jd02_08.emelyanov.it.by/xml/Hotels"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://jd02_08.emelyanov.it.by/xml/Hotels Hotel.xsd">
+    <Hotel name="Minsk Hotel">
+        <Clients>
+            <client client_id="1">
+                <name>
+                    Сергей
+                </name>
+                <surname>
+                    Рыбкин
+                </surname>
+                <middleName>
+                    Владимирович
+                </middleName>
+                <email>
+                    serp@gmail.com
+                </email>
+                <passport>
+                    KH3125325
+                </passport>
+                <login>
+                    serg
+                </login>
+                <password>
+                    123qwe
+                </password>
+            </client>
+            <client client_id="2">
+                <name>
+                    Павел
+                </name>
+                <surname>
+                    Свободин
+                </surname>
+                <middleName>
+                    Владимирович
+                </middleName>
+                <email>
+                    pavel@mail.ru
+                </email>
+                <passport>
+                    KH1225253
+                </passport>
+                <login>
+                    pashka
+                </login>
+                <password>
+                    1qa2ws3ed
+                </password>
+            </client>
+        </Clients>
+        <Apartments>
+            <apartment apartment_id="1">
+                <floor>
+                    12
+                </floor>
+                <room_number>
+                    65
+                </room_number>
+                <places>
+                    2
+                </places>
+                <category>
+                    basic
+                </category>
+                <cost>
+                    45
+                </cost>
+                <status>
+                    true or false
+                </status>
+            </apartment>
+            <apartment apartment_id="2">
+                <floor>
+                    6
+                </floor>
+                <room_number>
+                    34
+                </room_number>
+                <places>
+                    1
+                </places>
+                <category>
+                    luxury
+                </category>
+                <cost>
+                    350
+                </cost>
+                <status>
+                    true or false
+                </status>
+            </apartment>
+        </Apartments>
+        <Orders>
+            <order order_id="1">
+                <user_id>
+                    1
+                </user_id>
+                <apartment_id>
+                    1
+                </apartment_id>
+                <arrive_date>
+                    19.10.2016
+                </arrive_date>
+                <return_date>
+                    20.10.2016
+                </return_date>
+                <bill>
+                    45
+                </bill>
+            </order>
+            <order order_id="2">
+                <user_id>
+                    2
+                </user_id>
+                <apartment_id>
+                    2
+                </apartment_id>
+                <arrive_date>
+                    16.10.2016
+                </arrive_date>
+                <return_date>
+                    20.10.2016
+                </return_date>
+                <bill>
+                    350
+                </bill>
+            </order>
+        </Orders>
+    </Hotel>
+</Hotels>
