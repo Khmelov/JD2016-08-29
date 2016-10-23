@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Persons xmlns="http://senchenko.it-academy.by/xml/Persons"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://senchenko.it-academy.by/xml/Persons ad.xsd"
+>
+    <Person>
+        <Email>
+            ivanov@mail.ru
+        </Email>
+        <Nickname>
+            Ivan1988
+        </Nickname>
+        <Password>
+            01011988
+        </Password>
+        <Ads>
+            <Ad>
+                <Description>
+                    Хорошая квартира.
+                </Description>
+                <Address>
+                    Хоружей 13-12
+                </Address>
+                <Floor>
+                    3
+                </Floor>
+                <Floors>
+                    5
+                </Floors>
+                <Square>
+                    49.0
+                </Square>
+            </Ad>
+
+            <Ad>
+                <Description>
+                    Очень хорошая квартира.
+                </Description>
+                <Address>
+                    Хоружей 13-12
+                </Address>
+                <Floor>
+                    23
+                </Floor>
+                <Floors>
+                    25
+                </Floors>
+                <Square>
+                    79.0
+                </Square>
+            </Ad>
+
+        </Ads>
+    </Person>
+</Persons>
