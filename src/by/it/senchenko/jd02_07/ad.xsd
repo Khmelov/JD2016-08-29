@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://akhmelev.it-academy.by/xml/Persons"
-        xmlns:tns="http://akhmelev.it-academy.by/xml/Persons"
+        targetNamespace="http://senchenko.it-academy.by/xml/Persons"
+        xmlns:tns="http://senchenko.it-academy.by/xml/Persons"
         elementFormDefault="qualified">
     <element name="Persons">
        <complexType>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Persons xmlns="http://akhmelev.it-academy.by/xml/Persons"
+<Persons xmlns="http://senchenko.it-academy.by/xml/Persons"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://akhmelev.it-academy.by/xml/Persons ad.xsd"
+         xsi:schemaLocation="http://senchenko.it-academy.by/xml/Persons ad.xsd"
 >
     <Person>
         <Email>
