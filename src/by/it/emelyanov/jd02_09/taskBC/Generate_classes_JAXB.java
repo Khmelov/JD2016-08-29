@@ -1,6 +1,6 @@
 package by.it.emelyanov.jd02_09.taskBC;
 
-import by.it.emelyanov.jd02_09.classes.Hotels;
+import by.it.emelyanov.jd02_09.xml.hotels.Hotels;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
