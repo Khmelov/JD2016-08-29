@@ -1,7 +1,4 @@
-package by.it.laurynovich.jd01_13;
-
-import java.util.ArrayList;
-import java.util.List;
+package by.it.laurynovich.jd01.jd01_13;
 
 public class TaskA {
     static void taskA(){

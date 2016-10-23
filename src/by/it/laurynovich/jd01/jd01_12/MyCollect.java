@@ -1,4 +1,4 @@
-package by.it.laurynovich.jd01_12;
+package by.it.laurynovich.jd01.jd01_12;
 
 import java.util.HashSet;
 import java.util.Set;

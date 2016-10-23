@@ -1,4 +1,4 @@
-package by.it.laurynovich.jd01_15;
+package by.it.laurynovich.jd01.jd01_15;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -12,10 +12,8 @@ import java.util.regex.Pattern;
  */
 public class Task15B {
     public static void taskB() {
-        /*
-        * @param
-        *
-        *
+        /**
+         *   hjghkg
         * */
         String src = System.getProperty("user.dir");
 
@@ -36,7 +34,7 @@ public class Task15B {
             System.out.println("file not read");
         }
 
-        Pattern pattern = Pattern.compile("/\\*((.|\\n)+\\*/)?/");
+        Pattern pattern = Pattern.compile("/\\*(?:.|[\r\n])*?\\*/");
         Matcher matcher = pattern.matcher(sb);
         int pos = 0;
         while (matcher.find(pos)) {
