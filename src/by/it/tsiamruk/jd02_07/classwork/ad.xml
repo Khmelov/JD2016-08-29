@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE Persons SYSTEM "ad.dtd">
+<!DOCTYPE Persons SYSTEM
+        "/Users/waldemartsiamruk/IdeaProjects/Students/JD2016-08-29v2/src/by/it/tsiamruk/jd02_07/classwork/ad.dtd">
 <Persons>
     <Person>
         <Email>

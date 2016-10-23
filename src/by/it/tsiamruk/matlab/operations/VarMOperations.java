@@ -96,7 +96,7 @@ public class VarMOperations extends VarM implements IAdd, ISub, IMul, IDiv {
             VarM res = new VarM(this.getValue());
             for (int i = 0; i < res.getValue().length; i++) {
                 for (int j = 0; j < res.getValue()[0].length; j++) {
-                    res.getValue()[i][j] += ((VarF) var).getValue();
+                    res.getValue()[i][j] = res.getValue()[i][j] * ((VarF) var).getValue();
                 }
             }
             return res;

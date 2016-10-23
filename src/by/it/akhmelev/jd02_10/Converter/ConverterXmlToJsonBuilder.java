@@ -6,8 +6,7 @@ import com.google.gson.GsonBuilder;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import java.io.StringReader;
-
+import java.io.*;
 class ConverterXmlToJsonBuilder extends AbstractConverter {
     ConverterXmlToJsonBuilder(Class beanClass) {
         super(beanClass);
