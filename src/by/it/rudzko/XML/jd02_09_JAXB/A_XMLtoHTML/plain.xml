@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<periodicals>
+    <journals>
+        <journal language="blr">
+            <name>Дзеяслоў</name>
+            <topic>Literature and Art</topic>
+            <frequency>2 months</frequency>
+            <site>http://dziejaslou.by/</site>
+            <index>74813</index>
+        </journal>
+        <journal language="blr">
+            <name>Маладосць</name>
+            <topic>Literature and Art</topic>
+            <frequency>month</frequency>
+            <site>http://zviazda.by/be/edition/maladosc/</site>
+            <index>74957</index>
+        </journal>
+        <journal language="ru_blr">
+            <name>Алеся</name>
+            <topic>For Women</topic>
+            <frequency>month</frequency>
+            <site>http://www.alesyamag.by/</site>
+            <index>74995</index>
+        </journal>
+        <journal language="ru">
+            <name>Планета</name>
+            <topic>Politics</topic>
+            <frequency>month</frequency>
+            <site>http://planeta.by/</site>
+            <index>75036</index>
+        </journal>
+        <journal language="ru">
+            <name>Женский Журнал</name>
+            <topic>For Women</topic>
+            <frequency>month</frequency>
+            <site>http://ladys.by/</site>
+            <index>74810</index>
+        </journal>
+    </journals>
+    <papers>
+        <paper language="blr">
+            <name>Наша Ніва</name>
+            <topic>Politics and Society</topic>
+            <frequency>month</frequency>
+            <site>http://nn.by/</site>
+            <index>63125</index>
+        </paper>
+        <paper language="blr">
+            <name>Культура</name>
+            <topic>Educational</topic>
+            <frequency>week</frequency>
+            <site>http://kimpress.by/</site>
+            <index>63875</index>
+        </paper>
+        <paper language="ru_blr">
+            <name>Беларусь Сегодня</name>
+            <topic>Politics and Society</topic>
+            <frequency>5 times a week</frequency>
+            <site>http://www.sb.by/</site>
+            <index>63889</index>
+        </paper>
+        <paper language="ru">
+            <name>Минский курьер</name>
+            <topic>Society</topic>
+            <frequency>3 times a week</frequency>
+            <site>http://mk.by/</site>
+            <index>63395</index>
+        </paper>
+        <paper language="ru">
+            <name>Прессбол</name>
+            <topic>Sports</topic>
+            <frequency>3 times a week</frequency>
+            <site>http://www.pressball.by/</site>
+            <index>63115</index>
+        </paper>
+    </papers>
+</periodicals>
