@@ -1,5 +1,9 @@
 package by.it.tsydzik.jd03_01;
 
+<<<<<<< 094b6d605bc142488969b293847f1331e05e2535
+=======
+import by.it.akhmelev.jd03_01.CN;
+>>>>>>> jd03_01
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.Connection;
