@@ -20,7 +20,7 @@ public class Buyer extends Thread implements IBuyer {
     public void run() {
         enterToMarket();
         chooseGoods();
-        goToOut();
+        goOutTo();
     }
 
     @Override
@@ -35,14 +35,14 @@ public class Buyer extends Thread implements IBuyer {
 
 
     @Override
-    public void goToOut() {
+    public void goOutTo() {
         System.out.println(this+" go out from Market");
 
     }
 
     @Override
     public String toString() {
-        return "Buyer № "+ number;
+        return "Buyer №"+ number;
     }
 }
 
