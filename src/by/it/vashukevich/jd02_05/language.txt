@@ -1,0 +1,3 @@
+message.welcome=Welcome!
+message.username=Vladimir Vashukevich
+message.question=What do you do?

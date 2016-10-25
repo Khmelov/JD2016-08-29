@@ -1,0 +1,3 @@
+message.welcome=Добрый день!
+message.username=Сенченко Денис
+message.question=Как ваши дела?

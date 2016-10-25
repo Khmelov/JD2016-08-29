@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Students SYSTEM "TestingSystem.dtd" >
+<Students>
+<Student id="123">
+    <Name>Ivanov</Name>
+    <Surname>Ivan</Surname>
+    <Course>2</Course>
+<Tests>
+    <Test subject="Algebra">
+        <question complexity="hard">Question №1</question>
+        <question complexity="easy">Question №2</question>
+        <question complexity="easy">Question№3</question>
+    </Test>
+    <Test subject="Geometry">
+        <question complexity="medium">Question №1</question>
+        <question complexity="medium">Question №2</question>
+        <question complexity="hard">Question№3</question>
+    </Test>
+    <Test subject="English">
+        <question complexity="easy">Question №1</question>
+        <question complexity="medium">Question №2</question>
+        <question complexity="hard">Question№3</question>
+    </Test>
+</Tests>
+    <Results>
+       <result subject="Algebra" >9</result>
+        <result subject="Geometry">8</result>
+        <result subject="English">9</result>
+    </Results>
+    </Student>
+    </Students>

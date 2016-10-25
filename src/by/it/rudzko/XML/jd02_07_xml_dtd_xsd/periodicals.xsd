@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<myxsd:schema   xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:myxsd="http://www.w3.org/2001/XMLSchema"
+                targetNamespace="http://xml_dtd_xsd.XML.rudzko.it.by/"
+                xmlns:ok="http://xml_dtd_xsd.XML.rudzko.it.by/"
+                elementFormDefault="qualified">
+
+    <myxsd:group name="characteristics">
+        <myxsd:all>
+            <myxsd:element name="name" type="string"/>
+            <myxsd:element name="topic" type="string"/>
+            <myxsd:element name="frequency" type="string"/>
+            <myxsd:element name="site" type="ok:link"/>
+            <myxsd:element name="index" type="ok:index"/>
+        </myxsd:all>
+    </myxsd:group>
+
+    <myxsd:element name="periodicals" type="ok:periodicals"/>
+
+    <myxsd:complexType name="periodicals">
+    <myxsd:sequence>
+            <myxsd:element name="journals" type="ok:journals"/>
+            <myxsd:element name="papers"  type="ok:papers"/>
+        </myxsd:sequence>
+    </myxsd:complexType>
+
+    <myxsd:complexType name="journals">
+        <myxsd:sequence>
+            <myxsd:element name="journal"
+                        type="ok:journal"
+                        minOccurs="1"
+                        maxOccurs="unbounded"
+            />
+        </myxsd:sequence>
+        </myxsd:complexType>
+
+    <myxsd:complexType name="papers">
+        <myxsd:sequence>
+            <myxsd:element name="paper"
+                        type="ok:paper"
+                        minOccurs="1"
+                        maxOccurs="unbounded"
+            />
+        </myxsd:sequence>
+    </myxsd:complexType>
+
+    <myxsd:complexType name="journal">
+            <myxsd:group ref="ok:characteristics"/>
+        <myxsd:attribute name="language" type="ok:ru_or_blr"/>
+    </myxsd:complexType>
+
+    <myxsd:complexType name="paper">
+            <myxsd:group ref="ok:characteristics"/>
+        <myxsd:attribute name="language" type="ok:ru_or_blr"/>
+    </myxsd:complexType>
+
+
+
+    <myxsd:simpleType name="ru_or_blr">
+        <myxsd:restriction base="string">
+            <myxsd:enumeration value="blr"/>
+            <myxsd:enumeration value="ru"/>
+            <myxsd:enumeration value="ru_blr"/>
+        </myxsd:restriction>
+    </myxsd:simpleType>
+
+    <myxsd:simpleType name="link">
+        <myxsd:restriction base="string">
+            <myxsd:pattern value="http://(.)+"/>
+        </myxsd:restriction>
+    </myxsd:simpleType>
+
+    <myxsd:simpleType name="index">
+        <myxsd:restriction base="integer">
+            <myxsd:minInclusive value="10000"/>
+            <myxsd:maxInclusive value="100000"/>
+        </myxsd:restriction>
+    </myxsd:simpleType>
+
+</myxsd:schema>
