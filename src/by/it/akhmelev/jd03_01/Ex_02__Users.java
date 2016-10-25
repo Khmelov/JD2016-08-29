@@ -15,11 +15,11 @@ public class Ex_02__Users {
         try (Connection connection=
                      DriverManager.getConnection
                              (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
-             Statement statement=connection.createStatement();) {
+             Statement statement=connection.createStatement()) {
             //вставляем пользователей
             statement.executeUpdate(
                     "insert into users(Login,Password,Email,FK_ROLE)"+
-                            " values('admin2','admin2','admin2@tut.by',1);"
+                            " values('ТестАдминистратор','admin2','admin2@tut.by',1);"
             );
             statement.executeUpdate(
                     "insert into users(Login,Password,Email,FK_ROLE)"+
