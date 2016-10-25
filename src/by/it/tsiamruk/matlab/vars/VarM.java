@@ -3,6 +3,7 @@ package by.it.tsiamruk.matlab.vars;
 
 import by.it.tsiamruk.matlab.Patterns;
 import by.it.tsiamruk.matlab.interfaces.IVar;
+import by.it.tsiamruk.matlab.operations.VarMOperations;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,6 +33,26 @@ public class VarM extends Var implements IVar {
 
     public void setValue(double[][] value) {
         this.value = value;
+    }
+
+    @Override
+    public Var add(Var var) {
+        return new VarMOperations(getValue()).add(var);
+    }
+
+    @Override
+    public Var sub(Var var) {
+        return new VarMOperations(getValue()).sub(var);
+    }
+
+    @Override
+    public Var mul(Var var) {
+        return new VarMOperations(getValue()).mul(var);
+    }
+
+    @Override
+    public Var div(Var var) {
+        return new VarMOperations(getValue()).div(var);
     }
 
     /**
