@@ -1,8 +1,6 @@
 package by.it.tsiamruk.matlab;
 
-import by.it.tsiamruk.matlab.operations.VarFOperations;
-import by.it.tsiamruk.matlab.operations.VarMOperations;
-import by.it.tsiamruk.matlab.operations.VarVOperations;
+import by.it.tsiamruk.jd02_06.FactoryOfVars;
 import by.it.tsiamruk.matlab.vars.Var;
 
 import java.util.ArrayList;
@@ -82,10 +80,8 @@ public class Parser {
     }
 
     private Var parseVar(String line) {
-        if (line.matches(Patterns.exVal)) return new VarFOperations(line);
-        if (line.matches(Patterns.exVec)) return new VarVOperations(line);
-        if (line.matches(Patterns.exMat)) return new VarMOperations(line);
-        else return null;
+        FactoryOfVars factoryOfVars = new FactoryOfVars();
+        return factoryOfVars.createVar(line);
     }
 
     private void oneOperation(int num) {

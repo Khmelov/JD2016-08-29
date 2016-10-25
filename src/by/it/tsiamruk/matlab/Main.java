@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 
 public class Main {
-    private static void printOneVar(Var v) {
-        if (v != null) System.out.println(v);
-    }
+    //    private static void printOneVar(Var v) {
+//        if (v != null) System.out.println(v);
+//    }
     public static void main(String[] args) {
         Logger logger = Logger.getInstance();
 
