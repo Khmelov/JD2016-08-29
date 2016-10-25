@@ -2,6 +2,7 @@ package by.it.tsiamruk.matlab.vars;
 
 
 import by.it.tsiamruk.matlab.interfaces.*;
+import by.it.tsiamruk.matlab.operations.VarFOperations;
 
 public class VarF extends Var implements IVar{
     private double value;
@@ -20,6 +21,26 @@ public class VarF extends Var implements IVar{
     //getter for our double
     public double getValue() {
         return value;
+    }
+
+    @Override
+    public Var add(Var var) {
+        return new VarFOperations(getValue()).add(var);
+    }
+
+    @Override
+    public Var sub(Var var) {
+        return new VarFOperations(getValue()).add(var);
+    }
+
+    @Override
+    public Var mul(Var var) {
+        return new VarFOperations(getValue()).add(var);
+    }
+
+    @Override
+    public Var div(Var var) {
+        return new VarFOperations(getValue()).add(var);
     }
 
     @Override
