@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://vashukevich.it-academy.by/xml/Elective"
+    xmlns:tns="http://vashukevich.it-academy.by/xml/Elective"
+    elementFormDefault="qualified">
+    <element name="Elective">
+        <complexType>
+            <sequence>
+                <element name="Course"
+                         type="tns:Course"
+                         maxOccurs="unbounded">
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Course">
+        <sequence>
+            <element name="Title" type="string"/>
+            <element name="Teachers" type="tns:Teachers"/>
+            <element name="SumStudents" type="int"/>
+            <element name="NumberOfHours" type="double"/>
+            <element name="CourseStart" type="date"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Teachers">
+        <sequence>
+            <element name="Teacher"
+                     type="tns:Teacher"
+                     minOccurs="1"
+                     maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Teacher">
+        <sequence>
+            <element name="SurName" type="string"/>
+            <element name="Name" type="string"/>
+            <element name="Patronymic" type="string"/>
+        </sequence>
+    </complexType>
+</schema>
