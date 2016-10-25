@@ -19,11 +19,11 @@ public class Ex_02__Users {
             //вставляем пользователей
             statement.executeUpdate(
                     "insert into users(Login,Password,Email,FK_ROLE)"+
-                            " values('admin','admin','admin@google.com',1);"
+                            " values('admin2','admin2','admin2@tut.by',1);"
             );
             statement.executeUpdate(
                     "insert into users(Login,Password,Email,FK_ROLE)"+
-                            " values('user','user','user@tut.by',2);"
+                            " values('avkhmeleva','pavkhmeleva','avkhmeleva@tut.by',2);"
             );
         }
         catch (Exception e){
