@@ -1,4 +1,4 @@
-package by.it.rudzko.DataBase;
+package by.it.rudzko.jd03_01;
 
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
@@ -15,7 +15,7 @@ public class TablesCreation {
         try (Connection connection=
                      DriverManager.getConnection
                              (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
-             Statement statement=connection.createStatement();) {
+             Statement statement=connection.createStatement()) {
             statement.executeUpdate(
                     String.format("CREATE TABLE olgarudzko.Roles ( ID INT NULL AUTO_INCREMENT , Role VARCHAR(20) ," +
                             " PRIMARY KEY (ID)) ENGINE = InnoDB;")
@@ -40,10 +40,7 @@ public class TablesCreation {
                     String.format("CREATE TABLE olgarudzko.Subscription ( ID INT NULL AUTO_INCREMENT , FK_Subscriber INT " +
                             "NOT NULL , FK_Periodical INT NOT NULL , PRIMARY KEY (ID) , FOREIGN KEY (FK_Subscriber)" +
                             " REFERENCES Users(ID) , FOREIGN KEY (FK_Periodical) REFERENCES Periodicals(ID)) ENGINE = InnoDB;")
-
             );
-            connection.close();
-
         }
         catch (Exception e){
             e.printStackTrace();

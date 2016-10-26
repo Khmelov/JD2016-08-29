@@ -1,4 +1,4 @@
-package by.it.rudzko.DataBase;
+package by.it.rudzko.jd03_01;
 
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
@@ -40,9 +40,6 @@ public class TablesFill {
                     String.format("INSERT INTO subscription (ID, FK_Subscriber, FK_Periodical) " +
                             "VALUES (NULL, '2', '2'), (NULL, '2', '5') ")
             );
-
-            connection.close();
-
         }
         catch (Exception e){
             e.printStackTrace();
