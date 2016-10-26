@@ -8,6 +8,6 @@ public class Run {
         String path = System.getProperty("user.dir").concat("/src/by/it/tsiamruk/");
         String filePath = path + "jd02_07/paymentSystem.xml";
         SAXPars.saxParse(filePath);
-        StAXPars.staxParce();
+        StAXPars.staxParce(filePath);
     }
 }
