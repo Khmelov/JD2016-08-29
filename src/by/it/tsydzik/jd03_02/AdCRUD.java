@@ -63,9 +63,7 @@ public class AdCRUD {
 
             if (statement.executeUpdate(createAdSQL, Statement.RETURN_GENERATED_KEYS) == 1) {
                 //если все добавлено то узнаем последний ID
-                ResultSet resultSet = statement.executeQuery(
-                        String.format("SELECT LAST_INSERT_ID();")
-                );
+                ResultSet resultSet = statement.getGeneratedKeys();
                 //извлекаем из resultSet последний ID
                 if (resultSet.next())
                     ad.setId(resultSet.getInt(1));
