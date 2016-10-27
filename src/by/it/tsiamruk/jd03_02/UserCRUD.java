@@ -1,5 +1,6 @@
 package by.it.tsiamruk.jd03_02;
 
+<<<<<<< HEAD
 import by.it.tsiamruk.jd03_01.ConnectionCreator;
 
 import java.sql.Connection;
@@ -8,10 +9,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Locale;
 
+=======
+>>>>>>> origin/master
 /**
  * Created by waldemar on 26/10/2016.
  */
 public class UserCRUD {
+<<<<<<< HEAD
     public User create(User user) throws SQLException {
         user.setId(0);
         String createUserSQL = String.format("insert into users(Login,Password,Email,FK_Role)" +
@@ -80,3 +84,6 @@ public class UserCRUD {
     }
 }
 
+=======
+}
+>>>>>>> origin/master
