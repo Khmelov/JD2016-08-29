@@ -1,5 +1,6 @@
 package by.it.emelyanov.jd03_02;
 
+import by.it.emelyanov.jd03_02.crud.ConnectionCreator;
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.*;
@@ -15,7 +16,7 @@ public class TaskB {
 
         try (Connection connection =
                      DriverManager.getConnection
-                             (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+                             (ConnectionCreator.URL_DB, ConnectionCreator.USER_DB, ConnectionCreator.PASSWORD_DB);
              Statement statement = connection.createStatement()) {
 
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users, roles WHERE users.FK_Role = roles.ID;");
