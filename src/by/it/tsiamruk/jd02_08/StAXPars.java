@@ -1,6 +1,7 @@
 package by.it.tsiamruk.jd02_08;
 
-import com.sun.xml.internal.fastinfoset.stax.factory.StAXInputFactory;
+
+
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -15,13 +16,11 @@ import java.io.FileNotFoundException;
 public class StAXPars {
     private static String tab = "";
 
-    public static void staxParce() {
-        String path = System.getProperty("user.dir").concat("/src/by/it/tsiamruk/");
-        String filePath = path + "jd02_07/paymentSystem.xml";
+    public static void staxParce(String filePath) {
         try {
 
             FileInputStream inputStream = new FileInputStream(filePath);
-            XMLInputFactory xmlInputFactory = new StAXInputFactory();
+            XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
             XMLStreamReader reader = xmlInputFactory.createXMLStreamReader(inputStream);
 
             String el = "";
