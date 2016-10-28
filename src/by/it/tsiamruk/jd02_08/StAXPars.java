@@ -17,6 +17,7 @@ public class StAXPars {
     private static String tab = "";
 
     public static void staxParce(String filePath) {
+        System.out.println("STAX PARSER");
         try {
 
             FileInputStream inputStream = new FileInputStream(filePath);
