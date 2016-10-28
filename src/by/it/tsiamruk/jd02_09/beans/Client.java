@@ -3,6 +3,7 @@ package by.it.tsiamruk.jd02_09.beans;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 
 
 /**
@@ -16,7 +17,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
         "login",
         "password"
 })
-public class Client {
+public class Client implements Serializable {
     @XmlAttribute(required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
@@ -65,5 +66,26 @@ public class Client {
                 ", Password='" + password + '\'' +
                 ", Email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Client client = (Client) o;
+
+        if (!login.equals(client.login)) return false;
+        if (!password.equals(client.password)) return false;
+        return email.equals(client.email);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = login.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + email.hashCode();
+        return result;
     }
 }

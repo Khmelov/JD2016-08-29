@@ -3,6 +3,7 @@ package by.it.tsiamruk.jd02_09.beans;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 
 /**
  * Created by waldemar on 28/10/2016.
@@ -15,7 +16,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
         "password",
         "unlockAccount"
 })
-public class Admin {
+public class Admin implements Serializable {
     @XmlAttribute(required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
@@ -56,6 +57,27 @@ public class Admin {
 
     public void setUnlockAccount(UnlockAccount unlockAccount) {
         this.unlockAccount = unlockAccount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Admin admin = (Admin) o;
+
+        if (!login.equals(admin.login)) return false;
+        if (!password.equals(admin.password)) return false;
+        return unlockAccount.equals(admin.unlockAccount);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = login.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + unlockAccount.hashCode();
+        return result;
     }
 
     @XmlRootElement
