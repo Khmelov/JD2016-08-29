@@ -26,7 +26,7 @@ class DeleteDataBase {
             connection=DriverManager.getConnection
                     (CN.URL_DB_2, CN.USER_DB, CN.PASSWORD_DB);
             statement = connection.createStatement();
-            statement.executeUpdate("DROP DATABASE IF EXISTS TESTING_SYSTEM");
+            statement.executeUpdate("DROP DATABASE IF EXISTS artiuschik");
 
 
         } catch (SQLException e) {
