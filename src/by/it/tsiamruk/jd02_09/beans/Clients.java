@@ -1,6 +1,6 @@
 package by.it.tsiamruk.jd02_09.beans;
 
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 @XmlRootElement
 public class Clients implements Serializable {
-    @XmlElement(name = "Client")
+    @XmlElementWrapper(name = "Client")
     private ArrayList<Client> list = new ArrayList<Client>();
     public Clients(){
     }
