@@ -39,10 +39,10 @@ import java.util.List;
 @XmlType(name = "Subscription", propOrder = {
     "subscr"
 })
-public class Subscription {
+class Subscription {
 
     @XmlElement(name = "Subscr", required = true)
-    protected List<Subscr> subscr;
+    private List<Subscr> subscr;
 
     /**
      * Gets the value of the subscr property.
@@ -66,12 +66,17 @@ public class Subscription {
      * 
      * 
      */
-    public List<Subscr> getSubscr() {
+    List<Subscr> getSubscr() {
         if (subscr == null) {
-            subscr = new ArrayList<Subscr>();
+            subscr = new ArrayList<>();
         }
         return this.subscr;
     }
+
+    void setSubscr(List<Subscr> subscr) {
+        this.subscr = subscr;
+    }
+
     @Override
     public int hashCode() {
         int hc=1;
@@ -94,6 +99,6 @@ public class Subscription {
 
     @Override
     public String toString() {
-        return subscr.toString();
+        return this.subscr.toString();
     }
 }

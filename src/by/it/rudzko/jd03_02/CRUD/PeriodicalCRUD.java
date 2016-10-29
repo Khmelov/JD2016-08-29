@@ -20,15 +20,13 @@ public class PeriodicalCRUD {
         );
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
-            if (statement.executeUpdate(createPeriodical) == 1) {
-                ResultSet rs = statement.executeQuery(String.format("SELECT LAST_INSERT_ID();"));
+            if (statement.executeUpdate(createPeriodical, Statement.RETURN_GENERATED_KEYS) == 1) {
+                ResultSet rs = statement.getGeneratedKeys();
                 if (rs.next())
                     p.setID(rs.getInt(1));
             }
-        } catch (SQLException e) {
-            throw e;
         }
         return p;
     }
@@ -37,7 +35,7 @@ public class PeriodicalCRUD {
         Periodical pRes = null;
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             final ResultSet rs = statement.executeQuery("SELECT * FROM Periodicals WHERE ID=" + id);
             if (rs.next()) {
@@ -51,7 +49,7 @@ public class PeriodicalCRUD {
                 aud.setID(group);
                 final ResultSet audSet = statement.executeQuery("SELECT * FROM Readership WHERE ID=" + group);
                 if(audSet.next()){
-                    aud.setGroup("Audience");
+                    aud.setGroup(audSet.getString("Audience"));
                 }
                 pRes.setAudience(aud);
                 User user=new User();
@@ -72,8 +70,6 @@ public class PeriodicalCRUD {
                 }
                 pRes.setAddedBy(user);
             }
-        } catch (SQLException e) {
-            throw e;
         }
         return pRes;
     }
@@ -86,12 +82,10 @@ public class PeriodicalCRUD {
         );
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             if (statement.executeUpdate(updatePeriodical) == 1)
                 pRes = p;
-        } catch (SQLException e) {
-            throw e;
         }
         return pRes;
     }
@@ -100,11 +94,9 @@ public class PeriodicalCRUD {
         String deletePeriodical = String.format("DELETE FROM Periodicals WHERE Periodicals.ID = %d", p.getID());
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             return (statement.executeUpdate(deletePeriodical) == 1);
-        } catch (SQLException e) {
-            throw e;
         }
     }
 }

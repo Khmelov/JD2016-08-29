@@ -48,7 +48,7 @@ public class Audience {
      * Gets the value of the id property.
      */
     public int getID() {
-        return id;
+        return this.id;
     }
 
     /**
@@ -65,7 +65,7 @@ public class Audience {
      * {@link String }
      */
     public String getGroup() {
-        return group;
+        return this.group;
     }
 
     /**
@@ -80,7 +80,7 @@ public class Audience {
 
     @Override
     public int hashCode() {
-        return this.id + group.hashCode();
+        return this.id + this.group.hashCode();
     }
 
     @Override

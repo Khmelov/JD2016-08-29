@@ -54,7 +54,7 @@ public class User {
     @XmlElement(name = "Role", required = true)
     protected Role role;
     @XmlElement(name = "BirthYear")
-    protected int birthYear;
+    private int birthYear;
     @XmlElement(name = "Sex", required = true)
     protected String sex;
 
@@ -179,6 +179,6 @@ public class User {
 
     @Override
     public String toString() {
-        return name+" ("+sex+", "+birthYear+")";
+        return this.name+" ("+this.sex+", "+this.birthYear+")";
     }
 }

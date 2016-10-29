@@ -66,13 +66,18 @@ public class Roles {
      * 
      * 
      */
-    public List<Role> getRole() {
+    public List<Role> getRoles() {
         if (role == null) {
-            role = new ArrayList<Role>();
+            role = new ArrayList<>();
         }
         return this.role;
     }
-
+    public void setRoles(List<Role> role){
+        this.role=role;
+    }
+    public void add(Role role){
+        this.role.add(role);
+    }
     @Override
     public int hashCode() {
         int hc=1;
@@ -95,6 +100,6 @@ public class Roles {
 
     @Override
     public String toString() {
-        return role.toString();
+        return this.role.toString();
     }
 }

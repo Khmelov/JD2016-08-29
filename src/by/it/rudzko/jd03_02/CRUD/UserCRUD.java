@@ -19,15 +19,13 @@ public class UserCRUD {
         );
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
-            if (statement.executeUpdate(createUser) == 1) {
-                ResultSet rs = statement.executeQuery(String.format("SELECT LAST_INSERT_ID();"));
+            if (statement.executeUpdate(createUser, Statement.RETURN_GENERATED_KEYS) == 1) {
+                ResultSet rs = statement.getGeneratedKeys();
                 if (rs.next())
                     us.setID(rs.getInt(1));
             }
-        } catch (SQLException e) {
-            throw e;
         }
         return us;
     }
@@ -36,7 +34,7 @@ public class UserCRUD {
         User userRes = null;
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             final ResultSet rs = statement.executeQuery("SELECT * FROM Users where ID=" + id);
             if (rs.next()) {
@@ -55,8 +53,6 @@ public class UserCRUD {
                 userRes.setRole(role);
 
             }
-        } catch (SQLException e) {
-            throw e;
         }
         return userRes;
     }
@@ -69,12 +65,10 @@ public class UserCRUD {
         );
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             if (statement.executeUpdate(updateUser) == 1)
                 userRes = us;
-        } catch (SQLException e) {
-            throw e;
         }
         return userRes;
     }
@@ -83,11 +77,9 @@ public class UserCRUD {
         String deleteUser = String.format("DELETE FROM Users WHERE Users.ID = %d", us.getID());
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             return (statement.executeUpdate(deleteUser) == 1);
-        } catch (SQLException e) {
-            throw e;
         }
     }
 

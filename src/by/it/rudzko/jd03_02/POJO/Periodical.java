@@ -50,17 +50,17 @@ public class Periodical {
     @XmlElement(name = "Title", required = true)
     protected String title;
     @XmlElement(name = "SubIndex")
-    protected int subIndex;
+    private int subIndex;
     @XmlElement(name = "Audience", required = true)
     protected Audience audience;
     @XmlElement(name = "AddedBy", required = true)
-    protected User addedBy;
+    private User addedBy;
 
     /**
      * Gets the value of the id property.
      */
     public int getID() {
-        return id;
+        return this.id;
     }
 
     /**
@@ -77,7 +77,7 @@ public class Periodical {
      * {@link String }
      */
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     /**
@@ -94,7 +94,7 @@ public class Periodical {
      * Gets the value of the subIndex property.
      */
     public int getSubIndex() {
-        return subIndex;
+        return this.subIndex;
     }
 
     /**
@@ -111,7 +111,7 @@ public class Periodical {
      * {@link Audience }
      */
     public Audience getAudience() {
-        return audience;
+        return this.audience;
     }
 
     /**
@@ -131,7 +131,7 @@ public class Periodical {
      * {@link User }
      */
     public User getAddedBy() {
-        return addedBy;
+        return this.addedBy;
     }
 
     /**
@@ -161,6 +161,6 @@ public class Periodical {
 
     @Override
     public String toString() {
-        return title + "(for " + audience + ", index " + subIndex + ")";
+        return this.title + " (for " + this.audience + ", index " + this.subIndex + ")";
     }
 }

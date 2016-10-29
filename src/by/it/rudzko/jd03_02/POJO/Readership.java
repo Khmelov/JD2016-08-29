@@ -66,12 +66,20 @@ public class Readership {
      * 
      * 
      */
-    public List<Audience> getAudience() {
+    public List<Audience> getReadership() {
         if (audience == null) {
-            audience = new ArrayList<Audience>();
+            audience = new ArrayList<>();
         }
         return this.audience;
     }
+    public void setAudience(List<Audience>audience){
+        this.audience=audience;
+    }
+
+    public void add(Audience audience){
+        this.audience.add(audience);
+    }
+
     @Override
     public int hashCode() {
         int hc=1;
@@ -94,6 +102,6 @@ public class Readership {
 
     @Override
     public String toString() {
-        return audience.toString();
+        return this.audience.toString();
     }
 }

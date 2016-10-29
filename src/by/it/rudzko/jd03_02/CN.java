@@ -15,7 +15,7 @@ public class CN {
     public static final String PASSWORD_DB = "";
 
     static {
-        Driver driver = null;
+        Driver driver;
         try {
             driver = new FabricMySQLDriver();
             DriverManager.registerDriver(driver);

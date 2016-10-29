@@ -46,7 +46,7 @@ public class Subscr {
     @XmlElement(name = "Periodical", required = true)
     protected Periodical periodical;
     @XmlElement(name = "Subscriber", required = true)
-    protected User subscriber;
+    private User subscriber;
 
     /**
      * Gets the value of the id property.
@@ -69,7 +69,7 @@ public class Subscr {
      * {@link Periodical }
      */
     public Periodical getPeriodical() {
-        return periodical;
+        return this.periodical;
     }
 
     /**
@@ -89,7 +89,7 @@ public class Subscr {
      * {@link User }
      */
     public User getSubscriber() {
-        return subscriber;
+        return this.subscriber;
     }
 
     /**
@@ -104,7 +104,7 @@ public class Subscr {
 
     @Override
     public int hashCode() {
-        return periodical.hashCode() + subscriber.hashCode();
+        return this.periodical.hashCode() + this.subscriber.hashCode();
     }
 
     @Override
@@ -119,6 +119,6 @@ public class Subscr {
 
     @Override
     public String toString() {
-        return subscriber + " subscribed to " + periodical;
+        return this.subscriber + " subscribed to " + this.periodical;
     }
 }

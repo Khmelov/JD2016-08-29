@@ -18,9 +18,9 @@ import java.util.List;
 
 /**
  * <p>Java class for Users complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="Users">
  *   &lt;complexContent>
@@ -32,12 +32,10 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Users", propOrder = {
-    "user"
+        "user"
 })
 public class Users {
 
@@ -46,38 +44,41 @@ public class Users {
 
     /**
      * Gets the value of the user property.
-     * 
+     * <p>
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the user property.
-     * 
+     * <p>
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getUser().add(newItem);
      * </pre>
-     * 
-     * 
+     * <p>
+     * <p>
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link User }
-     * 
-     * 
      */
     public List<User> getUser() {
         if (user == null) {
-            user = new ArrayList<User>();
+            user = new ArrayList<>();
         }
         return this.user;
     }
+
+    public void setUsers(List<User> user) {
+        this.user = user;
+    }
+
     @Override
     public int hashCode() {
-        int hc=1;
-        for (User u:
+        int hc = 1;
+        for (User u :
                 user) {
-            hc+=u.hashCode();
+            hc += u.hashCode();
         }
         return hc;
     }
@@ -94,6 +95,6 @@ public class Users {
 
     @Override
     public String toString() {
-        return user.toString();
+        return this.user.toString();
     }
 }

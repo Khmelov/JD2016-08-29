@@ -17,15 +17,13 @@ public class RoleCRUD {
         );
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
-            if (statement.executeUpdate(createRole) == 1) {
-                ResultSet rs = statement.executeQuery(String.format("SELECT LAST_INSERT_ID();"));
+            if (statement.executeUpdate(createRole, Statement.RETURN_GENERATED_KEYS) == 1) {
+                ResultSet rs = statement.getGeneratedKeys();
                 if (rs.next())
                     r.setID(rs.getInt(1));
             }
-        } catch (SQLException e) {
-            throw e;
         }
         return r;
     }
@@ -34,7 +32,7 @@ public class RoleCRUD {
         Role rRes = null;
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             final ResultSet rs = statement.executeQuery("SELECT * FROM Roles WHERE ID=" + id);
             if (rs.next()) {
@@ -42,8 +40,6 @@ public class RoleCRUD {
                 rRes.setID(rs.getInt("ID"));
                 rRes.setParticipant(rs.getString("Role"));
             }
-        } catch (SQLException e) {
-            throw e;
         }
         return rRes;
     }
@@ -51,17 +47,15 @@ public class RoleCRUD {
     public Role update(Role r) throws SQLException {
         Role rRes = null;
         String updateRole = String.format(
-                "UPDATE Roles.Role= '%s' WHERE Roles.ID = %d",
+                "UPDATE Roles SET Role= '%s' WHERE Roles.ID = %d",
                 r.getParticipant(), r.getID()
         );
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             if (statement.executeUpdate(updateRole) == 1)
                 rRes = r;
-        } catch (SQLException e) {
-            throw e;
         }
         return rRes;
     }
@@ -70,11 +64,9 @@ public class RoleCRUD {
         String deleteRole = String.format("DELETE FROM Roles WHERE Roles.ID = %d", r.getID());
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             return (statement.executeUpdate(deleteRole) == 1);
-        } catch (SQLException e) {
-            throw e;
         }
     }
 }

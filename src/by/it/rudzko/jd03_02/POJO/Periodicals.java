@@ -66,13 +66,18 @@ public class Periodicals {
      * 
      * 
      */
-    public List<Periodical> getPeriodical() {
-        if (periodical == null) {
-            periodical = new ArrayList<Periodical>();
+    public List<Periodical> getPeriodicals() {
+        if (this.periodical == null) {
+            this.periodical = new ArrayList<>();
         }
         return this.periodical;
     }
-
+    public void setPeriodicals(List<Periodical> periodical){
+        this.periodical=periodical;
+    }
+    public void add(Periodical p){
+        this.periodical.add(p);
+    }
     @Override
     public int hashCode() {
         int hc=1;
@@ -95,6 +100,6 @@ public class Periodicals {
 
     @Override
     public String toString() {
-        return periodical.toString();
+        return this.periodical.toString();
     }
 }

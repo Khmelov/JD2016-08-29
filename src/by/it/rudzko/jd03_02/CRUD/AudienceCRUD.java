@@ -18,15 +18,13 @@ public class AudienceCRUD {
         );
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
-            if (statement.executeUpdate(createAudience) == 1) {
-                ResultSet rs = statement.executeQuery(String.format("SELECT LAST_INSERT_ID();"));
+            if (statement.executeUpdate(createAudience, Statement.RETURN_GENERATED_KEYS) == 1) {
+                ResultSet rs = statement.getGeneratedKeys();
                 if (rs.next())
                     aud.setID(rs.getInt(1));
             }
-        } catch (SQLException e) {
-            throw e;
         }
         return aud;
     }
@@ -35,16 +33,14 @@ public class AudienceCRUD {
         Audience audRes = null;
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             final ResultSet rs = statement.executeQuery("SELECT * FROM Readership WHERE ID=" + id);
             if (rs.next()) {
                 audRes = new Audience();
                 audRes.setID(rs.getInt("ID"));
-                audRes.setGroup(rs.getString("group"));
+                audRes.setGroup(rs.getString("Audience"));
             }
-        } catch (SQLException e) {
-            throw e;
         }
         return audRes;
     }
@@ -52,17 +48,15 @@ public class AudienceCRUD {
     public Audience update(Audience aud) throws SQLException {
         Audience audRes = null;
         String updateAudience = String.format(
-                "UPDATE Readership.Audience= '%s' WHERE Audience.ID = %d",
+                "UPDATE Readership SET Audience= '%s' WHERE Readership.ID = %d",
                 aud.getGroup(), aud.getID()
         );
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             if (statement.executeUpdate(updateAudience) == 1)
                 audRes = aud;
-        } catch (SQLException e) {
-            throw e;
         }
         return audRes;
     }
@@ -71,11 +65,9 @@ public class AudienceCRUD {
         String deleteAudience = String.format("DELETE FROM Readership WHERE Readership.ID = %d", aud.getID());
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             return (statement.executeUpdate(deleteAudience) == 1);
-        } catch (SQLException e) {
-            throw e;
         }
     }
 }

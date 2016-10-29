@@ -42,7 +42,7 @@ public class Role {
     @XmlElement(name = "ID")
     protected int id;
     @XmlElement(name = "Participant", required = true)
-    protected String participant;
+    private String participant;
 
     /**
      * Gets the value of the id property.
@@ -65,7 +65,7 @@ public class Role {
      * {@link String }
      */
     public String getParticipant() {
-        return participant;
+        return this.participant;
     }
 
     /**
@@ -80,7 +80,7 @@ public class Role {
 
     @Override
     public int hashCode() {
-        return this.id + participant.hashCode();
+        return this.id + this.participant.hashCode();
     }
 
     @Override
@@ -95,6 +95,6 @@ public class Role {
 
     @Override
     public String toString() {
-        return participant;
+        return this.participant;
     }
 }

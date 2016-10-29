@@ -18,15 +18,13 @@ public class SubscrCRUD {
         );
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
-            if (statement.executeUpdate(createSubscr) == 1) {
-                ResultSet rs = statement.executeQuery(String.format("SELECT LAST_INSERT_ID();"));
+            if (statement.executeUpdate(createSubscr, Statement.RETURN_GENERATED_KEYS) == 1) {
+                ResultSet rs = statement.getGeneratedKeys();
                 if (rs.next())
                     s.setID(rs.getInt(1));
             }
-        } catch (SQLException e) {
-            throw e;
         }
         return s;
     }
@@ -35,7 +33,7 @@ public class SubscrCRUD {
         Subscr subRes = null;
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             final ResultSet rs = statement.executeQuery("SELECT * FROM Subscription WHERE ID=" + id);
             if (rs.next()) {
@@ -73,7 +71,7 @@ public class SubscrCRUD {
                     int admin=periSet.getInt("FK_Added");
                     final ResultSet audSet = statement.executeQuery("SELECT * FROM Readership WHERE ID=" + aud);
                     if(audSet.next()){
-                        a.setGroup("Audience");
+                        a.setGroup(audSet.getString("Audience"));
                     }
                     p.setAudience(a);
 
@@ -96,9 +94,8 @@ public class SubscrCRUD {
                     }
                     p.setAddedBy(adm);
                 }
+                subRes.setPeriodical(p);
             }
-        } catch (SQLException e) {
-            throw e;
         }
         return subRes;
     }
@@ -106,30 +103,26 @@ public class SubscrCRUD {
     public Subscr update(Subscr s) throws SQLException {
         Subscr subRes = null;
         String updateSubscr = String.format(
-                "UPDATE Subscription SET FK_Subscriber = '%d', FK_Periodical='%d' WHERE Subscr.ID = %d",
+                "UPDATE Subscription SET FK_Subscriber = '%d', FK_Periodical='%d' WHERE Subscription.ID = %d",
                 s.getSubscriber().getID(), s.getPeriodical().getID(), s.getID()
         );
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             if (statement.executeUpdate(updateSubscr) == 1)
                 subRes = s;
-        } catch (SQLException e) {
-            throw e;
         }
         return subRes;
     }
 
     public boolean delete(Subscr s) throws SQLException {
-        String deleteSubscr = String.format("DELETE FROM Subscription WHERE Subscr.ID = %d", s.getID());
+        String deleteSubscr = String.format("DELETE FROM Subscription WHERE Subscription.ID = %d", s.getID());
         try (
                 Connection connection = CN.getConnection();
-                Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement()
         ) {
             return (statement.executeUpdate(deleteSubscr) == 1);
-        } catch (SQLException e) {
-            throw e;
         }
     }
 
