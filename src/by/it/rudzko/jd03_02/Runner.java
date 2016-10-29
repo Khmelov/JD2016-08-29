@@ -8,6 +8,7 @@ public class Runner {
     public static void main(String[] args) {
         MyDataBase mdb=new MyDataBase();
         mdb.reset(mdb.buildDefaultStructure());
-
+        System.out.println("\n-----------------\nCurrent users:");
+        mdb.printUsers();
     }
 }

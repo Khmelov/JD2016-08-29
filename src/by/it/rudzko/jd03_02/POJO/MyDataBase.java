@@ -18,7 +18,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -321,6 +323,41 @@ public class MyDataBase {
 //        createTables();
 //        fillTables(getNewDataBase(path));
 //    }
+
+    public void printUsers(){
+        try {
+            Driver driver = new FabricMySQLDriver();
+            DriverManager.registerDriver(driver);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try (Connection connection =
+                     DriverManager.getConnection
+                             (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+             Statement statement = connection.createStatement()) {
+            Map<String, Integer> users=new HashMap<>();
+            ResultSet usersSet = statement.executeQuery("select * from users;");
+            while (usersSet.next()) {
+                users.put(usersSet.getString("Name"), usersSet.getInt("FK_Role"));
+            }
+            Map<Integer, String> roles=new HashMap<>();
+            ResultSet rolesSet = statement.executeQuery("select * from roles;");
+            while (rolesSet.next()) {
+                roles.put(rolesSet.getInt("ID"), rolesSet.getString("Role"));
+            }
+            for (Map.Entry<String, Integer> x : users.entrySet()) {
+                if (roles.containsKey(x.getValue())) {
+                    System.out.println(x.getKey() + " - " + roles.get(x.getValue()));
+                }
+            }
+
+            connection.close();
+            System.out.println("There are "+users.size()+" users and "+roles.size()+" roles for them in database.");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public int hashCode() {
