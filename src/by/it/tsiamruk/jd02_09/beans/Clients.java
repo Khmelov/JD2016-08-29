@@ -40,8 +40,4 @@ public class Clients implements Serializable {
 
     }
 
-    @Override
-    public int hashCode() {
-        return list.hashCode();
-    }
 }
