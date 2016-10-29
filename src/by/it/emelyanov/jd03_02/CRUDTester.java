@@ -9,7 +9,7 @@ public class CRUDTester {
     public static void main(String[] args) {
         Locale.setDefault(new Locale("en_EN"));
 
-        /** CRUD тест Users*/
+        /** CRUD тест Users
         Users user = new Users(66, "testLogin", "testPass", "test@gmail.com", 2);
         UsersCRUD userCRUD = new UsersCRUD();
         try {
@@ -25,8 +25,9 @@ public class CRUDTester {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+         */
 
-        /** CRUD тест Orders */
+        /** CRUD тест Orders
         Orders order = new Orders(4, 2, 3, "26-10-2017", "27-10-2017", 567.2f);
         OrdersCRUD orderCRUD = new OrdersCRUD();
         try {
@@ -43,8 +44,9 @@ public class CRUDTester {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+         */
 
-        /** CRUD тест Rooms */
+        /** CRUD тест Rooms
         Rooms room = new Rooms(6,3,35,578.5f,4);
         RoomsCRUD roomCRUD = new RoomsCRUD();
         try {
@@ -60,7 +62,30 @@ public class CRUDTester {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+         */
 
+        /** Создание таблиц и их связей в БД*/
+        try {
+            CreateInsertAndDrop.createDB();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        /** Заполение наблиц в БД*/
+        try {
+            CreateInsertAndDrop.insertToDB();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        /** Удаление таблиз из БД*/
+        /*
+        try {
+            CreateInsertAndDrop.drobDB();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        */
 
     }
 }
