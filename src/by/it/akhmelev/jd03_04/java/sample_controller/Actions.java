@@ -1,7 +1,7 @@
 package by.it.akhmelev.jd03_04.java.sample_controller;
 
 
-enum Action {
+enum Actions {
     SIGNUP {
         {
             this.command = new CommandSignUp();
