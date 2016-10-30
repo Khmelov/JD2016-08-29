@@ -28,11 +28,20 @@ public class PrintAllUsers {
                             resultSet.getString("role"));
                 }
                 System.out.print("Общее число пользователей: " + resultSet.getMetaData().getColumnCount());
-
             }
             catch (SQLException e){
                 e.printStackTrace();
             }
+
+        try(Connection connection = ConnectionCreator.getConnection();
+            Statement statement = connection.createStatement()){
+            String request = "SELECT * FROM role;";
+            ResultSet resultSet1 = statement.executeQuery(request);
+            System.out.println(" всего возможных ролей: " + resultSet1.getMetaData().getColumnCount());
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
+
+}
 
