@@ -43,7 +43,7 @@ public class FrontController extends HttpServlet {
             //getServletContext().getRequestDispatcher(viewPage).forward(request,response);
         } else {
             // установка страницы c cообщением об ошибке
-            viewPage = Action.ERROR.jsp;
+            viewPage = Actions.ERROR.jsp;
             response.sendRedirect(request.getContextPath() + viewPage);
         }
     }

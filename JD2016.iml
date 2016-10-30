@@ -8,7 +8,6 @@
       <excludeFolder url="file://$MODULE_DIR$/out" />
       <excludeFolder url="file://$MODULE_DIR$/src/by/it/laurynovich" />
       <excludeFolder url="file://$MODULE_DIR$/src/by/it/satsuta/jd01_01" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/sukora" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

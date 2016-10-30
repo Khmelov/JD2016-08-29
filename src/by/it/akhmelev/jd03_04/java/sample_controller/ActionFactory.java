@@ -10,7 +10,7 @@ class ActionFactory {
         // получение объекта, соответствующего команде
         if (action != null && !action.isEmpty()) {
             try {
-                Action currentEnum = Action.valueOf(action.toUpperCase());
+                Actions currentEnum = Actions.valueOf(action.toUpperCase());
                 current = currentEnum.getCurrentCommand();
             } catch (IllegalArgumentException e) {
                 request.setAttribute(Messages.msgError, "<b>Unknown command: "+action+"</b>");

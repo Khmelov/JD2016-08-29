@@ -8,6 +8,6 @@ class CommandLogin implements ActionCommand {
         //DO SOMETHING;
         //USE DAO
         //&ETC
-        return Action.LOGIN.jsp;
+        return Actions.LOGIN.jsp;
     }
 }
