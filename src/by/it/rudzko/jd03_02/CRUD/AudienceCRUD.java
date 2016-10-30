@@ -37,7 +37,7 @@ public class AudienceCRUD {
                 Connection connection = CN.getConnection();
                 Statement statement = connection.createStatement()
         ) {
-            final ResultSet rs = statement.executeQuery("SELECT * FROM Readership WHERE ID=" + id);
+            ResultSet rs = statement.executeQuery("SELECT * FROM Readership WHERE ID=" + id);
             if (rs.next()) {
                 audRes = new Audience();
                 audRes.setID(rs.getInt("ID"));

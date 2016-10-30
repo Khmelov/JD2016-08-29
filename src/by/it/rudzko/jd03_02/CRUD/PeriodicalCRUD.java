@@ -41,7 +41,7 @@ public class PeriodicalCRUD {
                 Connection connection = CN.getConnection();
                 Statement statement = connection.createStatement()
         ) {
-            final ResultSet rs = statement.executeQuery("SELECT * FROM Periodicals WHERE ID=" + id);
+            ResultSet rs = statement.executeQuery("SELECT * FROM Periodicals WHERE ID=" + id);
             if (rs.next()) {
                 pRes = new Periodical();
                 pRes.setID(rs.getInt("ID"));
@@ -51,14 +51,14 @@ public class PeriodicalCRUD {
                 int group=rs.getInt("FK_Readership");
                 int adder=rs.getInt("FK_Added");
                 aud.setID(group);
-                final ResultSet audSet = statement.executeQuery("SELECT * FROM Readership WHERE ID=" + group);
+                ResultSet audSet = statement.executeQuery("SELECT * FROM Readership WHERE ID=" + group);
                 if(audSet.next()){
                     aud.setGroup(audSet.getString("Audience"));
                 }
                 pRes.setAudience(aud);
                 User user=new User();
                 user.setID(adder);
-                final ResultSet usersSet = statement.executeQuery("SELECT * FROM Users WHERE ID=" + adder);
+                ResultSet usersSet = statement.executeQuery("SELECT * FROM Users WHERE ID=" + adder);
                 if(usersSet.next()){
                     user.setName(usersSet.getString("Name"));
                     Role r=new Role();
@@ -66,7 +66,7 @@ public class PeriodicalCRUD {
                     r.setID(role);
                     user.setBirthYear(usersSet.getInt("BirthYear"));
                     user.setSex(usersSet.getString("Sex"));
-                    final ResultSet rolesSet = statement.executeQuery("SELECT * FROM Roles WHERE ID=" + role);
+                    ResultSet rolesSet = statement.executeQuery("SELECT * FROM Roles WHERE ID=" + role);
                     if (rolesSet.next()){
                         r.setParticipant(rolesSet.getString("Role"));
                     }

@@ -38,7 +38,7 @@ public class SubscrCRUD {
                 Connection connection = CN.getConnection();
                 Statement statement = connection.createStatement()
         ) {
-            final ResultSet rs = statement.executeQuery("SELECT * FROM Subscription WHERE ID=" + id);
+            ResultSet rs = statement.executeQuery("SELECT * FROM Subscription WHERE ID=" + id);
             if (rs.next()) {
                 subRes = new Subscr();
                 subRes.setID(rs.getInt("ID"));
@@ -46,7 +46,7 @@ public class SubscrCRUD {
                 User subscriber=new User();
                 subscriber.setID(reader);
                 int edition=rs.getInt("FK_Periodical");
-                final ResultSet usersSet = statement.executeQuery("SELECT * FROM Users WHERE ID=" + reader);
+                ResultSet usersSet = statement.executeQuery("SELECT * FROM Users WHERE ID=" + reader);
                 if(usersSet.next()){
                     subscriber.setName(usersSet.getString("Name"));
                     Role r=new Role();
@@ -54,7 +54,7 @@ public class SubscrCRUD {
                     r.setID(role);
                     subscriber.setBirthYear(usersSet.getInt("BirthYear"));
                     subscriber.setSex(usersSet.getString("Sex"));
-                    final ResultSet rolesSet = statement.executeQuery("SELECT * FROM Roles WHERE ID=" + role);
+                    ResultSet rolesSet = statement.executeQuery("SELECT * FROM Roles WHERE ID=" + role);
                     if (rolesSet.next()){
                         r.setParticipant(rolesSet.getString("Role"));
                     }
@@ -64,7 +64,7 @@ public class SubscrCRUD {
 
                 Periodical p=new Periodical();
                 p.setID(edition);
-                final ResultSet periSet = statement.executeQuery("SELECT * FROM Periodicals WHERE ID=" + edition);
+                ResultSet periSet = statement.executeQuery("SELECT * FROM Periodicals WHERE ID=" + edition);
                 if(periSet.next()){
                     p.setTitle(periSet.getString("Title"));
                     p.setSubIndex(periSet.getInt("SubIndex"));
@@ -72,7 +72,7 @@ public class SubscrCRUD {
                     Audience a=new Audience();
                     a.setID(aud);
                     int admin=periSet.getInt("FK_Added");
-                    final ResultSet audSet = statement.executeQuery("SELECT * FROM Readership WHERE ID=" + aud);
+                    ResultSet audSet = statement.executeQuery("SELECT * FROM Readership WHERE ID=" + aud);
                     if(audSet.next()){
                         a.setGroup(audSet.getString("Audience"));
                     }
@@ -80,7 +80,7 @@ public class SubscrCRUD {
 
                     User adm=new User();
                     adm.setID(admin);
-                    final ResultSet usersSet2 = statement.executeQuery("SELECT * FROM Users WHERE ID=" + admin);
+                    ResultSet usersSet2 = statement.executeQuery("SELECT * FROM Users WHERE ID=" + admin);
                     if(usersSet2.next()){
                         adm.setName(usersSet2.getString("Name"));
                         Role r=new Role();
@@ -88,7 +88,7 @@ public class SubscrCRUD {
                         r.setID(role);
                         adm.setBirthYear(usersSet2.getInt("BirthYear"));
                         adm.setSex(usersSet2.getString("Sex"));
-                        final ResultSet rolesSet = statement.executeQuery("SELECT * FROM Roles WHERE ID=" + role);
+                        ResultSet rolesSet = statement.executeQuery("SELECT * FROM Roles WHERE ID=" + role);
                         if (rolesSet.next()){
                             r.setParticipant(rolesSet.getString("Role"));
                         }

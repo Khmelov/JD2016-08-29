@@ -37,7 +37,7 @@ public class RoleCRUD {
                 Connection connection = CN.getConnection();
                 Statement statement = connection.createStatement()
         ) {
-            final ResultSet rs = statement.executeQuery("SELECT * FROM Roles WHERE ID=" + id);
+            ResultSet rs = statement.executeQuery("SELECT * FROM Roles WHERE ID=" + id);
             if (rs.next()) {
                 rRes = new Role();
                 rRes.setID(rs.getInt("ID"));

@@ -39,7 +39,7 @@ public class UserCRUD {
                 Connection connection = CN.getConnection();
                 Statement statement = connection.createStatement()
         ) {
-            final ResultSet rs = statement.executeQuery("SELECT * FROM Users where ID=" + id);
+            ResultSet rs = statement.executeQuery("SELECT * FROM Users where ID=" + id);
             if (rs.next()) {
                 userRes = new User();
                 userRes.setID(rs.getInt("ID"));
@@ -49,7 +49,7 @@ public class UserCRUD {
                 role.setID(r);
                 userRes.setBirthYear(rs.getInt("BirthYear"));
                 userRes.setSex(rs.getString("Sex"));
-                final ResultSet rolesSet = statement.executeQuery("SELECT * FROM Roles where ID=" + r);
+                ResultSet rolesSet = statement.executeQuery("SELECT * FROM Roles where ID=" + r);
                 if (rolesSet.next()){
                     role.setParticipant(rolesSet.getString("Role"));
                 }
