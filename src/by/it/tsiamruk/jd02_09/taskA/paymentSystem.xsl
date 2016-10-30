@@ -8,7 +8,16 @@
     <xsl:template match="/PaymentSystem/Clients">
         <table border ="1"><xsl:value-of select="node()"/></table>
     </xsl:template>
+    <xsl:template match="/PaymentSystem/Accounts">
+        <table border="1"><xsl:apply-templates/></table>
+    </xsl:template>
+    <xsl:template match="/PaymentSystem/Admin">
+        <table border="1"><tr><xsl:apply-templates/></tr></table>
+    </xsl:template>
     <xsl:template match="/PaymentSystem/Clients/Client">
+        <tr><xsl:apply-templates/></tr>
+    </xsl:template>
+    <xsl:template match="/PaymentSystem/Accounts/Account">
         <tr><xsl:apply-templates/></tr>
     </xsl:template>
     <xsl:template match="/PaymentSystem/Clients/Client/Email">
@@ -20,21 +29,14 @@
     <xsl:template match="/PaymentSystem/Clients/Client/Password">
         <td><xsl:value-of select="text()"/></td>
     </xsl:template>
-    <xsl:template match="/PaymentSystem/Accounts">
-        <table border="1"><xsl:apply-templates/></table>
-    </xsl:template>
-    <xsl:template match="/PaymentSystem/Accounts/Account">
-        <tr><xsl:apply-templates/></tr>
-    </xsl:template>
+
     <xsl:template match="/PaymentSystem/Accounts/Account/TotalAmount">
         <td><xsl:value-of select="text()"/></td>
     </xsl:template>
     <xsl:template match="/PaymentSystem/Accounts/Account/Status">
         <td><xsl:value-of select="text()"/></td>
     </xsl:template>
-    <xsl:template match="/PaymentSystem/Admin">
-        <table border="1"><tr><xsl:apply-templates/></tr></table>
-    </xsl:template>
+
     <xsl:template match="/PaymentSystem/Admin/Password">
         <td><xsl:value-of select="text()"/></td>
     </xsl:template>
