@@ -39,7 +39,7 @@ public class UserCRUD {
 
     public User read(int id) throws SQLException {
         User userResult = null;
-        String readUserSQL = "SELECT * FROM wtsiamruk.users where ID=" + id;
+        String readUserSQL = String.format("SELECT * FROM wtsiamruk.users WHERE users.ID = %d", id);
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             final ResultSet resultSet = statement.executeQuery(readUserSQL);
