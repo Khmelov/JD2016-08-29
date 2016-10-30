@@ -9,6 +9,7 @@ public class Start {
     public static void main(String[] args) {
         try {
             ConsoleUsersList.readUsersList();
+            CreationDataBaseScenario.creationDataBase();
         } catch (SQLException e) {
             e.printStackTrace();
         }

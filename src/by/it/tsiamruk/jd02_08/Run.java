@@ -9,5 +9,6 @@ public class Run {
         String filePath = path + "jd02_07/paymentSystem.xml";
         SAXPars.saxParse(filePath);
         StAXPars.staxParce(filePath);
+        DOMPars.domParser(filePath);
     }
 }
