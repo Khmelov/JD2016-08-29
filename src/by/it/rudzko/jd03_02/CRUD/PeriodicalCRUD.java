@@ -12,7 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class PeriodicalCRUD {
-    public Periodical create(Periodical p) throws SQLException {
+
+    public Periodical create(Periodical p){
         p.setID(0);
         String createPeriodical = String.format(
                 "insert into Periodicals(Title, SubIndex, FK_Readership, FK_Added) values('%s', '%d', '%d', '%d');",
@@ -27,11 +28,13 @@ public class PeriodicalCRUD {
                 if (rs.next())
                     p.setID(rs.getInt(1));
             }
+        } catch (SQLException e) {
+            System.out.println("No connection. Can't create row in table Periodicals.\n"+e.getMessage());
         }
         return p;
     }
 
-    public Periodical read(int id) throws SQLException {
+    public Periodical read(int id){
         Periodical pRes = null;
         try (
                 Connection connection = CN.getConnection();
@@ -70,11 +73,14 @@ public class PeriodicalCRUD {
                 }
                 pRes.setAddedBy(user);
             }
+        } catch (SQLException e) {
+            System.out.println("No connection. Can't read row from table Periodicals.\n"+e.getMessage());
+
         }
         return pRes;
     }
 
-    public Periodical update(Periodical p) throws SQLException {
+    public Periodical update(Periodical p){
         Periodical pRes = null;
         String updatePeriodical = String.format(
                 "UPDATE Periodicals SET Title = '%s', SubIndex = '%d', FK_Readership='%d', FK_Added='%d' WHERE Periodicals.ID = %d",
@@ -86,17 +92,24 @@ public class PeriodicalCRUD {
         ) {
             if (statement.executeUpdate(updatePeriodical) == 1)
                 pRes = p;
+        } catch (SQLException e) {
+            System.out.println("No connection. Can't update row in table Periodicals.\n"+e.getMessage());
+
         }
         return pRes;
     }
 
-    public boolean delete(Periodical p) throws SQLException {
+    public boolean delete(Periodical p){
+        boolean res=false;
         String deletePeriodical = String.format("DELETE FROM Periodicals WHERE Periodicals.ID = %d", p.getID());
         try (
                 Connection connection = CN.getConnection();
                 Statement statement = connection.createStatement()
         ) {
-            return (statement.executeUpdate(deletePeriodical) == 1);
+            res= (statement.executeUpdate(deletePeriodical) == 1);
+        } catch (SQLException e) {
+            System.out.println("No connection. Can't remove row from table Periodicals.\n"+e.getMessage());
         }
+        return res;
     }
 }

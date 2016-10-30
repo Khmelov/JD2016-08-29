@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class SubscrCRUD {
 
-    public Subscr create(Subscr s) throws SQLException {
+    public Subscr create(Subscr s) {
         s.setID(0);
         String createSubscr = String.format(
                 "insert into Subscription(FK_Subscriber, FK_Periodical) values('%d', '%d');",
@@ -25,11 +25,13 @@ public class SubscrCRUD {
                 if (rs.next())
                     s.setID(rs.getInt(1));
             }
+        } catch (SQLException e) {
+            System.out.println("No connection. Can't create row in table Subscription.\n"+e.getMessage());
         }
         return s;
     }
 
-    public Subscr read(int id) throws SQLException {
+    public Subscr read(int id) {
         Subscr subRes = null;
         try (
                 Connection connection = CN.getConnection();
@@ -96,11 +98,13 @@ public class SubscrCRUD {
                 }
                 subRes.setPeriodical(p);
             }
+        } catch (SQLException e) {
+            System.out.println("No connection. Can't read row from table Subscription.\n"+e.getMessage());
         }
         return subRes;
     }
 
-    public Subscr update(Subscr s) throws SQLException {
+    public Subscr update(Subscr s){
         Subscr subRes = null;
         String updateSubscr = String.format(
                 "UPDATE Subscription SET FK_Subscriber = '%d', FK_Periodical='%d' WHERE Subscription.ID = %d",
@@ -112,18 +116,24 @@ public class SubscrCRUD {
         ) {
             if (statement.executeUpdate(updateSubscr) == 1)
                 subRes = s;
+        } catch (SQLException e) {
+            System.out.println("No connection. Can't update row in table Subscription.\n"+e.getMessage());
         }
         return subRes;
     }
 
-    public boolean delete(Subscr s) throws SQLException {
+    public boolean delete(Subscr s) {
+        boolean res=false;
         String deleteSubscr = String.format("DELETE FROM Subscription WHERE Subscription.ID = %d", s.getID());
         try (
                 Connection connection = CN.getConnection();
                 Statement statement = connection.createStatement()
         ) {
-            return (statement.executeUpdate(deleteSubscr) == 1);
+            res= (statement.executeUpdate(deleteSubscr) == 1);
+        } catch (SQLException e) {
+            System.out.println("No connection. Can't remove row from table Subscription.\n"+e.getMessage());
         }
+        return  res;
     }
 
 }

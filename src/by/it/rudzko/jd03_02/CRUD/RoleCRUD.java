@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class RoleCRUD {
-    public Role create(Role r) throws SQLException {
+    public Role create(Role r){
         r.setID(0);
         String createRole = String.format(
                 "insert into Roles(Role) value('%s');",
@@ -24,11 +24,13 @@ public class RoleCRUD {
                 if (rs.next())
                     r.setID(rs.getInt(1));
             }
+        } catch (SQLException e) {
+            System.out.println("No connection. Can't create row in table Roles.\n"+e.getMessage());
         }
         return r;
     }
 
-    public Role read(int id) throws SQLException {
+    public Role read(int id){
         Role rRes = null;
         try (
                 Connection connection = CN.getConnection();
@@ -40,11 +42,13 @@ public class RoleCRUD {
                 rRes.setID(rs.getInt("ID"));
                 rRes.setParticipant(rs.getString("Role"));
             }
+        } catch (SQLException e) {
+            System.out.println("No connection. Can't read row from table Roles.\n"+e.getMessage());
         }
         return rRes;
     }
 
-    public Role update(Role r) throws SQLException {
+    public Role update(Role r){
         Role rRes = null;
         String updateRole = String.format(
                 "UPDATE Roles SET Role= '%s' WHERE Roles.ID = %d",
@@ -56,17 +60,23 @@ public class RoleCRUD {
         ) {
             if (statement.executeUpdate(updateRole) == 1)
                 rRes = r;
+        } catch (SQLException e) {
+            System.out.println("No connection. Can't update row in table Roles.\n"+e.getMessage());
         }
         return rRes;
     }
 
-    public boolean delete(Role r) throws SQLException {
+    public boolean delete(Role r){
+        boolean res=false;
         String deleteRole = String.format("DELETE FROM Roles WHERE Roles.ID = %d", r.getID());
         try (
                 Connection connection = CN.getConnection();
                 Statement statement = connection.createStatement()
         ) {
-            return (statement.executeUpdate(deleteRole) == 1);
+            res= (statement.executeUpdate(deleteRole) == 1);
+        } catch (SQLException e) {
+            System.out.println("No connection. Can't remove row from table Roles.\n"+e.getMessage());
         }
+        return res;
     }
 }
