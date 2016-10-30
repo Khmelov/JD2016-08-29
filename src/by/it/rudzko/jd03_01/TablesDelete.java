@@ -3,6 +3,7 @@ package by.it.rudzko.jd03_01;
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.*;
+import java.util.Locale;
 
 
 public class TablesDelete {
@@ -16,12 +17,13 @@ public class TablesDelete {
                              (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
              Statement statement=connection.createStatement()) {
             statement.executeUpdate(
-                    String.format("DROP TABLE Subscription, Periodicals, Readership, Users, Roles")
+                    String.format(Locale.ENGLISH, "DROP TABLE Subscription, Periodicals, Readership, Users, Roles")
             );
+        } catch (SQLException e) {
+            System.out.println("No connection.\n"+e.getMessage());
+
         }
-        catch (Exception e){
-            e.printStackTrace();
-        }
+
         System.out.println("Tables removed.");
 
     }
