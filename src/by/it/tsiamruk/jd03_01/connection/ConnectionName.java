@@ -1,4 +1,4 @@
-package by.it.tsiamruk.jd03_01;
+package by.it.tsiamruk.jd03_01.connection;
 
 /**
  * Created by waldemar on 27/10/2016.

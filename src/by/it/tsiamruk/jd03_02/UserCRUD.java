@@ -1,7 +1,7 @@
 package by.it.tsiamruk.jd03_02;
 
 
-import by.it.tsiamruk.jd03_01.ConnectionCreator;
+import by.it.tsiamruk.jd03_01.connection.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

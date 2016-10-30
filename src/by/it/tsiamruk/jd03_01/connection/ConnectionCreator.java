@@ -1,4 +1,4 @@
-package by.it.tsiamruk.jd03_01;
+package by.it.tsiamruk.jd03_01.connection;
 
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
