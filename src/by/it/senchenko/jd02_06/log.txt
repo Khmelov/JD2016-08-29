@@ -1,0 +1,3 @@
+Error time Sat Oct 29 01:08:57 MSK 2016: Деление на ноль
+Error time Sat Oct 29 01:09:41 MSK 2016: Деление на ноль
+Error time Sat Oct 29 01:11:33 MSK 2016: Деление на ноль
