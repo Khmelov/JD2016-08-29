@@ -27,14 +27,14 @@ public class TaskC {
              Statement statement = connection.createStatement()) {
 
             // Создание БД
-            statement.execute(String.format("CREATE DATABASE test_hospital"));
-            System.out.println("База данных test_hospital создана");
+//            statement.execute(String.format("CREATE DATABASE test_hospital"));
+//            System.out.println("База данных test_hospital создана");
             //использование БД
             statement.execute(String.format("USE test_hospital"));
             System.out.println("Использвание базы данных test_hospital");
             // Удаление БД
-            //        statement.execute(String.format("DROP DATABASE test_hospital"));
-            //      System.out.println("БД test_hospital удалена");
+//                    statement.execute(String.format("DROP DATABASE test_hospital"));
+//                  System.out.println("БД test_hospital удалена");
 
 
             // Создание таблицы logpas
@@ -168,6 +168,6 @@ public class TaskC {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-//
+
     }
 }
