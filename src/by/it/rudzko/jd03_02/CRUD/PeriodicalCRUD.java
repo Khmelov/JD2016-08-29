@@ -10,12 +10,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
 
 public class PeriodicalCRUD {
 
     public Periodical create(Periodical p){
         p.setID(0);
-        String createPeriodical = String.format(
+        String createPeriodical = String.format(Locale.ENGLISH,
                 "insert into Periodicals(Title, SubIndex, FK_Readership, FK_Added) values('%s', '%d', '%d', '%d');",
                 p.getTitle(), p.getSubIndex(), p.getAudience().getID(), p.getAddedBy().getID()
         );
@@ -82,7 +83,7 @@ public class PeriodicalCRUD {
 
     public Periodical update(Periodical p){
         Periodical pRes = null;
-        String updatePeriodical = String.format(
+        String updatePeriodical = String.format(Locale.ENGLISH,
                 "UPDATE Periodicals SET Title = '%s', SubIndex = '%d', FK_Readership='%d', FK_Added='%d' WHERE Periodicals.ID = %d",
                 p.getTitle(), p.getSubIndex(), p.getAudience().getID(), p.getAddedBy().getID(), p.getID()
         );
@@ -101,7 +102,7 @@ public class PeriodicalCRUD {
 
     public boolean delete(Periodical p){
         boolean res=false;
-        String deletePeriodical = String.format("DELETE FROM Periodicals WHERE Periodicals.ID = %d", p.getID());
+        String deletePeriodical = String.format(Locale.ENGLISH, "DELETE FROM Periodicals WHERE Periodicals.ID = %d", p.getID());
         try (
                 Connection connection = CN.getConnection();
                 Statement statement = connection.createStatement()

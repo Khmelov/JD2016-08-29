@@ -2,7 +2,6 @@ package by.it.rudzko.jd03_02.POJO;
 
 import by.it.rudzko.jd03_02.CN;
 import by.it.rudzko.jd03_02.CRUD.*;
-import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

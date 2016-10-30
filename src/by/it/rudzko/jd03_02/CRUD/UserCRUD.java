@@ -8,12 +8,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
 
 public class UserCRUD {
 
     public User create(User us) {
         us.setID(0);
-        String createUser = String.format(
+        String createUser = String.format(Locale.ENGLISH,
                 "insert into Users(Name, FK_Role, BirthYear, Sex) values('%s', '%d', '%d', '%s');",
                 us.getName(), us.getRole().getID(), us.getBirthYear(), us.getSex()
         );
@@ -63,7 +64,7 @@ public class UserCRUD {
 
     public User update(User us){
         User userRes = null;
-        String updateUser = String.format(
+        String updateUser = String.format(Locale.ENGLISH,
                 "UPDATE Users SET Name = '%s', FK_Role = '%d', BirthYear='%d', Sex='%s' WHERE Users.ID = %d",
                 us.getName(), us.getRole().getID(), us.getBirthYear(), us.getSex(), us.getID()
         );
@@ -81,7 +82,7 @@ public class UserCRUD {
 
     public boolean delete(User us)  {
         boolean res=false;
-        String deleteUser = String.format("DELETE FROM Users WHERE Users.ID = %d", us.getID());
+        String deleteUser = String.format(Locale.ENGLISH, "DELETE FROM Users WHERE Users.ID = %d", us.getID());
         try (
                 Connection connection = CN.getConnection();
                 Statement statement = connection.createStatement()

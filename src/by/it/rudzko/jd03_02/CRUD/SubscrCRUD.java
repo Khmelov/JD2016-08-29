@@ -7,12 +7,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
 
 public class SubscrCRUD {
 
     public Subscr create(Subscr s) {
         s.setID(0);
-        String createSubscr = String.format(
+        String createSubscr = String.format(Locale.ENGLISH,
                 "insert into Subscription(FK_Subscriber, FK_Periodical) values('%d', '%d');",
                 s.getSubscriber().getID(), s.getPeriodical().getID()
         );
@@ -106,7 +107,7 @@ public class SubscrCRUD {
 
     public Subscr update(Subscr s){
         Subscr subRes = null;
-        String updateSubscr = String.format(
+        String updateSubscr = String.format(Locale.ENGLISH,
                 "UPDATE Subscription SET FK_Subscriber = '%d', FK_Periodical='%d' WHERE Subscription.ID = %d",
                 s.getSubscriber().getID(), s.getPeriodical().getID(), s.getID()
         );
@@ -124,7 +125,7 @@ public class SubscrCRUD {
 
     public boolean delete(Subscr s) {
         boolean res=false;
-        String deleteSubscr = String.format("DELETE FROM Subscription WHERE Subscription.ID = %d", s.getID());
+        String deleteSubscr = String.format(Locale.ENGLISH, "DELETE FROM Subscription WHERE Subscription.ID = %d", s.getID());
         try (
                 Connection connection = CN.getConnection();
                 Statement statement = connection.createStatement()

@@ -7,12 +7,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
 
 public class AudienceCRUD {
 
     public Audience create(Audience aud){
         aud.setID(0);
-        String createAudience = String.format(
+        String createAudience = String.format(Locale.ENGLISH,
                 "insert into Readership(Audience) value('%s');",
                 aud.getGroup()
         );
@@ -50,7 +51,7 @@ public class AudienceCRUD {
 
     public Audience update(Audience aud){
         Audience audRes = null;
-        String updateAudience = String.format(
+        String updateAudience = String.format(Locale.ENGLISH,
                 "UPDATE Readership SET Audience= '%s' WHERE Readership.ID = %d",
                 aud.getGroup(), aud.getID()
         );
@@ -68,7 +69,7 @@ public class AudienceCRUD {
 
     public boolean delete(Audience aud){
         boolean res=false;
-        String deleteAudience = String.format("DELETE FROM Readership WHERE Readership.ID = %d", aud.getID());
+        String deleteAudience = String.format(Locale.ENGLISH, "DELETE FROM Readership WHERE Readership.ID = %d", aud.getID());
         try (
                 Connection connection = CN.getConnection();
                 Statement statement = connection.createStatement()

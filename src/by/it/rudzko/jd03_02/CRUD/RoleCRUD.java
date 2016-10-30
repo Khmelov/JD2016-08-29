@@ -7,11 +7,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
 
 public class RoleCRUD {
     public Role create(Role r){
         r.setID(0);
-        String createRole = String.format(
+        String createRole = String.format(Locale.ENGLISH,
                 "insert into Roles(Role) value('%s');",
                 r.getParticipant()
         );
@@ -50,7 +51,7 @@ public class RoleCRUD {
 
     public Role update(Role r){
         Role rRes = null;
-        String updateRole = String.format(
+        String updateRole = String.format(Locale.ENGLISH,
                 "UPDATE Roles SET Role= '%s' WHERE Roles.ID = %d",
                 r.getParticipant(), r.getID()
         );
@@ -68,7 +69,7 @@ public class RoleCRUD {
 
     public boolean delete(Role r){
         boolean res=false;
-        String deleteRole = String.format("DELETE FROM Roles WHERE Roles.ID = %d", r.getID());
+        String deleteRole = String.format(Locale.ENGLISH, "DELETE FROM Roles WHERE Roles.ID = %d", r.getID());
         try (
                 Connection connection = CN.getConnection();
                 Statement statement = connection.createStatement()

@@ -29,17 +29,15 @@ public class GetUsers {
             while (rolesSet.next()) {
                 roles.put(rolesSet.getInt("ID"), rolesSet.getString("Role"));
             }
-            Iterator<Map.Entry<String,Integer>> it=users.entrySet().iterator();
-            while (it.hasNext()){
-                Map.Entry<String, Integer> x=it.next();
-                if (roles.containsKey(x.getValue())){
-                    System.out.println(x.getKey()+" - "+roles.get(x.getValue()));
+            for (Map.Entry<String, Integer> x : users.entrySet()) {
+                if (roles.containsKey(x.getValue())) {
+                    System.out.println(x.getKey() + " - " + roles.get(x.getValue()));
                 }
             }
             System.out.println("There are "+users.size()+" users and "+roles.size()+" roles for them in database.");
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("No connection.\n"+e.getMessage());
         }
     }
 }
