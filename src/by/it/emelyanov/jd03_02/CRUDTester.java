@@ -64,28 +64,32 @@ public class CRUDTester {
         }
          */
 
-        /** Создание таблиц и их связей в БД*/
+        /** Создание таблиц и их связей в БД
         try {
             CreateInsertAndDrop.createDB();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        /** Заполение наблиц в БД*/
+        /** Заполение наблиц в БД
         try {
             CreateInsertAndDrop.insertToDB();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        /** Удаление таблиз из БД*/
-        /*
+        /** Удаление таблиз из БД
         try {
             CreateInsertAndDrop.drobDB();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         */
+        try {
+            SearchByRole.searchId("Client");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 }
