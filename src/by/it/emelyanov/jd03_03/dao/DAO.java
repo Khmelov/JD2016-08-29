@@ -5,9 +5,9 @@ public class DAO {
     private static DAO dao;
 
     //конкретные DAO для сущностей
-    private UsersDAO userDAO;
-    private RoomsDAO carDAO;
-    private OrdersDAO orderDAO;
+    private UsersDAO usersDAO;
+    private RoomsDAO roomsDAO;
+    private OrdersDAO ordersDAO;
 
 
     private DAO() {
@@ -23,9 +23,9 @@ public class DAO {
             synchronized (DAO.class) {
                 if (dao == null) {
                     dao = new DAO();
-                    dao.userDAO = new UsersDAO();
-                    dao.carDAO = new RoomsDAO();
-                    dao.orderDAO = new OrdersDAO();
+                    dao.usersDAO = new UsersDAO();
+                    dao.roomsDAO = new RoomsDAO();
+                    dao.ordersDAO = new OrdersDAO();
                     //новые куски DAO добавляются аналогично при расширении DAO
                     //...
                 }
@@ -34,16 +34,16 @@ public class DAO {
         return dao;
     }
 
-    public UsersDAO getUserDAO() {
-        return userDAO;
+    public UsersDAO getUsersDAO() {
+        return usersDAO;
     }
 
-    public RoomsDAO getCarDAO() {
-        return carDAO;
+    public RoomsDAO getRoomsDAO() {
+        return roomsDAO;
     }
 
-    public OrdersDAO getOrderDAO() {
-        return orderDAO;
+    public OrdersDAO getOrdersDAO() {
+        return ordersDAO;
     }
 
 }
