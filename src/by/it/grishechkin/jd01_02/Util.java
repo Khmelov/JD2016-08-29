@@ -1,7 +1,5 @@
 package by.it.grishechkin.jd01_02;
 
-import by.it.savelyeva.jd_01_workbook.Task;
-
 import java.util.Scanner;
 
 /**
