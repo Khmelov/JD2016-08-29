@@ -231,10 +231,7 @@ public class MyDataBase {
                     System.out.println(x.getKey() + " - " + roles.get(x.getValue()));
                 }
             }
-
-            connection.close();
             System.out.println("There are "+users.size()+" users and "+roles.size()+" roles for them in database.");
-
         } catch (SQLException e) {
             System.out.println("No connection. Can't get users from database.\n"+e.getMessage());
         }
