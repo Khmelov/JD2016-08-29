@@ -12,7 +12,7 @@ import java.sql.Statement;
  * @author Eugene Tsydzik
  * @since 30.10.16.
  */
-public abstract class AbstractDAO{
+public abstract class AbstractDAO {
     //общая команда для Create Update Delete
     protected int executeUpdate(String sql) {
         int result = -1;
