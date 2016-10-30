@@ -1,6 +1,7 @@
-package by.it.tsiamruk.jd03_01;
+package by.it.tsiamruk.jd03_02;
 
 import by.it.tsiamruk.jd03_01.connection.ConnectionCreator;
+import by.it.tsiamruk.jd03_02.crud.UserCRUD;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -60,5 +61,16 @@ public class CreationDataBaseScenario {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    static void deleteTable() throws SQLException{
+        try(Connection connection = ConnectionCreator.getConnection();
+            Statement statement = connection.createStatement()) {
+            statement.executeUpdate("DROP TABLE IF EXISTS wtsiamruk.users;");
+            statement.executeUpdate("DROP TABLE IF EXISTS wtsiamruk.acoounts;");
+            statement.executeUpdate("DROP TABLE IF EXISTS wtsiamruk.role");
+        }
+    }
+    static void insertUser(User user) throws SQLException{
+        new UserCRUD().create(user);
     }
 }

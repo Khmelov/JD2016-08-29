@@ -16,6 +16,7 @@ import java.util.Locale;
  */
 public class UserCRUD {
 
+
     public User create(User user) throws SQLException {
         user.setId(0);
         String createUserSQL = String.format("insert into users(Login,Password,Email,FK_Role)" +
@@ -38,7 +39,7 @@ public class UserCRUD {
 
     public User read(int id) throws SQLException {
         User userResult = null;
-        String readUserSQL = "SELECT * FROM users where ID=" + id;
+        String readUserSQL = "SELECT * FROM wtsiamruk.users where ID=" + id;
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             final ResultSet resultSet = statement.executeQuery(readUserSQL);
@@ -59,7 +60,7 @@ public class UserCRUD {
         User userResult = null;
         String updateUserSQL = String.format(
                 Locale.ENGLISH,
-                "UPDATE users SET login = '%s', password = '%s', email = '%s', FK_role = %d WHERE users.ID = %d",
+                "UPDATE wtsiamruk.users SET login = '%s', password = '%s', email = '%s', FK_role = %d WHERE users.ID = %d",
                 user.getLogin(), user.getPassword(), user.getEmail(), user.getFk_role(), user.getId());
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
@@ -72,7 +73,7 @@ public class UserCRUD {
     }
 
     public boolean delete(User user) throws SQLException {
-        String deleteUserSQL = String.format("DELETE FROM users WHERE users.ID = %d", user.getId());
+        String deleteUserSQL = String.format("DELETE FROM wtsiamruk.users WHERE users.ID = %d", user.getId());
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()

@@ -9,15 +9,15 @@ import java.sql.SQLException;
  */
 public class CRUDProgramm {
     static void crudProgramm(){
-        User userfromJava = new User(15,"loginFromJava","passwordFromJava","mailjava@java.com",2);
-        User userfromJavaUpdated = new User(15,"loginFromJavaUpdated","passwordFromJava","mailjava@java.com",2);
+        User userFromJava = new User(0,"loginFromJava","passwordFromJava","mailjava@java.com",2);
+        User userFromJavaUpdated = new User(0,"loginFromJavaUpdated","passwordFromJava","mailjava@java.com",2);
         UserCRUD userCRUD = new UserCRUD();
         try {
-              userCRUD.create(userfromJava);
-              userCRUD.read(15);
-              userCRUD.update(userfromJavaUpdated);
-              userCRUD.read(15);
-              userCRUD.delete(userfromJava);
+              userCRUD.create(userFromJava);
+              System.out.println(userCRUD.read(7));
+//              userCRUD.update(userFromJavaUpdated);
+//              userCRUD.read(7);
+//              userCRUD.delete(userFromJavaUpdated);
         } catch (SQLException e) {
             e.printStackTrace();
         }
