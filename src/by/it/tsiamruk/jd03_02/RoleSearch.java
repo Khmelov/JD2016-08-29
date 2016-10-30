@@ -13,28 +13,16 @@ public class RoleSearch {
         try(Connection connection = ConnectionCreator.getConnection();
             Statement statement = connection.createStatement())
         {
-            String request = "SELECT * FROM role;";
-            ResultSet resultSet = statement.executeQuery(request);
-            ResultSetMetaData rsm = resultSet.getMetaData();
-            while (resultSet.next()){
-                if (search.equals("user")){
-                    if ((resultSet.getInt("ID") == 2))
-                        System.out.println("ID этого типа пользователя: " +resultSet.getInt("ID"));
-                }
-                if (search.equals("admin")){
-                    if ((resultSet.getInt("ID"))==1)
-                        System.out.println("ID этого типа пользователя: "+ resultSet.getInt("ID"));
-                }
+            ResultSet resultSet = statement.executeQuery("SELECT role.ID FROM wtsiamruk.role WHERE role.role ='" + search + "'");
+            if (resultSet.next()) {
+                System.out.println(resultSet.getInt("ID"));
             }
-            if (!search.equals("admin" )&& !search.equals("user"))
-                System.out.println("Такого типа пользователя не существует");
-            if (search.toLowerCase().equals("exit"))
-                System.exit(0);
-
         }
         catch (SQLException e)
         {
             e.printStackTrace();
         }
+        if (search.equals("exit"))
+            System.exit(0);
     }
 }
