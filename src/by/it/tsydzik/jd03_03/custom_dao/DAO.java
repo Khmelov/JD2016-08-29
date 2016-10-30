@@ -4,9 +4,10 @@ public class DAO {
 
     private static DAO dao; //синглтон для DAO
 
-    public UserDAO user;    //DAO для пользователей
-    public RoleDAO role;    //DAO для ролей
-    public AdDAO ad;        //DAO для объявлений
+    public AutoDAO auto;
+    public ClientDAO client;
+    public RentDAO rent;
+    public RenterDAO renter;
     //...
 
     public static DAO getDAO() {   //метод, который создает DAO или возвращает существующий экземпляр
@@ -14,9 +15,10 @@ public class DAO {
             synchronized (DAO.class) {
                 if (dao == null) {
                     dao = new DAO();
-                    dao.user = new UserDAO();
-                    dao.role = new RoleDAO();
-                    dao.ad = new AdDAO();
+                    dao.auto = new AutoDAO();
+                    dao.client = new ClientDAO();
+                    dao.rent = new RentDAO();
+                    dao.renter = new RenterDAO();
                     //новые куски DAO добавляются аналогично при расширении DAO
                     //dao.ad = new AdDAO();
                     //...

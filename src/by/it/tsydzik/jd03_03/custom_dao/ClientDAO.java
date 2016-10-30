@@ -44,7 +44,7 @@ public class ClientDAO extends AbstractDAO implements InterfaceDAO<Client> {
     @Override
     public boolean create(Client client) {
         String sql = String.format(
-                "insert INTO client(name) values('%s',);", client.getName()
+                "INSERT INTO client(name) values('%s');", client.getName()
         );
         client.setId(executeUpdate(sql));
         return (client.getId() > 0);
