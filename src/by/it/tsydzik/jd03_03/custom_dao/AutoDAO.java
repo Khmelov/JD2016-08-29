@@ -15,9 +15,9 @@ import java.util.Locale;
 public class AutoDAO extends AbstractDAO implements InterfaceDAO<Auto> {
     @Override
     public Auto read(int id) {
-        List<Auto> roles = getAll("WHERE ID=" + id + " LIMIT 0,1");
-        if (roles.size() > 0) {
-            return roles.get(0);
+        List<Auto> autos = getAll("WHERE id=" + id + " LIMIT 0,1");
+        if (autos.size() > 0) {
+            return autos.get(0);
         } else
             return null;
     }
@@ -63,7 +63,7 @@ public class AutoDAO extends AbstractDAO implements InterfaceDAO<Auto> {
     @Override
     public boolean delete(Auto auto) {
         String sql = String.format(
-                "DELETE FROM `ad` WHERE `ad`.`id`=%d;", auto.getId()
+                "DELETE FROM `auto` WHERE `auto`.`id`=%d;", auto.getId()
         );
         return (0 < executeUpdate(sql));
     }
