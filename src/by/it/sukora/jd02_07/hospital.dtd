@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+        <!ELEMENT Hospital (Patients)>
+        <!ELEMENT Patients (Patient) +>
+        <!ATTLIST Patient name CDATA #REQUIRED>
+        <!ELEMENT Patient (FirstName,MedicalCard, LastName, Sex, DateOfBirth, Passport, IssuedBy, IssuedDate, Login, Password, Phone, Address)>
+        <!ELEMENT FirstName (#PCDATA)>
+        <!ELEMENT LastName (#PCDATA)>
+        <!ELEMENT Sex (#PCDATA)>
+        <!ELEMENT DateOfBirth (#PCDATA)>
+        <!ELEMENT Passport (#PCDATA)>
+        <!ELEMENT IssuedBy (#PCDATA)>
+        <!ELEMENT IssuedDate (#PCDATA)>
+        <!ELEMENT Login (#PCDATA)>
+        <!ELEMENT Password (#PCDATA)>
+        <!ELEMENT Phone (#PCDATA)>
+
+        <!ELEMENT Address (Country, City, Street, Building, Flat)>
+        <!ELEMENT Country (#PCDATA)>
+        <!ELEMENT City (#PCDATA)>
+        <!ELEMENT Street (#PCDATA)>
+        <!ELEMENT Building (#PCDATA)>
+        <!ELEMENT Flat (#PCDATA)>
+
+        <!ELEMENT MedicalCard (Diagnosis)+>
+        <!ELEMENT Diagnosis (Disease,Sibptomps,PeriodStart,PeriodEnd,Recipe)>
+        <!ATTLIST Diagnosis id CDATA #REQUIRED>
+        <!ELEMENT Disease (#PCDATA)>
+        <!ELEMENT Sibptomps (#PCDATA)>
+        <!ELEMENT PeriodStart (#PCDATA)>
+        <!ELEMENT PeriodEnd (#PCDATA)>
+        <!ELEMENT Recipe (#PCDATA)>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<q:Hospital xmlns:q="http://jd02_07.sukora.it.by/xml/Hospital"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://jd02_07.sukora.it.by/xml/Hospital hospital.xsd">>
+    <q:Patients>
+        <q:Patient name="Stas Sukora">
+            <q:FirstName>Stas</q:FirstName>
+            <q:LastName>Sukora</q:LastName>
+            <q:Sex>M</q:Sex>
+            <q:DateOfBirth>1979-09-12</q:DateOfBirth>
+            <q:Passport>BM1932121</q:Passport>
+            <q:IssuedBy>Minsk ROVD</q:IssuedBy>
+            <q:IssuedDate>2010-12-15</q:IssuedDate>
+            <q:Login>stas14141</q:Login>
+            <q:Password>password1</q:Password>
+            <q:Phone>+375294586954</q:Phone>
+            <q:Address>
+                <q:Country>Belarus</q:Country>
+                <q:City>Minsk</q:City>
+                <q:Street>Lenina</q:Street>
+                <q:Building>3</q:Building>
+                <q:Flat>21</q:Flat>
+            </q:Address>
+            <q:MedicalCard>
+                <q:Diagnosis id="1">
+                    <q:Disease>Грипп</q:Disease>
+                    <q:Sibptomps>Кашель, высокая температура, знобь, головная боль</q:Sibptomps>
+                    <q:PeriodStart>11 Ноября</q:PeriodStart>
+                    <q:PeriodEnd>28 Ноября</q:PeriodEnd>
+                    <q:Recipe>Азлобин, формацевтив</q:Recipe>
+                </q:Diagnosis>
+                <q:Diagnosis id="2">
+                    <q:Disease>Гайморит</q:Disease>
+                    <q:Sibptomps>Сильная боль в областе носа, высокая температура, знобьь</q:Sibptomps>
+                    <q:PeriodStart>3 Января</q:PeriodStart>
+                    <q:PeriodEnd>12 Февраля</q:PeriodEnd>
+                    <q:Recipe>АнтиГайморит</q:Recipe>
+                </q:Diagnosis>
+                <q:Diagnosis id="3">
+                    <q:Disease>Ротовирусная инфекция</q:Disease>
+                    <q:Sibptomps>Тошнота, понос, высокая температура, недуг</q:Sibptomps>
+                    <q:PeriodStart>3 Марта</q:PeriodStart>
+                    <q:PeriodEnd>8 Марта</q:PeriodEnd>
+                    <q:Recipe>Стоп диар, против температура</q:Recipe>
+                </q:Diagnosis>
+                <q:Diagnosis id="4">
+                    <q:Disease>Простуда</q:Disease>
+                    <q:Sibptomps>Насморк, небольшая температура</q:Sibptomps>
+                    <q:PeriodStart>10 Апреля</q:PeriodStart>
+                    <q:PeriodEnd>17 Апреля</q:PeriodEnd>
+                    <q:Recipe>NULL</q:Recipe>
+                </q:Diagnosis>
+                <q:Diagnosis id="5">
+                    <q:Disease>Апендецит</q:Disease>
+                    <q:Sibptomps>Сильная боль в животе</q:Sibptomps>
+                    <q:PeriodStart>20 Декабря</q:PeriodStart>
+                    <q:PeriodEnd>12 Января</q:PeriodEnd>
+                    <q:Recipe>Постельный режим, операция, диета</q:Recipe>
+                </q:Diagnosis>
+            </q:MedicalCard>
+        </q:Patient>
+
+        <q:Patient name="Nikita Nicrogodov">
+            <q:FirstName>Nicita</q:FirstName>
+            <q:LastName>Nicrogodov</q:LastName>
+            <q:Sex>M</q:Sex>
+            <q:DateOfBirth>1987-02-13</q:DateOfBirth>
+            <q:Passport>MP1933541</q:Passport>
+            <q:IssuedBy>Minsk ROVD</q:IssuedBy>
+            <q:IssuedDate>2012-12-15</q:IssuedDate>
+            <q:Login>loveMasha</q:Login>
+            <q:Password>password231</q:Password>
+            <q:Phone>+375294586954</q:Phone>
+            <q:Address>
+                <q:Country>Belarus</q:Country>
+                <q:City>Minsk</q:City>
+                <q:Street>Odoevskogo</q:Street>
+                <q:Building>3</q:Building>
+                <q:Flat>223</q:Flat>
+            </q:Address>
+            <q:MedicalCard>
+                <q:Diagnosis id="1">
+                    <q:Disease>Грипп</q:Disease>
+                    <q:Sibptomps>Кашель, высокая температура, знобь, головная боль</q:Sibptomps>
+                    <q:PeriodStart>11 Ноября</q:PeriodStart>
+                    <q:PeriodEnd>28 Ноября</q:PeriodEnd>
+                    <q:Recipe>Азлобин, формацевтив</q:Recipe>
+                </q:Diagnosis>
+                <q:Diagnosis id="2">
+                    <q:Disease>Гайморит</q:Disease>
+                    <q:Sibptomps>Сильная боль в областе носа, высокая температура, знобьь</q:Sibptomps>
+                    <q:PeriodStart>3 Января</q:PeriodStart>
+                    <q:PeriodEnd>12 Февраля</q:PeriodEnd>
+                    <q:Recipe>АнтиГайморит</q:Recipe>
+                </q:Diagnosis>
+                <q:Diagnosis id="3">
+                    <q:Disease>Эболла</q:Disease>
+                    <q:Sibptomps>Тошнота, понос, высокая температура, недуг, летальный исход</q:Sibptomps>
+                    <q:PeriodStart>3 Марта</q:PeriodStart>
+                    <q:PeriodEnd>5 Марта</q:PeriodEnd>
+                    <q:Recipe>кладбище</q:Recipe>
+                </q:Diagnosis>
+                <q:Diagnosis id="4">
+                    <q:Disease>Простуда</q:Disease>
+                    <q:Sibptomps>Насморк, небольшая температура</q:Sibptomps>
+                    <q:PeriodStart>10 Апреля</q:PeriodStart>
+                    <q:PeriodEnd>17 Апреля</q:PeriodEnd>
+                    <q:Recipe>NULL</q:Recipe>
+                </q:Diagnosis>
+                <q:Diagnosis id="5">
+                    <q:Disease>Апендецит</q:Disease>
+                    <q:Sibptomps>Сильная боль в животе</q:Sibptomps>
+                    <q:PeriodStart>20 Декабря</q:PeriodStart>
+                    <q:PeriodEnd>12 Января</q:PeriodEnd>
+                    <q:Recipe>Постельный режим, операция, диета</q:Recipe>
+                </q:Diagnosis>
+            </q:MedicalCard>
+        </q:Patient>
+    </q:Patients>
+</q:Hospital>
