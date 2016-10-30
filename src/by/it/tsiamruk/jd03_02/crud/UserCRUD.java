@@ -1,7 +1,8 @@
-package by.it.tsiamruk.jd03_02;
+package by.it.tsiamruk.jd03_02.crud;
 
 
 import by.it.tsiamruk.jd03_01.connection.ConnectionCreator;
+import by.it.tsiamruk.jd03_02.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
