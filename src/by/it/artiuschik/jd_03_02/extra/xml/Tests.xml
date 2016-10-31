@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Tests>
+    <Test>
+        <Name>Законы Ньютона</Name>
+        <Subject>Физика</Subject>
+        <Questions>5</Questions>
+    </Test>
+    <Test>
+        <Name>Термодинамика</Name>
+        <Subject>Физика</Subject>
+        <Questions>5</Questions>
+    </Test>
+    <Test>
+        <Name>Свойства неметаллов</Name>
+        <Subject>Химия</Subject>
+        <Questions>5</Questions>
+    </Test>
+    <Test>
+        <Name>Операции с матрицами</Name>
+        <Subject>Алгебра</Subject>
+        <Questions>5</Questions>
+    </Test>
+</Tests>

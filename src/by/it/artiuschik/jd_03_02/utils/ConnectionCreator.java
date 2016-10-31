@@ -1,4 +1,4 @@
-package by.it.artiuschik.jd_03_02;
+package by.it.artiuschik.jd_03_02.utils;
 
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
