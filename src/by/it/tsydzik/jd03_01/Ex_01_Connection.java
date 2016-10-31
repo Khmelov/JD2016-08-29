@@ -1,6 +1,5 @@
 package by.it.tsydzik.jd03_01;
 
-import by.it.akhmelev.jd03_01.CN;
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.Connection;
