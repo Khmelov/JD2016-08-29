@@ -38,7 +38,7 @@ public class TaskC {
 
 
             // Создание таблицы logpas
-            statement.execute("CREATE TABLE logpas (\n" +
+            statement.execute("CREATE TABLE IF NOT EXISTS logpas (\n" +
                     " id int NOT NULL AUTO_INCREMENT,\n" +
                     " Login varchar(100) NOT NULL,\n" +
                     " Password varchar(100) NOT NULL,\n" +
@@ -73,7 +73,7 @@ public class TaskC {
             System.out.println("Таблица address заполнена");
 
             //Создание таблицы diagnosis
-            statement.execute("CREATE TABLE diagnosis (\n" +
+            statement.execute("CREATE TABLE IF NOT EXISTS diagnosis (\n" +
                     " id int NOT NULL AUTO_INCREMENT,\n" +
                     " Disease varchar(100) NOT NULL,\n" +
                     " Siptomps varchar(200) NOT NULL,\n" +
@@ -91,7 +91,7 @@ public class TaskC {
             System.out.println("Таблица diagnosis заполнена");
 
             // Создание таблицы patients
-            statement.execute("CREATE TABLE patients (\n" +
+            statement.execute("CREATE TABLE IF NOT EXISTS patients (\n" +
                     " id int NOT NULL AUTO_INCREMENT,\n" +
                     " FirstName varchar(100) NOT NULL,\n" +
                     " LastName varchar(100) NOT NULL,\n" +
@@ -114,7 +114,7 @@ public class TaskC {
             System.out.println("Таблица patients заполнена");
 
             // Создание таблицы medicalcard
-            statement.execute("CREATE TABLE medicalcard (\n" +
+            statement.execute("CREATE TABLE IF NOT EXISTS medicalcard (\n" +
                     " id int NOT NULL AUTO_INCREMENT,\n" +
                     " id_patient int NOT NULL,\n" +
                     " id_diagnosis int NOT NULL,\n" +
@@ -129,7 +129,7 @@ public class TaskC {
             System.out.println("Таблица medicalcard заполнена");
 
             // Создание таблицы role
-            statement.execute("CREATE TABLE role (\n" +
+            statement.execute("CREATE TABLE IF NOT EXISTS role (\n" +
                     " id int NOT NULL AUTO_INCREMENT,\n" +
                     " Profession varchar(100) NOT NULL,\n" +
                     " PRIMARY KEY (id)\n" +
@@ -145,7 +145,7 @@ public class TaskC {
             System.out.println("Таблица role заполнена");
 
             // Создание таблицы users
-            statement.execute("CREATE TABLE users (\n" +
+            statement.execute("CREATE TABLE IF NOT EXISTS users (\n" +
                     " id int NOT NULL AUTO_INCREMENT,\n" +
                     " FirsName varchar(100) NOT NULL,\n" +
                     " LastName varchar(100) NOT NULL,\n" +
