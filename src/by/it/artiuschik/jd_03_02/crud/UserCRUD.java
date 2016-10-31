@@ -1,13 +1,14 @@
 package by.it.artiuschik.jd_03_02.crud;
 
-import by.it.artiuschik.jd_03_02.ConnectionCreator;
+import by.it.artiuschik.jd_03_02.utils.ConnectionCreator;
+import by.it.artiuschik.jd_03_02.beans.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-class UserCRUD {
+public class UserCRUD {
     public User create(User user) throws SQLException {
         user.setID(0);
         //составление строки createUserSQL по данным Bean User
@@ -21,8 +22,7 @@ class UserCRUD {
                 //объект для обращения к базе
                 Statement statement = connection.createStatement()
         ) {
-            int addedUsers = statement.executeUpdate(createUserSQL);
-            if (addedUsers == 1) {
+            if (statement.executeUpdate(createUserSQL) == 1) {
                 /*LAST_INSERT_ID() Возвращает последнюю автоматически
                 сгенерированную величину, которая была внесена в столбец
                 AUTO_INCREMENT*/
