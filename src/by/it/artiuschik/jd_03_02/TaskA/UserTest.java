@@ -1,12 +1,14 @@
-package by.it.artiuschik.jd_03_02.crud;
+package by.it.artiuschik.jd_03_02.TaskA;
+import by.it.artiuschik.jd_03_02.beans.User;
+import by.it.artiuschik.jd_03_02.crud.UserCRUD;
 
 import java.sql.SQLException;
 
 public class UserTest {
     public static void main(String[] args) {
-        User user=new User(0,"Петрова","Анастасия",1123,1,10,1);
+        try{
+        User user=new User(0,"Анастасия","Петрова",1123,1,10,1);
         UserCRUD userCRUD=new UserCRUD();
-        try {
             userCRUD.create(user);
             System.out.println("Добавляемый  user:");
             System.out.println(user);
@@ -17,9 +19,7 @@ public class UserTest {
             userCRUD.update(user);
             System.out.println("Измененный  user:");
             System.out.println(user);
-            userCRUD.delete(user);
-            System.out.println("user  удален!");
-
+            System.out.println(userCRUD.delete(user)+" user удален!");
         } catch (SQLException e) {
             e.printStackTrace();
         }

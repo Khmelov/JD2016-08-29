@@ -1,45 +1,61 @@
-package by.it.artiuschik.jd_03_02.crud;
+package by.it.artiuschik.jd_03_02.beans;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 //Bean User
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "User", propOrder = {
+        "ID",
+        "Name",
+        "Surname",
+        "Password",
+        "Tests_amount",
+        "Balls",
+        "FK_ROLE"
+})
 public class User {
-    private int ID;
-    private String Name;
-    private String Surname;
-    private int Password;
-    private int Tests_amount;
-    private int Balls;
-    private int FK_ROLE;
 
+    @XmlElement(name = "ID")
+    protected int ID;
+    @XmlElement(name = "Name", required = true)
+    protected String Name;
+    @XmlElement(name = "Surname", required = true)
+    protected String Surname;
+    @XmlElement(name = "Password", required = true)
+    protected int Password;
+    @XmlElement(name = "Tests_amount")
+    protected int Tests_amount;
+    @XmlElement(name = "Balls")
+    protected int Balls;
+    @XmlElement(name = "FK_ROLE")
+    protected int FK_ROLE;
     public int getID() {
         return ID;
     }
-
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setID(int value) {
+        this.ID = value;
     }
-
     public String getName() {
         return Name;
     }
-
-    public void setName(String name) {
-        Name = name;
+    public void setName(String value) {
+        this.Name = value;
     }
-
+    public String getSurname() {
+        return Surname;
+    }
+    public void setSurname(String value) {
+        this.Surname = value;
+    }
     public int getPassword() {
         return Password;
     }
 
-    public void setPassword(int password) {
-        Password = password;
-    }
-
-    public String getSurname() {
-        return Surname;
-    }
-
-    public void setSurname(String surname) {
-        Surname = surname;
+    public void setPassword(int value) {
+        this.Password = value;
     }
 
     public int getTests_amount() {
@@ -49,24 +65,18 @@ public class User {
     public void setTests_amount(int tests_amount) {
         Tests_amount = tests_amount;
     }
-
     public int getBalls() {
         return Balls;
     }
-
-    public void setBalls(int balls) {
-        Balls = balls;
+    public void setBalls(int value) {
+        this.Balls = value;
     }
-
     public int getFK_ROLE() {
         return FK_ROLE;
     }
-
-    public void setFK_ROLE(int FK_ROLE) {
-        this.FK_ROLE = FK_ROLE;
+    public void setFK_ROLE(int value) {
+        this.FK_ROLE = value;
     }
-
-
     public User() {
     }
 
@@ -121,4 +131,5 @@ public class User {
                 ", FK_ROLE=" + FK_ROLE +
                 '}';
     }
+
 }

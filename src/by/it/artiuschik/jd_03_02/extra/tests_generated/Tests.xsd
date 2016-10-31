@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://tests_generated.extra.jd_03_02.artiuschik.it.by/"
+        xmlns:tns="http://tests_generated.extra.jd_03_02.artiuschik.it.by/"
+        elementFormDefault="qualified">
+    <element name="Tests">
+        <complexType>
+            <sequence>
+                <element name="Test"
+                         type="tns:Test"
+                         minOccurs="1"
+                         maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="Test">
+        <sequence>
+            <element name="ID" type="int"/>
+            <element name="Name" type="string"/>
+            <element name="Subject" type="string"/>
+            <element name="Questions" type="int"/>
+        </sequence>
+    </complexType>
+</schema>
