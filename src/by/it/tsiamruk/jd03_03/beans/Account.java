@@ -1,6 +1,7 @@
 package by.it.tsiamruk.jd03_03.beans;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * Created by waldemar on 28/10/2016.
@@ -9,9 +10,18 @@ import java.io.Serializable;
 
 public class Account implements Serializable {
 
-    private int id;
-    private int totalAmount;
-    private String status;
+    private int id = 0;
+    private BigDecimal amount;
+    private Integer users_ID;
+
+    public Account() {
+    }
+
+    public Account(int id, BigDecimal amount, Integer users_ID) {
+        this.id = id;
+        this.amount = amount;
+        this.users_ID = users_ID;
+    }
 
     public int getId() {
         return id;
@@ -21,47 +31,36 @@ public class Account implements Serializable {
         this.id = id;
     }
 
-    public int getTotalAmount() {
-        return totalAmount;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setTotalAmount(int totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
-    public String getStatus() {
-        return status;
+    public Integer getUsers_ID() {
+        return users_ID;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Account() {
-    }
-
-    public Account(int totalAmount, String status, int id) {
-        this.id = id;
-        this.totalAmount = totalAmount;
-        this.status = status;
+    public void setUsers_ID(Integer users_ID) {
+        this.users_ID = users_ID;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Account account = (Account) o;
-
-        if (totalAmount != account.totalAmount) return false;
-        return status.equals(account.status);
-
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", amount=" + amount +
+                ", users_ID=" + users_ID +
+                '}';
     }
 
     @Override
     public int hashCode() {
-        int result = totalAmount;
-        result = 31 * result + status.hashCode();
+        int result = id;
+        result = 31 * result + (amount != null ? amount.hashCode() : 0);
+        result = 31 * result + (users_ID != null ? users_ID.hashCode() : 0);
         return result;
     }
 }
