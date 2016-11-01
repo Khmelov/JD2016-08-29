@@ -1,8 +1,8 @@
-package by.it.tsiamruk.jd03_03;
+package by.it.tsiamruk.jd03_03.DAO;
 
 
 import by.it.tsiamruk.jd03_03.Logger;
-import by.it.tsiamruk.jd03_01.connection.ConnectionCreator;
+import by.it.tsiamruk.jd03_03.connection.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

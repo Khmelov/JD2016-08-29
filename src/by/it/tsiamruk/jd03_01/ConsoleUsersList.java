@@ -20,7 +20,7 @@ public class ConsoleUsersList {
             ResultSet resultSet = statement.executeQuery(sqlRequest);
             while (resultSet.next()){
                 System.out.printf(Locale.ENGLISH, "ID = %d | Login: %s | Password: %s | Email: %s | RoleID: %d| RoleName: %s %n",
-                        resultSet.getInt("ID"),resultSet.getString("login"),resultSet.getString("password"),resultSet.getString("email"),resultSet.getInt("FK_role"),resultSet.getString("role"));
+                        resultSet.getInt("ID"),resultSet.getString("login"),resultSet.getString("password"),resultSet.getString("email"),resultSet.getInt("FK_role"),resultSet.getString("Role"));
             }
         }
         catch (SQLException e){
