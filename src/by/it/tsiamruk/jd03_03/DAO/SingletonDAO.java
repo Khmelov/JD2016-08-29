@@ -5,9 +5,22 @@ package by.it.tsiamruk.jd03_03.DAO;
  */
 public class SingletonDAO {
     private static SingletonDAO dao;
-    public UserDAO user;
-    public AccountDAO account;
-    public RoleDAO role;
+
+    private UserDAO user;
+    private AccountDAO account;
+    private RoleDAO role;
+
+    public UserDAO getUser() {
+        return user;
+    }
+
+    public AccountDAO getAccount() {
+        return account;
+    }
+
+    public RoleDAO getRole() {
+        return role;
+    }
 
     public static SingletonDAO getDAO(){
         if (dao == null){
@@ -20,4 +33,5 @@ public class SingletonDAO {
         }
         return dao;
     }
+
 }
