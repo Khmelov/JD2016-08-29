@@ -28,9 +28,7 @@ public class Run {
             System.out.println("Удален: " + usertest);
 
         System.out.println("\nСписок всех записей:");
-        for (User current: userUniDAO.getAll("")) {
-            System.out.println(current);
-        }
+        userUniDAO.getAll("").forEach(System.out::println);
 
     }
 }
