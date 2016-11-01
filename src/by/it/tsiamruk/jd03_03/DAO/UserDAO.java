@@ -30,7 +30,7 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
 
     @Override
     public boolean create(User user) {
-        String sql =String.format("INSERT INTO users(login, password, email, FK_role)" +
+        String sql =String.format("insert into wtsiamruk.users(login, password, email, FK_role)" +
                         "values(%s, %s, %s, %d",
                 user.getLogin(),user.getPassword(),user.getEmail(),user.getFk_role());
         user.setId(executeUpdate(sql));
@@ -40,21 +40,21 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
     @Override
     public boolean update(User user) {
         String sql = String.format(Locale.ENGLISH,
-                "UPDATE `users` SET `login` = '%s',`password` = '%s', `email` = '%s', `FK_role= '%d'`",
+                "update `users` SET `login` = '%s',`password` = '%s', `email` = '%s', `FK_role= '%d'`",
                 user.getLogin(),user.getPassword(),user.getEmail(),user.getFk_role());
         return (0 < executeUpdate(sql));
     }
 
     @Override
     public boolean delete(User user) {
-        String sql = String.format(Locale.ENGLISH, "DELETE FROM users WHERE users.ID = %d",user.getId());
+        String sql = String.format(Locale.ENGLISH, "delete from wtsiamruk.users where users.ID = %d",user.getId());
         return (0 < executeUpdate(sql));
     }
 
     @Override
     public List getAll(String where) {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM users " + where + ";";
+        String sql = "select * from wtsiamruk.users " + where + ";";
         try(Connection connection = ConnectionCreator.getConnection();
             Statement statement = connection.createStatement()
         ) {
