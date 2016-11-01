@@ -14,6 +14,7 @@ public class Servlet_01_doGetPostAndOther extends HttpServlet {
     //Действия выполняемые при обращении пользователя к сервлету по Get
     //обращение к super ОТСУТСТВУЕТ!!!
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
     //Действия выполняемые при обращении пользователя к сервлету по Post
