@@ -6,21 +6,9 @@ package by.it.tsiamruk.jd03_03.DAO;
 public class SingletonDAO {
     private static SingletonDAO dao;
 
-    private UserDAO user;
-    private AccountDAO account;
-    private RoleDAO role;
-
-    public UserDAO getUser() {
-        return user;
-    }
-
-    public AccountDAO getAccount() {
-        return account;
-    }
-
-    public RoleDAO getRole() {
-        return role;
-    }
+    public UserDAO user;
+    public AccountDAO account;
+    public RoleDAO role;
 
     public static SingletonDAO getDAO(){
         if (dao == null){
