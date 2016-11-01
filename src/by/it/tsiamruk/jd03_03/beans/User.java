@@ -1,14 +1,16 @@
 package by.it.tsiamruk.jd03_03.beans;
 
+import java.io.Serializable;
+
 /**
  * Created by waldemar on 26/10/2016.
  */
-public class User {
-    private int id;
+public class User implements Serializable {
+    private int id = 0;
     private String login;
     private String password;
     private String email;
-    private int fk_role;
+    private Integer fk_role = 0;
 
     public User() {
     }
@@ -21,20 +23,6 @@ public class User {
         this.fk_role = fk_role;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        if (id != user.id) return false;
-        if (fk_role != user.fk_role) return false;
-        if (login != null ? !login.equals(user.login) : user.login != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        return email != null ? email.equals(user.email) : user.email == null;
-
-    }
 
     @Override
     public int hashCode() {

@@ -15,9 +15,9 @@ public class CreationDataBaseScenario {
         try(Connection connection = ConnectionCreator.getConnection();
             Statement statement = connection.createStatement()) {
             statement.executeUpdate(String.format("CREATE DATABASE IF NOT EXISTS wtsiamruk;"));
-            statement.executeUpdate(String.format("CREATE TABLE IF NOT EXISTS wtsiamruk.role (" +
+            statement.executeUpdate(String.format("CREATE TABLE IF NOT EXISTS wtsiamruk.Role (" +
                     "  ID INT(1) NOT NULL," +
-                    "  role VARCHAR(100) NULL DEFAULT NULL," +
+                    "  Role VARCHAR(100) NULL DEFAULT NULL," +
                     "  PRIMARY KEY (ID)," +
                     "  UNIQUE INDEX ID_UNIQUE (ID ASC))" +
                     "ENGINE = InnoDB;"));
@@ -34,7 +34,7 @@ public class CreationDataBaseScenario {
                     "  INDEX fk_users_role_idx (FK_role ASC)," +
                     "  CONSTRAINT fk_users_role" +
                     "    FOREIGN KEY (FK_role)" +
-                    "    REFERENCES wtsiamruk.role (ID)" +
+                    "    REFERENCES wtsiamruk.Role (ID)" +
                     "    ON DELETE NO ACTION" +
                     "    ON UPDATE NO ACTION)" +
                     "ENGINE = InnoDB;"));
@@ -56,7 +56,7 @@ public class CreationDataBaseScenario {
 //            "(login, password, email, FK_role)" +
 //                    " VALUES ('usertest4', 'passtest4', 'mailtest4@test.com', 2);");
             //для удаления таблиц раскоментировать метод с текстом drop ...
-//            statement.executeUpdate("drop table role,users,accounts;");
+//            statement.executeUpdate("drop table Role,users,accounts;");
         } catch (SQLException e) {
             e.printStackTrace();
         }

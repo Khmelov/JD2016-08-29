@@ -25,7 +25,7 @@ public class PrintAllUsers {
                             resultSet.getString("password"),
                             resultSet.getString("email"),
                             resultSet.getInt("FK_role"),
-                            resultSet.getString("role"));
+                            resultSet.getString("Role"));
                 }
                 System.out.print("Общее число пользователей: " + resultSet.getMetaData().getColumnCount());
             }
