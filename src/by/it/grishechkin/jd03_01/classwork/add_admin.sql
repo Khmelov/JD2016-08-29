@@ -1,0 +1,1 @@
+INSERT INTO user (Login, Password, Email, FK_Role) VALUES ('admin', 'admin', 'admin@mail.ru', 1);
