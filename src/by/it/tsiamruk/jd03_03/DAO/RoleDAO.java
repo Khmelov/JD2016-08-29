@@ -1,6 +1,5 @@
 package by.it.tsiamruk.jd03_03.DAO;
 
-import by.it.tsiamruk.jd03_03.Logger;
 import by.it.tsiamruk.jd03_03.beans.Role;
 import by.it.tsiamruk.jd03_03.connection.ConnectionCreator;
 
@@ -18,7 +17,6 @@ import java.util.Map;
  * Created by waldemar on 01/11/2016.
  */
 public class RoleDAO extends AbstractDAO implements InterfaceDAO<Role> {
-    private Logger logger;
 
     @Override
     public Role read(int id) {
@@ -32,14 +30,14 @@ public class RoleDAO extends AbstractDAO implements InterfaceDAO<Role> {
 
     @Override
     public boolean create(Role bean) {
-        String sql =String.format("INSERT INTO role(role) VALUES(%s)",bean.getRole());
+        String sql =String.format("insert INTO role(role) VALUES(%s);",bean.getRole());
         bean.setId(executeUpdate(sql));
         return (bean.getId()>0);
     }
 
     @Override
     public boolean update(Role bean) {
-        String sql = String.format("UPDATE role SET role %s", bean.getRole());
+        String sql = String.format("UPDATE `role` SET role %s", bean.getRole());
         return (bean.getId()>0);
     }
 
@@ -51,7 +49,7 @@ public class RoleDAO extends AbstractDAO implements InterfaceDAO<Role> {
     @Override
     public List<Role> getAll(String where) {
         List<Role> roles = new ArrayList<>();
-        String sql = "SELECT * role " + where + " ;";
+        String sql = "SELECT * FROM wtsiamruk.role " + where + " ;";
         try(Connection connection = ConnectionCreator.getConnection();
             Statement statement =  connection.createStatement();
         ) {
@@ -60,10 +58,11 @@ public class RoleDAO extends AbstractDAO implements InterfaceDAO<Role> {
                 Role role = new Role();
                 role.setId(rs.getInt("ID"));
                 role.setRole(rs.getString("role"));
+                roles.add(role);
             }
 
         } catch (SQLException e) {
-            logger.writeInLog(e.getMessage(),e);
+            System.out.println("" + e.getMessage());
         }
         return roles;
     }

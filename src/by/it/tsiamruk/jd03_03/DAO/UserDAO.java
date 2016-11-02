@@ -1,7 +1,6 @@
 package by.it.tsiamruk.jd03_03.DAO;
 
 import by.it.tsiamruk.jd03_03.connection.ConnectionCreator;
-import by.it.tsiamruk.jd03_03.Logger;
 import by.it.tsiamruk.jd03_03.beans.User;
 
 import java.sql.Connection;
@@ -16,7 +15,6 @@ import java.util.Locale;
  * Created by waldemar on 30/10/2016.
  */
 public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
-    private Logger logger;
 
     @Override
     public User read(int id) {
@@ -30,8 +28,8 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
 
     @Override
     public boolean create(User user) {
-        String sql =String.format("INSERT INTO users(login, password, email, FK_role)" +
-                        "values(%s, %s, %s, %d",
+        String sql =String.format("insert INTO users(login, password, email, FK_role)" +
+                        "values(%s, %s, %s, %d);",
                 user.getLogin(),user.getPassword(),user.getEmail(),user.getFk_role());
         user.setId(executeUpdate(sql));
         return (user.getId()>0);
@@ -52,7 +50,7 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
     }
 
     @Override
-    public List getAll(String where) {
+    public List<User> getAll(String where) {
         List<User> users = new ArrayList<>();
         String sql = "SELECT * FROM users " + where + ";";
         try(Connection connection = ConnectionCreator.getConnection();
@@ -66,10 +64,11 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
                 user.setPassword(rs.getString("password"));
                 user.setEmail(rs.getString("email"));
                 user.setFk_role(rs.getInt("FK_role"));
+                users.add(user);
             }
 
         } catch (SQLException e) {
-            logger.writeInLog(e.getMessage(), e);
+            System.out.println(""+e.getMessage());
         }
 
         return users;

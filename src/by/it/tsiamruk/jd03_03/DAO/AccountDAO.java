@@ -30,8 +30,8 @@ public class AccountDAO extends AbstractDAO implements InterfaceDAO<Account> {
 
     @Override
     public boolean create(Account bean) {
-        String sql = String.format(Locale.ENGLISH, "INSERT INTO wtsiamruk.accounts(amount)" +
-                "VALUES(%f)",bean.getAmount());
+        String sql = String.format(Locale.ENGLISH, "insert INTO wtsiamruk.accounts(amount)" +
+                "values(%f);",bean.getAmount());
         bean.setId(executeUpdate(sql));
         return (bean.getId()>0);
     }
