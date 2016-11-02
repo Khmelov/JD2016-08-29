@@ -1,7 +1,5 @@
 package by.it.tsydzik.project.java.connection;
 
-import com.mysql.fabric.jdbc.FabricMySQLDriver;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,9 +18,10 @@ public class ConnectionCreator {
 
     static {
         try { //один раз регистрируем драйвер
-            DriverManager.registerDriver(new FabricMySQLDriver());
-        } catch (SQLException e) {
-            System.out.println(e.getLocalizedMessage());
+            Class.forName("com.mysql.jdbc.Driver");
+//            DriverManager.registerDriver(new FabricMySQLDriver());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 

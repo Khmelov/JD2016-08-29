@@ -1,7 +1,7 @@
 package by.it.tsydzik.project.java.custom_dao;
 
 
-import by.it.tsydzik.jd03_03.beans.Client;
+import by.it.tsydzik.project.java.beans.Client;
 import by.it.tsydzik.project.java.connection.ConnectionCreator;
 
 import java.sql.Connection;
