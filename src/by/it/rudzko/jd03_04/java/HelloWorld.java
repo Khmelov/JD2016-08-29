@@ -1,4 +1,4 @@
-package by.it.rudzko.Project.java;
+package by.it.rudzko.jd03_04.java;
 
 
 import javax.servlet.ServletException;
@@ -12,9 +12,14 @@ public class HelloWorld extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter prn=resp.getWriter();
-        prn.println("<br><br>Hello world!!");
-        prn.println("<br>URI:"+req.getRequestURI());
+        resp.setHeader("Cache-control", "no-store");
+        prn.println("<html><h1><p>Hello world!</p><p>URI:");
+        prn.println(req.getRequestURI()+"</p></h1></html>");
         prn.flush();
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
 }

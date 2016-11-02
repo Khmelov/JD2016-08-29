@@ -12,7 +12,7 @@
     -->
     <servlet>
         <servlet-name>HelloWorld</servlet-name>
-        <servlet-class>by.it.rudzko.Project.java.HelloWorld</servlet-class>
+        <servlet-class>by.it.rudzko.jd03_04.java.HelloWorld</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HelloWorld</servlet-name>
@@ -24,7 +24,7 @@
     -->
     <servlet>
         <servlet-name>FrontControllerServlet</servlet-name>
-        <servlet-class>by.it.rudzko.Project.java.sample_controller.FrontController</servlet-class>
+        <servlet-class>by.it.rudzko.jd03_04.java.sample_controller.FrontController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FrontControllerServlet</servlet-name>
