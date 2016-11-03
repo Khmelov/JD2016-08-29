@@ -1,7 +1,7 @@
-package by.it.tsydzik.jd03_03.custom_dao;
+package by.it.tsydzik.project.java.custom_dao;
 
 
-import by.it.tsydzik.jd03_03.connection.ConnectionCreator;
+import by.it.tsydzik.project.java.connection.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

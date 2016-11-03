@@ -1,4 +1,4 @@
-package by.it.tsydzik.jd03_03.custom_dao;
+package by.it.tsydzik.project.java.custom_dao;
 
 import java.util.List;
 
