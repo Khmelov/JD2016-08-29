@@ -1,11 +1,11 @@
-package by.it.tsiamruk.jd03_03.beans;
+package by.it.tsiamruk.project.java.beans;
 
-import java.io.Serializable;
+
 
 /**
  * Created by waldemar on 26/10/2016.
  */
-public class User implements Serializable {
+public class User {
     private int id = 0;
     private String login;
     private String password;

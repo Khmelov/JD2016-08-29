@@ -1,8 +1,7 @@
-package by.it.tsiamruk.jd03_03;
+package by.it.tsiamruk.project.java.DAO;
 
 
-import by.it.tsiamruk.jd03_03.Logger;
-import by.it.tsiamruk.jd03_01.connection.ConnectionCreator;
+import by.it.tsiamruk.project.java.connection.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,7 +12,6 @@ import java.sql.Statement;
  * Created by waldemar on 30/10/2016.
  */
 public class AbstractDAO {
-    private static Logger logger;
     protected int executeUpdate(String sql){
         int result = -1;
         try (Connection connection = ConnectionCreator.getConnection();
@@ -24,7 +22,7 @@ public class AbstractDAO {
                 if (resultSet.next()) result = resultSet.getInt(1);
             }
         } catch (Exception e) {
-            logger.writeInLog(e.getMessage(),e);
+            System.out.print(""+e.getMessage());
         }
         //System.out.println(result+":"+sql); //проверить SQL можно снимая комментарий с этой строки
         return result;

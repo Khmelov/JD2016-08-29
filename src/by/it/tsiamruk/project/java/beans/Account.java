@@ -1,4 +1,4 @@
-package by.it.tsiamruk.jd03_03.beans;
+package by.it.tsiamruk.project.java.beans;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -8,16 +8,16 @@ import java.math.BigDecimal;
  */
 
 
-public class Account implements Serializable {
+public class Account{
 
     private int id = 0;
-    private BigDecimal amount;
+    private Double amount;
     private Integer users_ID;
 
     public Account() {
     }
 
-    public Account(int id, BigDecimal amount, Integer users_ID) {
+    public Account(int id, Double amount, Integer users_ID) {
         this.id = id;
         this.amount = amount;
         this.users_ID = users_ID;
@@ -31,11 +31,11 @@ public class Account implements Serializable {
         this.id = id;
     }
 
-    public BigDecimal getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
