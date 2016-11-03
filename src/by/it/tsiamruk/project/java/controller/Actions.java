@@ -9,7 +9,8 @@ enum Actions {
     LOGIN {{this.action = new CmdLogin();}},
     LOGOUT {{this.action = new CmdLogout();}},
     ERROR {{this.action = new CmdError();}},
-    CREATEACCOUNT{{this.action = new CmdCreateAccount();}};
+    CREATEACCOUNT{{this.action = new CmdCreateAccount();}},
+    SHOWUSERS {{this.action = new CmdShowUsers();}};
 
     protected Action action;
 

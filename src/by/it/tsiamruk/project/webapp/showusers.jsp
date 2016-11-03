@@ -1,14 +1,19 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<table align="center" border ="1">
-  <c:forEach var="user" items="${user.user}">
-  <tr>
-    <td>${user.login}</td>
-    <td>${user.ID}</td>
-    <td>${user.role}</td>
-  </tr>
-  </c:forEach>
-</table>
+<form class="form-horizontal" action="do?command=SHOWUSERS" method="GET">
+<legend>Список пользователей(только для администора)</legend>
+
+<div>
+        <ul class="border">
+          <li>Элемент списка</li>
+          <li>Элемент списка</li>
+          <li>Элемент списка</li>
+          <li>Элемент списка</li>
+          <li>Элемент списка</li>
+        </ul>
+</div>
+
+</form>
 
 <%@ include file="include/end-html.jsp" %>

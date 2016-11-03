@@ -20,7 +20,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="password">Password</label>
               <div class="col-md-4">
-                <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" required="">
+                <input id="Password" name="Password" type="password" placeholder="password" class="form-control input-md" required="">
                 <span class="help-block">Введите пароль для подтверждения создания счета</span>
               </div>
             </div>

@@ -26,6 +26,15 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
             return null;
     }
 
+    public User read(String password){
+        String sql = "WHERE password like '"+password+"' LIMIT 0,1";
+        List<User> users = getAll(sql);
+        if (users.size()>0)
+            return users.get(0);
+        else
+            return null;
+    }
+
     @Override
     public boolean create(User user) {
         String sql =String.format("insert INTO users(login,password,email,FK_role)" +

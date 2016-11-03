@@ -1,6 +1,7 @@
 package by.it.tsiamruk.project.java.controller;
 
 import by.it.tsiamruk.project.java.DAO.SingletonDAO;
+import by.it.tsiamruk.project.java.DAO.UserDAO;
 import by.it.tsiamruk.project.java.beans.Account;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,7 @@ public class CmdCreateAccount extends Action {
             Account account = new Account();
             try {
                 account.setAmount(Form.getValue(req,"amount"));
-                //TODO: связать форму с User
+                account.setUsers_ID(new UserDAO().read(Form.getParameter(req,"Password",Patterns.PASSWORD)).getId());
                 SingletonDAO dao = SingletonDAO.getDAO();
                 if (dao.account.create(account))
                     return Actions.LOGOUT.action;
@@ -31,13 +32,4 @@ public class CmdCreateAccount extends Action {
         }
         return null;
     }
-
-//    public static void main(String[] args) {
-//        Account account = new Account();
-//        account.setAmount(Double.parseDouble("9999"));
-//        account.setUsers_ID(2);
-//        SingletonDAO dao = SingletonDAO.getDAO();
-//        if (dao.account.create(account))
-//            System.out.println(dao.account.getAll(""));
-//    }
 }
