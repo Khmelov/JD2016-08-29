@@ -4,6 +4,7 @@ import by.it.akhmelev.project.java.beans.User;
 import by.it.akhmelev.project.java.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.util.List;
 
@@ -22,13 +23,17 @@ public class CmdLogin extends Action {
                                 user.getPassword()
                         ));
                 if (users.size() == 1) {
-                    return Actions.LOGOUT.action;
+                    //user ok. save to session
+                    user=users.get(0);
+                    HttpSession session=req.getSession();
+                    session.setAttribute("user",user);
+                    return Actions.PROFILE.action;
                 } else {
-                    req.setAttribute(Messages.MESSAGE_ERROR, "USER NOT FOUND");
+                    Form.showError(req, "USER NOT FOUND");
                 }
                 ;
             } catch (ParseException e) {
-                req.setAttribute(Messages.MESSAGE_ERROR, "Incorrect data");
+                Form.showError(req, "Incorrect data");
                 return null;
             }
         }
