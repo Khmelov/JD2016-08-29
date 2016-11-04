@@ -32,6 +32,7 @@
         <div class="col-md-2">Автор</div>
       </div>
 
+      ${ads}
 
 
 

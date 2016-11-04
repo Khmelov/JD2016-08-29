@@ -17,4 +17,11 @@ public class Form {
     static boolean isPost(HttpServletRequest req){
         return req.getMethod().equalsIgnoreCase("post");
     }
+
+    static void showMessage(HttpServletRequest req, String message){
+        req.setAttribute(Messages.MESSAGE,message);
+    }
+    static void showError(HttpServletRequest req, String error){
+        req.setAttribute(Messages.MESSAGE_ERROR,error);
+    }
 }

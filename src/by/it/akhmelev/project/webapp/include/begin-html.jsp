@@ -34,7 +34,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li><a href="do?command=SignUp">Зарегистрироваться</a></li>
               <li><a href="do?command=Login">Войти</a></li>
-              <li><a href="do?command=Logout">Выйти</a></li>
+              <li><a href="do?command=Profile">Выйти</a></li>
               <li><a href="/manager/html/list">Tomcat</a></li>
             </ul>
           </div><!--/.nav-collapse -->

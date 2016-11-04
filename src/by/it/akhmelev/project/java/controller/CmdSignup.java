@@ -22,11 +22,11 @@ public class CmdSignup extends Action {
                 }
                 else
                 {
-                   req.setAttribute(Messages.MESSAGE_ERROR,"Database error");
+                   Form.showError(req,"Database error");
                    return null;
                 }
             } catch (ParseException e) {
-                req.setAttribute(Messages.MESSAGE_ERROR,"Incorrect data");
+                   Form.showError(req,"Incorrect data");
                 return null;
             }
         }
