@@ -1,36 +1,160 @@
 package by.it.senchenko.matlab;
 
-import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class VarV extends Var {
-    double[] value;
+    private double[] vector;
+    public VarV(String str) { //конструктор из строки
+        setFrom(str);
+    }
 
-    public VarV(double[] value) {
-        this.value = value;
+    VarV(double[] vector) {
+        this.vector = new double[vector.length];
+        System.arraycopy(vector, 0, this.vector, 0, vector.length);
+    }
+
+    VarV(VarV init) {
+        this.vector = new double[init.vector.length];
+        System.arraycopy(init.vector, 0, this.vector, 0, this.vector.length);
+    }
+
+    /**
+     * Cложение v1+v2
+     * @param var v2
+     * @return Var v1+v2
+     */
+    @Override //сложение v1+v2
+    public Var add(Var var) {
+        if (var instanceof VarV) //проверим, является ли аргумент вектором
+        {
+            VarV v1 = new VarV(this);             //первый операнд
+            VarV v2 = (VarV)var;                  //второй
+            for (int i = 0; i < v1.vector.length; i++) {    //считаем
+                v1.vector[i] = v1.vector[i] + v2.vector[i]; //основная операция
+            }
+            return v1;                                      //выводим итог
+        }
+        // --------------------------------------------------------------------
+        if (var instanceof VarF) //проверим, является ли аргумент скаляром
+        {
+            VarV v1 = new VarV(this);                 //первый операнд
+            double v2 = ((VarF) var).getValue();   //второй
+            for (int i = 0; i < v1.vector.length; i++) {    //считаем
+                v1.vector[i] = v1.vector[i] + v2;           //основная операция
+            }
+            return v1;                                      //выводим итог
+        }
+        //если аргумент не скаляр и не вектор, то больше ничего не сделать, вызываем суперкласс
+        return super.add(var);
+    }
+
+    /**
+     * вычитание v1-v2
+     * @param var v2
+     * @return Var (v1-v2)
+     */
+    @Override //вычитание v1-v2
+    public Var sub(Var var) {
+        if (var instanceof VarV) //проверим, является ли аргумент вектором
+        // to do тут еще нужна проверка на одинаковый размер операндов this и v2
+        {
+            VarV v1 = new VarV(this);             //первый операнд
+            VarV v2 = (VarV)var;                  //второй
+            for (int i = 0; i < v1.vector.length; i++) {    //считаем
+                v1.vector[i] = v1.vector[i] - v2.vector[i]; //основная операция
+            }
+            return v1;                                      //выводим итог
+        }
+        // --------------------------------------------------------------------
+        if (var instanceof VarF) //проверим, является ли аргумент скаляром
+        {
+            VarV v1 = new VarV(this);                 //первый операнд
+            double v2 = ((VarF) var).getValue();   //второй
+            for (int i = 0; i < v1.vector.length; i++) {    //считаем
+                v1.vector[i] = v1.vector[i] - v2;           //основная операция
+            }
+            return v1;                                      //выводим итог
+        }
+        // --------------------------------------------------------------------
+        //если аргумент не скаляр и не вектор, то больше ничего не сделать, вызываем суперкласс
+        return super.sub(var);
+    }
+
+    /**
+     * Умножение v1*v2
+     * @param var v2
+     * @return Var (v1*v2)
+     */
+    @Override
+    public Var mul(Var var) {
+        // --------------------------------------------------------------------
+        if (var instanceof VarV) //проверим, является ли аргумент вектором
+        {
+            double f=0;
+            VarV v1 = new VarV(this);             //первый операнд
+            VarV v2 = (VarV)var;                  //второй
+            for (int i = 0; i < v1.vector.length; i++) {    //скалярное произведение
+                f = f +(v1.vector[i] * v2.vector[i]);       //основная операция
+            }
+            return new VarF(f);                          //выводим итог
+        }
+        // --------------------------------------------------------------------
+        if (var instanceof VarF) //проверим, является ли аргумент скаляром
+        {
+            VarV v1 = new VarV(this);             //первый операнд
+            double v2 = ((VarF) var).getValue();         //второй
+            for (int i = 0; i < v1.vector.length; i++) {    //считаем
+                v1.vector[i] = v1.vector[i] * v2;           //основная операция
+            }
+            return v1;                                      //выводим итог
+        }
+        // --------------------------------------------------------------------
+        //если аргумент не скаляр и не вектор, то больше ничего не сделать, вызываем суперкласс
+        return super.sub(var);
     }
 
     @Override
-    public Var add(Var var) {
-        if (var instanceof VarF) {
-            VarV res=new VarV(value);
-            for (int i = 0; i < value.length; i++) {
-                res.value[i]=res.value[i]+((VarF) var).value;
+    public Var div(Var var) {
+        // --------------------------------------------------------------------
+        if (var instanceof VarF) //проверим, является ли аргумент скаляром
+        {
+            VarV v1 = new VarV(this);             //первый операнд
+            double v2 = ((VarF) var).getValue();         //второй
+            for (int i = 0; i < v1.vector.length; i++) {    //считаем
+                v1.vector[i] = v1.vector[i] / v2;           //основная операция
             }
-            return res;
+            return v1;                                      //выводим итог
         }
-
-        if (var instanceof VarV) {
-            VarV res=new VarV(value);
-            for (int i = 0; i < value.length; i++) {
-                res.value[i]=res.value[i]+((VarV) var).value[i];
-            }
-            return res;
-        }
-        return var.add(this);
+        // --------------------------------------------------------------------
+        //если аргумент не скаляр, то больше ничего не сделать, вызываем суперкласс
+        return super.div(var);
     }
 
+
+
+    //=================== вспомогательные опреации, заполнение класса и наоборот ====
+    //преобразование в строку
     @Override
     public String toString() {
-        return Arrays.toString(value);
+        StringBuilder res=new StringBuilder("");
+        String prefix="{";
+        for (Double val:vector) {
+            res.append(prefix).append(val.toString());
+            prefix=", ";
+        }
+        return res.append("}").toString();
+    }
+
+    //заполнение из строки
+    public void setFrom(String str) {
+        String[] elem=str.split(",");
+        vector=new double[elem.length];
+        Matcher m=Pattern.compile(Patterns.exVal).matcher(str);
+        int i=0;
+        while (m.find()) {
+            vector[i]=Double.parseDouble(m.group());
+            i++;
+        }
     }
 }
