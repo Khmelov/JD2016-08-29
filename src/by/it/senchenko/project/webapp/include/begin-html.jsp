@@ -15,7 +15,7 @@
 
       <!-- Static navbar, смотрите пример тут: http://bootstrap-3.ru/examples/navbar/ -->
 
-      <div class="navbar navbar-default" role="navigation">
+      <div class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -35,6 +35,7 @@
               <li><a href="do?command=SignUp">Зарегистрироваться</a></li>
               <li><a href="do?command=Login">Войти</a></li>
               <li><a href="do?command=Profile">Выйти</a></li>
+              <li><a href="do?command=Logout">Выйти</a></li>
               <li><a href="/manager/html/list">Tomcat</a></li>
             </ul>
           </div><!--/.nav-collapse -->
