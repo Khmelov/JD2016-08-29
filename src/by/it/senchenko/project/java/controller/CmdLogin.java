@@ -1,6 +1,5 @@
 package by.it.senchenko.project.java.controller;
 
-<<<<<<< HEAD
 import by.it.senchenko.project.java.beans.User;
 import by.it.senchenko.project.java.dao.SingletonDAO;
 
@@ -30,7 +29,7 @@ public class CmdLogin extends Action {
                     session.setAttribute("user",user);
                     return Actions.PROFILE.action;
                 } else {
-                    req.setAttribute(Messages.MESSAGE_ERROR, "USER NOT FOUND");
+                    Form.showError(req, "USER NOT FOUND");
                 }
                 ;
             } catch (ParseException e) {
@@ -38,16 +37,6 @@ public class CmdLogin extends Action {
                 return null;
             }
         }
-=======
-import javax.servlet.http.HttpServletRequest;
-
-/**
- * Created by User on 02.11.2016.
- */
-public class CmdLogin extends Action {
-    @Override
-    Action execute(HttpServletRequest req) {
->>>>>>> origin/master
         return null;
     }
 }
