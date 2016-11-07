@@ -5,9 +5,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/*"},
-        initParams = {
-                @WebInitParam(name = "encoding", value = "UTF-8", description = "Encoding Param")})
+@WebFilter(urlPatterns = {"/*"}, initParams = {
+        @WebInitParam(name = "encoding", value = "UTF-8", description = "Encoding param")})
 
 public class UTF8Filter implements Filter {
     private String code;
@@ -23,12 +22,10 @@ public class UTF8Filter implements Filter {
         if (code != null && !code.equalsIgnoreCase(codeResponse)) {
             servletResponse.setCharacterEncoding(code);
         }
-
         String codeRequest = servletRequest.getCharacterEncoding();
-        if (code != null && !code.equalsIgnoreCase(codeRequest)) {
+        if (code != null && code.equalsIgnoreCase(codeRequest))
             servletRequest.setCharacterEncoding(code);
-        }
-
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override

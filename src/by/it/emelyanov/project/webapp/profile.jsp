@@ -7,8 +7,10 @@
 
         <!-- Form Name -->
         <legend>Профиль пользователя</legend>
-
+        <h3>User Data</h3>
         <p>${user}</p>
+        <h3>Cookie value</h3>
+        <p>${cookie}</p>
 
 
         <!-- Button -->

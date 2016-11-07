@@ -1,10 +1,10 @@
 package by.it.emelyanov.project.java.controller;
 
 
-
 import by.it.emelyanov.project.java.beans.Users;
 import by.it.emelyanov.project.java.dao.DAO;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
@@ -26,9 +26,25 @@ public class CmdLogin extends Action {
                         ));
                 if (users.size() == 1) {
                     //user ok. save to session
-                    user=users.get(0);
-                    HttpSession session=req.getSession();
-                    session.setAttribute("user",user);
+                    user = users.get(0);
+                    HttpSession session = req.getSession();
+                    session.setAttribute("user", user);
+                    //cookie
+                    Cookie userCookie = new Cookie("testCookie", "CookieValue");
+                    userCookie.setMaxAge(30);
+                    //get cookie
+                    Cookie[] userCookies = req.getCookies();
+                    String cookieName = "userCookie";
+                    String cookieValue = "";
+                    for(int i = 0; i < userCookies.length; i++) {
+                        Cookie cookie = userCookies[i];
+                        if (cookieName.equals(cookie.getName())){
+                            cookieValue = cookie.getValue();
+                            break;
+                        }
+                    }
+                    session.setAttribute("cookie",cookieValue);
+
                     return Actions.PROFILE.action;
                 } else {
                     Form.showError(req, "USER NOT FOUND");
