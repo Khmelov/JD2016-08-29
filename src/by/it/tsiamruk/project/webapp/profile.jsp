@@ -1,12 +1,13 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<form class="form-horizontal" action="do?command=LOGOUT" method="POST">
+<form class="form-horizontal" action="do?command=PROFILE" method="POST">
 
    <fieldset>
 
         <!-- Form Name -->
-        <legend>Завершение сеанса</legend>
+        <legend>Профиль пользователя</legend>
+        <p>${user}</p>
 
 
         <!-- Button -->
