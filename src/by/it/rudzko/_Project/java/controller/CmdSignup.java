@@ -30,13 +30,20 @@ class CmdSignup extends Action {
                     } else {
                         user.setSex("F");
                     }
-                    List<Role> roles = dao.roleDao.getAll("WHERE Role='Subscriber'");
-                    if (!roles.isEmpty()) {
-                        user.setRole(roles.get(0));
+                    List<Role> subscribers = dao.roleDao.getAll("WHERE Role='Subscriber'");
+                    if (!subscribers.isEmpty()) {
+                        user.setRole(subscribers.get(0));
                     } else {
+                        List<Role> roles = dao.roleDao.getAll("");
+                        if (roles.isEmpty()){
+                            Role r = new Role("Administrator");
+                            dao.roleDao.create(r);
+                            user.setRole(r);
+                        } else {
                         Role r = new Role("Subscriber");
                         dao.roleDao.create(r);
                         user.setRole(r);
+                        }
                     }
                     if (dao.userDao.create(user).equals(user)) {
                         return Actions.LOGIN.action;
