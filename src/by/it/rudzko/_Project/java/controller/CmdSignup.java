@@ -12,50 +12,56 @@ class CmdSignup extends Action {
 
     @Override
     Action execute(HttpServletRequest req) {
-
+        User logged = (User) req.getSession().getAttribute("user");
+        if (logged != null) {
+            req.setAttribute(Messages.MESSAGE_ERROR, Messages.LOG_OUT);
+        }
         Form register = new Form(req);
-
         if (register.isPost()) {
-            User user = new User();
-            try {
-                DAO dao = DAO.getInst();
-                String name = register.getParameter("username", Patterns.LOGIN);
-                List<User> users = dao.userDao.getAll("WHERE Name='" + name + "'");
-                if (users.isEmpty()) {
-                    user.setName(name);
-                    user.setPassword(register.getParameter("password", Patterns.PASSWORD));
-                    user.setBirthYear(Integer.valueOf(register.getParameter("birth", Patterns.YEAR)));
-                    if (Integer.valueOf(req.getParameter("sex")) == 1) {
-                        user.setSex("M");
-                    } else {
-                        user.setSex("F");
-                    }
-                    List<Role> subscribers = dao.roleDao.getAll("WHERE Role='Subscriber'");
-                    if (!subscribers.isEmpty()) {
-                        user.setRole(subscribers.get(0));
-                    } else {
-                        List<Role> roles = dao.roleDao.getAll("");
-                        if (roles.isEmpty()){
-                            Role r = new Role("Administrator");
-                            dao.roleDao.create(r);
-                            user.setRole(r);
+            if (logged == null) {
+                User user = new User();
+                try {
+                    DAO dao = DAO.getInst();
+                    String name = register.getParameter("username", Patterns.LOGIN);
+                    List<User> users = dao.userDao.getAll("WHERE Name='" + name + "'");
+                    if (users.isEmpty()) {
+                        user.setName(name);
+                        user.setPassword(register.getParameter("password", Patterns.PASSWORD));
+                        user.setBirthYear(Integer.valueOf(register.getParameter("birth", Patterns.YEAR)));
+                        if (Integer.valueOf(req.getParameter("sex")) == 1) {
+                            user.setSex("M");
                         } else {
-                        Role r = new Role("Subscriber");
-                        dao.roleDao.create(r);
-                        user.setRole(r);
+                            user.setSex("F");
                         }
-                    }
-                    if (dao.userDao.create(user).equals(user)) {
-                        return Actions.LOGIN.action;
+                        List<Role> subscribers = dao.roleDao.getAll("WHERE Role='Subscriber'");
+                        if (!subscribers.isEmpty()) {
+                            user.setRole(subscribers.get(0));
+                        } else {
+                            List<Role> roles = dao.roleDao.getAll("");
+                            if (roles.isEmpty()) {
+                                Role r = new Role("Administrator");
+                                dao.roleDao.create(r);
+                                user.setRole(r);
+                            } else {
+                                Role r = new Role("Subscriber");
+                                dao.roleDao.create(r);
+                                user.setRole(r);
+                            }
+                        }
+                        if (dao.userDao.create(user).equals(user)) {
+                            return Actions.LOGIN.action;
+                        } else {
+                            req.setAttribute(Messages.MESSAGE_ERROR, Messages.ERROR_DATABASE);
+                        }
                     } else {
-                        req.setAttribute(Messages.MESSAGE_ERROR, Messages.ERROR_DATABASE_CANT_ADD_USER);
+                        req.setAttribute(Messages.MESSAGE_ERROR, Messages.USER_EXISTS);
                     }
-                } else {
-                    req.setAttribute(Messages.MESSAGE_ERROR, Messages.USER_EXISTS);
-                }
 
-            } catch (ParseException e) {
-                req.setAttribute(Messages.MESSAGE_ERROR, Messages.USER_EXISTS);
+                } catch (ParseException e) {
+                    req.setAttribute(Messages.MESSAGE_ERROR, Messages.ERROR_DATA);
+                }
+            } else {
+                return Actions.PROFILE.action;
             }
         }
         return null;

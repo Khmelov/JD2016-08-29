@@ -21,13 +21,12 @@ enum Actions {
     ERROR {{
         this.action = new CmdError();
     }},
-    CATALOGUE{{
+    CATALOGUE {{
         this.action = new CmdCatalogue();
     }},
-    ADD{{
+    ADD {{
         this.action = new CmdAdd();
-    }}
-    ;
+    }};
 
     protected Action action = null;
 

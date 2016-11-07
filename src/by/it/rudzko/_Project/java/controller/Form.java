@@ -16,15 +16,14 @@ public class Form {
 
     String getParameter(String name, String pattern)
             throws ParseException {
-            String value=req.getParameter(name);
-            if ((value!=null) && value.matches(pattern)){
-                return value;
-            }
-        else
-            throw new ParseException(name+ Messages.INCORRECT_DATA,0);
+        String value = req.getParameter(name);
+        if ((value != null) && value.matches(pattern)) {
+            return value;
+        } else
+            throw new ParseException(name + Messages.INCORRECT_DATA, 0);
     }
 
-    boolean isPost(){
+    boolean isPost() {
         return req.getMethod().equalsIgnoreCase("post");
     }
 

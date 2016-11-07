@@ -12,7 +12,7 @@
   <label class="col-md-4 control-label" for="title">Title</label>
   <div class="col-md-8">
   <input id="title" name="title" placeholder="title of media" class="form-control input-md" required="" type="text">
-  <span class="help-block">Use cyrillic letters. Max = 3 words</span>
+  <span class="help-block">Use cyrillic letters. Max = 3 words or 20 characters</span>
   </div>
 </div>
 

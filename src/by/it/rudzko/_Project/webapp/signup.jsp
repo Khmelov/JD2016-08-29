@@ -13,7 +13,7 @@
   <label class="col-md-4 control-label" for="username">Username</label>
   <div class="col-md-8">
   <input id="username" name="username" placeholder="unique username" class="form-control input-md" required="" type="text">
-  <span class="help-block">Use latin letters and arabic numbers</span>
+  <span class="help-block">Use latin letters and arabic numbers. Length min=3, max=25</span>
   </div>
 </div>
 
@@ -22,7 +22,7 @@
   <label class="col-md-4 control-label" for="password">Password</label>
   <div class="col-md-8">
     <input id="password" name="password" placeholder="password" class="form-control input-md" required="" type="password">
-    <span class="help-block">Use at least six latin letters and arabic numbers</span>
+    <span class="help-block">Use latin letters and arabic numbers. Length min=6, max=25</span>
   </div>
 </div>
 

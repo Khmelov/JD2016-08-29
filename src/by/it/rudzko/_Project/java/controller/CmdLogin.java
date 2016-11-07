@@ -13,26 +13,33 @@ class CmdLogin extends Action {
 
     @Override
     Action execute(HttpServletRequest req) {
-
-        Form login=new Form(req);
+        User logged = (User) req.getSession().getAttribute("user");
+        if (logged != null) {
+            req.setAttribute(Messages.MESSAGE_ERROR, Messages.LOG_OUT);
+        }
+        Form login = new Form(req);
         if (login.isPost()) {
-            try {
-                String uname=login.getParameter("userlog", Patterns.LOGIN);
-                String pass=login.getParameter("userpas", Patterns.PASSWORD);
-                DAO dao = DAO.getInst();
-                List<User> users = dao.userDao.getAll("WHERE Name='"+uname+"' and Password='"+pass+"'");
-                if (!users.isEmpty()) {
-                    User user=users.get(0);
-                    HttpSession session=req.getSession();
-                    session.setAttribute("user",user);
-                    Cookie myCookie = new Cookie(uname, String.valueOf(pass.hashCode()));
-                    myCookie.setMaxAge(30);
-                    return Actions.PROFILE.action;
-                } else {
+            if (logged == null) {
+                try {
+                    String uname = login.getParameter("userlog", Patterns.LOGIN);
+                    String pass = login.getParameter("userpas", Patterns.PASSWORD);
+                    DAO dao = DAO.getInst();
+                    List<User> users = dao.userDao.getAll("WHERE Name='" + uname + "' and Password='" + pass + "'");
+                    if (!users.isEmpty()) {
+                        User user = users.get(0);
+                        HttpSession session = req.getSession();
+                        session.setAttribute("user", user);
+                        Cookie myCookie = new Cookie(uname, String.valueOf(pass.hashCode()));
+                        myCookie.setMaxAge(30);
+                        return Actions.PROFILE.action;
+                    } else {
+                        req.setAttribute(Messages.MESSAGE_ERROR, Messages.USER_NOT_FOUND);
+                    }
+                } catch (ParseException e) {
                     req.setAttribute(Messages.MESSAGE_ERROR, Messages.USER_NOT_FOUND);
                 }
-            } catch (ParseException e) {
-                req.setAttribute(Messages.MESSAGE_ERROR, Messages.USER_NOT_FOUND);
+            } else {
+                return Actions.PROFILE.action;
             }
         }
         return null;
