@@ -68,7 +68,7 @@ public class DataBase {
         this.subscription = subscription;
     }
 
-    void deleteTables() {
+    public void deleteTables() {
 
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
@@ -81,7 +81,7 @@ public class DataBase {
         System.out.println("Tables removed.");
     }
 
-    void createTables() {
+    private void createTables() {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(
@@ -115,7 +115,7 @@ public class DataBase {
         System.out.println("Tables created.");
     }
 
-    void fillTables() {
+    private void fillTables() {
         RoleDAO rd = new RoleDAO();
         AudienceDAO ad = new AudienceDAO();
         UserDAO ud = new UserDAO();

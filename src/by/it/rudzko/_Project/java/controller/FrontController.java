@@ -1,5 +1,7 @@
 package by.it.rudzko._Project.java.controller;
 
+import by.it.rudzko._Project.java.DataBase;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -14,6 +16,14 @@ public class FrontController extends HttpServlet {
         ServletContext context = getServletContext();
         String landingJsp = action.getJsp();
         return context.getRequestDispatcher(landingJsp);
+    }
+
+    @Override
+    public void init() throws ServletException {
+        DataBase db=new DataBase();
+        //db.buildDefaultStructure();
+        //раскомментировать для того, чтобы заполнить таблицу (с пустой программа тоже будет работать корректно).
+        db.reset();
     }
 
     @Override
@@ -33,4 +43,10 @@ public class FrontController extends HttpServlet {
         action.execute(req);
         disp(action).forward(req, resp);
     }
+
+    @Override
+    public void destroy() {
+        new DataBase().deleteTables();
+    }
+
 }
