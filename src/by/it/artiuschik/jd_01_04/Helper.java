@@ -7,9 +7,7 @@ public class Helper {
         int n = a.length;
         double m[][] = new double[n][n + 1];
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                m[i][j] = a[i][j];
-            }
+            System.arraycopy(a[i], 0, m[i], 0, n);
             m[i][n] = y[i];
 
         }
@@ -55,10 +53,7 @@ public class Helper {
         int n = mA.length;
         double[][] m = new double[n][n];
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-
-                m[i][j] = mA[i][j];
-            }
+            System.arraycopy(mA[i], 0, m[i], 0, n);
         }
         //прямой ход
         for (int diag = 0; diag < n - 1; diag++) {
@@ -89,7 +84,7 @@ public class Helper {
     }
 
     //умножение матрицы на матрицу
-    public static double[][] arrayMulVector(double[][] x, double[][] y) {
+    static double[][] arrayMulVector(double[][] x, double[][] y) {
         double[][] z = new double[x.length][y[0].length];
         for (int i = 0; i < x.length; i++) {
             for (int j = 0; j < y[0].length; j++) {
@@ -106,9 +101,7 @@ public class Helper {
         double[][] m = new double[n][2 * n];
         //перенос матрицы mA в операционную матрицу
         for (int row = 0; row < n; row++) {
-            for (int col = 0; col < n; col++) {
-                m[row][col] = mA[row][col];
-            }
+            System.arraycopy(mA[row], 0, m[row], 0, n);
             m[row][n + row] = 1;
         }
         double k;
@@ -139,10 +132,9 @@ public class Helper {
             }
         }
         double[][] res = new double[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                res[i][j] = m[i][j + n];
-            }
+        for (int i = 0; i < n; i++)
+        {
+            System.arraycopy(m[i], n, res[i], 0, n);
         }
         return res;
     }
