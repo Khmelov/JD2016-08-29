@@ -15,13 +15,13 @@ public class TaskB2 {
         int[] sentenceLength = new int[sentences.length];
         String[][] words = new String[sentences.length][];
         for (int i = 0; i < sentences.length; i++) {
-            words[i] = sentences[i].toString().split("[^а-яА-ЯёЁ]+");
+            words[i] = sentences[i].split("[^а-яА-ЯёЁ]+");
             sentenceLength[i] = words[i].length;
         }
         Arrays.sort(sentenceLength);
-        for (int i = 0; i < sentenceLength.length; i++) {
+        for (int aSentenceLength : sentenceLength) {
             for (int j = 0; j < words.length; j++) {
-                if (words[j].length == sentenceLength[i]) {
+                if (words[j].length == aSentenceLength) {
                     System.out.println(sentences[j]);
                 }
             }

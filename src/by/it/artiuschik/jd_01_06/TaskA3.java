@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TaskA3 {
-    static boolean glasnaya(String word) {
+    private static boolean glasnaya(String word) {
         String oae = "яыуаиеоюэё";
         oae += oae.toUpperCase();
         char firstLetter = word.charAt(0);

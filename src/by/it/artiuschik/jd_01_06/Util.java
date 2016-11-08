@@ -5,10 +5,10 @@ import java.util.regex.Pattern;
 
 public class Util {
     //Вставить пробелы в строку
-    public static String insertSpacesToString(int number,String str)
+    static String insertSpacesToString(int number, String str)
     {
-        int index=0;
-        StringBuffer line=new StringBuffer(str);
+        int index;
+        StringBuilder line=new StringBuilder(str);
         while(number>0) {
             Pattern p = Pattern.compile("\\b[^а-яА-ЯёЁ]+\\b");
             Matcher m = p.matcher(str);
@@ -29,28 +29,26 @@ public class Util {
     //поделить строку на слова
     public static String[] words(String str)
     {
-        String[] result=str.split("[^а-яА-ЯёЁ]+");
-        return result;
+        return str.split("[^а-яА-ЯёЁ]+");
     }
     //найти слово заданной длины
-    public static String findWord(String[] words,int length)
+    static String findWord(String[] words, int length)
     {
-        for (int i = 0; i <words.length ; i++) {
-            if(words[i].length()==length)
-            {
-                return words[i];
+        for (String word : words) {
+            if (word.length() == length) {
+                return word;
             }
 
         }
         return "";
     }
-    public static long timeWin(String str)
+    static long timeWin()
     {
         long startString=System.currentTimeMillis();
-        TaskC2.createMillionString(str);
+        TaskC2.createMillionString();
         long endString=System.currentTimeMillis();
         long startStringBuilder=System.currentTimeMillis();
-        TaskC2.createMillionStringBuilder(str);
+        TaskC2.createMillionStringBuilder();
         long endStringBuilder=System.currentTimeMillis();
         return (endString-startString)-(endStringBuilder-startStringBuilder);
     }
