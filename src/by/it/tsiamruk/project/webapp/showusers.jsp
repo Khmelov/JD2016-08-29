@@ -6,11 +6,10 @@
 
 <div>
         <ul class="border">
-          <li>Элемент списка</li>
-          <li>Элемент списка</li>
-          <li>Элемент списка</li>
-          <li>Элемент списка</li>
-          <li>Элемент списка</li>
+          <li>${users}${accounts}</li>
+          <li>${users}${accounts}</li>
+          <li>${users}${accounts}</li>
+          <li>${users}${accounts}</li>
         </ul>
 </div>
 

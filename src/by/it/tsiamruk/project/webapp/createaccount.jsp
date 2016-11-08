@@ -16,7 +16,7 @@
                   </div>
             </div>
 
-            <!-- Password input-->
+            <!-- Password input
             <div class="form-group">
               <label class="col-md-4 control-label" for="password">Password</label>
               <div class="col-md-4">
@@ -24,7 +24,7 @@
                 <span class="help-block">Введите пароль для подтверждения создания счета</span>
               </div>
             </div>
-
+               -->
             <!-- Button -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="singlebutton"></label>

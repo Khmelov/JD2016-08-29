@@ -9,6 +9,7 @@ public class SingletonDAO {
     public UserDAO user;
     public AccountDAO account;
     public RoleDAO role;
+    public ProfileDAO profile;
 
     public static SingletonDAO getDAO(){
         if (dao == null){
@@ -17,6 +18,7 @@ public class SingletonDAO {
                 dao.user = new UserDAO();
                 dao.account = new AccountDAO();
                 dao.role = new RoleDAO();
+                dao.profile = new ProfileDAO();
             }
         }
         return dao;

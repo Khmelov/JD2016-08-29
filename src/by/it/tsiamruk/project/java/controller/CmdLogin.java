@@ -3,13 +3,16 @@ package by.it.tsiamruk.project.java.controller;
 import by.it.tsiamruk.project.java.DAO.SingletonDAO;
 import by.it.tsiamruk.project.java.beans.User;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.util.List;
 
 /**
  * Created by waldemar on 02/11/2016.
  */
+
 public class CmdLogin extends Action {
 
     @Override
@@ -22,14 +25,20 @@ public class CmdLogin extends Action {
                 SingletonDAO dao = SingletonDAO.getDAO();
                 List<User> users = dao.user.getAll(String.format("WHERE login = '%s' and password = '%s' LIMIT 0,1",
                         user.getLogin(),user.getPassword()));
-                if (users.size() == 1)
-                    return Actions.CREATEACCOUNT.action;
+                if (users.size() == 1){
+                    //user ok.save to session
+                    user = users.get(0);
+                    HttpSession session =  req.getSession();
+                    session.setAttribute("user", user);
+                    Cookie cookie = new Cookie("user",user.toString());
+                    cookie.setMaxAge(30);
+                    return Actions.PROFILE.action;
+                }
                 else
-                    req.setAttribute(Messages.MESSAGE_ERROR,"USER NOT FOUND");
-
+                    Form.showError(req,"USER NOT FOUND");
 
             } catch (ParseException e) {
-                req.setAttribute(Messages.MESSAGE_ERROR, "Incorrect data");
+                Form.showError(req,"Incorrect data");
                 return null;
             }
         }

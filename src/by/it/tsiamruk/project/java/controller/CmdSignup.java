@@ -24,11 +24,11 @@ public class CmdSignup extends Action {
                     return Actions.LOGIN.action;
                 }
                 else{
-                    req.setAttribute(Messages.MESSAGE_ERROR,"Incorrect data");
+                   Form.showError(req,"Incorrect data");
                     return null;
                 }
             } catch (ParseException e) {
-                req.setAttribute(Messages.MESSAGE_ERROR,"Incorrect data");
+                Form.showError(req,"Incorrect data");
                 return null;
             }
         }
