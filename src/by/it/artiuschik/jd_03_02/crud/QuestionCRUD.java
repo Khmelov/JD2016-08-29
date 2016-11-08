@@ -1,80 +1,69 @@
 package by.it.artiuschik.jd_03_02.crud;
 
-import by.it.artiuschik.jd_03_02.utils.ConnectionCreator;
+
+import by.it.artiuschik.jd_03_02.ConnectionCreator;
 import by.it.artiuschik.jd_03_02.beans.Question;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import static by.it.artiuschik.jd_03_02.utils.Updater.executeUpdate;
 
 public class QuestionCRUD {
-    public Question create(Question question) throws SQLException {
-        question.setID(0);
-        //составление строки createUserSQL по данным Bean Question
+    public boolean create(Question question) {
         String createQuestionSQL = String.format(
-                "insert into questions(Text,Subject,Balls) values('%s','%s','%d');",
-                question.getText(), question.getSubject(), question.getBalls()
+                "insert into questions(Text,Subject,Balls,FK_TEST) values('%s','%s','%d','%d');",
+                question.getText(), question.getSubject(), question.getBalls(), question.getFK_TEST()
         );
-        try (
-                //соединение с базой
-                Connection connection = ConnectionCreator.getConnection();
-                //объект для обращения к базе
-                Statement statement = connection.createStatement()
-        ) {
-            int addedUsers = statement.executeUpdate(createQuestionSQL);
-            if (addedUsers == 1) {
-                ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
-                if (resultSet.next())
-                    question.setID(resultSet.getInt(1));
-            }
-        }
-        return question;
+        question.setID(executeUpdate(createQuestionSQL));
+        return (question.getID() > 0);
     }
 
-    public Question read(int id) throws SQLException {
-        Question questionResult = null;
-        String readQuestionSQL = "SELECT * FROM questions where ID=" + id;
-        try (
-                Connection connection = ConnectionCreator.getConnection();
-                Statement statement = connection.createStatement()
-        ) {
-            final ResultSet resultSet = statement.executeQuery(readQuestionSQL);
-            if (resultSet.next()) {
-                questionResult = new Question(
-                        resultSet.getInt("ID"),
-                        resultSet.getString("Text"),
-                        resultSet.getString("Subject"),
-                        resultSet.getInt("Balls"));
-            }
-        }
-        return questionResult;
+    public Question read(int id) {
+        List<Question> questions = getAll("WHERE ID=" + id + " LIMIT 0,1");
+        if (questions.size() > 0) {
+            return questions.get(0);
+        } else
+            return null;
     }
 
-    public Question update(Question question) throws SQLException {
-        Question questionResult = null;
+    public boolean update(Question question) {
         String updateUserSQL = String.format(
-                "UPDATE questions SET Text = '%s', Subject = '%s', Balls = '%d' WHERE questions.ID = %d",
-                question.getText(), question.getSubject(), question.getBalls(), question.getID()
+                "UPDATE questions SET Text = '%s', Subject = '%s', Balls = '%d' ,FK_TEST='%d' WHERE questions.ID = %d",
+                question.getText(), question.getSubject(), question.getBalls(), question.getFK_TEST(), question.getID()
         );
-        try (
-                Connection connection = ConnectionCreator.getConnection();
-                Statement statement = connection.createStatement()
-        ) {
-            if (statement.executeUpdate(updateUserSQL) == 1)
-                questionResult = question;
-        }
-        return questionResult;
+        return (0 < executeUpdate(updateUserSQL));
     }
 
-    public boolean delete(Question question) throws SQLException {
+    public boolean delete(by.it.artiuschik.project.java.beans.Question question) {
         String deleteQuestionSQL = String.format("DELETE FROM questions WHERE questions.ID = %d", question.getID());
-        try (
-                Connection connection = ConnectionCreator.getConnection();
-                Statement statement = connection.createStatement()
+        return (0 < executeUpdate(deleteQuestionSQL));
+    }
+
+    public List<Question> getAll(String WHERE) {
+        List<Question> questions = new ArrayList<>();
+        String sql = "SELECT * FROM users " + WHERE + " ;";
+        try (Connection connection = ConnectionCreator.getConnection();
+             Statement statement = connection.createStatement()
         ) {
-            return (statement.executeUpdate(deleteQuestionSQL) == 1);
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                Question question = new Question();
+                question.setID(rs.getInt("ID"));
+                question.setText(rs.getString("Text"));
+                question.setFK_TEST(rs.getInt("FK_TEST"));
+                question.setSubject(rs.getString("Subject"));
+                question.setBalls(rs.getInt("Balls"));
+                questions.add(question);
+            }
+        } catch (SQLException e) {
+            //логгирование SQLException(e);
         }
+        return questions;
     }
 
 }

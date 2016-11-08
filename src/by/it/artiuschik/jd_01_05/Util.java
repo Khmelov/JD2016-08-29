@@ -1,13 +1,8 @@
 package by.it.artiuschik.jd_01_05;
 
-import java.util.Scanner;
-
 public class Util {
-    static public String readFromConsole() {
-        return new Scanner(System.in).nextLine();
-    }
 
-    static public void printArray(double[] array, String name, int cols) {
+    static void printArray(double[] array, String name, int cols) {
         int col = 0;
         for (int i = 0; i < array.length; i++) {
             System.out.print(name);
@@ -19,14 +14,14 @@ public class Util {
         }
     }
 
-    static public void printArray(double[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.printf("%-9.4f ", array[i]);
+    static void printArray(double[] array) {
+        for (double anArray : array) {
+            System.out.printf("%-9.4f ", anArray);
         }
         System.out.println();
     }
 
-    static public int[] sizeOfTable(double[] mas) {
+    static int[] sizeOfTable(double[] mas) {
         int rows, cols;
         int[] rowsCols = new int[2];
         cols = 4;
@@ -42,7 +37,7 @@ public class Util {
         return rowsCols;
     }
 
-    static public void printMatrixCols(int cols, String name, double[] mas, boolean flag)
+    static void printMatrixCols(int cols, String name, double[] mas, boolean flag)
             /*если  flag==false индекс изменяется по строкам, если  true-по столбцам*/ {
         int col = 0;
         int rows = mas.length / cols;

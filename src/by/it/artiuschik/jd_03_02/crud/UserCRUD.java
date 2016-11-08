@@ -1,87 +1,66 @@
 package by.it.artiuschik.jd_03_02.crud;
-
-import by.it.artiuschik.jd_03_02.utils.ConnectionCreator;
+import by.it.artiuschik.jd_03_02.ConnectionCreator;
 import by.it.artiuschik.jd_03_02.beans.User;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import static by.it.artiuschik.jd_03_02.utils.Updater.executeUpdate;
 
 public class UserCRUD {
-    public User create(User user) throws SQLException {
-        user.setID(0);
-        //составление строки createUserSQL по данным Bean User
-        String createUserSQL = String.format(
-                "insert into users(Name,Surname,Password,Tests_amount,Balls,FK_ROLE) values('%s','%s','%d','%d','%d','%d');",
-                user.getName(), user.getSurname(), user.getPassword(), user.getTests_amount(), user.getBalls(), user.getFK_ROLE()
-        );
-        try (
-                //соединение с базой
-                Connection connection = ConnectionCreator.getConnection();
-                //объект для обращения к базе
-                Statement statement = connection.createStatement()
-        ) {
-            if (statement.executeUpdate(createUserSQL) == 1) {
-                /*LAST_INSERT_ID() Возвращает последнюю автоматически
-                сгенерированную величину, которая была внесена в столбец
-                AUTO_INCREMENT*/
-                //извлечение строки с последним  id
-                ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
-                //извлекаем из resultSet первую строку
-                if (resultSet.next())
-                    user.setID(resultSet.getInt(1));
+        public boolean create(User user) {
+            user.setID(0);
+            String createUserSQL = String.format(
+                    "insert into users(Name,Surname,Password,Login,Tests_amount,Balls,FK_ROLE) values('%s','%s','%s','%s','%d','%d','%d');",
+                    user.getName(), user.getSurname(), user.getPassword(), user.getLogin(), user.getTests_amount(), user.getBalls(), user.getFK_ROLE()
+            );
+            user.setID(executeUpdate(createUserSQL));
+            return (user.getID()>0);
+        }
+        public User read(int id) {
+            List<User> users = getAll("WHERE ID=" + id + " LIMIT 0,1");
+            if (users.size() > 0) {
+                return users.get(0);
+            } else
+                return null;
+        }
+        public boolean update(User user) {
+            String updateUserSQL = String.format(
+                    "UPDATE users SET Name = '%s', Surname = '%s', Password = '%s', Login = '%s', Tests_amount='%d', Balls='%d', FK_ROLE=%d WHERE users.ID = %d",
+                    user.getName(), user.getSurname(), user.getPassword(), user.getLogin(), user.getTests_amount(), user.getBalls(), user.getFK_ROLE(), user.getID()
+            );
+            return (0 < executeUpdate(updateUserSQL));
+        }
+        public boolean delete(User user) {
+            String deleteUserSQL = String.format("DELETE FROM users WHERE users.ID = %d", user.getID());
+            return (0 < executeUpdate(deleteUserSQL));
+        }
+        public List<User> getAll(String WHERE) {
+            List<User> users = new ArrayList<>();
+            String sql = "SELECT * FROM users " + WHERE + " ;";
+            try (Connection connection = ConnectionCreator.getConnection();
+                 Statement statement = connection.createStatement()
+            ) {
+                ResultSet rs = statement.executeQuery(sql);
+                while (rs.next()) {
+                    User user = new User();
+                    user.setID(rs.getInt("ID"));
+                    user.setName(rs.getString("Name"));
+                    user.setSurname(rs.getString("Surname"));
+                    user.setTests_amount(rs.getInt("Tests_amount"));
+                    user.setPassword(rs.getString("Password"));
+                    user.setLogin(rs.getString("Login"));
+                    user.setBalls(rs.getInt("Balls"));
+                    user.setFK_ROLE(rs.getInt("FK_ROLE"));
+                    users.add(user);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
+            return users;
         }
-        return user;
-    }
-
-    public User read(int id) throws SQLException {
-        User userResult = null;
-        String readUserSQL = "SELECT * FROM users where ID=" + id;
-        try (
-                Connection connection = ConnectionCreator.getConnection();
-                Statement statement = connection.createStatement()
-        ) {
-            final ResultSet resultSet = statement.executeQuery(readUserSQL);
-            if (resultSet.next()) {
-                userResult = new User(
-                        resultSet.getInt("ID"),
-                        resultSet.getString("Name"),
-                        resultSet.getString("Surname"),
-                        resultSet.getInt("Password"),
-                        resultSet.getInt("Tests_amount"),
-                        resultSet.getInt("Balls"),
-                        resultSet.getInt("FK_ROLE"));
-            }
-        }
-        return userResult;
-    }
-
-    public User update(User user) throws SQLException {
-        User userResult = null;
-        String updateUserSQL = String.format(
-                "UPDATE users SET Name = '%s', Surname = '%s', Password = '%d', Tests_amount='%d', Balls='%d', FK_ROLE=%d WHERE users.ID = %d",
-                user.getName(), user.getSurname(), user.getPassword(), user.getTests_amount(), user.getBalls(), user.getFK_ROLE(), user.getID()
-        );
-        try (
-                Connection connection = ConnectionCreator.getConnection();
-                Statement statement = connection.createStatement()
-        ) {
-            if (statement.executeUpdate(updateUserSQL) == 1)
-                userResult = user;
-        }
-        return userResult;
-    }
-
-    public boolean delete(User user) throws SQLException {
-        String deleteUserSQL = String.format("DELETE FROM users WHERE users.ID = %d", user.getID());
-        try (
-                Connection connection = ConnectionCreator.getConnection();
-                Statement statement = connection.createStatement()
-        ) {
-            return (statement.executeUpdate(deleteUserSQL) == 1);
-        }
-    }
 
 }

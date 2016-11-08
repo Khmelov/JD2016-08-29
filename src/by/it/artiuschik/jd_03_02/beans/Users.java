@@ -1,7 +1,5 @@
 package by.it.artiuschik.jd_03_02.beans;
 
-import by.it.artiuschik.jd_03_02.beans.User;
-
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +15,7 @@ public class Users {
     protected List<User> user;
     public List<User> getUser() {
         if (user == null) {
-            user = new ArrayList<User>();
+            user = new ArrayList<>();
         }
         return this.user;
     }

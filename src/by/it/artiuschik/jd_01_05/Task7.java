@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import static java.lang.Math.*;
 
-public class Task7 {
+class Task7 {
     public static double[][] function() {
         double[][] res = new double[2][];
         double[] T = new double[34];

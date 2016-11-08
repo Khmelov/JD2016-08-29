@@ -1,7 +1,7 @@
 package by.it.artiuschik.jd_01_05;
 import static java.lang.Math.*;
-public class Task4 {
-    public static double calculateFunction(double left,double right,double step)
+class Task4 {
+    static double calculateFunction(double left, double right, double step)
     {
         double res=0;
         double d=1;

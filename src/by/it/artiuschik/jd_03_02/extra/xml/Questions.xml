@@ -4,20 +4,24 @@
         <Text>Единица измерения силы в СИ</Text>
         <Subject>Физика</Subject>
         <Balls>1</Balls>
+        <FK_TEST>1</FK_TEST>
     </Question>
     <Question>
-        <Text>Свойство тел, состоящее в том, что для изменения скорости тела необходимо, чтобы на него в течение некоторого времени действовала определённая сила.</Text>
+        <Text>Вопрос3</Text>
         <Subject>Физика</Subject>
         <Balls>1</Balls>
+        <FK_TEST>1</FK_TEST>
     </Question>
     <Question>
-        <Text>Если на тело не действуют другие тела, то оно…</Text>
+        <Text>Вопрос2</Text>
         <Subject>Физика</Subject>
         <Balls>1</Balls>
+        <FK_TEST>1</FK_TEST>
     </Question>
     <Question>
-        <Text>Тело находится в движении и на него действуют другие тела. Что произойдёт с телом, если действие других тел прекратится? Как оно будет двигаться?</Text>
+        <Text>Вопрос1</Text>
         <Subject>Физика</Subject>
         <Balls>1</Balls>
+        <FK_TEST>1</FK_TEST>
     </Question>
 </Questions>

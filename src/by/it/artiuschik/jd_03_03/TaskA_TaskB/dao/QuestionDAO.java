@@ -1,6 +1,6 @@
 package by.it.artiuschik.jd_03_03.TaskA_TaskB.dao;
 
-import by.it.artiuschik.jd_03_02.utils.ConnectionCreator;
+import by.it.artiuschik.jd_03_02.ConnectionCreator;
 import by.it.artiuschik.jd_03_03.beans.Question;
 
 import java.sql.Connection;
@@ -15,8 +15,8 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
     @Override
     public boolean create(Question question) {
         String createQuestionSQL = String.format(
-                "insert into questions(Text,Subject,Balls) values('%s','%s','%d');",
-                question.getText(), question.getSubject(), question.getBalls()
+                "insert into questions(Text,Subject,Balls,FK_TEST) values('%s','%s','%d','%d');",
+                question.getText(), question.getSubject(), question.getBalls(), question.getFK_TEST()
         );
         question.setID(executeUpdate(createQuestionSQL));
         return (question.getID() > 0);
@@ -36,8 +36,8 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
     @Override
     public boolean update(Question question) {
         String updateUserSQL = String.format(
-                "UPDATE questions SET Text = '%s', Subject = '%s', Balls = '%d' WHERE questions.ID = %d",
-                question.getText(), question.getSubject(), question.getBalls(), question.getID()
+                "UPDATE questions SET Text = '%s', Subject = '%s', Balls = '%d' ,FK_TEST='%d' WHERE questions.ID = %d",
+                question.getText(), question.getSubject(), question.getBalls(), question.getFK_TEST(), question.getID()
         );
         return (0 < executeUpdate(updateUserSQL));
     }
@@ -61,8 +61,9 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
                 Question question = new Question();
                 question.setID(rs.getInt("ID"));
                 question.setText(rs.getString("Text"));
-                question.setSubject(rs.getString("Subject"));
                 question.setBalls(rs.getInt("Balls"));
+                question.setFK_TEST(rs.getInt("FK_TEST"));
+                question.setSubject(rs.getString("Subject"));
                 questions.add(question);
             }
         } catch (SQLException e) {

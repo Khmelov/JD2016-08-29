@@ -1,78 +1,62 @@
 package by.it.artiuschik.jd_03_02.crud;
 
-import by.it.artiuschik.jd_03_02.utils.ConnectionCreator;
+import by.it.artiuschik.jd_03_02.ConnectionCreator;
 import by.it.artiuschik.jd_03_02.beans.Role;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import static by.it.artiuschik.jd_03_02.utils.Updater.executeUpdate;
+
 public class RoleCRUD {
-    public Role create(Role role) throws SQLException {
+    public boolean create(Role role) {
         role.setID(0);
-        //составление строки createUserSQL по данным Bean User
-        String createUserSQL = String.format(
+        String createRoleSQL = String.format(
                 "insert into roles(Role_name) values('%s');",
                 role.getRole_name()
         );
-        try (
-                //соединение с базой
-                Connection connection = ConnectionCreator.getConnection();
-                //объект для обращения к базе
-                Statement statement = connection.createStatement()
-        ) {
-            int addedUsers = statement.executeUpdate(createUserSQL);
-            if (addedUsers == 1) {
-                ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
-                //извлекаем из resultSet первую строку
-                if (resultSet.next())
-                    role.setID(resultSet.getInt(1));
-            }
-        }
-        return role;
+        role.setID(executeUpdate(createRoleSQL));
+        return (role.getID() > 0);
     }
-
-    public Role read(int id) throws SQLException {
-        Role roleResult = null;
-        String readRoleSQL = "SELECT * FROM roles where ID=" + id;
-        try (
-                Connection connection = ConnectionCreator.getConnection();
-                Statement statement = connection.createStatement()
-        ) {
-            final ResultSet resultSet = statement.executeQuery(readRoleSQL);
-            if (resultSet.next()) {
-                roleResult = new Role(
-                        resultSet.getInt("ID"),
-                        resultSet.getString("Role_name"));
-            }
-        }
-        return roleResult;
+    public Role read(int id) {
+        List<Role> roles = getAll("WHERE ID=" + id + " LIMIT 0,1");
+        if (roles.size() > 0) {
+            return roles.get(0);
+        } else
+            return null;
     }
-
-    public Role update(Role role) throws SQLException {
-        Role roleResult = null;
-        String updateUserSQL = String.format(
+    public boolean update(Role role) {
+        String updateRoleSQL = String.format(
                 "UPDATE roles SET Name = '%s' WHERE roles.ID = %d",
                 role.getRole_name(), role.getID()
         );
-        try (
-                Connection connection = ConnectionCreator.getConnection();
-                Statement statement = connection.createStatement()
-        ) {
-            if (statement.executeUpdate(updateUserSQL) == 1)
-                roleResult = role;
-        }
-        return roleResult;
+        return (0 < executeUpdate(updateRoleSQL));
     }
-
-    public boolean delete(Role role) throws SQLException {
+    public boolean delete(Role role) {
         String deleteRoleSQL = String.format("DELETE FROM roles WHERE roles.ID = %d", role.getID());
-        try (
-                Connection connection = ConnectionCreator.getConnection();
-                Statement statement = connection.createStatement()
+        return (0 < executeUpdate(deleteRoleSQL));
+    }
+    public List<Role> getAll(String WHERE) {
+        List<Role> roles = new ArrayList<>();
+        String sql = "SELECT * FROM roles " + WHERE + " ;";
+        try (Connection connection = ConnectionCreator.getConnection();
+             Statement statement = connection.createStatement()
         ) {
-            return (statement.executeUpdate(deleteRoleSQL) == 1);
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                Role role = new Role();
+                role.setRole_name(rs.getString("Role_name"));
+                role.setID(rs.getInt("ID"));
+                roles.add(role);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return roles;
     }
 
 }

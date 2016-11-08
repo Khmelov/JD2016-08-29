@@ -1,7 +1,5 @@
 package by.it.artiuschik.jd_03_02.beans;
 
-import by.it.artiuschik.jd_03_02.beans.Role;
-
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +16,7 @@ public class Roles {
 
     public List<Role> getRole() {
         if (role == null) {
-            role = new ArrayList<Role>();
+            role = new ArrayList<>();
         }
         return this.role;
     }

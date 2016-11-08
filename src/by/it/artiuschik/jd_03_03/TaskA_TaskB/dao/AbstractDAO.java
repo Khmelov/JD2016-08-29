@@ -1,5 +1,7 @@
 package by.it.artiuschik.jd_03_03.TaskA_TaskB.dao;
-import by.it.artiuschik.jd_03_02.utils.ConnectionCreator;
+
+import by.it.artiuschik.jd_03_02.ConnectionCreator;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;

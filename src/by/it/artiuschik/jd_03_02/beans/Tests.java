@@ -1,7 +1,5 @@
 package by.it.artiuschik.jd_03_02.beans;
 
-import by.it.artiuschik.jd_03_02.beans.Test;
-
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +15,7 @@ public class Tests {
     protected List<Test> test;
     public List<Test> getTest() {
         if (test == null) {
-            test = new ArrayList<Test>();
+            test = new ArrayList<>();
         }
         return this.test;
     }

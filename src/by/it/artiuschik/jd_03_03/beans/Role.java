@@ -13,9 +13,9 @@ import javax.xml.bind.annotation.XmlType;
 public class Role {
 
     @XmlElement(name = "ID")
-    protected int ID;
+    private int ID;
     @XmlElement(name = "Role_name", required = true)
-    protected String Role_name;
+    private String Role_name;
 
     public int getID() {
         return ID;

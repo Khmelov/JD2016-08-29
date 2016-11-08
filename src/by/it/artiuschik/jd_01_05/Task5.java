@@ -1,7 +1,7 @@
 package by.it.artiuschik.jd_01_05;
 import static java.lang.Math.*;
-public class Task5 {
-    public static double[][] calculateFunction(double left, double right, double step, double r) {
+class Task5 {
+    static double[][] calculateFunction(double left, double right, double step, double r) {
         double p = left + step;
         double z=0;
         int size = (int) (abs(right - left) / step);

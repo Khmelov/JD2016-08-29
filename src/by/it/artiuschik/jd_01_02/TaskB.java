@@ -3,13 +3,9 @@ public class TaskB
 {
     static boolean inInterval(int number,int left,int right)
     {
-        if((number>=left)&&(number<=right))
-        {
-            return true;
-        }
-        return false;
+        return (number >= left) && (number <= right);
     }
-    static void printMatrix(double N,int k)
+    static void printMatrix(double N)
     {
         for(int i=0;i<N;i++)
         {
@@ -23,11 +19,7 @@ public class TaskB
     static String whatMounth(int number)
     {
         if((number>=1)&&(number<=12)) {
-            int[] monthsNumbers = new int[12];
             String[] monthsNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-            for (int i = 0; i < 12; i++) {
-                monthsNumbers[i] = i + 1;
-            }
             return monthsNames[number - 1];
         }
         return "Не существует месяца с номером "+number+"!";

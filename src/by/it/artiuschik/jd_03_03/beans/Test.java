@@ -14,13 +14,13 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Test {
     @XmlElement(name = "ID")
-    protected int ID;
+    private int ID;
     @XmlElement(name = "Name", required = true)
-    protected String Name;
+    private String Name;
     @XmlElement(name = "Subject", required = true)
-    protected String Subject;
+    private String Subject;
     @XmlElement(name = "Questions")
-    protected int Questions;
+    private int Questions;
 
     public int getID() {
         return ID;

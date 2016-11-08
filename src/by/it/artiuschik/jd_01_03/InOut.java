@@ -1,7 +1,7 @@
 package by.it.artiuschik.jd_01_03;
 import java.util.Scanner;
 
-public class InOut {
+class InOut {
     static String consoleReadLine()
     {
         return new Scanner(System.in).nextLine();
@@ -21,7 +21,7 @@ public class InOut {
     }
     static void arrayPrint(double mas[],String name,int cols){
         int col=0;
-        for (double value:mas) {
+        for (double ignored :mas) {
             System.out.printf(name+"[% -3d]=%-6.2f ",col,mas[col]);
             col++;
             if(col%cols==0||col==mas.length)
