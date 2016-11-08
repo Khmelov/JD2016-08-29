@@ -2,12 +2,6 @@ package by.it.artiuschik.jd_01_08;
 
 public class ReferenceBook extends Book {
     private String subject;//информацию по какому вопросу содержит справочник
-
-    public ReferenceBook() {
-        super();
-        this.subject = "unknown";
-    }
-
     public ReferenceBook(String name, int year, int pages, String subject, String... authors) {
         super(name, year, pages, authors);
         this.subject = subject;

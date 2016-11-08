@@ -1,6 +1,6 @@
 package by.it.artiuschik.jd_01_08;
 
-    interface IEdition {
+interface IEdition {
     void open(int page) throws IncorrectBookPageException;//открыть издание на странице
 
     void open() throws IncorrectBookPageException;//открыть издание по закладке
