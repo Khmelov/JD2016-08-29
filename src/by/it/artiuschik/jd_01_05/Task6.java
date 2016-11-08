@@ -1,12 +1,11 @@
 package by.it.artiuschik.jd_01_05;
 
 import static java.lang.Math.*;
-public class Task6 {
-    public static double[] functionValues(double left,double right)
+class Task6 {
+    static double[] functionValues(double left, double right)
     {
         /* функция s=arcsin(i/2)*/
         double[] res=new double[25];
-        double[] temp=new double[25];
         double step=abs(right-left)/25;
         double arg=left;
         for(int i=0;i<res.length;i++)
@@ -16,24 +15,19 @@ public class Task6 {
         }
         return res;
     }
-    static public void printOddElements(double[] mas,String name)
+    static void printOddElements(double[] mas, String name)
     {
         for(int i=0;i<mas.length;i++)
-        {
-            if((mas[i]*10000)%2!=0)
-            {
+            if ((mas[i] * 10000) % 2 != 0) {
                 System.out.print(name);
-                System.out.printf("[% -3d]=%-9.4f ",i,mas[i]);
+                System.out.printf("[% -3d]=%-9.4f ", i, mas[i]);
                 System.out.println();
             }
-
-        }
     }
-    static public double srednGeom(double[] mas) {
+    static double srednGeom(double[] mas) {
         double srednGeom=1;
-        for(int i=0;i<mas.length;i++)
-        {
-            srednGeom=((mas[i]*10000)%2==0)? srednGeom*mas[i]:srednGeom;
+        for (double ma : mas) {
+            srednGeom = ((ma * 10000) % 2 == 0) ? srednGeom * ma : srednGeom;
 
         }
         return srednGeom;

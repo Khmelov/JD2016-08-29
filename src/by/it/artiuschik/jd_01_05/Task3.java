@@ -1,7 +1,7 @@
 package by.it.artiuschik.jd_01_05;
 import static java.lang.Math.*;
-public class Task3 {
-    public static void functionTabulation(double x,double step,double left,double right)
+class Task3 {
+    static void functionTabulation(double x, double step, double left, double right)
     {
         int size=(int)abs(((right-left)/step))+1;
         double lef=left;
