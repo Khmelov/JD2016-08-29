@@ -124,9 +124,7 @@ public class TaskC
     static int[][] deleteRowsAndCols(int[][] matrix) {
         int r[][] = new int[matrix.length][matrix.length];
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                r[i][j] = matrix[i][j];
-            }
+            System.arraycopy(matrix[i], 0, r[i], 0, matrix[0].length);
         }
         int max[] = by.it.artiuschik.jd_01_02.Util.matrixMinMaxElement(matrix, matrix.length, false);
         int maxElem = max[2];

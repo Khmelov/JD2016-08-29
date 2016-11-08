@@ -1,6 +1,6 @@
 package by.it.artiuschik.jd_01_02;
 public class TaskA {
-    static public int getShortNum(int[] mas){
+    static  int getShortNum(int[] mas){
         int result=Integer.MIN_VALUE;
         for(int value:mas){
             int lenValue=String.valueOf(value).length();
@@ -13,7 +13,7 @@ public class TaskA {
 
         return result;
     }
-    static public int getLongNum(int[] mas){
+    static  int getLongNum(int[] mas){
         int result=0;
         for(int value:mas){
             int lenValue=String.valueOf(value).length();

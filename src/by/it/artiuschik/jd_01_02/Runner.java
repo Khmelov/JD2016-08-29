@@ -14,7 +14,7 @@ public class Runner {
         double mean = by.it.artiuschik.jd_01_02.TaskA.mean(mas);
         System.out.print("Чиcла, длина которых меньше " + mean + " таковы: ");
         for (int i : mas) {
-            if (new Integer(i).toString().length() < mean) {
+            if (Integer.toString(i).length() < mean) {
                 System.out.print(i + " ");
             }
         }
@@ -41,7 +41,7 @@ public class Runner {
         //2. Вывод матрицы
         System.out.print("Введите число k: ");
         k = Integer.parseInt(by.it.artiuschik.jd_01_02.Util.readFromConsole());
-        by.it.artiuschik.jd_01_02.TaskB.printMatrix(Math.sqrt(k), k);
+        by.it.artiuschik.jd_01_02.TaskB.printMatrix(Math.sqrt(k));
         //3.Найти корни квадраного уравнения
         if(args.length!=0) {
             double answers[] = by.it.artiuschik.jd_01_02.TaskB.kvadrUravn(Double.parseDouble(args[0]), Double.parseDouble(args[1]), Double.parseDouble(args[2]));
@@ -49,8 +49,8 @@ public class Runner {
                 System.out.println("Корней нет");
             } else {
                 System.out.println("Корни: ");
-                for (int i = 0; i < answers.length; i++) {
-                    System.out.print(answers[i] + " ");
+                for (double answer : answers) {
+                    System.out.print(answer + " ");
                 }
             }
         }
