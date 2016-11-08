@@ -15,7 +15,5 @@ package by.it.artiuschik.jd_01_08;
 
     int age();//возраст издания
 
-    boolean isAuthor(String author);//является ли автором
-
     void showInfo();//вывод подробной информации об издании
 }

@@ -15,9 +15,9 @@ public class Main {
         System.out.println("Age="+referenceBook.age());
         referenceBook.showInfo();
         //Динамический полиморфизм
-        by.it.artiuschik.jd_01_08.Book b1=new Encyclopedia("Все обо всем", 1995, 6300, 15, "А.Ликум", "Г.Шалаева");
+        Book b1=new Encyclopedia("Все обо всем", 1995, 6300, 15, "А.Ликум", "Г.Шалаева");
         b1.showInfo();
-        by.it.artiuschik.jd_01_08.Book b2=new ReferenceBook("Справочник по грамматике английского языка", 2011, 96, "Английский язык", "Т.В. Митрошкина");
+        Book b2=new ReferenceBook("Справочник по грамматике английского языка", 2011, 96, "Английский язык", "Т.В. Митрошкина");
         b2.showInfo();
         b1=null;
         b2=b1;

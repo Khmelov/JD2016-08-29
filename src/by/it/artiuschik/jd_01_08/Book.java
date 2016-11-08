@@ -107,4 +107,28 @@ abstract class Book implements IEdition {
             super.finalize();
         }
     }
+
+    public boolean isReading() {
+        return reading;
+    }
+
+    public void setReading(boolean reading) {
+        this.reading = reading;
+    }
+
+    public boolean isOpened() {
+        return isOpened;
+    }
+
+    public void setOpened(boolean opened) {
+        isOpened = opened;
+    }
+
+    public int getPages() {
+        return pages;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
+    }
 }
