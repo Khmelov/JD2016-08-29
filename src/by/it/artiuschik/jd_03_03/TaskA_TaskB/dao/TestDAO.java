@@ -1,14 +1,14 @@
 package by.it.artiuschik.jd_03_03.TaskA_TaskB.dao;
 
+import by.it.artiuschik.jd_03_02.ConnectionCreator;
 import by.it.artiuschik.jd_03_03.beans.Test;
-import by.it.artiuschik.jd_03_02.utils.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TestDAO extends AbstractDAO implements InterfaceDAO<Test> {
     //CREATE
@@ -70,6 +70,15 @@ public class TestDAO extends AbstractDAO implements InterfaceDAO<Test> {
             //логгирование SQLException(e);
         }
         return tests;
+    }
+    //Получить Test по имени теста
+    public Test getTest(String name)
+    {
+        List<Test> tests = getAll("WHERE Name=" + name + " LIMIT 0,1");
+        if (tests.size() > 0) {
+            return tests.get(0);
+        } else
+            return null;
     }
 
 

@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 
 public class TestCRUD {
     private UserCRUD userCRUD=new UserCRUD();
-    private User user=new User(0, "Петрова", "Анастасия", 1123, 1, 10, 1);
+    private User user=new User(0, "Петрова", "Анастасия", "Login","11111", 1, 10, 1);
     @Test
     public void testCreate() throws SQLException {
         Connection connection = ConnectionCreator.getConnection();
@@ -72,7 +72,7 @@ public class TestCRUD {
         int id = resultSet.getInt(1);
         user.setID(id);
         user.setSurname("Иванова");
-        assertTrue("Не работает update()", userCRUD.update(user) != null);
+        assertTrue("Не работает update()", userCRUD.update(user) != false);
     }
 
 }

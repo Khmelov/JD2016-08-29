@@ -19,19 +19,21 @@ import javax.xml.bind.annotation.XmlType;
 public class User {
 
     @XmlElement(name = "ID")
-    protected int ID;
+    private int ID;
     @XmlElement(name = "Name", required = true)
-    protected String Name;
+    private String Name;
     @XmlElement(name = "Surname", required = true)
-    protected String Surname;
+    private String Surname;
     @XmlElement(name = "Password", required = true)
-    protected int Password;
+    private String Password;
+    @XmlElement(name = "Login", required = true)
+    private String Login;
     @XmlElement(name = "Tests_amount")
-    protected int Tests_amount;
+    private int Tests_amount;
     @XmlElement(name = "Balls")
-    protected int Balls;
+    private int Balls;
     @XmlElement(name = "FK_ROLE")
-    protected int FK_ROLE;//индекс роли (1-Студент, 2-Тьютор)
+    private int FK_ROLE;//индекс роли (1-Студент, 2-Тьютор)
     public int getID() {
         return ID;
     }
@@ -50,11 +52,11 @@ public class User {
     public void setSurname(String value) {
         this.Surname = value;
     }
-    public int getPassword() {
+    public String getPassword() {
         return Password;
     }
 
-    public void setPassword(int value) {
+    public void setPassword(String value) {
         this.Password = value;
     }
 
@@ -77,13 +79,23 @@ public class User {
     public void setFK_ROLE(int value) {
         this.FK_ROLE = value;
     }
+
+    public String getLogin() {
+        return Login;
+    }
+
+    public void setLogin(String login) {
+        Login = login;
+    }
+
     public User() {
     }
 
-    public User(int ID, String name, String surname, int password, int tests_amount, int balls, int FK_ROLE) {
+    public User(int ID, String name, String surname, String login,String password, int tests_amount, int balls, int FK_ROLE) {
         this.ID = ID;
         Name = name;
         Surname = surname;
+        Login=login;
         Password = password;
         Tests_amount = tests_amount;
         Balls = balls;
@@ -102,17 +114,19 @@ public class User {
         if (Tests_amount != user.Tests_amount) return false;
         if (Balls != user.Balls) return false;
         if (FK_ROLE != user.FK_ROLE) return false;
-        if (Name != null ? !Name.equals(user.Name) : user.Name != null) return false;
-        return Surname != null ? Surname.equals(user.Surname) : user.Surname == null;
+        if (!Name.equals(user.Name)) return false;
+        if (!Surname.equals(user.Surname)) return false;
+        return Login.equals(user.Login);
 
     }
 
     @Override
     public int hashCode() {
         int result = ID;
-        result = 31 * result + (Name != null ? Name.hashCode() : 0);
-        result = 31 * result + (Surname != null ? Surname.hashCode() : 0);
-        result = 31 * result + Password;
+        result = 31 * result + Name.hashCode();
+        result = 31 * result + Surname.hashCode();
+        result = 31 * result + Password.hashCode();
+        result = 31 * result + Login.hashCode();
         result = 31 * result + Tests_amount;
         result = 31 * result + Balls;
         result = 31 * result + FK_ROLE;
@@ -126,10 +140,10 @@ public class User {
                 ", Name='" + Name + '\'' +
                 ", Surname='" + Surname + '\'' +
                 ", Password=" + Password +
+                ", Login='" + Login + '\'' +
                 ", Tests_amount=" + Tests_amount +
                 ", Balls=" + Balls +
                 ", FK_ROLE=" + FK_ROLE +
-                '}';
+                '}'+"\n";
     }
-
 }

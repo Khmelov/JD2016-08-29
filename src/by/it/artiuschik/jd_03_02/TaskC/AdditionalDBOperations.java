@@ -22,19 +22,19 @@ public class AdditionalDBOperations {
         Statement statement = connection.createStatement();
         //создание таблицы пользователей
         String createTableSQL =
-                format("CREATE TABLE users (ID INT NULL AUTO_INCREMENT ,Name VARCHAR(500) NOT NULL ,Surname VARCHAR(100) NOT NULL ,Password INT NOT NULL,Tests_amount INT NOT NULL , Balls INT NOT NULL , FK_ROLE INT NOT NULL , PRIMARY KEY (ID))");
+                String.format("CREATE TABLE users (ID INT NULL AUTO_INCREMENT ,Name VARCHAR(100) NOT NULL ,Surname VARCHAR(100) NOT NULL ,Password VARCHAR(100) NOT NULL, Login VARCHAR(100) NOT NULL, Tests_amount INT NOT NULL , Balls INT NOT NULL , FK_ROLE INT NOT NULL , PRIMARY KEY (ID))");
         statement.executeUpdate(createTableSQL);
         //создание таблицы ролей
         createTableSQL =
-                format("CREATE TABLE roles (ID INT NULL AUTO_INCREMENT ,Role_name VARCHAR(500) NOT NULL , PRIMARY KEY (ID))");
+                String.format("CREATE TABLE roles (ID INT NULL AUTO_INCREMENT ,Role_name VARCHAR(100) NOT NULL , PRIMARY KEY (ID))");
         statement.executeUpdate(createTableSQL);
         //создание таблицы тестов
         createTableSQL =
-                format("CREATE TABLE tests (ID INT NULL AUTO_INCREMENT , Name VARCHAR(500) NOT NULL , Subject VARCHAR(100) NOT NULL , Questions INT NOT NULL , PRIMARY KEY (ID))");
+                String.format("CREATE TABLE tests (ID INT NULL AUTO_INCREMENT , Name VARCHAR(100) NOT NULL , Subject VARCHAR(100) NOT NULL , Questions INT NOT NULL , PRIMARY KEY (ID))");
         statement.executeUpdate(createTableSQL);
         //создание таблицы вопросов
         createTableSQL =
-                format("CREATE TABLE questions (ID INT NULL AUTO_INCREMENT , Text VARCHAR(500) NOT NULL , Subject VARCHAR(100) NOT NULL , Balls INT NOT NULL , PRIMARY KEY (ID))");
+                String.format("CREATE TABLE questions (ID INT NULL AUTO_INCREMENT , Text VARCHAR(100) NOT NULL , Subject VARCHAR(100) NOT NULL , Balls INT NOT NULL , FK_TEST INT NOT NULL, PRIMARY KEY (ID))");
         statement.executeUpdate(createTableSQL);
     }
 
@@ -62,13 +62,13 @@ public class AdditionalDBOperations {
     private static void fillTables() throws SQLException {
         //заполнение  users
         UserCRUD userCRUD = new UserCRUD();
-        User user = new User(0, "Петрова", "Анастасия", 1123, 1, 10, 1);
+        User user = new User(0, "Петрова", "Анастасия","LoginNastya","111111",1, 10, 1);
         userCRUD.create(user);
-        user = new User(0, "Иван", "Иванов", 1232, 3, 30, 1);
+        user = new User(0, "Иван", "Иванов", "LoginIvan","222222", 3, 30, 1);
         userCRUD.create(user);
-        user = new User(0, "Петр", "Петров", 1245, 3, 30,1);
+        user = new User(0, "Петр", "Петров", "LoginPetrov","333333", 3, 30,1);
         userCRUD.create(user);
-        user = new User(0, "Василий", "Васильев", 6785, 3, 30, 1);
+        user = new User(0, "Василий", "Васильев", "LoginVasil","444444",3, 30, 1);
         userCRUD.create(user);
         //заполнение  tests
         TestCRUD testCRUD=new TestCRUD();
@@ -129,7 +129,7 @@ public class AdditionalDBOperations {
             for (Question question : questions) {
                 questionCRUD.create(question);
             }
-        } catch (JAXBException | SQLException | FileNotFoundException e) {
+        } catch (JAXBException  | FileNotFoundException e) {
             e.printStackTrace();
         }
 

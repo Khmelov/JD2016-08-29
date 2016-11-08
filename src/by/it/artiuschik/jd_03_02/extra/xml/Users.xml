@@ -3,6 +3,7 @@
     <User>
         <Name>Анастасия</Name>
         <Surname>Петрова</Surname>
+        <Login>Nastya97</Login>
         <Password>1123</Password>
         <Tests_amount>1</Tests_amount>
         <Balls>10</Balls>
@@ -11,6 +12,7 @@
     <User>
         <Name>Иван</Name>
         <Surname>Иванов</Surname>
+        <Login>Ivan97</Login>
         <Password>1232</Password>
         <Tests_amount>3</Tests_amount>
         <Balls>30</Balls>
@@ -19,6 +21,7 @@
     <User>
         <Name>Петр</Name>
         <Surname>Петров</Surname>
+        <Login>Petr97</Login>
         <Password>1245</Password>
         <Tests_amount>3</Tests_amount>
         <Balls>30</Balls>
@@ -27,6 +30,7 @@
     <User>
         <Name>Василий</Name>
         <Surname>Васильев</Surname>
+        <Login>Vasil97</Login>
         <Password>6785</Password>
         <Tests_amount>3</Tests_amount>
         <Balls>30</Balls>

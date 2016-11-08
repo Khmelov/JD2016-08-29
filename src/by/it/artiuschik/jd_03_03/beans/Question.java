@@ -15,22 +15,16 @@ import javax.xml.bind.annotation.XmlType;
 public class Question {
 
     @XmlElement(name = "ID")
-    protected int ID;
+    private int ID;
     @XmlElement(name = "Text", required = true)
-    protected String Text;
+    private String Text;
     @XmlElement(name = "Subject", required = true)
-    protected String Subject;
+    private String Subject;
     @XmlElement(name = "Balls")
-    protected int Balls;
+    private int Balls;
+    @XmlElement(name = "FK_TEST")
+    private int FK_TEST;//ID  теста которому принадлежит вопрос
     public Question() {
-
-    }
-
-    public Question(int ID, String text, String subject, int balls) {
-        this.ID = ID;
-        Text = text;
-        Subject = subject;
-        Balls = balls;
     }
 
     public int getID() {
@@ -65,6 +59,22 @@ public class Question {
         Balls = balls;
     }
 
+    public int getFK_TEST() {
+        return FK_TEST;
+    }
+
+    public void setFK_TEST(int FK_TEST) {
+        this.FK_TEST = FK_TEST;
+    }
+
+    public Question(int ID, String text, String subject, int balls, int FK_TEST) {
+        this.ID = ID;
+        Text = text;
+        Subject = subject;
+        Balls = balls;
+        this.FK_TEST = FK_TEST;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,6 +84,7 @@ public class Question {
 
         if (ID != question.ID) return false;
         if (Balls != question.Balls) return false;
+        if (FK_TEST != question.FK_TEST) return false;
         if (!Text.equals(question.Text)) return false;
         return Subject.equals(question.Subject);
 
@@ -85,6 +96,7 @@ public class Question {
         result = 31 * result + Text.hashCode();
         result = 31 * result + Subject.hashCode();
         result = 31 * result + Balls;
+        result = 31 * result + FK_TEST;
         return result;
     }
 
@@ -95,6 +107,7 @@ public class Question {
                 ", Text='" + Text + '\'' +
                 ", Subject='" + Subject + '\'' +
                 ", Balls=" + Balls +
-                '}' + "\n";
+                ", FK_TEST=" + FK_TEST +
+                '}'+"\n";
     }
 }

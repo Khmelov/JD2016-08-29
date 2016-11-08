@@ -1,5 +1,6 @@
 package by.it.artiuschik.jd_03_03.TaskA_TaskB.dao;
-import by.it.artiuschik.jd_03_02.utils.ConnectionCreator;
+
+import by.it.artiuschik.jd_03_02.ConnectionCreator;
 import by.it.artiuschik.jd_03_03.beans.User;
 
 import java.sql.Connection;
@@ -15,8 +16,8 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
     public boolean create(User user) {
         user.setID(0);
         String createUserSQL = String.format(
-                "insert into users(Name,Surname,Password,Tests_amount,Balls,FK_ROLE) values('%s','%s','%d','%d','%d','%d');",
-                user.getName(), user.getSurname(), user.getPassword(), user.getTests_amount(), user.getBalls(), user.getFK_ROLE()
+                "insert into users(Name,Surname,Password,Login,Tests_amount,Balls,FK_ROLE) values('%s','%s','%s','%s','%d','%d','%d');",
+                user.getName(), user.getSurname(), user.getPassword(), user.getLogin(), user.getTests_amount(), user.getBalls(), user.getFK_ROLE()
         );
         user.setID(executeUpdate(createUserSQL));
         return (user.getID()>0);
@@ -34,8 +35,8 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
     @Override
     public boolean update(User user) {
         String updateUserSQL = String.format(
-                "UPDATE users SET Name = '%s', Surname = '%s', Password = '%d', Tests_amount='%d', Balls='%d', FK_ROLE=%d WHERE users.ID = %d",
-                user.getName(), user.getSurname(), user.getPassword(), user.getTests_amount(), user.getBalls(), user.getFK_ROLE(), user.getID()
+                "UPDATE users SET Name = '%s', Surname = '%s', Password = '%s', Login = '%s', Tests_amount='%d', Balls='%d', FK_ROLE=%d WHERE users.ID = %d",
+                user.getName(), user.getSurname(), user.getPassword(), user.getLogin(), user.getTests_amount(), user.getBalls(), user.getFK_ROLE(), user.getID()
         );
         return (0 < executeUpdate(updateUserSQL));
     }
@@ -49,8 +50,7 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
     @Override
     public List<User> getAll(String WHERE) {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM users " + WHERE + " ;";
-        //String sql = String.format("SELECT * FROM users %s ;",WHERE);
+        String sql = String.format("SELECT * FROM users %s ;",WHERE);
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {
@@ -59,8 +59,9 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
                 User user = new User();
                 user.setID(rs.getInt("ID"));
                 user.setName(rs.getString("Name"));
+                user.setLogin(rs.getString("Login"));
                 user.setSurname(rs.getString("Surname"));
-                user.setPassword(rs.getInt("Password"));
+                user.setPassword(rs.getString("Password"));
                 user.setTests_amount(rs.getInt("Tests_amount"));
                 user.setBalls(rs.getInt("Balls"));
                 user.setFK_ROLE(rs.getInt("FK_ROLE"));

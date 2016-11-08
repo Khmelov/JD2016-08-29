@@ -1,7 +1,4 @@
 package by.it.artiuschik.jd_03_02.beans;
-
-import by.it.artiuschik.jd_03_02.beans.Question;
-
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
