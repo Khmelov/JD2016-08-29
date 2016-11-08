@@ -1,10 +1,15 @@
 package by.it.senchenko.matlab;
 
-/**
- * Created by User on 16.09.2016.
- */
-public class VarF extends Var {
-    public double value;
+
+public class VarF extends Var{
+    private double value;
+    public void setFrom(String str) {
+        value=Double.valueOf(str);
+    }
+
+    public VarF(String str) {
+        setFrom(str);
+    }
 
     public VarF(double value) {
         this.value = value;
@@ -34,6 +39,9 @@ public class VarF extends Var {
             return new VarF(this.value*((VarF) var).value);
         }
         return var.mul(this);
+    }
+    public double getValue() {
+        return value;
     }
 
     @Override
