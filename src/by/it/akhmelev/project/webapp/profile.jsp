@@ -6,12 +6,25 @@
    <fieldset>
 
         <!-- Form Name -->
-        <legend>Профиль пользователя</legend>
-
-        <p>${user}</p>
-
+        <legend>Объявления ${user.login}</legend>
+          <c:forEach items="${ads}" var="ad">
+             <br />
+             <div class="row">
+               <div class="col-md-1">${ad.viewNumber}</div>
+               <div class="col-md-1">${ad.price} </div>
+               <div class="col-md-3">${ad.address}</div>
+               <div class="col-md-3">${ad.description}</div>
+               <div class="col-md-1">${ad.roomCount}</div>
+               <div class="col-md-1">${ad.area}</div>
+               <div class="col-md-1">${ad.floor}</div>
+               <div class="col-md-1">${ad.floors}</div>
+             </div>
+          </c:forEach>
+        <br><br>
+        <t:paginator step="5" count="${adCount}" urlprefix="?command=PROFILE&startNumber="/>
 
         <!-- Button -->
+        <br><br><br>
         <div class="form-group">
             <label class="col-md-4 control-label" for="LogoutButton"></label>
             <div class="col-md-4">
