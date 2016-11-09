@@ -7,7 +7,9 @@
         <div class=col-md-1>ID</div>
         <div class=col-md-2>Имя</div>
         <div class=col-md-2>Пароль</div>
-        <div class=col-md-7>Email</div>
+        <div class=col-md-3>Email</div>
+        <div class=col-md-1>id_logpass</div>
+        <div class=col-md-1>id_role</div>
     </b>
    </div>
    <br>
@@ -19,14 +21,14 @@
                 <input id="user_id_${user.id}" name="ID" type="text"
                 value="${user.id}" class="form-control input-md">
             </div>
-<!--
+
             <div class=col-md-2>
                 <input id="textinput" name="FirsName" type="text"
-                value="${user.FirsName}" class="form-control input-md">
-            </div>-->
+                value="${user.firsName}" class="form-control input-md">
+            </div>
             <div class=col-md-2>
                 <input id="textinput" name="LastName" type="text"
-                value="${user.lastname}" class="form-control input-md">
+                value="${user.lastName}" class="form-control input-md">
             </div>
             <div class=col-md-3>
                              <input id="textinput" name="Email" type="text"
@@ -37,8 +39,8 @@
                 value="${user.id_logpass}" class="form-control input-md">
             </div>
             <div class=col-md-1>
-             <input id="user_id_role_${user.id_role}" name="id_logpass" type="text"
-             value="${user.id_logpass}" class="form-control input-md">
+             <input id="user_id_role_${user.id_role}" name="id_role" type="text"
+             value="${user.id_role}" class="form-control input-md">
             </div>
             <div class=col-md-2>
                 <button id="singlebutton" name="singlebutton" class="btn btn-danger"
@@ -58,8 +60,13 @@
    <br>
    </c:forEach>
 
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
 
 
-<p>${users}</p>
 
 <%@ include file="include/end-html.jsp" %>
