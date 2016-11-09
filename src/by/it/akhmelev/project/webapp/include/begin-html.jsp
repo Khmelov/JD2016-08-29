@@ -1,6 +1,3 @@
-<%@ taglib tagdir="/WEB-INF/tags/menu" prefix="menu" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -29,20 +26,19 @@
             </button>
             <a class="navbar-brand" href=".">Главная</a>
           </div>
-
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <menu:li command="CreateAd" text="Создать объявление"/>
-              <menu:li command="ShowUsers" text="Список пользователей"/>
+              <li><a href="do?command=CreateAd">Создать объявление</a></li>
+              <li><a href="do?command=ShowUsers">Список пользователей</a></li>
             </ul>
-
             <ul class="nav navbar-nav navbar-right">
-              <menu:li command="SignUp" text="Зарегистрироваться"/>
+              <li><a href="do?command=SignUp">Зарегистрироваться</a></li>
              <c:choose>
-                <c:when test="${user==null}"><menu:li command="Login" text="Войти"/></c:when>
-                <c:otherwise><menu:li command="Profile" text="Профиль"/></c:otherwise>
+                <c:when test="${user==null}"><li><a href="do?command=Profile">Выйти</a></li></c:when>
+                <c:otherwise><li><a href="do?command=Login">Войти</a></li></c:otherwise>
              </c:choose>
-             <li><a href="/manager/html/list">Tomcat</a></li>
+
+              <li><a href="/manager/html/list">Tomcat</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
