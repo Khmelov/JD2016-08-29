@@ -31,7 +31,13 @@ public class FrontController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Action action=Actions.defineFrom(req);
-        action.execute(req);
-        disp(action).forward(req,resp);
+        Action redirectAction=action.execute(req);
+        if (redirectAction!=null) {
+            resp.sendRedirect("do?command="+redirectAction);
+        }
+        else
+        {
+            disp(action).forward(req,resp);
+        }
     }
 }

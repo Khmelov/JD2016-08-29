@@ -12,9 +12,9 @@ public class CmdSignup extends Action {
         if (Form.isPost(req)) {
            User user=new User();
             try {
-                user.setLogin(Form.getParameter(req,"Login",Patterns.LOGIN));
-                user.setPassword(Form.getParameter(req,"Password",Patterns.PASSWORD));
-                user.setEmail(Form.getParameter(req,"Email",Patterns.EMAIL));
+                user.setLogin(Form.getString(req,"Login",Patterns.LOGIN));
+                user.setPassword(Form.getString(req,"Password",Patterns.PASSWORD));
+                user.setEmail(Form.getString(req,"Email",Patterns.EMAIL));
                 user.setFk_Role(2);
                 DAO dao=DAO.getDAO();
                 if (dao.user.create(user)){
