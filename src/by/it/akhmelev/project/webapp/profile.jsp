@@ -10,7 +10,6 @@
           <c:forEach items="${ads}" var="ad">
              <br />
              <div class="row">
-               <div class="col-md-1">${ad.viewNumber}</div>
                <div class="col-md-1">${ad.price} </div>
                <div class="col-md-3">${ad.address}</div>
                <div class="col-md-3">${ad.description}</div>

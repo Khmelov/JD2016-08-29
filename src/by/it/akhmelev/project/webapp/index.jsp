@@ -9,10 +9,9 @@
       </div>
 
              <div class="row">
-               <div class="col-md-1">№</div>
                <div class="col-md-1">Цена</div>
                <div class="col-md-3">Адрес</div>
-               <div class="col-md-3">Описание</div>
+               <div class="col-md-4">Описание</div>
                <div class="col-md-1">Число комнат</div>
                <div class="col-md-1">Площадь</div>
                <div class="col-md-1">Этаж</div>
@@ -20,12 +19,10 @@
 
              </div>
           <c:forEach items="${ads}" var="ad">
-             <br />
              <div class="row">
-               <div class="col-md-1">${ad.viewNumber}</div>
                <div class="col-md-1">${ad.price} </div>
                <div class="col-md-3">${ad.address}</div>
-               <div class="col-md-3">${ad.description}</div>
+               <div class="col-md-4">${ad.description}</div>
                <div class="col-md-1">${ad.roomCount}</div>
                <div class="col-md-1">${ad.area}</div>
                <div class="col-md-1">${ad.floor}</div>
@@ -62,7 +59,5 @@
 
      -->
 
-    <br><br>(${adCount})
-    <t:paginator step="10" count="${adCount}" urlprefix="?startNumber="/>
 
 <%@ include file="include/end-html.jsp" %>

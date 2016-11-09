@@ -1,6 +1,7 @@
 package by.it.akhmelev.project.java.controller;
 
 import by.it.akhmelev.project.java.beans.Ad;
+import by.it.akhmelev.project.java.beans.Role;
 import by.it.akhmelev.project.java.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
