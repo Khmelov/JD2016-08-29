@@ -16,9 +16,9 @@ public class CmdCreateOrder extends Action {
                 order.setId(0);
                 order.setfK_User(3);
                 order.setfK_Room(4);
-                order.setArrive_Date(Form.getParameter(req,"Arrive_Date",Patterns.DATE));
-                order.setReturn_Date(Form.getParameter(req,"Return_Date",Patterns.DATE));
-                order.setBill(Float.parseFloat(Form.getParameter(req,"Bill",Patterns.MONEY)));
+                order.setArrive_Date(Form.getString(req,"Arrive_Date",Patterns.DATE));
+                order.setReturn_Date(Form.getString(req,"Return_Date",Patterns.DATE));
+                order.setBill(Form.getFloat(req,"Bill",Patterns.MONEY));
 
                 DAO dao=DAO.getDAO();
                 if (dao.ordersDAO.create(order)){

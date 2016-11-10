@@ -14,9 +14,9 @@ public class CmdCreateApartment extends Action {
             Rooms room = new Rooms();
             try {
                 room.setId(0);
-                room.setFloor(Integer.parseInt(Form.getParameter(req,"Floor",Patterns.NUMB)));
-                room.setRoom_Number(Integer.parseInt(Form.getParameter(req,"Room_Number",Patterns.NUMB)));
-                room.setCost(Float.parseFloat(Form.getParameter(req,"Cost",Patterns.MONEY)));
+                room.setFloor(Form.getInt(req,"Floor",Patterns.NUMB));
+                room.setRoom_Number(Form.getInt(req,"Room_Number",Patterns.NUMB));
+                room.setCost(Form.getFloat(req,"Cost",Patterns.MONEY));
                 room.setfK_Type(4);
 
                 DAO dao=DAO.getDAO();

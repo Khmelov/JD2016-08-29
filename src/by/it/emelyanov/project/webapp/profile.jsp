@@ -12,6 +12,18 @@
         <h3>Cookie value</h3>
         <p>${cookie}</p>
 
+ <legend>Заказы ${user.login}</legend>
+          <c:forEach items="${orders}" var="order">
+             <br />
+             <div class="row">
+               <div class="col-md-4">${order.arrive_Date} </div>
+               <div class="col-md-4">${order.return_Date}</div>
+               <div class="col-md-4">${order.bill}</div>
+
+             </div>
+          </c:forEach>
+        <br><br>
+
 
         <!-- Button -->
         <div class="form-group">
