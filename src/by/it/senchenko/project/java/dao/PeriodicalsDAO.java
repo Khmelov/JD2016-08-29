@@ -75,7 +75,7 @@ public class PeriodicalsDAO extends AbstractClassDAO implements InterfaceForDAO<
                 periodicals.setName(resultSet.getString("Name"));
                 periodicals.setAutor(resultSet.getString("Autor"));
                 periodicals.setDate(resultSet.getString("Date"));
-                periodicals.setFK_User(resultSet.getInt("FK_Users"));
+                periodicals.setFK_User(resultSet.getInt("FK_User"));
                 per.add(periodicals);
             }
         } catch (SQLException e) {
