@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public enum Actions {
     INDEX {{this.action = new CmdIndex();}},
+    CREATEPERIODICALS {{this.action = new CmdCreatePeriodicals();}},
     SHOWUSERS {{this.action = new CmdShowUsers();}},
     SIGNUP{{this.action=new CmdSignup();}},
     LOGIN{{this.action=new CmdLogin();}},
