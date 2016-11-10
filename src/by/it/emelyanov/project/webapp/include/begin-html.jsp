@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -36,8 +37,14 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="do?command=SignUp">Зарегистрироваться</a></li>
-              <li><a href="do?command=Login">Войти</a></li>
-              <li><a href="do?command=Profile">Выйти</a></li>
+              <c:choose>
+               <c:when test="${user!=null}">
+               <li><a href="do?command=Profile">Профиль</a></li>
+               </c:when>
+               <c:otherwise>
+               <li><a href="do?command=Login">Войти</a></li>
+               </c:otherwise>
+               </c:choose>
               <li><a href="/manager/html/list">Tomcat</a></li>
             </ul>
           </div><!--/.nav-collapse -->
