@@ -35,7 +35,7 @@ public class CmdLogin extends Action {
                     return Actions.PROFILE.action;
                 }
                 else
-                    Form.showError(req,"USER NOT FOUND");
+                    Form.showError(req,"Database error");
 
             } catch (ParseException e) {
                 Form.showError(req,"Incorrect data");

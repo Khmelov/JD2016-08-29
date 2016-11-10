@@ -29,8 +29,8 @@ public class ProfileDAO extends AbstractDAO implements InterfaceDAO<Profile> {
 
     @Override
     public boolean create(Profile bean) {
-        String sql = String.format(Locale.ENGLISH, "insert INTO wtsiamuk.profile" +
-                "(name,lastname,age,ID) values('%s','%s','%d','%d'",
+        String sql = String.format(Locale.ENGLISH, "insert INTO wtsiamruk.profile" +
+                "(name,lastname,age,ID) values('%s','%s','%d','%d');",
                 bean.getName(),bean.getLastname(),bean.getAge(),bean.getId());
         bean.setId(executeUpdate(sql));
         return (bean.getId()>1);

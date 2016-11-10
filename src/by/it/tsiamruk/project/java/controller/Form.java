@@ -23,6 +23,13 @@ public class Form {
         else
             throw new ParseException("Incorrect value"+name,0);
     }
+    static int getInteger(HttpServletRequest req, String name, String pattern) throws ParseException{
+        String data = req.getParameter(name);
+        int res = Integer.parseInt(data.trim());
+        if ((res != 0) && (data.matches(pattern)))
+            return res;
+        else throw new ParseException("Incorrect number"+name,0);
+    }
     static boolean isPost(HttpServletRequest req){
         return req.getMethod().equalsIgnoreCase("post");
     }

@@ -1,7 +1,6 @@
 package by.it.tsiamruk.project.java.controller;
 
 import by.it.tsiamruk.project.java.DAO.SingletonDAO;
-import by.it.tsiamruk.project.java.DAO.UserDAO;
 import by.it.tsiamruk.project.java.beans.Account;
 import by.it.tsiamruk.project.java.beans.User;
 
