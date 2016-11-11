@@ -1,5 +1,6 @@
 package by.it.emelyanov.project.java.controller;
 
+import by.it.emelyanov.project.java.beans.Roles;
 import by.it.emelyanov.project.java.beans.Users;
 import by.it.emelyanov.project.java.dao.DAO;
 
@@ -40,6 +41,8 @@ public class CmdShowUsers extends Action {
             }
             List<Users> users = dao.usersDAO.getAll("");
             req.setAttribute("users", users);
+            List<Roles> roles = dao.rolesDAO.getAll("");
+            req.setAttribute("roles", roles);
 
 
         }
