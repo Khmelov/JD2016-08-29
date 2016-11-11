@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="row">
      <b>
@@ -10,7 +11,7 @@
      </b>
     </div>
     <br>
-    <!-- Коллекцию listUser мы получаем по get из команды сервлета UserForm -->
+
     <c:forEach items="${users}" var="user">
          <div class="row">
          <form class="form-user-${user.id}" action="do?command=ShowUsers" method=POST>
@@ -52,7 +53,6 @@
                  class="btn btn-danger"
                  onclick="document.getElementById('user_id_${user.id}').value=-document.getElementById('user_id_${user.id}').value;"
                  >
-                     Удалить
                  </button>
              </div>
 

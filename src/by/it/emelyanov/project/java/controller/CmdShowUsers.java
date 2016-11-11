@@ -43,11 +43,7 @@ public class CmdShowUsers extends Action {
             req.setAttribute("users", users);
             List<Roles> roles = dao.rolesDAO.getAll("");
             req.setAttribute("roles", roles);
-
-
         }
-
-
         return null;
     }
 }

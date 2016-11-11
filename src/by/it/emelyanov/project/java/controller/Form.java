@@ -12,6 +12,7 @@ public class Form {
         } else
             throw new ParseException("Incorrect String" + name, 0);
     }
+
     static float getFloat(HttpServletRequest req, String name, String pattern)
             throws ParseException {
         String value = req.getParameter(name);
@@ -20,6 +21,7 @@ public class Form {
         } else
             throw new ParseException("Incorrect Float" + name, 0);
     }
+
     static int getInt(HttpServletRequest req, String name, String pattern)
             throws ParseException {
         String value = req.getParameter(name);
@@ -28,14 +30,17 @@ public class Form {
         } else
             throw new ParseException("Incorrect Integer" + name, 0);
     }
+
     static boolean isPost(HttpServletRequest req) {
         return req.getMethod().equalsIgnoreCase("post");
     }
-    static void showMessage(HttpServletRequest req, String message){
-        req.setAttribute(Messages.MESSAGE,message);
+
+    static void showMessage(HttpServletRequest req, String message) {
+        req.setAttribute(Messages.MESSAGE, message);
     }
-    static void showError(HttpServletRequest req, String error){
-        req.setAttribute(Messages.MESSAGE_ERROR,error);
+
+    static void showError(HttpServletRequest req, String error) {
+        req.setAttribute(Messages.MESSAGE_ERROR, error);
     }
 
 }
