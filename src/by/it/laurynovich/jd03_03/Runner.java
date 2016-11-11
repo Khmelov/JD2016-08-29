@@ -1,7 +1,5 @@
 package by.it.laurynovich.jd03_03;
 
-
-
 import by.it.laurynovich.jd03_03.beans.Flights;
 import by.it.laurynovich.jd03_03.beans.Role;
 import by.it.laurynovich.jd03_03.beans.Tickets;
@@ -40,8 +38,9 @@ public class Runner {
             System.out.println(users.get(i));
         }
         System.out.println("_________________________________________________________________________________");
-        User user = new User(1,"user", "654321", "vaska_kot@gmail.com", "ivanov", "ivan", "NN1223654", 1, 1);
+        User user = new User(1,"user", "654321", "ivan@gmail.com", "ivanov", "ivan", "NN1223654", 1, 1);
         dao.getUserDAO().create(user);
+        user.setId(1);
         System.out.printf("Создание пользователя \n%s\n", user);
 
         Role role = new Role();
@@ -49,8 +48,9 @@ public class Runner {
         role.setRole("user");
         Role role1 = new Role();
         role.setRole("admin");
-        System.out.println(role);
-        System.out.println(role1);
+        role.getIdRole();
+        System.out.println(role.getIdRole());
+        System.out.println(role1.getRole());
 
 
         //read
@@ -66,7 +66,7 @@ public class Runner {
         System.out.println("_________________________________________________________________________________");
 
         //delete
-        System.out.println("Удаление пользователя "+dao.getUserDAO().delete(user));
+      //  System.out.println("Удаление пользователя "+dao.getUserDAO().delete(user));
         //read
         System.out.println("Чтение " +dao.getUserDAO().read(user.getId()));
         System.out.println("_________________________________________________________________________________");

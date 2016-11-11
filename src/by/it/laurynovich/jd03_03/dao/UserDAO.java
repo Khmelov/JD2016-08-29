@@ -11,9 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by nadabratb on 11/9/2016.
- */
+
 public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
 
     public UserDAO() {
@@ -69,7 +67,7 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
                 ResultSet rs = statement.executeQuery(sql);
                 while (rs.next()) {
                     User user = new User();
-                    //user.setId(rs.getInt("id_User"));
+                    user.setId(rs.getInt("id_User"));
                     user.setLogin(rs.getString("login"));
                     user.setPassword(rs.getString("password"));
                     user.setEmail(rs.getString("email"));

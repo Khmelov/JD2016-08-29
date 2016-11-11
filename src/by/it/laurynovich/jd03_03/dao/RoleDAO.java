@@ -60,7 +60,7 @@ public class RoleDAO extends AbstractDAO implements InterfaceDAO<Role> {
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 Role role = new Role();
-                role.setRole(rs.getNString("flight"));
+                role.setRole(rs.getNString("roles"));
                 roles.add(role);
             }
         } catch (SQLException e) {

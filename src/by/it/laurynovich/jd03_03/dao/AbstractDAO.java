@@ -14,10 +14,10 @@ public abstract class AbstractDAO {
                 ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
                 if (resultSet.next()) result = resultSet.getInt(1);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             //тут нужно логгирование SQLException(e);
         }
-        //System.out.println(result+":"+sql); //проверить SQL можно снимая комментарий с этой строки
+        System.out.println(result+":"+sql); //проверить SQL можно снимая комментарий с этой строки
         return result;
     }
 }
