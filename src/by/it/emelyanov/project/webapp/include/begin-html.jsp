@@ -5,7 +5,7 @@
 <head lang="ru">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta http-equiv="Cache-Control" content="no-cache">
-    <title>Базовый шаблон для JSP</title>
+    <title>Hostel</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <script src="js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -28,12 +28,20 @@
             <a class="navbar-brand" href=".">Главная</a>
           </div>
           <div class="navbar-collapse collapse">
+
             <ul class="nav navbar-nav">
-            <li><a href="do?command=CreateApartment">Добавить новый номер</a></li>
-              <li><a href="do?command=CreateOrder">Сделать заказ</a></li>
-              <li><a href="do?command=ShowUsers">Список пользователей</a></li>
-              <li><a href="do?command=ShowOrders">Список заказов</a></li>
-              <li><a href="do?command=ShowApartments">Список номеров</a></li>
+           <c:choose>
+           <c:when test="${user.id==1}">
+           <li><a href="do?command=CreateApartment">Добавить новый номер</a></li>
+           <li><a href="do?command=ShowUsers">Список пользователей</a></li>
+           <li><a href="do?command=ShowOrders">Список заказов</a></li>
+            <li><a href="do?command=ShowApartments">Список номеров</a></li>
+            </c:when>
+             <c:otherwise>
+            <li><a href="do?command=CreateOrder">Сделать заказ</a></li>
+             </c:otherwise>
+            </c:choose>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="do?command=SignUp">Зарегистрироваться</a></li>
@@ -42,9 +50,10 @@
                <li><a href="do?command=Profile">Профиль</a></li>
                </c:when>
                <c:otherwise>
-               <li><a href="do?command=Login">Войти</a></li>
+                <li><a href="do?command=Login">Войти</a></li>
                </c:otherwise>
                </c:choose>
+
               <li><a href="/manager/html/list">Tomcat</a></li>
             </ul>
           </div><!--/.nav-collapse -->
