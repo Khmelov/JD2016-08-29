@@ -32,7 +32,7 @@
                  value="${user.email}" class="form-control input-md">
              </div>
 
-             <div class=col-md-2>
+             <div class=col-md-3>
                      <select id="role" name="fk_Role" class="form-control">
                          <c:forEach items="${roles}" var="role">
                              <option value="${role.id}" role=${role.id} ${role.id==user.fK_Role?"selected":""}>

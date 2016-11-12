@@ -66,8 +66,8 @@
                  <button id="singlebutton" name="singlebutton"
                  class="btn btn-danger"
                  onclick="
-                 document.getElementById('user_id_${user.id}').value=
-                 -document.getElementById('user_id_${user.id}').value;
+                 document.getElementById('order_id_${order.id}').value=
+                 -document.getElementById('order_id_${order.id}').value;
                  ">
                      Удалить
                  </button>

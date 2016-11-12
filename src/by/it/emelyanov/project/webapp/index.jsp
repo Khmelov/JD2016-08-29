@@ -17,7 +17,7 @@
          <form class="form-room-${room.id}" action="do?command=Index" method=POST>
 
              <div class=col-md-1>
-                 <input id="room_floor_${room.floor}" name="Room" type="text"
+                 <input id="room_floor_${room.floor}" name="Floor" type="text"
                  value="${room.floor}" class="form-control input-md">
              </div>
 
