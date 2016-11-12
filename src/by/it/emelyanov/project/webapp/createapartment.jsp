@@ -7,18 +7,11 @@
       <!-- Form Name -->
       <legend>Form Name</legend>
 
-      <!-- Text input-->
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="ID">ID</label>
-        <div class="col-md-4">
-        <input id="id" name="ID" type="text" placeholder="" class="form-control input-md">
-        <span class="help-block">ID autoincrement</span>
-        </div>
-      </div>
+
 
       <!-- Text input-->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="Floor">Floor</label>
+        <label class="col-md-4 control-label" for="Floor">Этаж</label>
         <div class="col-md-4">
         <input id="Floor" name="Floor" type="text" placeholder="placeholder" class="form-control input-md">
         <span class="help-block"></span>
@@ -27,7 +20,7 @@
 
       <!-- Text input-->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="Room_Number">Room Number</label>
+        <label class="col-md-4 control-label" for="Room_Number">Номер</label>
         <div class="col-md-4">
         <input id="Room_Number" name="Room_Number" type="text" placeholder="placeholder" class="form-control input-md">
         <span class="help-block"></span>
@@ -36,7 +29,7 @@
 
       <!-- Text input-->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="Cost">Cost</label>
+        <label class="col-md-4 control-label" for="Cost">Стоимость</label>
         <div class="col-md-4">
         <input id="Cost" name="Cost" type="text" placeholder="placeholder" class="form-control input-md">
         <span class="help-block"></span>
@@ -45,7 +38,7 @@
 
       <!-- Select Basic -->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="FK_Type">Room Type</label>
+        <label class="col-md-4 control-label" for="FK_Type">Тип номера</label>
         <div class="col-md-4">
           <select id="FK_Type" name="FK_Type" class="form-control">
             <option value="1">Single Room</option>

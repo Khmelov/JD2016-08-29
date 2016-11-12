@@ -17,13 +17,7 @@
 </div>
 
 <!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="FK_User">FK User</label>
-  <div class="col-md-4">
-  <input id="FK_User" name="FK_User" type="text" placeholder="" class="form-control input-md">
-  <span class="help-block">User id</span>
-  </div>
-</div>
+
 
 <!-- Text input-->
 <div class="form-group">
