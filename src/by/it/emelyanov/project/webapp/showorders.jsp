@@ -12,7 +12,7 @@
      </b>
     </div>
     <br>
-    <!-- Коллекцию listUser мы получаем по get из команды сервлета UserForm -->
+
     <c:forEach items="${orders}" var="order">
          <div class="row">
          <form class="form-order-${order.id}" action="do?command=ShowOrders" method=POST>

@@ -2,38 +2,49 @@
 <%@ include file="include/begin-html.jsp" %>
 
 
+<div class="row">
+     <b>
+         <div class=col-md-1>Этаж</div>
+         <div class=col-md-2>Номер</div>
+         <div class=col-md-2>Стоимость</div>
+         <div class=col-md-2>Тип</div>
+     </b>
+    </div>
+    <br>
 
-      <!-- Основное содержимое -->
-      <div class="page-header">
-        <h1>Отель</h1>
-        <p class="lead">Готовим макет для вывода данных в виде таблицы</p>
-      </div>
+    <c:forEach items="${rooms}" var="room">
+         <div class="row">
+         <form class="form-room-${room.id}" action="do?command=Index" method=POST>
 
-      <h3>Типы номеров</h3>
-      <p>Строка делится на 12 частей. Для каждой колонки таблицы
-         можно указать класс .col-md-N, где N-число частей</p>
-      <div class="row">
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-3">.col-md-3</div>
-        <div class="col-md-2">.col-md-2</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-2">.col-md-2</div>
-      </div>
+             <div class=col-md-1>
+                 <input id="room_floor_${room.floor}" name="Room" type="text"
+                 value="${room.floor}" class="form-control input-md">
+             </div>
 
-      <div class="row">
-        <div class="col-md-1">Цена</div>
-        <div class="col-md-3">Адрес</div>
-        <div class="col-md-2">Описание</div>
-        <div class="col-md-1">Число комнат</div>
-        <div class="col-md-1">Площадь</div>
-        <div class="col-md-1">Этаж</div>
-        <div class="col-md-1">Этажность</div>
-        <div class="col-md-2">Автор</div>
-      </div>
-<p>${rooms}</p>
+
+             <div class=col-md-2>
+                 <input id="textinput" name="Room_Number" type="text"
+                 value="${room.room_Number}" class="form-control input-md">
+             </div>
+
+             <div class=col-md-2>
+                  <input id="textinput" name="Cost" type="text"
+                  value="${room.cost}" class="form-control input-md">
+             </div>
+             <div class=col-md-2>
+             <select id="room_number" name="fK_Type" class="form-control">
+             <c:forEach items="${types}" var="type">
+             <option value="${type.id}" type=${type.id} ${type.id==room.fK_Type?"selected":""}>
+             ${type.room_type}
+             </option>
+             </c:forEach>
+             </select>
+             </div>
+
+         </form>
+         </div>
+    <br>
+    </c:forEach>
 
 
 <%@ include file="include/end-html.jsp" %>
