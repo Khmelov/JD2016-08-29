@@ -22,11 +22,11 @@ public class CmdShowUsers extends Action {
             if (Form.isPost(req)) {
                 Users userFromForm = new Users();
                 try {
-                    userFromForm.setId(Form.getInt(req, "ID",Patterns.NUMB));
+                    userFromForm.setId(Form.getInt(req, "ID", Patterns.NUMB));
                     userFromForm.setLogin(Form.getString(req, "Login", Patterns.LOGIN));
                     userFromForm.setPassword(Form.getString(req, "Password", Patterns.PASSWORD));
                     userFromForm.setEmail(Form.getString(req, "Email", Patterns.EMAIL));
-                    userFromForm.setfK_Role(Form.getInt(req, "fk_Role",Patterns.NUMB));
+                    userFromForm.setfK_Role(Form.getInt(req, "fk_Role", Patterns.NUMB));
                     if (userFromForm.getId() > 0) {
                         dao.usersDAO.update(userFromForm);
                     } else if (userFromForm.getId() == 0) {

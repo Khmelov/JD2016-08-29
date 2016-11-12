@@ -28,7 +28,7 @@ public class CmdShowOrders extends Action {
                     orderFromForm.setfK_Room(Form.getInt(req,"fk_Room",Patterns.NUMB));
                     orderFromForm.setArrive_Date(Form.getString(req, "Arrive_Date", Patterns.DATE));
                     orderFromForm.setReturn_Date(Form.getString(req, "Return_Date",Patterns.DATE));
-                    orderFromForm.setBill(Form.getFloat(req, "fk_Role", Patterns.MONEY));
+                    orderFromForm.setBill(Form.getFloat(req, "Bill", Patterns.MONEY));
                     if (orderFromForm.getId() > 0) {
                         dao.ordersDAO.update(orderFromForm);
                     } else if (orderFromForm.getId() == 0) {

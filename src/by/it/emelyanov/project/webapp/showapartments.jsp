@@ -22,7 +22,7 @@
                     </div>
 
              <div class=col-md-2>
-                 <input id="room_floor_${room.floor}" name="Room" type="text"
+                 <input id="textinput" name="Floor" type="text"
                  value="${room.floor}" class="form-control input-md">
              </div>
 
@@ -37,7 +37,7 @@
                   value="${room.cost}" class="form-control input-md">
              </div>
              <div class=col-md-3>
-             <select id="room_number" name="fK_Type" class="form-control">
+             <select id="room_number" name="fk_Type" class="form-control">
              <c:forEach items="${types}" var="type">
              <option value="${type.id}" type=${type.id} ${type.id==room.fK_Type?"selected":""}>
              ${type.room_type}
@@ -56,8 +56,8 @@
               <button id="singlebutton" name="singlebutton"
               class="btn btn-danger"
                onclick="
-               document.getElementById('user_id_${user.id}').value=
-               -document.getElementById('user_id_${user.id}').value;
+               document.getElementById('room_id_${room.id}').value=
+               -document.getElementById('room_id_${room.id}').value;
                ">
                                   Удалить
                </button>
