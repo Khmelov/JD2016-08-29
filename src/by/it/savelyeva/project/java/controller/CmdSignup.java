@@ -14,33 +14,32 @@ import javax.servlet.http.HttpServletRequest;
 public class CmdSignup extends Action {
     @Override
     Action execute(HttpServletRequest req) {
+        User user = new User();
         if (Form.isPost(req)) {
-            User user = new User();
             try {
-                user.setLogin(Form.getParameter(req, "login", IPattern.LOGIN));
-                user.setPassword(Form.getParameter(req, "password", IPattern.PASSWORD));
-                user.setEmail(Form.getParameter(req, "email", IPattern.EMAIL));
+                user.setId(0);
+                user.setLogin(Form.getString(req, "login", IPattern.LOGIN));
+                user.setPassword(Form.getString(req, "password", IPattern.PASSWORD));
+                user.setEmail(Form.getString(req, "email", IPattern.EMAIL));
                 user.setIdRole(2);
-                user.setFirstName(Form.getParameter(req, "firstName", IPattern.WORD));
-                user.setLastName(Form.getParameter(req, "lastName", IPattern.WORD));
-                user.setMiddleName(Form.getParameter(req, "middleName", IPattern.WORDOREMPTY));
-                user.setDateOfBirth(Form.getParameter(req, "dateOfBirth", IPattern.DATE));
-                user.setIdSex(Integer.parseInt(Form.getParameter(req, "idSex", IPattern.ID)));
-                user.setPassport(Form.getParameter(req, "passport", IPattern.SERIAL));
-                user.setIdAddress(Integer.parseInt(Form.getParameter(req, "idAddress", IPattern.ID)));
-                user.setIdDriverLicense(Form.getParameter(req, "idDriverLicense", IPattern.SERIAL));
-                DAO dao = DAO.getDAO();
-                if (dao.user.create(user)) {
-                    return Actions.LOGIN.action;
-                }
-                else
-                {
-                    Form.showError(req, "Database error");
-                    return null;
-                }
-            } catch (ParseException e) {
-                Form.showError(req, "Incorrect data");
+                user.setFirstName(Form.getString(req, "firstName", IPattern.WORD));
+                user.setLastName(Form.getString(req, "lastName", IPattern.WORD));
+                user.setMiddleName(Form.getString(req, "middleName", IPattern.WORDOREMPTY));
+                user.setDateOfBirth(Form.getString(req, "dateOfBirth", IPattern.DATE));
+                user.setIdSex(Form.getInt(req, "idSex"));
+                user.setPassport(Form.getString(req, "passport", IPattern.SERIAL));
+                user.setIdAddress(Form.getInt(req, "idAddress"));
+                user.setIdDriverLicense(Form.getString(req, "idDriverLicense", IPattern.SERIAL));
+            } catch (Exception e) {
+                req.setAttribute(Messages.MESSAGE_ERROR, "Invalid data");
                 return null;
+            }
+            DAO dao = DAO.getDAO();
+            if (dao.user.create(user)) {
+                req.setAttribute(Messages.MESSAGE, "User has been registered successfully");
+                return Actions.LOGIN.action;
+            } else {
+                req.setAttribute(Messages.MESSAGE_ERROR, "User has not been created");
             }
         }
         return null;

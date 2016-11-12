@@ -5,6 +5,7 @@ package by.it.savelyeva.project.java.beans;
  */
 public class Rent {
     private int id;
+    private int viewNumber;
     private int idCar;
     private int idUser;
     private String startDate;
@@ -27,6 +28,10 @@ public class Rent {
 
     public int getId() {
         return id;
+    }
+
+    public int getViewNumber() {
+        return viewNumber;
     }
 
     public int getIdCar() {
@@ -55,6 +60,10 @@ public class Rent {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setViewNumber(int viewNumber) {
+        this.viewNumber = viewNumber;
     }
 
     public void setIdCar(int idCar) {

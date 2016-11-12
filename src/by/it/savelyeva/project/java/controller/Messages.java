@@ -5,6 +5,6 @@ package by.it.savelyeva.project.java.controller;
  */
 public class Messages {
     static String MESSAGE = "jsp_message";
-    static String MESSAGE_ERROR = "";
+    static String MESSAGE_ERROR = "jsp_error";
     static String DATABASE_ERROR = "";
 }

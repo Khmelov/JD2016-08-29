@@ -87,4 +87,20 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
     }
 
 
+    public int getCount(String where) {
+        int res = 0;
+        String sql = "SELECT COUNT(*) FROM users " + where + " ;";
+        try (Connection connection = ConnectionCreator.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(sql)
+        ) {
+            if (rs.next()) {
+                res = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
 }
