@@ -7,16 +7,7 @@
         <!-- Form Name -->
         <legend>Регистрация нового пользователя</legend>
 
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="id">id пользователя</label>
-            <div class="col-md-4">
-                <input id="id" name="ID" value="0" type="text"
 
-                placeholder="" class="form-control input-md" required="">
-                <span class="help-block">Это поле не требуется</span>
-            </div>
-        </div>
 
         <!-- Text input-->
         <div class="form-group">
@@ -45,16 +36,7 @@
             </div>
         </div>
 
-        <!-- Select Basic -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="role">Роль пользователя (не требуется)</label>
-            <div class="col-md-4">
-                <select id="role" name="FK_role" class="form-control">
-                    <option value="2">User</option>
-                    <option value="1">Administrator</option>
-                </select>
-            </div>
-        </div>
+
 
         <!-- Button -->
         <div class="form-group">
