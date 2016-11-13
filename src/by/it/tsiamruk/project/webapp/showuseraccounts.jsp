@@ -15,7 +15,6 @@
    <c:forEach items="${accounts}" var="account">
         <div class="row">
         <form class="form-user-${user.id}" action="do?command=ShowUserAccounts" method="POST">
-
             <div class=col-md-1>
                 <input id="account_id_${account.id}" name="ID" type="text"
                 value="${account.id}" class="form-control input-md">
@@ -28,10 +27,7 @@
                 <input id="textinput" name="Status" type="text"
                 value="${account.status}" class="form-control input-md">
             </div>
-            <!-- <div class=col-md-2>
-                <input id="textinput" name="Users_ID" type="text"
-                value="${account.users_ID}" class="form-control input-md">
-            </div> -->
+
             <!--Ссылается на другую страницу где совершаются платежи (только для пользователей)
             <div class=col-md-1>
                 <button id="singlebutton" name="singlebutton" class="btn btn-success">
