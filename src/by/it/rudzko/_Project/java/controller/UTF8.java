@@ -1,16 +1,20 @@
 package by.it.rudzko._Project.java.controller;
 
+import by.it.rudzko._Project.java.Strings.Params;
 
 import javax.servlet.*;
 import java.io.IOException;
 
-
+/**
+ * @author Olga Rudzko
+ *         filter which sets UTF-8 encoding
+ */
 public class UTF8 implements Filter {
     private String code;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        code = filterConfig.getInitParameter("encoding");
+        code = filterConfig.getInitParameter(Params.FILTER_ENCODING);
     }
 
     @Override

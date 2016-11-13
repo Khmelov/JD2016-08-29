@@ -1,5 +1,11 @@
 package by.it.rudzko._Project.java.beans;
 
+/**
+ * @author Olga Rudzko
+ *         parameter of User wich describes its status
+ * @see User
+ */
+
 public class Role {
 
     protected int id;

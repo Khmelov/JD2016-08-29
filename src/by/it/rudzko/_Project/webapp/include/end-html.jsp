@@ -1,5 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 
+
+</div>
 <p>${jsp_message}</p>
     <p><b><font color="red">${jsp_error}</font></b></p>
 <footer class="footer">
@@ -7,6 +9,5 @@
       </footer>
 
     </div>
-
 </body>
 </html>

@@ -1,10 +1,17 @@
 package by.it.rudzko._Project.java.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import by.it.rudzko._Project.java.Strings.ForToString;
 
+/**
+ * @author Olga Rudzko
+ *         executes the command
+ */
 public abstract class Action {
     private Action redirectTo;
 
+    /**
+     * @return name of called command
+     */
     @Override
     public String toString() {
         String name = this.getClass().getSimpleName();
@@ -12,12 +19,14 @@ public abstract class Action {
         return name;
     }
 
+    /**
+     * @return name of jsp file
+     */
     public String getJsp() {
-        String jsp = this.toString().toLowerCase().concat(".jsp");
-        return "/".concat(jsp);
+        return '/' + this.toString().toLowerCase().concat(ForToString.JSP);
     }
 
-    abstract Action execute(HttpServletRequest req);
+    abstract Action execute(Form f);
 
 
 }

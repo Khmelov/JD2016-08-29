@@ -1,5 +1,13 @@
 package by.it.rudzko._Project.java.beans;
 
+import by.it.rudzko._Project.java.Strings.ForToString;
+
+/**
+ * @author Olga Rudzko
+ *         parameter of Subscr, describes a media available for subscription
+ * @see Subscr
+ */
+
 public class Periodical {
 
     protected int id;
@@ -75,6 +83,6 @@ public class Periodical {
 
     @Override
     public String toString() {
-        return this.title + " (for " + this.audience + ", index " + this.subIndex + ")";
+        return this.title + ForToString.FOR + this.audience + ForToString.INDEX + this.subIndex + ')';
     }
 }

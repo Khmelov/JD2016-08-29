@@ -1,5 +1,14 @@
 package by.it.rudzko._Project.java.beans;
 
+import by.it.rudzko._Project.java.Strings.ForToString;
+
+/**
+ * @author Olga Rudzko
+ *         describes connection between Periodical snd User who subscribed to it
+ * @see Periodical
+ * @see User
+ */
+
 public class Subscr {
 
     protected int id;
@@ -55,6 +64,6 @@ public class Subscr {
 
     @Override
     public String toString() {
-        return this.subscriber + " subscribed to " + this.periodical;
+        return this.subscriber + ForToString.SUBSCRIBED_TO + this.periodical;
     }
 }
