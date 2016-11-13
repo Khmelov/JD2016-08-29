@@ -74,7 +74,7 @@
               <li><a href="do?command=CreateAccount">Создать счёт</a></li>
               <li><a href="do?command=CreateProfile">Создать профиль</a></li>
               <li><a href="do?command=ShowAccounts">Список Счетов(администиратор)</a></li>
-              <li><a href="do?command=ShowUserAccounts">Список Счетов(пользователь)</a></li>
+              <li><a href="do?command=ShowUserAccounts">Список Счетов</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="do?command=Profile">Профиль</a></li>

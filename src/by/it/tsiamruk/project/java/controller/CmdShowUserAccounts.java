@@ -15,41 +15,38 @@ public class CmdShowUserAccounts extends Action {
 
     @Override
     Action execute(HttpServletRequest req) {
-//        не понятно по чему проверка с помощью сессии не работает
         User user = (User) req.getSession().getAttribute("user");
-        if (user == null){
+
+        if (user == null) {
             Form.showMessage(req, "Пожалуйста войдите в систему");
             return Actions.LOGIN.action;
         }
+        //инициализация дао и создания списка счетов и отдельного класса счет для управления конкретным счетом
         SingletonDAO dao = SingletonDAO.getDAO();
         List<Account> accounts = dao.account.getAll("");
+        Account account;
+        //Отсеиваю лишние элементы списка(можно сделать просто метод в ДАО с SQL запросом
         Iterator<Account> useraccIterator = accounts.iterator();
-        while (useraccIterator.hasNext()){
+        while (useraccIterator.hasNext()) {
             if (useraccIterator.next().getUsers_ID() != user.getId())
                 useraccIterator.remove();
         }
-            req.setAttribute("accounts", accounts);
-        Account account = new Account();
-                if (Form.isPost(req)) {
-                try {
-                    String buttonName = "singlebutton";
-                    int buttonValue = Integer.parseInt(Form.getParameter(req,buttonName,"."));
+        req.setAttribute("accounts", accounts);
 
+        if (Form.isPost(req)) {
+            try {
+                //находим необходимую запись
+                account = dao.account.read(Integer.parseInt(Form.getParameter(req, "singlebutton", Patterns.NUMBERS)));
+                //меняем статус
+                account.setStatus("Blocked");
+                dao.account.updateStatus(account);
+                return Actions.SHOWUSERACCOUNTS.action;
 
-                    //находим необходимый бин
-                        for(Account a: accounts){
-                            if (a.getStatus().equals("Unlocked") && a.getUsers_ID()== buttonValue)
-                                account = a;
-                        }
-                        account.setStatus("Blocked");
-                        dao.account.updateStatus(account);
-                        return Actions.SHOWACCOUNTS.action;
-
-                } catch (Exception e) {
-                    e.getMessage();
-                }
+            } catch (Exception e) {
+                e.getMessage();
             }
-
+        }
         return null;
     }
+
 }
