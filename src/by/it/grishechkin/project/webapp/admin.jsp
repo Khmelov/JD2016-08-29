@@ -9,7 +9,6 @@
         <!-- Multiple Radios -->
         <div class="form-group">
             <label class="col-md-4 control-label">Select Auto</label>
-            <!--<div class="col-md-4">-->
                 <c:forEach items="${orders}" var="order">
                     <c:if test="${order.refund==0}">
                         <div class="radio" style="width: 600px;">
@@ -46,7 +45,20 @@
                         </div>
                     </c:if>
                 </c:forEach>
-           <!-- </div>-->
+
+            <label class="col-md-4 control-label">Select User</label>
+            <c:forEach items="${users}" var="user">
+                    <div class="radio" style="width: 600px;">
+                        <label for="radios-${user.ID}">
+                            <input name="userID" id="radios-${user.ID}" value="${user.ID}" type="radio">
+                            <div class="row">
+                                <div class="col-md-3">${user.firstName}</div>
+                                <div class="col-md-4">${user.lastName}</div>
+                                <div class="col-md-4" style="margin-left: 15px;">${user.login}</div>
+                            </div>
+                        </label>
+                    </div>
+            </c:forEach>
         </div>
 
         <!-- Button -->
@@ -61,6 +73,10 @@
             <button id="singlebutton" name="singlebutton" class="btn btn-success" style="margin-top: -85px; margin-left: 500px;">
                 Обновить
             </button>
+        </div>
+
+        <div class="col-md-2">
+            <button id="DeleteUser" class="btn btn-success" formaction="do?command=DELETEUSER">Удалить пользователя</button>
         </div>
 
     </fieldset>

@@ -3,6 +3,7 @@ package by.it.grishechkin.project.java.controller;
 import by.it.grishechkin.project.java.DAO.DAO;
 import by.it.grishechkin.project.java.beans.Auto;
 import by.it.grishechkin.project.java.beans.Order;
+import by.it.grishechkin.project.java.beans.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
@@ -18,6 +19,8 @@ public class CmdAdmin extends Action {
         req.setAttribute("autos", autos);
         List<Order> orders = DAO.getDAO().order.getAll();
         req.setAttribute("orders", orders);
+        List<User> users = DAO.getDAO().user.getAll();
+        req.setAttribute("users", users);
         if (Form.isPost(req)) {
             Order order = new Order();
             try {

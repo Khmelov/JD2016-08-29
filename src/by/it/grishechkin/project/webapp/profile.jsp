@@ -58,6 +58,9 @@
     <button id="PayOrder" class="btn btn-success" formaction="do?command=PAYORDER">Оплатить заказ</button>
    </div>
    <div class="col-md-2">
+    <button id="DeleteOrder" class="btn btn-success" formaction="do?command=DELETEORDER">Удалить заказ</button>
+   </div>
+   <div class="col-md-2">
     <button id="singlebutton" name="singlebutton" class="btn btn-success">Обновить</button>   </div>
   </div>
 

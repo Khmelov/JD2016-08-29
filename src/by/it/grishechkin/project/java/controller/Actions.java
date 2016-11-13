@@ -36,6 +36,12 @@ import javax.servlet.http.HttpServletRequest;
         PAYORDER {{
             this.action = new CmdPay();
         }},
+        DELETEORDER {{
+            this.action = new CmdDeleteOrder();
+        }},
+        DELETEUSER {{
+            this.action = new CmdDeleteUser();
+        }},
         ERROR {{
             this.action = new CmdError();
         }},;
