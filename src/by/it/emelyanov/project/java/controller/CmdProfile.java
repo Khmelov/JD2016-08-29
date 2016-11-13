@@ -1,6 +1,7 @@
 package by.it.emelyanov.project.java.controller;
 
 import by.it.emelyanov.project.java.beans.Orders;
+import by.it.emelyanov.project.java.beans.Rooms;
 import by.it.emelyanov.project.java.beans.Users;
 import by.it.emelyanov.project.java.dao.DAO;
 
@@ -27,6 +28,8 @@ public class CmdProfile extends Action {
             List<Orders> orders= DAO.getDAO().ordersDAO.getAll(String.format(" where FK_User='%d'",user.getId()));
             req.setAttribute("orders",orders);
         }
+        List<Rooms> rooms =DAO.getDAO().roomsDAO.getAll("");
+        req.setAttribute("rooms", rooms);
 
         return null;
     }
