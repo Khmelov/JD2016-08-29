@@ -27,10 +27,14 @@ public class BagsDAO extends AbstractDAO implements InterfaceDAO<Bags>{
 
     @Override
     public boolean create(Bags bags) {
+
         String sql = String.format(
                 "insert INTO bags(user,ticket,n_flight)" + " values('%d','%d','%d');",
                 bags.getUser(),bags.getTicket(),bags.getN_flight());
+
         bags.setIdBag(executeUpdate(sql));
+
+        bags.setUser(bags.getIdBag());
         return (bags.getIdBag() > 0);
     }
 

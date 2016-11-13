@@ -1,9 +1,6 @@
 package by.it.laurynovich.jd03_03;
 
-import by.it.laurynovich.jd03_03.beans.Flights;
-import by.it.laurynovich.jd03_03.beans.Role;
-import by.it.laurynovich.jd03_03.beans.Tickets;
-import by.it.laurynovich.jd03_03.beans.User;
+import by.it.laurynovich.jd03_03.beans.*;
 import by.it.laurynovich.jd03_03.connection.ConnectionCreator;
 import by.it.laurynovich.jd03_03.dao.DAO;
 
@@ -129,15 +126,15 @@ public class Runner {
 //        System.out.println("Удаление пользователя "+dao.getTicketsDAO().delete(ticket));
 //
 
-     try (
-    Connection connection = ConnectionCreator.getConnection();
-    Statement statement = connection.createStatement()) {
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM role");
-        while (resultSet.next()) {
-            System.out.printf("IdRole: %s, Role: %s\n",
-                    resultSet.getString("role.idRole"), resultSet.getString("role.role"));
-        }
-    }
+//     try (
+//    Connection connection = ConnectionCreator.getConnection();
+//    Statement statement = connection.createStatement()) {
+//        ResultSet resultSet = statement.executeQuery("SELECT * FROM role");
+//        while (resultSet.next()) {
+//            System.out.printf("IdRole: %s, Role: %s\n",
+//                    resultSet.getString("role.idRole"), resultSet.getString("role.role"));
+//        }
+//    }
 //
 //    //create
 //    Role role = new Role(0,"user");
@@ -145,6 +142,20 @@ public class Runner {
 //    Role role1 = new Role(0,"admin");
 //        dao.getRoleDAO().create(role1);
 //        System.out.printf("create ticket: %s\n,%s\n", role ,role1);
+        try (
+    Connection connection = ConnectionCreator.getConnection();
+    Statement statement = connection.createStatement()) {
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM bags");
+        while (resultSet.next()) {
+            System.out.printf("IdBags: %s, user: %s\n",
+                    resultSet.getString("bags.idBags"), resultSet.getString("bags.user"));
+        }
+    }
+
+        Bags bags = new Bags(22,12,8,7);
+        dao.getBagsDAO().create(bags);
+        System.out.printf("Bags N: %d, user N: %d, n_flight: %d, price: %d;", bags.getIdBag(),bags.getUser(), bags.getN_flight(), bags.getTicket());
+
 
 }
 }
