@@ -38,7 +38,7 @@ public class PeriodicalsDAO extends AbstractClassDAO implements InterfaceForDAO<
     public boolean update(Periodicals periodicals) {
         String sql = String.format(Locale.ENGLISH,
                 "UPDATE `periodicals` SET " +
-                        "`Name`=%d " +
+                        "`Name`=%s " +
                         ",`Autor`='%s'" +
                         ",`Date`='%s'" +
                         ",`FK_User`=%d" +
@@ -75,7 +75,7 @@ public class PeriodicalsDAO extends AbstractClassDAO implements InterfaceForDAO<
                 periodicals.setName(resultSet.getString("Name"));
                 periodicals.setAutor(resultSet.getString("Autor"));
                 periodicals.setDate(resultSet.getString("Date"));
-                periodicals.setFK_User(resultSet.getInt("FK_Users"));
+                periodicals.setFK_User(resultSet.getInt("FK_User"));
                 per.add(periodicals);
             }
         } catch (SQLException e) {

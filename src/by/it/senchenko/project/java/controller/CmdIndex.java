@@ -11,8 +11,8 @@ public class CmdIndex extends Action {
     @Override
     Action execute(HttpServletRequest req) {
         SingletonDAO dao=SingletonDAO.getSingletonDAO();
-        List<Periodicals> ads=dao.periodicals.getAll("");
-        req.setAttribute("ads",ads);
+        List<Periodicals> periodical=dao.periodicals.getAll("");
+        req.setAttribute("periodical",periodical);
         return null;
     }
 }
