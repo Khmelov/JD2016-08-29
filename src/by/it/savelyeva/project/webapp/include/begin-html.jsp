@@ -1,3 +1,7 @@
+<%@ taglib tagdir="/WEB-INF/tags/menu" prefix="menu" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -5,16 +9,9 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta http-equiv="Cache-Control" content="no-cache">
     <title>Базовый шаблон для JSP</title>
-
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-            <!--script src="js/wow.min.js"></script-->
-
-
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-
-    <!--script src="js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script-->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
 
@@ -31,24 +28,44 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/savelyeva">Главная</a>
+            <a class="navbar-brand" href=".">Главная</a>
           </div>
+
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="do?command=CreateRent">Создать объявление</a></li>
-              <li><a href="do?command=ShowRents">Объявления</a></li>
-              <li><a href="do?command=ShowUsers">Пользователи</a></li>
-              <li><a href="do?command=Profile">Профиль</a></li>
-              <li><a href="/savelyeva">Содержимое таблиц</a></li>
+              <menu:li command="ShowCars" text="Наши автомобили"/>
+              <menu:li command="CreateRent" text="Создать объявление"/>
+              <menu:li command="ShowRents" text="Список объявлений"/>
+              <menu:li command="ShowUsers" text="Список пользователей"/>
             </ul>
+
+
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="do?command=SignUp">Зарегистрироваться</a></li>
-              <li><a href="do?command=Login">Войти</a></li>
-              <li><a href="do?command=Logout">Выйти</a></li>
-              <li><a href="/manager/html/list">Tomcat</a></li>
+             <c:choose>
+                <c:when test="${user==null}">
+                    <menu:li command="SignUp" text="Зарегистрироваться"/>
+                    <menu:li command="Login" text="Войти"/>
+                </c:when>
+                <c:otherwise>
+                    <menu:li command="Profile" text="Профиль"/>
+                    <menu:li command="Logout" text="Выйти"/>
+                </c:otherwise>
+             </c:choose>
+             <li><a href="/manager/html/list">Tomcat</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
-      </div>
 
 
+          <div class="navbar-collapse collapse">
+             <c:choose>
+                <c:when test="${user==null}">
+                    Здравствуйте, Гость
+                </c:when>
+                <c:otherwise>
+                    Привет, ${user.login}!
+                </c:otherwise>
+             </c:choose>
+            </div>
+
+</div>

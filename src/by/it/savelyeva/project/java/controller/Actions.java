@@ -63,6 +63,9 @@ public enum Actions {
     LOGIN {{
         this.action = new CmdLogin();
     }},
+    LOGOUT {{
+        this.action = new CmdLogout();
+    }},
     PROFILE {{
         this.action = new CmdProfile();
     }},

@@ -46,14 +46,15 @@ public class RentDAO extends AbstractDAO implements InterfaceDAO<Rent> {
                         "startDate='%s', " +
                         "endDate='%s', " +
                         "cost=%d, " +
-                        "paid=%s " +
+                        "paid=%d " +
                  "WHERE id=%d;",
                 rent.getIdCar(),
                 rent.getIdUser(),
                 rent.getStartDate(),
                 rent.getEndDate(),
                 rent.getCost(),
-                rent.isPaid()
+                (rent.isPaid() ? 1 : 0),
+                rent.getId()
         );
 
         return (0 < executeUpdate(sql));
@@ -91,4 +92,21 @@ public class RentDAO extends AbstractDAO implements InterfaceDAO<Rent> {
         }
         return rents;
     }
+
+    public int getCount(String where) {
+        int res = 0;
+        String sql = "SELECT COUNT(*) FROM rents " + where + " ;";
+        try (Connection connection = ConnectionCreator.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(sql)
+        ) {
+            if (rs.next()) {
+                res = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
 }
