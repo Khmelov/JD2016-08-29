@@ -72,13 +72,7 @@ public class AdditionalDBOperations {
         userCRUD.create(user);
         //заполнение  tests
         TestCRUD testCRUD=new TestCRUD();
-        Test test = new Test(0,"Законы Ньютона","Физика",5);
-        testCRUD.create(test);
-        test = new Test(0,"Термодинамика","Физика",5);
-        testCRUD.create(test);
-        test = new Test(0,"Неметаллы","Химия",5);
-        testCRUD.create(test);
-        test = new Test(0,"Законы Ньютона","Физика",5);
+        Test test = new Test(0, "Законы Ньютона", "Физика", 3);
         testCRUD.create(test);
     }
 

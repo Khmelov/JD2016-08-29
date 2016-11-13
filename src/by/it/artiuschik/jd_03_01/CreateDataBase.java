@@ -47,7 +47,7 @@ class CreateDataBase {
             statement.executeUpdate(createTableSQL);
             //создание таблицы вопросов
             createTableSQL =
-                    String.format("CREATE TABLE questions (ID INT NULL AUTO_INCREMENT , Text VARCHAR(100) NOT NULL , Subject VARCHAR(100) NOT NULL , Balls INT NOT NULL , FK_TEST INT NOT NULL, PRIMARY KEY (ID))");
+                    String.format("CREATE TABLE questions (ID INT NULL AUTO_INCREMENT , Text VARCHAR(1000) NOT NULL , Subject VARCHAR(100) NOT NULL , Varianta VARCHAR(1000) NOT NULL , Variantb VARCHAR(1000) NOT NULL , Balls INT NOT NULL , FK_TEST INT NOT NULL, PRIMARY KEY (ID))");
             statement.executeUpdate(createTableSQL);
             //заполнение  users
             statement.executeUpdate("INSERT INTO users (ID, Name, Surname, Password, Login, Tests_amount, Balls, FK_ROLE) VALUES (NULL, 'Иван', 'Иванов', '1232', 'ivaniv97', '3', '30', '1')");
@@ -57,14 +57,15 @@ class CreateDataBase {
             statement.executeUpdate("INSERT INTO roles (ID, Role_name) VALUES (NULL, 'Студент')");
             statement.executeUpdate("INSERT INTO roles (ID, Role_name) VALUES (NULL, 'Тьютор')");
             //заполнение  tests
-            statement.executeUpdate("INSERT INTO tests (ID, Name, Subject, Questions) VALUES (NULL, 'Тест 1', 'Физика', '5')");
-            statement.executeUpdate("INSERT INTO tests (ID, Name, Subject, Questions) VALUES (NULL, 'Тест 2', 'Математика', '5')");
-            statement.executeUpdate("INSERT INTO tests (ID, Name, Subject, Questions) VALUES (NULL, 'Тест 3', 'Химия', '5')");
+            statement.executeUpdate("INSERT INTO tests (ID, Name, Subject, Questions) VALUES (NULL, 'Законы Ньютона', 'Физика', '3')");
+            statement.executeUpdate("INSERT INTO tests (ID, Name, Subject, Questions) VALUES (NULL, 'Механическое движение', 'Физика', '3')");
             //заполнение  questions
-            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Balls, FK_TEST) VALUES (NULL, 'Вопрос', 'Математика', '5', '1')");
-            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Balls, FK_TEST) VALUES (NULL, 'Вопрос', 'Физика', '3', '1')");
-            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Balls, FK_TEST) VALUES (NULL, 'Вопрос', 'Химия', '2', '1')");
-            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Balls, FK_TEST) VALUES (NULL, 'Вопрос', 'Математика', '1', '1')");
+            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, FK_TEST) VALUES (NULL, 'Единица измерения силы в СИ —', 'Физика', 'Ньютон', 'Джоуль', '1', '1')");
+            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, FK_TEST) VALUES (NULL, 'Если на тело не действуют другие тела, то оно…', 'Физика', 'находится в покое или движется равномерно прямолинейно', 'движется с изменяющейся скоростью', '1', '1')");
+            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, FK_TEST) VALUES (NULL, 'Тело движется прямолинейно с постоянной скоростью. Какое утверждение о равнодействующей всех приложенных к нему сил правильно?', 'Физика', 'Равна нулю', 'Не равна нулю и постоянна по модулю и направлению', '1', '1')");
+            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, FK_TEST) VALUES (NULL, 'Механическим движением тела называют?', 'Физика', 'изменение положения тела в пространстве с течением времени', 'изменение положения тела на плоскости', '1', '2')");
+            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, FK_TEST) VALUES (NULL, 'Какую систему координат используют для точного указания положения материальной точки в пространстве?', 'Физика', 'прямоугольную', 'коническую', '1', '2')");
+            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, FK_TEST) VALUES (NULL, 'Вектор, проведенный из центра системы в любую точку, называется?', 'Физика', 'радиус-вектор', 'центральный вектор', '1', '2')");
             //вывод users
             ResultSet resultSet = statement.executeQuery("select * from users;");
             while (resultSet.next()) {

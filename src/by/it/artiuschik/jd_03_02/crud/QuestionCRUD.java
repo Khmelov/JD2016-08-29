@@ -1,6 +1,4 @@
 package by.it.artiuschik.jd_03_02.crud;
-
-
 import by.it.artiuschik.jd_03_02.ConnectionCreator;
 import by.it.artiuschik.jd_03_02.beans.Question;
 
@@ -16,8 +14,8 @@ import static by.it.artiuschik.jd_03_02.utils.Updater.executeUpdate;
 public class QuestionCRUD {
     public boolean create(Question question) {
         String createQuestionSQL = String.format(
-                "insert into questions(Text,Subject,Balls,FK_TEST) values('%s','%s','%d','%d');",
-                question.getText(), question.getSubject(), question.getBalls(), question.getFK_TEST()
+                "insert into questions(Text,Subject,Varianta,Variantb,Balls,FK_TEST) values('%s','%s','%s','%s',%d','%d');",
+                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getFK_TEST()
         );
         question.setID(executeUpdate(createQuestionSQL));
         return (question.getID() > 0);
@@ -33,31 +31,33 @@ public class QuestionCRUD {
 
     public boolean update(Question question) {
         String updateUserSQL = String.format(
-                "UPDATE questions SET Text = '%s', Subject = '%s', Balls = '%d' ,FK_TEST='%d' WHERE questions.ID = %d",
-                question.getText(), question.getSubject(), question.getBalls(), question.getFK_TEST(), question.getID()
+                "UPDATE questions SET Text = '%s', Subject = '%s', Varianta = '%s', Variantb = '%s', Balls = '%d' ,FK_TEST='%d' WHERE questions.ID = %d",
+                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getFK_TEST(), question.getID()
         );
         return (0 < executeUpdate(updateUserSQL));
     }
 
-    public boolean delete(by.it.artiuschik.project.java.beans.Question question) {
+    public boolean delete(Question question) {
         String deleteQuestionSQL = String.format("DELETE FROM questions WHERE questions.ID = %d", question.getID());
         return (0 < executeUpdate(deleteQuestionSQL));
     }
 
     public List<Question> getAll(String WHERE) {
         List<Question> questions = new ArrayList<>();
-        String sql = "SELECT * FROM users " + WHERE + " ;";
+        String sql = "SELECT * FROM questions " + WHERE + " ;";
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 Question question = new Question();
-                question.setID(rs.getInt("ID"));
-                question.setText(rs.getString("Text"));
-                question.setFK_TEST(rs.getInt("FK_TEST"));
+                question.setVarianta(rs.getString("Varianta"));
+                question.setVariantb(rs.getString("Variantb"));
                 question.setSubject(rs.getString("Subject"));
                 question.setBalls(rs.getInt("Balls"));
+                question.setFK_TEST(rs.getInt("FK_TEST"));
+                question.setID(rs.getInt("ID"));
+                question.setText(rs.getString("Text"));
                 questions.add(question);
             }
         } catch (SQLException e) {

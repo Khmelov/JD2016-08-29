@@ -1,5 +1,6 @@
 package by.it.artiuschik.jd_03_03.TaskA_TaskB.dao;
 
+
 import by.it.artiuschik.jd_03_02.ConnectionCreator;
 import by.it.artiuschik.jd_03_03.beans.Question;
 
@@ -15,8 +16,8 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
     @Override
     public boolean create(Question question) {
         String createQuestionSQL = String.format(
-                "insert into questions(Text,Subject,Balls,FK_TEST) values('%s','%s','%d','%d');",
-                question.getText(), question.getSubject(), question.getBalls(), question.getFK_TEST()
+                "insert into questions(Text,Subject,Varianta,Variantb,Balls,FK_TEST) values('%s','%s','%s','%s',%d','%d');",
+                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getFK_TEST()
         );
         question.setID(executeUpdate(createQuestionSQL));
         return (question.getID() > 0);
@@ -36,8 +37,8 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
     @Override
     public boolean update(Question question) {
         String updateUserSQL = String.format(
-                "UPDATE questions SET Text = '%s', Subject = '%s', Balls = '%d' ,FK_TEST='%d' WHERE questions.ID = %d",
-                question.getText(), question.getSubject(), question.getBalls(), question.getFK_TEST(), question.getID()
+                "UPDATE questions SET Text = '%s', Subject = '%s', Varianta = '%s', Variantb = '%s', Balls = '%d' ,FK_TEST='%d' WHERE questions.ID = %d",
+                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getFK_TEST(), question.getID()
         );
         return (0 < executeUpdate(updateUserSQL));
     }
@@ -52,24 +53,33 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
     @Override
     public List<Question> getAll(String WHERE) {
         List<Question> questions = new ArrayList<>();
-        String sql = "SELECT * FROM users " + WHERE + " ;";
+        String sql = "SELECT * FROM questions " + WHERE + " ;";
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 Question question = new Question();
-                question.setID(rs.getInt("ID"));
-                question.setText(rs.getString("Text"));
                 question.setBalls(rs.getInt("Balls"));
                 question.setFK_TEST(rs.getInt("FK_TEST"));
+                question.setVarianta(rs.getString("Varianta"));
+                question.setVariantb(rs.getString("Variantb"));
                 question.setSubject(rs.getString("Subject"));
+                question.setID(rs.getInt("ID"));
+                question.setText(rs.getString("Text"));
                 questions.add(question);
             }
         } catch (SQLException e) {
             //логгирование SQLException(e);
         }
         return questions;
+    }
+    public List<Question> getTestQuestions(int testId) {
+        List<Question> questions = getAll("WHERE FK_TEST=" + testId);
+        if (questions.size() > 0) {
+            return questions;
+        } else
+            return null;
     }
 
 }

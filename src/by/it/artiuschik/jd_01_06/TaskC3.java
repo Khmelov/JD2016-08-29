@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TaskC3 {
-    public static int vowelAmount(String word) {
+    private static int vowelAmount(String word) {
         int counter = 0;
         Pattern p = Pattern.compile("[аАэ-яЭ-ЯуУёЁоОиИ]");
         Matcher m = p.matcher(word);
@@ -14,7 +14,7 @@ public class TaskC3 {
         return counter;
     }
 
-    public static String[] sortByLength(String[] mas) {
+    private static String[] sortByLength(String[] mas) {
         for (int i = 0; i < mas.length - 1; i++) {
             for (int j = i + 1; j < mas.length; j++) {
                 if (mas[i].length() < mas[j].length()) {
@@ -36,23 +36,21 @@ public class TaskC3 {
         return mas;
     }
 
-    public static int wordAmount(String[] mas, String word) {
+    private static int wordAmount(String[] mas, String word) {
         int counter = 0;
-        for (int i = 0; i < mas.length; i++) {
-            if (mas[i].equalsIgnoreCase(word) == true) {
+        for (String ma : mas) {
+            if (ma.equalsIgnoreCase(word)) {
                 counter++;
             }
         }
         return counter;
     }
 
-    public static void printWords(String[] mas) {
+    private static void printWords(String[] mas) {
         String [] words=new String[mas.length];
+        System.arraycopy(mas, 0, words, 0, words.length);
         for (int i = 0; i < words.length; i++) {
-            words[i]=mas[i];
-        }
-        for (int i = 0; i < words.length; i++) {
-            if ((words[i].equalsIgnoreCase("") == false)) {
+            if ((!words[i].equalsIgnoreCase(""))) {
                 if (wordAmount(mas, words[i]) > 1) {
                     System.out.println(words[i] + " " + wordAmount(mas, words[i]));
                     for (int j = i+1; j < words.length; j++) {

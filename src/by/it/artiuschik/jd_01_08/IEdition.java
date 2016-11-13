@@ -1,6 +1,6 @@
 package by.it.artiuschik.jd_01_08;
 
-    interface IEdition {
+interface IEdition {
     void open(int page) throws IncorrectBookPageException;//открыть издание на странице
 
     void open() throws IncorrectBookPageException;//открыть издание по закладке
@@ -14,8 +14,6 @@ package by.it.artiuschik.jd_01_08;
     void read();//читать издание
 
     int age();//возраст издания
-
-    boolean isAuthor(String author);//является ли автором
 
     void showInfo();//вывод подробной информации об издании
 }

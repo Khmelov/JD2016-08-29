@@ -1,13 +1,13 @@
 package by.it.artiuschik.jd_01_06;
 
 public class TaskC1 {
-    public static String formatString(String str) {
+    private static String formatString(String str) {
         StringBuilder result = new StringBuilder();
         String[] lines = str.split("\\n");
         int maxLength = 0;
-        for (int i = 0; i < lines.length; i++) {
-            if (lines[i].length() > maxLength) {
-                maxLength = lines[i].length();
+        for (String line : lines) {
+            if (line.length() > maxLength) {
+                maxLength = line.length();
             }
         }
         int[] numberOfSpaces = new int[lines.length];//сколько пробелов надо вставить в i  строку
@@ -16,16 +16,18 @@ public class TaskC1 {
         }
 
         for (int i = 0; i < lines.length; i++) {
-            result.append(by.it.artiuschik.jd_01_06.Util.insertSpacesToString(numberOfSpaces[i], lines[i]) + "\n");
+            String appendString=Util.insertSpacesToString(numberOfSpaces[i], lines[i]) + "\n";
+            result.append(appendString);
         }
         return result.toString();
 
     }
     public static void main(String[] args) {
         System.out.println("--------Исходный текст---------");
-        System.out.println(by.it.artiuschik.jd_01_06.Data.POEM);
+        System.out.println(Data.POEM);
         System.out.println("--------Результат---------");
         String str = formatString(Data.POEM);
+        System.out.println(str);
     }
 
 }

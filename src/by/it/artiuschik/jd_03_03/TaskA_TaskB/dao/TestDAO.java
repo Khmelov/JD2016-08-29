@@ -1,5 +1,6 @@
 package by.it.artiuschik.jd_03_03.TaskA_TaskB.dao;
 
+
 import by.it.artiuschik.jd_03_02.ConnectionCreator;
 import by.it.artiuschik.jd_03_03.beans.Test;
 
@@ -53,17 +54,17 @@ public class TestDAO extends AbstractDAO implements InterfaceDAO<Test> {
     @Override
     public List<Test> getAll(String WHERE) {
         List<Test> tests = new ArrayList<>();
-        String sql = "SELECT * FROM users " + WHERE + " ;";
+        String sql = "SELECT * FROM tests " + WHERE + " ;";
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 Test test = new Test();
-                test.setID(rs.getInt("ID"));
+                test.setQuestions(rs.getInt("Questions"));
                 test.setName(rs.getString("Name"));
                 test.setSubject(rs.getString("Subject"));
-                test.setQuestions(rs.getInt("Questions"));
+                test.setID(rs.getInt("ID"));
                 tests.add(test);
             }
         } catch (SQLException e) {

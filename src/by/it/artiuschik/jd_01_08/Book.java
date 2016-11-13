@@ -72,17 +72,6 @@ abstract class Book implements IEdition {
         Calendar calendar = new GregorianCalendar();
         return calendar.get(Calendar.YEAR) - year;
     }
-
-    @Override
-    public boolean isAuthor(String author) {
-        for (String author1 : authors) {
-            if (author1.equals(author)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public void showInfo() {
         System.out.println("Информация о книге");
