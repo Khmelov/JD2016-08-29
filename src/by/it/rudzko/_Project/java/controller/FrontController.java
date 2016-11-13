@@ -1,6 +1,7 @@
 package by.it.rudzko._Project.java.controller;
 
 import by.it.rudzko._Project.java.DataBase;
+import by.it.rudzko._Project.java.Strings.Params;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -9,6 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+/**
+ * @author Olga Rudzko
+ *         Project servlet with defaul structure
+ */
 
 public class FrontController extends HttpServlet {
 
@@ -20,18 +26,18 @@ public class FrontController extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        DataBase db=new DataBase();
-        //db.buildDefaultStructure();
-        //раскомментировать для того, чтобы заполнить таблицу (с пустой программа тоже будет работать корректно).
+        DataBase db = new DataBase();
+        db.buildDefaultStructure();
         db.reset();
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Action action = Actions.defineFrom(req);
-        Action redirectAction = action.execute(req);
+        Form f = new Form(req, resp);
+        Action action = Actions.defineFrom(f);
+        Action redirectAction = action.execute(f);
         if (redirectAction != null) {
-            resp.sendRedirect("do?command=" + redirectAction);
+            resp.sendRedirect(Params.JSP_DO_COMMAND + redirectAction);
         } else {
             disp(action).forward(req, resp);
         }
@@ -39,9 +45,7 @@ public class FrontController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Action action = Actions.defineFrom(req);
-        action.execute(req);
-        disp(action).forward(req, resp);
+        doPost(req, resp);
     }
 
     @Override

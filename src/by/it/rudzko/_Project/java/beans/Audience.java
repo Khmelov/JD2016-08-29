@@ -1,5 +1,11 @@
 package by.it.rudzko._Project.java.beans;
 
+/**
+ * @author Olga Rudzko
+ *         parameter of Periodical wich describes its readership
+ * @see Periodical
+ */
+
 public class Audience {
 
     protected int id;

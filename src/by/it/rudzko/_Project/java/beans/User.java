@@ -1,5 +1,11 @@
 package by.it.rudzko._Project.java.beans;
 
+/**
+ * @author Olga Rudzko
+ *         parameter of Subscr, describes a person who subscribes to any media
+ * @see Subscr
+ */
+
 public class User {
 
     protected int id;
@@ -13,7 +19,7 @@ public class User {
     }
 
     public User(String name, String password, Role role, int birthYear, String sex) {
-        this.password=password;
+        this.password = password;
         this.name = name;
         this.role = role;
         this.birthYear = birthYear;
@@ -85,6 +91,6 @@ public class User {
 
     @Override
     public String toString() {
-        return this.name + " (" + this.sex + ", " + this.birthYear + ")";
+        return this.name + ' ' + '(' + this.sex + ',' + ' ' + this.birthYear + ')';
     }
 }

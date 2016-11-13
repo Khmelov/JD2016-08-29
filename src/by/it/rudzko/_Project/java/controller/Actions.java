@@ -1,6 +1,6 @@
 package by.it.rudzko._Project.java.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import by.it.rudzko._Project.java.Strings.Params;
 
 enum Actions {
     INDEX {{
@@ -23,13 +23,27 @@ enum Actions {
     }},
     ADD {{
         this.action = new CmdAdd();
+    }},
+    EDITUSERS {{
+        this.action = new CmdEditUsers();
+    }},
+    EDITREADERSHIP {{
+        this.action = new CmdEditReadership();
+    }},
+    DELETESUB {{
+        this.action = new CmdDeleteSub();
     }};
 
     protected Action action = null;
 
-    static Action defineFrom(HttpServletRequest req) {
+    /**
+     * @param f contains servlet request and servlet response
+     * @return new Action chose from enum
+     * @see Form
+     */
+    static Action defineFrom(Form f) {
         Action res = INDEX.action;
-        String command = req.getParameter("command");
+        String command = f.getParameter(Params.JSP_COMMAND);
         if (command != null && !command.isEmpty())
             try {
                 res = valueOf(command.toUpperCase()).action;

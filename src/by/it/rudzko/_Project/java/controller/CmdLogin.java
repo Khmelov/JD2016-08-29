@@ -1,45 +1,59 @@
 package by.it.rudzko._Project.java.controller;
 
 import by.it.rudzko._Project.java.DAO.DAO;
+import by.it.rudzko._Project.java.Strings.*;
 import by.it.rudzko._Project.java.beans.User;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Locale;
 
+/**
+ * @author Olga Rudzko
+ */
 class CmdLogin extends Action {
 
+    /**
+     * finds matches between input data and database table Users, starts session
+     *
+     * @param f contains servlet request and servlet response
+     * @return next command for servlet
+     * @see User
+     * @see by.it.rudzko._Project.java.DAO.UserDAO
+     * @see Form
+     */
     @Override
-    Action execute(HttpServletRequest req) {
-        User logged = (User) req.getSession().getAttribute("user");
+    Action execute(Form f) {
+        User logged = (User) f.getSessionAttr(Messages.USER);
         if (logged != null) {
-            req.setAttribute(Messages.MESSAGE_ERROR, Messages.LOG_OUT);
+            return Actions.PROFILE.action;
         }
-        Form login = new Form(req);
-        if (login.isPost()) {
-            if (logged == null) {
-                try {
-                    String uname = login.getParameter("userlog", Patterns.LOGIN);
-                    String pass = login.getParameter("userpas", Patterns.PASSWORD);
-                    DAO dao = DAO.getInst();
-                    List<User> users = dao.userDao.getAll("WHERE Name='" + uname + "' and Password='" + pass + "'");
-                    if (!users.isEmpty()) {
-                        User user = users.get(0);
-                        HttpSession session = req.getSession();
-                        session.setAttribute("user", user);
-                        Cookie myCookie = new Cookie(uname, String.valueOf(pass.hashCode()));
-                        myCookie.setMaxAge(30);
-                        return Actions.PROFILE.action;
-                    } else {
-                        req.setAttribute(Messages.MESSAGE_ERROR, Messages.USER_NOT_FOUND);
+        if (f.isPost()) {
+            try {
+                String uname = f.getParameter(Params.JSP_LOGIN, Patterns.LOGIN);
+                String pass = f.getParameter(Params.JSP_PASSWORD, Patterns.PASSWORD);
+                DAO dao = DAO.getInst();
+                List<User> users = dao.userDao.getAll(String.format(Locale.ENGLISH,
+                        SqlRequests.WHERE_NAME_PASSWORD, uname, pass));
+                if (!users.isEmpty()) {
+                    User user = users.get(0);
+                    f.setSessionAttr(Messages.USER, user);
+
+                    //sets list of recommended media instead of full catalogue
+                    f.setSessionAttr(Messages.CATALOGUE, true);
+
+                    f.setCookie(uname, pass);
+
+                    //sets attribute for session context, needed for jsp script
+                    if (f.admin(user)) {
+                        f.setSessionAttr(Messages.ADMINISTRATOR, true);
                     }
-                } catch (ParseException e) {
-                    req.setAttribute(Messages.MESSAGE_ERROR, Messages.USER_NOT_FOUND);
+                    return Actions.PROFILE.action;
+                } else {
+                    f.setError(Messages.USER_NOT_FOUND);
                 }
-            } else {
-                return Actions.PROFILE.action;
+            } catch (ParseException e) {
+                f.setError(Messages.USER_NOT_FOUND);
             }
         }
         return null;
