@@ -10,6 +10,8 @@ import javax.xml.bind.annotation.XmlType;
         "ID",
         "Text",
         "Subject",
+        "Varianta",
+        "Variantb",
         "Balls",
         "FK_TEST"
 })
@@ -21,11 +23,14 @@ public class Question {
     private String Text;
     @XmlElement(name = "Subject", required = true)
     private String Subject;
+    @XmlElement(name = "Varianta", required = true)
+    private String Varianta;
+    @XmlElement(name = "Variantb", required = true)
+    private String Variantb;
     @XmlElement(name = "Balls")
     private int Balls;
     @XmlElement(name = "FK_TEST")
     private int FK_TEST;//ID  теста которому принадлежит вопрос
-
     public Question() {
     }
 
@@ -53,6 +58,22 @@ public class Question {
         Subject = subject;
     }
 
+    public String getVarianta() {
+        return Varianta;
+    }
+
+    public void setVarianta(String varianta) {
+        Varianta = varianta;
+    }
+
+    public String getVariantb() {
+        return Variantb;
+    }
+
+    public void setVariantb(String variantb) {
+        Variantb = variantb;
+    }
+
     public int getBalls() {
         return Balls;
     }
@@ -69,10 +90,12 @@ public class Question {
         this.FK_TEST = FK_TEST;
     }
 
-    public Question(int ID, String text, String subject, int balls, int FK_TEST) {
+    public Question(int ID, String text, String subject, String varianta, String variantb, int balls, int FK_TEST) {
         this.ID = ID;
         Text = text;
         Subject = subject;
+        Varianta = varianta;
+        Variantb = variantb;
         Balls = balls;
         this.FK_TEST = FK_TEST;
     }
@@ -84,7 +107,13 @@ public class Question {
 
         Question question = (Question) o;
 
-        return ID == question.ID && (Balls == question.Balls && (FK_TEST == question.FK_TEST && Text.equals(question.Text) && Subject.equals(question.Subject)));
+        if (ID != question.ID) return false;
+        if (Balls != question.Balls) return false;
+        if (FK_TEST != question.FK_TEST) return false;
+        if (!Text.equals(question.Text)) return false;
+        if (!Subject.equals(question.Subject)) return false;
+        if (!Varianta.equals(question.Varianta)) return false;
+        return Variantb.equals(question.Variantb);
 
     }
 
@@ -93,6 +122,8 @@ public class Question {
         int result = ID;
         result = 31 * result + Text.hashCode();
         result = 31 * result + Subject.hashCode();
+        result = 31 * result + Varianta.hashCode();
+        result = 31 * result + Variantb.hashCode();
         result = 31 * result + Balls;
         result = 31 * result + FK_TEST;
         return result;
@@ -104,8 +135,10 @@ public class Question {
                 "ID=" + ID +
                 ", Text='" + Text + '\'' +
                 ", Subject='" + Subject + '\'' +
+                ", Varianta='" + Varianta + '\'' +
+                ", Variantb='" + Variantb + '\'' +
                 ", Balls=" + Balls +
                 ", FK_TEST=" + FK_TEST +
-                '}' + "\n";
+                '}'+"\n";
     }
 }

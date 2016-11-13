@@ -3,24 +3,24 @@
     <Question>
         <Text>Единица измерения силы в СИ</Text>
         <Subject>Физика</Subject>
+        <Varianta>Ньютон</Varianta>
+        <Variantb>Джоуль</Variantb>
         <Balls>1</Balls>
         <FK_TEST>1</FK_TEST>
     </Question>
     <Question>
-        <Text>Вопрос3</Text>
+        <Text>Если на тело не действуют другие тела, то оно…</Text>
         <Subject>Физика</Subject>
+        <Varianta>находится в покое или движется равномерно прямолинейно</Varianta>
+        <Variantb>движется с изменяющейся скоростью</Variantb>
         <Balls>1</Balls>
         <FK_TEST>1</FK_TEST>
     </Question>
     <Question>
-        <Text>Вопрос2</Text>
+        <Text>Тело движется прямолинейно с постоянной скоростью. Равнодействующая сил </Text>
         <Subject>Физика</Subject>
-        <Balls>1</Balls>
-        <FK_TEST>1</FK_TEST>
-    </Question>
-    <Question>
-        <Text>Вопрос1</Text>
-        <Subject>Физика</Subject>
+        <Varianta>Равна нулю</Varianta>
+        <Variantb>Не равна нулю и постоянна по модулю и направлению</Variantb>
         <Balls>1</Balls>
         <FK_TEST>1</FK_TEST>
     </Question>
