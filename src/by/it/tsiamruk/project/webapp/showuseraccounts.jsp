@@ -43,7 +43,7 @@
             <div class=col-md-1>
                 <button id="singlebutton" name="singlebutton"
                 class="btn btn-danger"
-                value="${account.users_ID}"
+                value="${account.id}"
                 >
                     Заблокировать
                 </button>

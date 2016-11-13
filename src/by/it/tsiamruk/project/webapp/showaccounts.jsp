@@ -42,8 +42,8 @@
             <!--Меняет статус счета-->
             <div class=col-md-1>
                 <button id="singlebutton" name="singlebutton"
-                class="btn btn-danger"
-                value="${account.users_ID}"
+                class="btn btn-success"
+                value="${account.id}"
                 >
                     Снять Блокировку
                 </button>

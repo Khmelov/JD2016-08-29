@@ -29,27 +29,20 @@ public class CmdShowUserAccounts extends Action {
                 useraccIterator.remove();
         }
             req.setAttribute("accounts", accounts);
-        Account account = new Account();
+        Account account;
                 if (Form.isPost(req)) {
                 try {
-                    String buttonName = "singlebutton";
-                    int buttonValue = Integer.parseInt(Form.getParameter(req,buttonName,"."));
-
-
-                    //находим необходимый бин
-                        for(Account a: accounts){
-                            if (a.getStatus().equals("Unlocked") && a.getUsers_ID()== buttonValue)
-                                account = a;
-                        }
-                        account.setStatus("Blocked");
-                        dao.account.updateStatus(account);
-                        return Actions.SHOWACCOUNTS.action;
+                    //находим необходимую запись
+                    account = dao.account.read(Integer.parseInt(Form.getParameter(req,"singlebutton",Patterns.NUMBERS)));
+                    //меняем статус
+                    account.setStatus("Blocked");
+                    dao.account.updateStatus(account);
+                    return Actions.SHOWUSERACCOUNTS.action;
 
                 } catch (Exception e) {
                     e.getMessage();
                 }
             }
-
         return null;
     }
 }

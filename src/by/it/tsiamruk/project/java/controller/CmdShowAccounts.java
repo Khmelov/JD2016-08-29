@@ -16,31 +16,29 @@ public class CmdShowAccounts extends Action {
     Action execute(HttpServletRequest req) {
 //        не понятно по чему проверка с помощью сессии не работает
         User user = (User) req.getSession().getAttribute("user");
-        if (user == null)
-            return Actions.ERROR.action;
+        if (user == null) {
+            Form.showMessage(req, "Пожалуйста войдите в систему");
+            return Actions.INDEX.action;
+        }
         if (user.getFk_role() != 1)
             return Actions.SHOWUSERACCOUNTS.action;
-        else
-        {
-        SingletonDAO dao = SingletonDAO.getDAO();
-        List<Account> accounts = dao.account.getAll("");
-        req.setAttribute("accounts", accounts);
+        else {
+            SingletonDAO dao = SingletonDAO.getDAO();
+            List<Account> accounts = dao.account.getAll("");
+            req.setAttribute("accounts", accounts);
             if (Form.isPost(req)) {
                 try {
-
-                    //получаем имя необходимое для изменения статуса счета
-                    Account account = new Account();
-                    for(Account a: accounts){
-                        if (a.getStatus().equals("Blocked"))
-                            account = a;
-                    }
                     String buttonName = "singlebutton";
+                    //получаем имя необходимое для изменения статуса счета
+                    Account account = dao.account.read(Integer.parseInt(Form.getParameter(req, buttonName, Patterns.NUMBERS)));
+
+
                     //делаем действие по изменению статуса
-                    if (Form.getParameter(req, buttonName, account.getUsers_ID().toString()).equals(account.getUsers_ID().toString())) {
-                        account.setStatus("Unlocked");
-                        dao.account.updateStatus(account);
-                        return Actions.SHOWACCOUNTS.action;
-                    }
+
+                    account.setStatus("Unlocked");
+                    dao.account.updateStatus(account);
+                    return Actions.SHOWACCOUNTS.action;
+
                 } catch (Exception e) {
                     e.getMessage();
                 }

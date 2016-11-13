@@ -17,8 +17,8 @@ import java.util.Locale;
 public class AccountDAO extends AbstractDAO implements InterfaceDAO<Account> {
 
     @Override
-    public Account read(int user_id) {
-        String sql = "WHERE users_id = " + user_id + "limit 0,1;";
+    public Account read(int id) {
+        String sql = "WHERE users_id = " + id + " LIMIT 0,1;";
         List<Account> accounts = getAll(sql);
         if (accounts.size()>0)
             return accounts.get(0);
