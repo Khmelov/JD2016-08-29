@@ -1,8 +1,7 @@
-package by.it.artiuschik.jd_03_03.TaskA_TaskB.dao;
+package by.it.artiuschik.project2.java.dao;
 
-
-import by.it.artiuschik.jd_03_02.ConnectionCreator;
-import by.it.artiuschik.jd_03_03.beans.Question;
+import by.it.artiuschik.project2.java.beans.Question;
+import by.it.artiuschik.project2.java.connection.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -60,11 +59,11 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 Question question = new Question();
-                question.setBalls(rs.getInt("Balls"));
-                question.setFK_TEST(rs.getInt("FK_TEST"));
                 question.setVarianta(rs.getString("Varianta"));
                 question.setVariantb(rs.getString("Variantb"));
                 question.setSubject(rs.getString("Subject"));
+                question.setBalls(rs.getInt("Balls"));
+                question.setFK_TEST(rs.getInt("FK_TEST"));
                 question.setID(rs.getInt("ID"));
                 question.setText(rs.getString("Text"));
                 questions.add(question);
