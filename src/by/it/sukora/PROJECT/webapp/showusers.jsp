@@ -5,9 +5,9 @@
 <div class="row">
     <b>
         <div class=col-md-1>ID</div>
-        <div class=col-md-2>Имя</div>
-        <div class=col-md-2>Пароль</div>
-        <div class=col-md-3>Email</div>
+        <div class=col-md-1>Имя</div>
+        <div class=col-md-2>Фамилия</div>
+        <div class=col-md-2>Email</div>
         <div class=col-md-1>id_logpass</div>
         <div class=col-md-1>id_role</div>
     </b>
@@ -22,7 +22,7 @@
                 value="${user.id}" class="form-control input-md">
             </div>
 
-            <div class=col-md-2>
+            <div class=col-md-1>
                 <input id="textinput" name="FirsName" type="text"
                 value="${user.firsName}" class="form-control input-md">
             </div>
@@ -30,7 +30,7 @@
                 <input id="textinput" name="LastName" type="text"
                 value="${user.lastName}" class="form-control input-md">
             </div>
-            <div class=col-md-3>
+            <div class=col-md-2>
                              <input id="textinput" name="Email" type="text"
                               value="${user.email}" class="form-control input-md">
                         </div>
