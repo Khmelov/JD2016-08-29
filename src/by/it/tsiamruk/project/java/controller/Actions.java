@@ -13,6 +13,7 @@ enum Actions {
     PROFILE {{this.action = new CmdProfile();}},
     CREATEACCOUNT{{this.action = new CmdCreateAccount();}},
     SHOWACCOUNTS {{this.action = new CmdShowAccounts();}},
+    SHOWUSERACCOUNTS{{this.action = new CmdShowUserAccounts();}},
     ERROR {{this.action = new CmdError();}};
 
     protected Action action;

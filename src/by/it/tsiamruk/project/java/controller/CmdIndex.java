@@ -13,9 +13,18 @@ import java.util.List;
 public class CmdIndex extends Action {
     @Override
     Action execute(HttpServletRequest req) {
-        SingletonDAO dao = SingletonDAO.getDAO();
-        List<Account> accounts = dao.account.getAll("");
-        req.setAttribute("accounts", accounts);
+        if (Form.isPost(req)){
+            try {
+                String loginbutton = Form.getParameter(req,"Log","1");
+                String signupbutton = Form.getParameter(req,"singnupbutton","1");
+                if (loginbutton.equals("1"))
+                    return Actions.LOGIN.action;
+                if (signupbutton.equals("1"))
+                    return Actions.SIGNUP.action;
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         return null;
     }
 }
