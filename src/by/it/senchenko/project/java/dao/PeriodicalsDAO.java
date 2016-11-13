@@ -38,7 +38,7 @@ public class PeriodicalsDAO extends AbstractClassDAO implements InterfaceForDAO<
     public boolean update(Periodicals periodicals) {
         String sql = String.format(Locale.ENGLISH,
                 "UPDATE `periodicals` SET " +
-                        "`Name`=%d " +
+                        "`Name`=%s " +
                         ",`Autor`='%s'" +
                         ",`Date`='%s'" +
                         ",`FK_User`=%d" +
