@@ -16,8 +16,8 @@ public class CmdLogin extends Action {
         if (Form.isPost(req)) {
             Users user = new Users();
             try {
-                user.setLogin(Form.getParameter(req, "Login", Patterns.LOGIN));
-                user.setPassword(Form.getParameter(req, "Password", Patterns.PASSWORD));
+                user.setLogin(Form.getString(req, "Login", Patterns.LOGIN));
+                user.setPassword(Form.getString(req, "Password", Patterns.PASSWORD));
                 DAO dao = DAO.getDAO();
                 List<Users> users = dao.usersDAO.getAll(
                         String.format("WHERE Login='%s' and Password='%s' LIMIT 0,1",
