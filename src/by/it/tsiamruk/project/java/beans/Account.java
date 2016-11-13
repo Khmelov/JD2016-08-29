@@ -13,6 +13,7 @@ public class Account{
     private int id = 0;
     private Double amount;
     private Integer users_ID;
+    private String status;
 
     public Account() {
     }
@@ -47,12 +48,21 @@ public class Account{
         this.users_ID = users_ID;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
                 "id=" + id +
                 ", amount=" + amount +
                 ", users_ID=" + users_ID +
+                ", status='" + status + '\'' +
                 '}';
     }
 
@@ -61,6 +71,7 @@ public class Account{
         int result = id;
         result = 31 * result + (amount != null ? amount.hashCode() : 0);
         result = 31 * result + (users_ID != null ? users_ID.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
         return result;
     }
 }

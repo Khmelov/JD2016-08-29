@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -56,7 +57,7 @@
 <div class="container">
 
       <!-- Static navbar, смотрите пример тут: http://bootstrap-3.ru/examples/navbar/ -->
-
+              <form action="do?command=Logout" method="post">
       <div class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -71,13 +72,15 @@
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li><a href="do?command=CreateAccount">Создать счёт</a></li>
-              <li><a href="do?command=ShowUsers">Список пользователей</a></li>
+              <li><a href="do?command=CreateProfile">Создать профиль</a></li>
+              <li><a href="do?command=ShowAccounts">Список Счетов(администиратор)</a></li>
+              <li><a href="do?command=ShowUserAccounts">Список Счетов(пользователь)</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <!-- <li><a href="do?command=SignUp">Зарегистрироваться</a></li> -->
-              <!-- <li><a href="do?command=Login">Войти</a></li> -->
-              <li><a href="do?command=Profile">Выход</a></li>
+              <li><a href="do?command=Profile">Профиль</a></li>
               <li><a href="/manager/html/list">Tomcat</a></li>
+              <li><button id="LogoutButton" name="LogoutButton" value="1" class="btn btn-success">Выход</button></li>
+              </form>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

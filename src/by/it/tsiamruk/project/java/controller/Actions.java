@@ -8,10 +8,12 @@ enum Actions {
     INDEX{{this.action = new CmdIndex();}},
     SIGNUP {{this.action = new CmdSignup();}},
     LOGIN {{this.action = new CmdLogin();}},
+    LOGOUT{{this.action = new CmdLogout();}},
+    CREATEPROFILE {{this.action = new CmdCreateProfile();}},
     PROFILE {{this.action = new CmdProfile();}},
-    ERROR {{this.action = new CmdIndex();}},
     CREATEACCOUNT{{this.action = new CmdCreateAccount();}},
-    SHOWUSERS {{this.action = new CmdShowUsers();}};
+    SHOWACCOUNTS {{this.action = new CmdShowAccounts();}},
+    ERROR {{this.action = new CmdError();}};
 
     protected Action action;
 

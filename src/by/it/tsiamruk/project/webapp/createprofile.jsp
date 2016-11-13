@@ -1,12 +1,12 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<form class="form-horizontal" action="do?command=PROFILE" method="POST">
+<form class="form-horizontal" action="do?command=CREATEPROFILE" method="POST">
 
    <fieldset>
 
         <!-- Form Name -->
-        <legend>Добро пожаловать ${profile.name}</legend>
+        <legend>Профиль пользователя, пожалуйста заполните поля для продолжения.</legend>
                 <!-- Text input-->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="Name">Имя</label>

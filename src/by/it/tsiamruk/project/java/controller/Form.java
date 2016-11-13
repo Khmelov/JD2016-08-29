@@ -16,12 +16,13 @@ public class Form {
         else
             throw new ParseException("Incorrect String "+ name,0);
     }
-    static Double getValue(HttpServletRequest req, String name) throws ParseException{
-        Double value = Double.parseDouble(req.getParameter(name.trim()));
+    static Double getDouble(HttpServletRequest req, String name, String pattern) throws ParseException{
+        String data = req.getParameter(name);
+        Double value = Double.parseDouble(data.trim());
         if (value!= 0)
             return value;
         else
-            throw new ParseException("Incorrect value"+name,0);
+            throw new ParseException("Incorrect number"+name,0);
     }
     static int getInteger(HttpServletRequest req, String name, String pattern) throws ParseException{
         String data = req.getParameter(name);

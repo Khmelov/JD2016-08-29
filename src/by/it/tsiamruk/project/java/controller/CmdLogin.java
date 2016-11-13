@@ -32,7 +32,7 @@ public class CmdLogin extends Action {
                     session.setAttribute("user", user);
                     Cookie cookie = new Cookie("user",user.toString());
                     cookie.setMaxAge(30);
-                    return Actions.PROFILE.action;
+                    return Actions.CREATEPROFILE.action;
                 }
                 else
                     Form.showError(req,"Database error");

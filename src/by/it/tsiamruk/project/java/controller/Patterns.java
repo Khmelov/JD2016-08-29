@@ -7,6 +7,8 @@ public interface Patterns {
     String LOGIN="^[aA-zZ0-9_-]{3,15}$";
     String PASSWORD="^.{5,12}$";
     String EMAIL="^[aA-zZ0-9._%+-]+@[aA-zZ0-9.-]+\\.[aA-zZ]{2,6}$";
-    String NAME ="[aA-zZаА-яЯёЁ]+";
-    String NUMBERS = "[0-9]+";
+    String NAME ="[a-zA-Zа-яА-ЯёЁ]+";
+    String NUMBERS = "[0-9]*";
+    String DOUBLES = "[0-9]//.?[0-9]?";
+
 }
