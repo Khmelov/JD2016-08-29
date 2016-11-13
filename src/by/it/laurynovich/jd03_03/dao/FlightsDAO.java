@@ -27,7 +27,7 @@ public class FlightsDAO extends AbstractDAO implements InterfaceDAO<Flights> {
     @Override
     public boolean create(Flights flight) {
         String sql = String.format(
-                "insert INTO flight(idFlight,from,to,date_outbound,date_return)" +
+                "insert INTO flights(idFlight,from_p,to_p,date_outbound,date_return)" +
                         " values('%d','%s','%s','%s','%s');",
                 flight.getIdFlight(),
                 flight.getFrom(),
@@ -41,7 +41,7 @@ public class FlightsDAO extends AbstractDAO implements InterfaceDAO<Flights> {
     @Override
     public boolean update(Flights flights) {
         String sql = String.format(
-                "UPDATE `flight` SET `from` = '%s',`to` = '%s',`date_outbound` = '%s',`date_return` = '%s'",
+                "UPDATE `flights` SET `from_p` = '%s',`to_p` = '%s',`date_outbound` = '%s',`date_return` = '%s'",
                 flights.getFrom(), flights.getTo(),flights.getDate_outbound() ,flights.getDate_return()
         );
         return (0 < executeUpdate(sql));
@@ -64,8 +64,8 @@ public class FlightsDAO extends AbstractDAO implements InterfaceDAO<Flights> {
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 Flights flight = new Flights();
-                flight.setFrom(rs.getNString("from"));
-                flight.setTo(rs.getString("to"));
+                flight.setFrom(rs.getNString("from_p"));
+                flight.setTo(rs.getString("to_p"));
                 flight.setDate_outbound(rs.getString("date_outbound"));
                 flight.setDate_return(rs.getString("date_return"));
                 flights.add(flight);

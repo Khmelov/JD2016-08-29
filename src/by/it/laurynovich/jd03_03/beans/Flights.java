@@ -4,8 +4,8 @@ package by.it.laurynovich.jd03_03.beans;
 
 public class Flights {
     private int idFlight;
-    private String from;
-    private String to;
+    private String from_p;
+    private String to_p;
     private String date_outbound;
     private String date_return;
 
@@ -14,10 +14,10 @@ public class Flights {
     public Flights() {
     }
 
-    public Flights(int idFlight, String from, String to, String date_outbound, String date_return) {
+    public Flights(int idFlight, String from_p, String to_p, String date_outbound, String date_return) {
         this.idFlight = idFlight;
-        this.from = from;
-        this.to = to;
+        this.from_p = from_p;
+        this.to_p = to_p;
         this.date_outbound = date_outbound;
         this.date_return = date_return;
     }
@@ -32,19 +32,19 @@ public class Flights {
     }
 
     public String getFrom() {
-        return from;
+        return from_p;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setFrom(String from_p) {
+        this.from_p = from_p;
     }
 
     public String getTo() {
-        return to;
+        return to_p;
     }
 
-    public void setTo(String to) {
-        this.to = to;
+    public void setTo(String to_p) {
+        this.to_p = to_p;
     }
 
     public String getDate_outbound() {
@@ -70,8 +70,8 @@ public class Flights {
 
         Flights flights = (Flights) o;
 
-        if (from != flights.from) return false;
-        if (to != flights.to) return false;
+        if (from_p != flights.from_p) return false;
+        if (to_p != flights.to_p) return false;
         if (date_outbound != flights.date_outbound) return false;
         if (date_return != flights.date_return) return false;
         return idFlight == flights.idFlight;
@@ -81,8 +81,8 @@ public class Flights {
     @Override
     public int hashCode() {
         int result = idFlight;
-        result = 31 * result + (from != null ? from.hashCode() : 0);
-        result = 31 * result + (to != null ? to.hashCode() : 0);
+        result = 31 * result + (from_p != null ? from_p.hashCode() : 0);
+        result = 31 * result + (to_p != null ? to_p.hashCode() : 0);
         result = 31 * result + (date_outbound != null ? date_outbound.hashCode() : 0);
         result = 31 * result + (date_return != null ? date_return.hashCode() : 0);
         return result;
@@ -92,8 +92,8 @@ public class Flights {
     public String toString() {
         return "Flights{" +
                 "idFlight=" + idFlight +
-                ", from='" + from + '\'' +
-                ", to='" + to + '\'' +
+                ", from_p='" + from_p + '\'' +
+                ", to_p='" + to_p + '\'' +
                 ", date_outbound='" + date_outbound + '\'' +
                 ", date_return='" + date_return + '\'' +
                 '}';
