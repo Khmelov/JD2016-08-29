@@ -16,61 +16,61 @@ import java.util.List;
 
 public class Runner {
     public static void main(String[] args) throws SQLException {
-//
-//        try (
-//                Connection connection = ConnectionCreator.getConnection();
-//                Statement statement = connection.createStatement()) {
-//            ResultSet resultSet = statement.executeQuery("SELECT * FROM user, role WHERE user.Role = role.idRole;");
-//            while (resultSet.next()) {
-//                System.out.printf("Роль: %s,Имя пользователя: %s\n",
-//                        resultSet.getString("role.role"), resultSet.getString("user.login"));
-//            }
-//        }
-//
-//        DAO dao = DAO.getDAO();
-//
-//        /** User   */
-//        System.out.println("Вывод всех пользователей");
-//        System.out.println("_________________________________________________________________________________");
-//        //read all
-//        List<User> users = dao.getUserDAO().getAll("");
-//        for (int i = 0; i < users.size(); i++) {
-//            System.out.println(users.get(i));
-//        }
-//        System.out.println("_________________________________________________________________________________");
-//        User user = new User(1,"user3", "654321", "ivan@gmail.com", "ivanov", "ivan", "NN1223654", 1, 1);
-//        dao.getUserDAO().create(user);
-//
-//        System.out.printf("Создание пользователя \n%s\n", user);
-//
-//
-//
-//        //read
-//        System.out.println("Чтение \n" + dao.getUserDAO().read(user.getId()));
-//        System.out.println("_________________________________________________________________________________");
-//        //update
-//        user.setLogin("doesntTest");
-//        user.setPassword("123qwe");
-//        dao.getUserDAO().update(user);
-//        System.out.printf("Обновление данных пользователя \n%s\n", user);
-//        //read
-//        System.out.println("Чтение " +dao.getUserDAO().read(user.getId()));
-//        System.out.println("_________________________________________________________________________________");
-//
-//        //delete
-//        System.out.println("Удаление пользователя "+dao.getUserDAO().delete(user));
-//
-//
-//        /** Tickets*/
-//        System.out.println("Вывод всех билетов");
-//        System.out.println("_________________________________________________________________________________");
-//        //read all
-//        List<Flights> flight = dao.getFlightsDAO().getAll("");
-//        for (int i = 0; i <flight.size()-1 ; i++) {
-//            System.out.println(flight.get(i));
-//        }
-//        System.out.println("_________________________________________________________________________________");
+
+        try (
+                Connection connection = ConnectionCreator.getConnection();
+                Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM user,role WHERE user.Role = role.idRole;");
+            while (resultSet.next()) {
+                System.out.printf("Роль: %s,Имя пользователя: %s\n",
+                        resultSet.getString("role.role"), resultSet.getString("user.login"));
+            }
+        }
+
         DAO dao = DAO.getDAO();
+
+        /** User   */
+        System.out.println("Вывод всех пользователей");
+        System.out.println("_________________________________________________________________________________");
+        //read all
+        List<User> users = dao.getUserDAO().getAll("");
+        for (int i = 0; i < users.size(); i++) {
+            System.out.println(users.get(i));
+        }
+        System.out.println("_________________________________________________________________________________");
+        User user = new User(1,"user3", "654321", "ivan@gmail.com", "ivanov", "ivan", "NN1223654", 1, 1);
+        dao.getUserDAO().create(user);
+
+        System.out.printf("Создание пользователя \n%s\n", user);
+
+
+
+        //read
+        System.out.println("Чтение \n" + dao.getUserDAO().read(user.getId()));
+        System.out.println("_________________________________________________________________________________");
+        //update
+        user.setLogin("doesntTest");
+        user.setPassword("123qwe");
+        dao.getUserDAO().update(user);
+        System.out.printf("Обновление данных пользователя \n%s\n", user);
+        //read
+        System.out.println("Чтение " +dao.getUserDAO().read(user.getId()));
+        System.out.println("_________________________________________________________________________________");
+
+        //delete
+        System.out.println("Удаление пользователя "+dao.getUserDAO().delete(user));
+
+
+        /** Tickets*/
+        System.out.println("Вывод всех билетов");
+        System.out.println("_________________________________________________________________________________");
+        //read all
+        List<Flights> flight = dao.getFlightsDAO().getAll("");
+        for (int i = 0; i <flight.size()-1 ; i++) {
+            System.out.println(flight.get(i));
+        }
+        System.out.println("_________________________________________________________________________________");
+        //DAO dao = DAO.getDAO();
 
         try (
                 Connection connection = ConnectionCreator.getConnection();
