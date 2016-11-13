@@ -5,6 +5,8 @@ import by.it.grishechkin.jd03_03.beans.Order;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -31,7 +33,7 @@ public class OrderDAO implements IDAO<Order> {
     @Override
     public void read(int id) {
         try (Statement statement = MyConnection.getStatement()){
-            ResultSet resultSet = statement.executeQuery(String.format(Locale.ENGLISH,"SELECT * FROM `order` WHERE `order`.ID=" + id ));
+            ResultSet resultSet = statement.executeQuery(String.format(Locale.ENGLISH,"SELECT * FROM `order` WHERE `order`.ID=" + id + ";" ));
             AbstractDAO.readResultSet(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();

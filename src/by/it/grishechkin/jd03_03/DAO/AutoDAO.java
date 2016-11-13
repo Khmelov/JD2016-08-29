@@ -31,7 +31,7 @@ public class AutoDAO implements IDAO<Auto> {
     @Override
     public void read(int id) {
         try (Statement statement = MyConnection.getStatement()){
-            ResultSet resultSet = statement.executeQuery(String.format(Locale.ENGLISH,"SELECT * FROM auto WHERE auto.ID=" + id ));
+            ResultSet resultSet = statement.executeQuery(String.format(Locale.ENGLISH,"SELECT * FROM auto WHERE auto.ID=" + id + ";" ));
             AbstractDAO.readResultSet(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
