@@ -24,7 +24,7 @@ public class CmdSignup extends Action {
                     return Actions.LOGIN.action;
                 }
                 else{
-                   Form.showError(req,"Incorrect data");
+                   Form.showError(req,"Database error");
                     return null;
                 }
             } catch (ParseException e) {
@@ -34,5 +34,4 @@ public class CmdSignup extends Action {
         }
         return null;
     }
-
 }

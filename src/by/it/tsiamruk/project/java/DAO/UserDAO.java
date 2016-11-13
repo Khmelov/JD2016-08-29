@@ -46,15 +46,14 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
 
     @Override
     public boolean update(User user) {
-        String sql = String.format(Locale.ENGLISH,
-                "UPDATE `users` SET `login` = '%s',`password` = '%s', `email` = '%s', `FK_role= '%d'`",
+        String sql = String.format("UPDATE `users` SET `login` = '%s',`password` = '%s', `email` = '%s', `FK_role= '%d'`",
                 user.getLogin(),user.getPassword(),user.getEmail(),user.getFk_role());
         return (0 < executeUpdate(sql));
     }
 
     @Override
     public boolean delete(User user) {
-        String sql = String.format(Locale.ENGLISH, "DELETE FROM users WHERE users.ID = %d",user.getId());
+        String sql = String.format("DELETE FROM users WHERE users.ID = %d",user.getId());
         return (0 < executeUpdate(sql));
     }
 

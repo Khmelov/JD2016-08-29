@@ -32,10 +32,10 @@ public class CmdLogin extends Action {
                     session.setAttribute("user", user);
                     Cookie cookie = new Cookie("user",user.toString());
                     cookie.setMaxAge(30);
-                    return Actions.PROFILE.action;
+                    return Actions.CREATEPROFILE.action;
                 }
                 else
-                    Form.showError(req,"USER NOT FOUND");
+                    Form.showError(req,"Database error");
 
             } catch (ParseException e) {
                 Form.showError(req,"Incorrect data");

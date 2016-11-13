@@ -21,9 +21,11 @@ public class FilterUTF8 implements Filter {
         String codeResponse = servletResponse.getCharacterEncoding();
         if (code != null && !code.equalsIgnoreCase(codeResponse))
             servletResponse.setCharacterEncoding(code);
+
         String codeRequest = servletRequest.getCharacterEncoding();
-        if (code != null && code.equalsIgnoreCase(codeRequest))
+        if (code != null && !code.equalsIgnoreCase(codeRequest))
             servletRequest.setCharacterEncoding(code);
+
         filterChain.doFilter(servletRequest,servletResponse);
     }
 

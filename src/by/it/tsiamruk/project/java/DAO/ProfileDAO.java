@@ -29,16 +29,15 @@ public class ProfileDAO extends AbstractDAO implements InterfaceDAO<Profile> {
 
     @Override
     public boolean create(Profile bean) {
-        String sql = String.format(Locale.ENGLISH, "insert INTO wtsiamuk.profile" +
-                "(name,lastname,age,ID) values('%s','%s','%d','%d'",
+        String sql = String.format("insert INTO wtsiamruk.profile" +
+                "(name,lastname,age,ID) values('%s','%s','%d','%d');",
                 bean.getName(),bean.getLastname(),bean.getAge(),bean.getId());
-        bean.setId(executeUpdate(sql));
-        return (bean.getId()>1);
+        return (executeUpdate(sql)>0);
     }
 
     @Override
     public boolean update(Profile bean) {
-        String sql = String.format(Locale.ENGLISH,
+        String sql = String.format(
                 "UPDATE `profile` SET" +
                         "`name` = '%s', " +
                         "`lastname` = '%s', " +
@@ -49,7 +48,7 @@ public class ProfileDAO extends AbstractDAO implements InterfaceDAO<Profile> {
 
     @Override
     public boolean delete(Profile bean) {
-        String sql = String.format(Locale.ENGLISH,
+        String sql = String.format(
                 "DELETE FROM `profile` WHERE `profile`.`ID` = %d", bean.getId());
         return (0 < executeUpdate(sql));
     }

@@ -17,8 +17,8 @@ import java.util.Locale;
 public class AccountDAO extends AbstractDAO implements InterfaceDAO<Account> {
 
     @Override
-    public Account read(int id) {
-        String sql = "WHERE users_id = " + id + "limit 0,1;";
+    public Account read(int user_id) {
+        String sql = "WHERE users_id = " + user_id + "limit 0,1;";
         List<Account> accounts = getAll(sql);
         if (accounts.size()>0)
             return accounts.get(0);
@@ -28,10 +28,10 @@ public class AccountDAO extends AbstractDAO implements InterfaceDAO<Account> {
 
     @Override
     public boolean create(Account bean) {
-        String sql = String.format(Locale.ENGLISH, "insert INTO wtsiamruk.accounts(amount, users_ID) values('%f', '%d');",
-        bean.getAmount(), bean.getUsers_ID());
-        bean.setId(executeUpdate(sql));
-        return (bean.getId()>0);
+        String sql = String.format(Locale.ENGLISH,
+                "insert INTO wtsiamruk.accounts(amount, users_ID, status) values('%f', '%d', '%s');"
+                , bean.getAmount(), bean.getUsers_ID(), bean.getStatus());
+        return (executeUpdate(sql)>0);
     }
 
     @Override
@@ -39,6 +39,11 @@ public class AccountDAO extends AbstractDAO implements InterfaceDAO<Account> {
         String sql = String.format(Locale.ENGLISH,"UPDATE wtsiamruk.accounts SET amount = %f",
                 bean.getAmount());
         return (0 < executeUpdate(sql));
+    }
+
+    public boolean updateStatus(Account bean){
+        String sql = String.format("UPDATE wtsiamruk.accounts SET status = '%s'", bean.getStatus());
+        return (executeUpdate(sql)> 0);
     }
 
     @Override
@@ -60,6 +65,7 @@ public class AccountDAO extends AbstractDAO implements InterfaceDAO<Account> {
                 Account account = new Account();
                 account.setId(rs.getInt("ID"));
                 account.setAmount(rs.getDouble("amount"));
+                account.setStatus(rs.getString("status"));
                 account.setUsers_ID(rs.getInt("users_ID"));
                 accounts.add(account);
             }
