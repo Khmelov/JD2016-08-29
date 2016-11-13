@@ -14,9 +14,9 @@ public class UserDAO implements IDAO <User> {
     public int create(User user) {
         int key = 0;
         try (Statement statement = MyConnection.getStatement()){
-            statement.executeUpdate(String.format(Locale.ENGLISH,"INSERT INTO user (firstName, lastName, pasportNum, FK_Role)" +
-                            " VALUES ('%s', '%s', '%s', '%d');",
-                    user.getFirstName(), user.getLastName(), user.getPasportNum(), user.getFK_Role()), Statement.RETURN_GENERATED_KEYS);
+            statement.executeUpdate(String.format(Locale.ENGLISH,"INSERT INTO user (firstName, lastName, pasportNum, FK_Role, login, password)" +
+                            " VALUES ('%s', '%s', '%s', '%d', '%s', '%s');",
+                    user.getFirstName(), user.getLastName(), user.getPasportNum(), user.getFK_Role(), user.getLogin(), user.getPassword()), Statement.RETURN_GENERATED_KEYS);
             ResultSet resultSet = statement.getGeneratedKeys();
             resultSet.next();
             key = resultSet.getInt(1);
@@ -40,8 +40,8 @@ public class UserDAO implements IDAO <User> {
     @Override
     public void update(User user) {
         try (Statement statement = MyConnection.getStatement()){
-            statement.executeUpdate(String.format(Locale.ENGLISH,"UPDATE user SET firstName='%s', lastName='%s', pasportNum='%s', FK_Role='%d' WHERE user.ID=" + user.getID() + ";",
-                    user.getFirstName(), user.getLastName(), user.getPasportNum(), user.getFK_Role()));
+            statement.executeUpdate(String.format(Locale.ENGLISH,"UPDATE user SET firstName='%s', lastName='%s', pasportNum='%s', FK_Role='%d', login='%s', password='%s' WHERE user.ID=" + user.getID() + ";",
+                    user.getFirstName(), user.getLastName(), user.getPasportNum(), user.getFK_Role(), user.getLogin(), user.getPassword()));
         } catch (SQLException e) {
             e.printStackTrace();
         }

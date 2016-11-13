@@ -10,7 +10,7 @@ public class UserDAOTest {
 
     public static void main(String[] args) {
 
-        User user = new User(0, "Alex", "Drobush", "KH56369852", 1);
+        User user = new User(0, "Alex", "Drobush", "KH56369852", 1, "drobao2", "123123");
         UserDAO object = new UserDAO();
         object.getAll();
         user.setID(object.create(user));

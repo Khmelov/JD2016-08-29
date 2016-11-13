@@ -31,7 +31,7 @@ public class RoleDAO implements IDAO<Role> {
     @Override
     public void read(int id) {
         try (Statement statement = MyConnection.getStatement()){
-            ResultSet resultSet = statement.executeQuery(String.format(Locale.ENGLISH,"SELECT * FROM role WHERE role.ID=" + id ));
+            ResultSet resultSet = statement.executeQuery(String.format(Locale.ENGLISH,"SELECT * FROM role WHERE role.ID=" + id + ";" ));
             AbstractDAO.readResultSet(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
