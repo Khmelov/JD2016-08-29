@@ -16,70 +16,71 @@ import java.util.List;
 
 public class Runner {
     public static void main(String[] args) throws SQLException {
+//
+//        try (
+//                Connection connection = ConnectionCreator.getConnection();
+//                Statement statement = connection.createStatement()) {
+//            ResultSet resultSet = statement.executeQuery("SELECT * FROM user, role WHERE user.Role = role.idRole;");
+//            while (resultSet.next()) {
+//                System.out.printf("Роль: %s,Имя пользователя: %s\n",
+//                        resultSet.getString("role.role"), resultSet.getString("user.login"));
+//            }
+//        }
+//
+//        DAO dao = DAO.getDAO();
+//
+//        /** User   */
+//        System.out.println("Вывод всех пользователей");
+//        System.out.println("_________________________________________________________________________________");
+//        //read all
+//        List<User> users = dao.getUserDAO().getAll("");
+//        for (int i = 0; i < users.size(); i++) {
+//            System.out.println(users.get(i));
+//        }
+//        System.out.println("_________________________________________________________________________________");
+//        User user = new User(1,"user3", "654321", "ivan@gmail.com", "ivanov", "ivan", "NN1223654", 1, 1);
+//        dao.getUserDAO().create(user);
+//
+//        System.out.printf("Создание пользователя \n%s\n", user);
+//
+//
+//
+//        //read
+//        System.out.println("Чтение \n" + dao.getUserDAO().read(user.getId()));
+//        System.out.println("_________________________________________________________________________________");
+//        //update
+//        user.setLogin("doesntTest");
+//        user.setPassword("123qwe");
+//        dao.getUserDAO().update(user);
+//        System.out.printf("Обновление данных пользователя \n%s\n", user);
+//        //read
+//        System.out.println("Чтение " +dao.getUserDAO().read(user.getId()));
+//        System.out.println("_________________________________________________________________________________");
+//
+//        //delete
+//        System.out.println("Удаление пользователя "+dao.getUserDAO().delete(user));
+//
+//
+//        /** Tickets*/
+//        System.out.println("Вывод всех билетов");
+//        System.out.println("_________________________________________________________________________________");
+//        //read all
+//        List<Flights> flight = dao.getFlightsDAO().getAll("");
+//        for (int i = 0; i <flight.size()-1 ; i++) {
+//            System.out.println(flight.get(i));
+//        }
+//        System.out.println("_________________________________________________________________________________");
+        DAO dao = DAO.getDAO();
 
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM user, role WHERE user.Role = role.idRole;");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM flights");
             while (resultSet.next()) {
-                System.out.printf("Роль: %s,Имя пользователя: %s\n",
-                        resultSet.getString("role.role"), resultSet.getString("user.login"));
+                System.out.printf("Fligth: %d,Имя пользователя: %s\n",
+                        resultSet.getString("flight.idFlight"), resultSet.getString("flight.user"));
             }
         }
-
-        DAO dao = DAO.getDAO();
-
-        /** User   */
-        System.out.println("Вывод всех пользователей");
-        System.out.println("_________________________________________________________________________________");
-        //read all
-        List<User> users = dao.getUserDAO().getAll("");
-        for (int i = 0; i < (users.size() - 1); i++) {
-            System.out.println(users.get(i));
-        }
-        System.out.println("_________________________________________________________________________________");
-        User user = new User(1,"user", "654321", "ivan@gmail.com", "ivanov", "ivan", "NN1223654", 1, 1);
-        dao.getUserDAO().create(user);
-        user.setId(1);
-        System.out.printf("Создание пользователя \n%s\n", user);
-
-        Role role = new Role();
-        role.setIdRole(1);
-        role.setRole("user");
-        Role role1 = new Role();
-        role.setRole("admin");
-        role.getIdRole();
-        System.out.println(role.getIdRole());
-        System.out.println(role1.getRole());
-
-
-        //read
-        System.out.println("Чтение \n" + dao.getUserDAO().read(user.getId()));
-        System.out.println("_________________________________________________________________________________");
-        //update
-        user.setLogin("doesntTest");
-        user.setPassword("123qwe");
-        dao.getUserDAO().update(user);
-        System.out.printf("Обновление данных пользователя \n%s\n", user);
-        //read
-        System.out.println("Чтение " +dao.getUserDAO().read(user.getId()));
-        System.out.println("_________________________________________________________________________________");
-
-        //delete
-      //  System.out.println("Удаление пользователя "+dao.getUserDAO().delete(user));
-        //read
-        System.out.println("Чтение " +dao.getUserDAO().read(user.getId()));
-        System.out.println("_________________________________________________________________________________");
-
-        /** Tickets*/
-        System.out.println("Вывод всех билетов");
-        System.out.println("_________________________________________________________________________________");
-        //read all
-        List<Flights> flight = dao.getFlightsDAO().getAll("");
-        for (int i = 0; i <flight.size()-1 ; i++) {
-            System.out.println(flight.get(i));
-        }
-        System.out.println("_________________________________________________________________________________");
 
         //create
         Flights flights = new Flights(1, "Minsk", "London", "02/08/2017", "02/09/2016");
@@ -88,17 +89,17 @@ public class Runner {
         //read
         System.out.println("Чтение " +dao.getFlightsDAO().read(flights.getIdFlight()));
         System.out.println("_________________________________________________________________________________");
-
-        Flights flights2 = new Flights(2, "Minsk", "Paris", "03/08/2017", "03/09/2016");
-        dao.getFlightsDAO().create(flights2);
-        System.out.printf("Создание рейса %s\n", flights2);
-//        //update
-        flights.setDate_return("02/08/2017");
-        dao.getFlightsDAO().update(flights);
-        System.out.printf("Обновление данных рейса \n%s\n", flights);
-        //read
-        System.out.println("Чтение " +dao.getFlightsDAO().read(flights.getIdFlight()));
-        System.out.println("_________________________________________________________________________________");
+//
+//        Flights flights2 = new Flights(2, "Minsk", "Paris", "03/08/2017", "03/09/2016");
+//        dao.getFlightsDAO().create(flights2);
+//        System.out.printf("Создание рейса %s\n", flights2);
+////        //update
+//        flights.setDate_return("02/08/2017");
+//        dao.getFlightsDAO().update(flights);
+//        System.out.printf("Обновление данных рейса \n%s\n", flights);
+//        //read
+//        System.out.println("Чтение " +dao.getFlightsDAO().read(flights.getIdFlight()));
+//        System.out.println("_________________________________________________________________________________");
 //
     }
 }

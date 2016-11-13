@@ -30,21 +30,23 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
     @Override
     public boolean create(User user) {
         String sql = String.format(
-                "insert INTO user(login,password,email,first_name,last_name,n_passport,bag,role)" +
-                        " values('%s','%s','%s',%s,'%s','%s','%d','%d');",
+                "insert INTO user (login,password,email,first_name,last_name,n_passport,bag,role)" +
+                        " values('%s','%s','%s','%s','%s','%s','%d','%d');",
         user.getLogin(), user.getPassword(), user.getEmail(),user.getFirst_name(), user.getLast_name(),
                 user.getN_passport(), user.getBag(), user.getRole(), user.getId());
         user.setId(executeUpdate(sql));
+        int id = user.getId();
+        user.setBag(id);
         return (user.getId() > 0);
     }
 
     @Override
     public boolean update(User user) {
         String sql = String.format(
-                "UPDATE `user` SET `login` = '%s', `password` = '%s', `email` = '%s', `first_name` = `%s`," +
-                        "`last_name` = `%s`,`n_passport` = `%s`,`bag` = `%d`,`role` = `%d`",
+                "UPDATE `user` SET `login` = '%s', `password` = '%s', `email` = '%s', `first_name` = '%s'," +
+                        "`last_name` = '%s',`n_passport` = '%s',`bag` = '%d',`role` = '%d' where id_User=%d",
                 user.getLogin(), user.getPassword(), user.getEmail(), user.getFirst_name(),
-                user.getLast_name(), user.getN_passport(),user.getBag(), user.getRole()
+                user.getLast_name(), user.getN_passport(),user.getBag(), user.getRole(), user.getId()
         );
         return (0 < executeUpdate(sql));
     }
@@ -65,6 +67,7 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
                  Statement statement = connection.createStatement()
             ) {
                 ResultSet rs = statement.executeQuery(sql);
+                System.out.println("test:"+sql);
                 while (rs.next()) {
                     User user = new User();
                     user.setId(rs.getInt("id_User"));

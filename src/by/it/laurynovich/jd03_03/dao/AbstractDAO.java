@@ -9,10 +9,11 @@ public abstract class AbstractDAO {
         int result = -1;
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            result = statement.executeUpdate(sql);
+            result = statement.executeUpdate(sql,Statement.RETURN_GENERATED_KEYS);
             if (sql.trim().toUpperCase().startsWith("INSERT")) {
-                ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
+                ResultSet resultSet = statement.getGeneratedKeys();
                 if (resultSet.next()) result = resultSet.getInt(1);
+                System.out.println("test insert "+result);
             }
         } catch (SQLException e) {
             //тут нужно логгирование SQLException(e);

@@ -27,7 +27,7 @@ public class TicketsDAO extends AbstractDAO implements InterfaceDAO<Tickets>{
     @Override
     public boolean create(Tickets tickets) {
         String sql = String.format(
-                "insert INTO tickets(n_flight,user,price)" +
+                "insert INTO tickets (n_flight,user,price)" +
                         " values('%s','%d',%d);",
                 tickets.getN_flight(),tickets.getUser(),tickets.getPrice());
         tickets.setIdTicket(executeUpdate(sql));
