@@ -9,17 +9,6 @@
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="id">id пользователя</label>
-            <div class="col-md-4">
-                <input id="id" name="ID" value="0" type="text"
-
-                placeholder="" class="form-control input-md" required="">
-                <span class="help-block">Это поле не требуется</span>
-            </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
             <label class="col-md-4 control-label" for="Login">Логин</label>
             <div class="col-md-4">
                 <input id="login" name="Login" type="text" value="UserLogin" placeholder="" class="form-control input-md" required="">
@@ -38,6 +27,23 @@
 
         <!-- Text input-->
         <div class="form-group">
+            <label class="col-md-4 control-label" for="firstName">Имя</label>
+            <div class="col-md-4">
+                <input id="firstName" name="firstName" type="text" placeholder="" class="form-control input-md">
+                <span class="help-block">Введите ваше имя</span>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="LastName">Фамилия</label>
+            <div class="col-md-4">
+                <input id="LastName" name="LastName" type="text" placeholder="" class="form-control input-md">
+                <span class="help-block">Введите вашу фамилию</span>
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
             <label class="col-md-4 control-label" for="email">E-mail</label>
             <div class="col-md-4">
                 <input id="email" name="Email" type="text" value="email@gmail.com" placeholder="" class="form-control input-md" required="">
@@ -47,7 +53,7 @@
 
         <!-- Select Basic -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="role">Роль пользователя (не требуется)</label>
+            <label class="col-md-4 control-label" for="role">Роль пользователя</label>
             <div class="col-md-4">
                 <select id="role" name="FK_role" class="form-control">
                     <option value="2">User</option>

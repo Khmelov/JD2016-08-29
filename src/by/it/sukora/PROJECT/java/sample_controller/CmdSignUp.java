@@ -14,14 +14,17 @@ public class CmdSignUp extends Action {
     @Override
     Action execute(HttpServletRequest req) {
         if (Form.isPost(req)) {
-            Users user = new Users();
+          //  Users user = new Users();
+            logpas logpas = new logpas();
             try {
-                user.setLastName(Form.getParameter(req, "Login", Patterns.LOGIN));
-                user.setFirsName(Form.getParameter(req, "Password", Patterns.PASSWORD));
-                user.setEmail(Form.getParameter(req, "Email", Patterns.EMAIL));
-                user.setId_role(2);
+                logpas.setLogin(Form.getString(req, "Login", Patterns.LOGIN));
+                logpas.setPassword(Form.getString(req, "Password", Patterns.PASSWORD));
+              //  user.setLastName(Form.getString(req, "Login", Patterns.LOGIN));
+              //  user.setFirsName(Form.getString(req, "Password", Patterns.PASSWORD));
+               // user.setEmail(Form.getString(req, "Email", Patterns.EMAIL));
+               // user.setId_role(2);
                 DAO dao = DAO.getDAO();
-                if (dao.Users.create(user)) {
+                if (dao.logpas.create(logpas)) {
                     return Actions.LOGIN.action;
                 } else {
                     Form.showError(req, "Database error");

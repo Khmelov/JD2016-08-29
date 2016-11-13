@@ -17,30 +17,30 @@ public class CmdLogin extends Action {
         if (Form.isPost(req)) {
             logpas user = new logpas();
             try {
-                user.setLogin(Form.getParameter(req, "login", Patterns.LOGIN));
-                user.setPassword(Form.getParameter(req, "password", Patterns.PASSWORD));
+                user.setLogin(Form.getString(req, "Login", Patterns.LOGIN));
+                user.setPassword(req.getParameter("Password"));
+            } catch (Exception e) {
+                Form.showMessage(req, "Неверные данные");
+                Form.showError(req, "Ошибка");
+
+                return null;
+            }
                 DAO dao = DAO.getDAO();
                 List<logpas> users = dao.logpas.getAll(
-                        String.format("WHERE Login='%s' and Password='%s' LIMIT 0,1",
+                        String.format("WHERE Login='%s' and Password='%s' LIMIT 0,5",
                                 user.getLogin(),
                                 user.getPassword()
                         ));
-                if (users.size() == 1) {
+                if (users.size() > 0) {
                     //users ok. save to session
-
                     user = users.get(0);
                     HttpSession session = req.getSession();
                     session.setAttribute("user", user);
                     return Actions.PROFILE.action;
 
-                } else {
-                    Form.showError(req, "USER NOT FOUND");
                 }
-
-            } catch (ParseException e) {
-                Form.showError(req, "Incorrect data");
-                return null;
-            }
+            Form.showMessage(req, "Tакой пользователь не зарегистрирован");
+            Form.showError(req, "Ошибка");
         }
         return null;
     }
