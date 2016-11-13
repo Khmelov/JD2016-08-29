@@ -27,8 +27,9 @@ public class RoleDAO extends AbstractDAO implements InterfaceDAO<Role> {
     @Override
     public boolean create(Role role) {
         String sql = String.format(
-                "insert INTO role(role)" +
-                        " values('%s);",
+                "insert INTO role(idRole,role)" +
+                        " values('%d','%s');",
+                role.getIdRole(),
                 role.getRole());
         role.setIdRole(executeUpdate(sql));
         return (role.getIdRole() > 0);

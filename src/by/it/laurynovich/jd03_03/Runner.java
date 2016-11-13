@@ -27,7 +27,7 @@ public class Runner {
 //            }
 //        }
 //
-//        DAO dao = DAO.getDAO();
+        DAO dao = DAO.getDAO();
 //
 //        /** User   */
 //        System.out.println("Вывод всех пользователей");
@@ -70,36 +70,81 @@ public class Runner {
 //            System.out.println(flight.get(i));
 //        }
 //        System.out.println("_________________________________________________________________________________");
-        DAO dao = DAO.getDAO();
 
-        try (
-                Connection connection = ConnectionCreator.getConnection();
-                Statement statement = connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM flights ");
-            while (resultSet.next()) {
-                System.out.printf("полет: %s,from_p : %s, to_p : %s\n", resultSet.getString("flights.idFlight"), resultSet.getString("flights.from_p"),
-                        resultSet.getString("flights.to_p"));
-            }
-        }
+
+//        try (
+//                Connection connection = ConnectionCreator.getConnection();
+//                Statement statement = connection.createStatement()) {
+//            ResultSet resultSet = statement.executeQuery("SELECT * FROM flights ");
+//            while (resultSet.next()) {
+//                System.out.printf("полет: %s,from_p : %s, to_p : %s\n", resultSet.getString("flights.idFlight"), resultSet.getString("flights.from_p"),
+//                        resultSet.getString("flights.to_p"));
+//            }
+//        }
+//
+//        //create
+//        Flights flights = new Flights(0, "Minsk", "London", "02/08/2017", "02/09/2016");
+//        dao.getFlightsDAO().create(flights);
+//        System.out.printf("Создание рейса %s\n", flights);
+//        //read
+//        System.out.println("Чтение " +dao.getFlightsDAO().read(flights.getIdFlight()));
+//        System.out.println("_________________________________________________________________________________");
+//
+//        Flights flights2 = new Flights(0, "Minsk", "Paris", "03/08/2017", "03/09/2016");
+//        dao.getFlightsDAO().create(flights2);
+//        System.out.printf("Создание рейса %s\n", flights2);
+////        //update
+//        flights.setDate_return("02/08/2017");
+//        dao.getFlightsDAO().update(flights);
+//        System.out.printf("Обновление данных рейса \n%s\n", flights);
+////     flights   //read
+//        System.out.printf("Чтение %s\n", dao.getFlightsDAO().read(flights.getIdFlight()));
+//        System.out.println("_________________________________________________________________________________");
+
+
+//        try (
+//                Connection connection = ConnectionCreator.getConnection();
+//                Statement statement = connection.createStatement()) {
+//            ResultSet resultSet = statement.executeQuery("SELECT * FROM tickets");
+//            while (resultSet.next()) {
+//                System.out.printf("Билет: %s,Имя пользователя: %s\n",
+//                        resultSet.getString("tickets.idTicket"), resultSet.getString("tickets.user"));
+//            }
+//        }
 
         //create
-        Flights flights = new Flights(0, "Minsk", "London", "02/08/2017", "02/09/2016");
-        dao.getFlightsDAO().create(flights);
-        System.out.printf("Создание рейса %s\n", flights);
-        //read
-        System.out.println("Чтение " +dao.getFlightsDAO().read(flights.getIdFlight()));
-        System.out.println("_________________________________________________________________________________");
-
-        Flights flights2 = new Flights(0, "Minsk", "Paris", "03/08/2017", "03/09/2016");
-        dao.getFlightsDAO().create(flights2);
-        System.out.printf("Создание рейса %s\n", flights2);
+//        Tickets ticket = new Tickets(0,7,650,33);
+//        dao.getTicketsDAO().create(ticket);
+//        System.out.printf("create ticket: %s\n", ticket );
+//        //read
+//        System.out.println(dao.getTicketsDAO().read(ticket.getIdTicket()));
+//        System.out.println("_________________________________________________________________________________");
+//
 //        //update
-        flights.setDate_return("02/08/2017");
-        dao.getFlightsDAO().update(flights);
-        System.out.printf("Обновление данных рейса \n%s\n", flights);
-//     flights   //read
-        System.out.printf("Чтение %s\n", dao.getFlightsDAO().read(flights.getIdFlight()));
-        System.out.println("_________________________________________________________________________________");
+//        ticket.setPrice(500);
+//        dao.getTicketsDAO().update(ticket);
+//        System.out.printf("Обновление данных билета \n%s\n", ticket);
+//
+//        //delete
+//        System.out.println("Удаление пользователя "+dao.getTicketsDAO().delete(ticket));
+//
 
+     try (
+    Connection connection = ConnectionCreator.getConnection();
+    Statement statement = connection.createStatement()) {
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM role");
+        while (resultSet.next()) {
+            System.out.printf("IdRole: %s, Role: %s\n",
+                    resultSet.getString("role.idRole"), resultSet.getString("role.role"));
+        }
     }
+//
+//    //create
+//    Role role = new Role(0,"user");
+//    dao.getRoleDAO().create(role);
+//    Role role1 = new Role(0,"admin");
+//        dao.getRoleDAO().create(role1);
+//        System.out.printf("create ticket: %s\n,%s\n", role ,role1);
+
+}
 }

@@ -17,9 +17,9 @@ public class TicketsDAO extends AbstractDAO implements InterfaceDAO<Tickets>{
 
     @Override
     public Tickets read(int idTickets) {
-        List<Tickets> users = getAll("WHERE ID=" + idTickets + " LIMIT 0,1");
-        if (users.size() > 0) {
-            return users.get(0);
+        List<Tickets> ticket = getAll("WHERE ID=" + idTickets + " LIMIT 0,1");
+        if (ticket.size() > 0) {
+            return ticket.get(0);
         } else
             return null;
     }
@@ -27,9 +27,9 @@ public class TicketsDAO extends AbstractDAO implements InterfaceDAO<Tickets>{
     @Override
     public boolean create(Tickets tickets) {
         String sql = String.format(
-                "insert INTO tickets (n_flight,user,price)" +
-                        " values('%s','%d',%d);",
-                tickets.getN_flight(),tickets.getUser(),tickets.getPrice());
+                "insert INTO tickets (idTicket,user,price,n_flight)" +
+                        " values(%d,'%d','%d','%d');",
+                tickets.getIdTicket(),tickets.getUser(),tickets.getPrice(),tickets.getN_flight());
         tickets.setIdTicket(executeUpdate(sql));
         return (tickets.getIdTicket() > 0);
     }
@@ -37,7 +37,7 @@ public class TicketsDAO extends AbstractDAO implements InterfaceDAO<Tickets>{
     @Override
     public boolean update(Tickets tickets) {
         String sql = String.format(
-                "UPDATE `tickets` SET `n_flight` = '%s', `user` = '%d', `price` = '%d'",
+                "UPDATE `tickets` SET `n_flight` = '%d', `user` = '%d', `price` = '%d'",
                 tickets.getN_flight(), tickets.getUser(),tickets.getPrice()
         );
         return (0 < executeUpdate(sql));
@@ -46,10 +46,11 @@ public class TicketsDAO extends AbstractDAO implements InterfaceDAO<Tickets>{
     @Override
     public boolean delete(Tickets tickets) {
         String sql = String.format(
-                "DELETE FROM `tickets` WHERE `tickets`.`idTickets` = %d;", tickets.getIdTicket()
+                "DELETE FROM `tickets` WHERE `tickets`.`idTicket` = %d;", tickets.getIdTicket()
         );
         return (0 < executeUpdate(sql));
     }
+
 
     @Override
     public List<Tickets> getAll(String WHERE) {
@@ -60,9 +61,10 @@ public class TicketsDAO extends AbstractDAO implements InterfaceDAO<Tickets>{
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 Tickets ticket = new Tickets();
-                ticket.setN_flight(rs.getNString("flight"));
+                ticket.setIdTicket(rs.getInt("idTicket"));
+                ticket.setN_flight(rs.getInt("n_flight"));
                 ticket.setPrice(rs.getInt("price"));
-                ticket.setUser(rs.getInt("users"));
+                ticket.setUser(rs.getInt("user"));
                 tickets.add(ticket);
             }
         } catch (SQLException e) {

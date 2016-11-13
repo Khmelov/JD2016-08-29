@@ -2,7 +2,7 @@ package by.it.laurynovich.jd03_03.beans;
 
 public class Tickets {
     private int idTicket;
-    private String n_flight;
+    private int n_flight;
     private int user;
     private int price;
 
@@ -10,7 +10,7 @@ public class Tickets {
     public Tickets() {
     }
 
-    public Tickets(int idTicket, int user, int price, String n_flight) {
+    public Tickets(int idTicket, int user, int price, int n_flight) {
         this.idTicket = idTicket;
         this.user = user;
         this.price = price;
@@ -41,11 +41,11 @@ public class Tickets {
         this.price = price;
     }
 
-    public String getN_flight() {
+    public int getN_flight() {
         return n_flight;
     }
 
-    public void setN_flight(String n_flight) {
+    public void setN_flight(int n_flight) {
         this.n_flight = n_flight;
     }
 
