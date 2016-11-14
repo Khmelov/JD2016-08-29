@@ -30,7 +30,7 @@ public class ConnectionCreator {
     //аналог синглтона на случай множественного обращения
     private static volatile Connection connection = null;
 
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection2() throws SQLException {
         if (connection == null || connection.isClosed()) {
                 synchronized (URL_DB) {
                     if (connection == null || connection.isClosed())
@@ -45,7 +45,7 @@ public class ConnectionCreator {
     //смотрите файлы context.xml
     //и web.xml
     //ВАЖНО!!! НЕ БУДЕТ РАБОТАТЬ ЛОКАЛЬНО, ТЕСТЫ (если есть) УПАДУТ!
-    public static Connection getConnection2() {
+    public static Connection getConnection() {
 
         try {
             InitialContext ic = new InitialContext();

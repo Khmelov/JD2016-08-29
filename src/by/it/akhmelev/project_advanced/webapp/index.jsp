@@ -20,7 +20,6 @@
 
              </div>
           <c:forEach items="${ads}" var="ad">
-             <br />
              <div class="row">
                <div class="col-md-1">${ad.viewNumber}</div>
                <div class="col-md-1">${ad.price} </div>
@@ -63,6 +62,6 @@
      -->
 
     <br><br>(${adCount})
-    <t:paginator step="8" count="${adCount}" urlprefix="?startNumber="/>
+    <t:paginator step="10" count="${adCount}" urlprefix="?startNumber="/>
 
 <%@ include file="include/end-html.jsp" %>

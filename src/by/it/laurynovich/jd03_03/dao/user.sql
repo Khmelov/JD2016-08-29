@@ -1,0 +1,1 @@
+UPDATE `user` SET `login` = 'doesntTest', `password` = '123qwe', `email` = 'ivan@gmail.com', `first_name` = 'ivanov',`last_name` = 'ivan',`n_passport` = 'NN1223654',`bag` = '1',`role` = '1'
