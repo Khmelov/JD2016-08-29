@@ -15,9 +15,9 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
         List<User> users = new ArrayList<>();
         String sql = "SELECT * FROM users " + WHERE + " ;";
         try (Connection connection = ConnectionCreator.getConnection();
-             Statement statement = connection.createStatement()
+             Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(sql)
         ) {
-            ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 User user = new User();
                 user.setId(rs.getInt("ID"));

@@ -18,7 +18,7 @@ class CmdIndex extends Action {
         } catch (ParseException e) {
             startNumber.set(0);
         }
-        String limit = String.format(" LIMIT %s,%s", startNumber.get(), 8);
+        String limit = String.format(" LIMIT %s,%s", startNumber.get(), 10);
         List<Ad> ads = dao.ad.getAll(limit);
         req.setAttribute("adCount", dao.ad.getCount(""));
         for (Ad ad : ads) {
