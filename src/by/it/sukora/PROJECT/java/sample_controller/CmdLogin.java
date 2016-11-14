@@ -18,20 +18,16 @@ public class CmdLogin extends Action {
             logpas user = new logpas();
             try {
                 user.setLogin(Form.getString(req, "Login", Patterns.LOGIN));
-                user.setPassword(req.getParameter("Password"));
-            } catch (Exception e) {
-                Form.showMessage(req, "Неверные данные");
-                Form.showError(req, "Ошибка");
-
-                return null;
-            }
+                user.setPassword(Form.getString(req,"Password",Patterns.PASSWORD));
                 DAO dao = DAO.getDAO();
                 List<logpas> users = dao.logpas.getAll(
-                        String.format("WHERE Login='%s' and Password='%s' LIMIT 0,5",
+                        String.format("WHERE Login='%s' and Password='%s' LIMIT 0,1",
                                 user.getLogin(),
                                 user.getPassword()
+
+
                         ));
-                if (users.size() > 0) {
+                if (users.size() >=  1) {
                     //users ok. save to session
                     user = users.get(0);
                     HttpSession session = req.getSession();
@@ -39,8 +35,14 @@ public class CmdLogin extends Action {
                     return Actions.PROFILE.action;
 
                 }
-            Form.showMessage(req, "Tакой пользователь не зарегистрирован");
-            Form.showError(req, "Ошибка");
+                Form.showMessage(req, "Tакой пользователь не зарегистрирован");
+                Form.showError(req, "Ошибка");
+            } catch (Exception e) {
+                Form.showMessage(req, "Неверные данные");
+                Form.showError(req, "Ошибка");
+                return null;
+            }
+
         }
         return null;
     }
