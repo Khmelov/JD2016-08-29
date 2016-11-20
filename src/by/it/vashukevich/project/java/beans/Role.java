@@ -1,30 +1,30 @@
 package by.it.vashukevich.project.java.beans;
 
 public class Role {
-    private int Id;
-    private String Name;
+    private int id;
+    private String name;
 
     public Role() {
     }
 
     public Role(int id, String name) {
-        Id = id;
-        Name = name;
+        this.id = id;
+        this.name = name;
     }
 
-    public int getId() {return Id;}
+    public int getId() {return id;}
 
-    public void setId(int id) {Id = id;}
+    public void setId(int id) {this.id = id;}
 
-    public String getName() {return Name;}
+    public String getName() {return name;}
 
-    public void setName(String name) {Name = name;}
+    public void setName(String name) {this.name = name;}
 
     @Override
     public String toString() {
         return "Role{" +
-                "Id=" + Id +
-                ", Name='" + Name + '\'' +
+                "Id=" + id +
+                ", Name='" + name + '\'' +
                 '}';
     }
 
@@ -35,15 +35,15 @@ public class Role {
 
         Role role = (Role) o;
 
-        if (Id != role.Id) return false;
-        return Name.equals(role.Name);
+        if (id != role.id) return false;
+        return name.equals(role.name);
 
     }
 
     @Override
     public int hashCode() {
-        int result = Id;
-        result = 31 * result + Name.hashCode();
+        int result = id;
+        result = 31 * result + name.hashCode();
         return result;
     }
 }

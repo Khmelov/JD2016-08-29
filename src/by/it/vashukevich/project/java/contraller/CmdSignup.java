@@ -10,14 +10,14 @@ public class CmdSignup extends Action {
     @Override
     Action execute(HttpServletRequest req) {
         if (Form.isPost(req)) {
-            Users users=new Users();
+            Users user=new Users();
             try {
-                users.setLogin(Form.getParameter(req,"Login",Patterns.LOGIN));
-                users.setPassword(Form.getParameter(req,"Password",Patterns.PASSWORD));
-                users.setEmail(Form.getParameter(req,"Email",Patterns.EMAIL));
-                users.setRole(2);
+                user.setLogin(Form.getString(req,"Login",Patterns.LOGIN));
+                user.setPassword(Form.getString(req,"Password",Patterns.PASSWORD));
+                user.setEmail(Form.getString(req,"Email",Patterns.EMAIL));
+                user.setRole(2);
                 DAO dao=DAO.getDAO();
-                if (dao.users.create(users)){
+                if (dao.users.create(user)){
                     return Actions.LOGIN.action;
                 }
                 else

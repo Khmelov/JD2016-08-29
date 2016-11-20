@@ -3,8 +3,8 @@
 <footer class="navbar-fixed-bottom row-fluid">
   <div class="container">
     <p>Сообщение сервера: ${message}</p>
-
-    <p>IT-academy © 2016 <a href="#">Реквизиты, контакты и все такое</a> </p>
+    <p>Ошибки сервера: <b><font color="red">${jsp_error}</font></b></p>
+    <p>IT-academy © 2016 <a href="#">Реквизиты, контакты</a> </p>
   </div>
 </footer>
 
