@@ -6,7 +6,7 @@ import by.it.artiuschik.project2.java.dao.DAO;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 
-public class CmdSignup extends Action {
+class CmdSignup extends Action {
     @Override
     Action execute(HttpServletRequest req) {
         if (Form.isPost(req)) {

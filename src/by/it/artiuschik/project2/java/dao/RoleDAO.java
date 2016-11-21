@@ -9,7 +9,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Artiuschik Elena
+ */
 public class RoleDAO extends AbstractDAO implements InterfaceDAO<Role> {
+    /**
+     *
+     * @param role role to add
+     * @return success of adding
+     */
     //CREATE
     @Override
     public boolean create(Role role) {
@@ -22,6 +30,11 @@ public class RoleDAO extends AbstractDAO implements InterfaceDAO<Role> {
         return (role.getID() > 0);
     }
 
+    /**
+     *
+     * @param id id of role
+     * @return read role
+     */
     //READ
     @Override
     public Role read(int id) {
@@ -32,6 +45,11 @@ public class RoleDAO extends AbstractDAO implements InterfaceDAO<Role> {
             return null;
     }
 
+    /**
+     *
+     * @param role role to update
+     * @return success of updating
+     */
     //UPDATE
     @Override
     public boolean update(Role role) {
@@ -42,6 +60,11 @@ public class RoleDAO extends AbstractDAO implements InterfaceDAO<Role> {
         return (0 < executeUpdate(updateRoleSQL));
     }
 
+    /**
+     *
+     * @param role to delete
+     * @return success of deleting
+     */
     //DELETE
     @Override
     public boolean delete(Role role) {
@@ -49,6 +72,11 @@ public class RoleDAO extends AbstractDAO implements InterfaceDAO<Role> {
         return (0 < executeUpdate(deleteRoleSQL));
     }
 
+    /**
+     *
+     * @param WHERE condition
+     * @return roles answer condition
+     */
     @Override
     public List<Role> getAll(String WHERE) {
         List<Role> roles = new ArrayList<>();
@@ -58,9 +86,9 @@ public class RoleDAO extends AbstractDAO implements InterfaceDAO<Role> {
         ) {
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
-                Role role = new Role();
-                role.setID(rs.getInt("ID"));
-                role.setRole_name(rs.getString("Role_name"));
+                int id=rs.getInt("ID");
+                String roleName=rs.getString("Role_name");
+                Role role = new Role(id,roleName);
                 roles.add(role);
             }
         } catch (SQLException e) {

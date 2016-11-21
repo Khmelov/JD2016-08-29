@@ -1,5 +1,4 @@
 package by.it.artiuschik.jd_03_01;
-
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 import java.sql.*;
 
@@ -9,7 +8,7 @@ class CreateDataBase {
         Connection connection = DriverManager.getConnection
                 (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("select * from roles WHERE ID=" + id);
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM roles WHERE ID=" + id);
         if (resultSet.next())
             res = resultSet.getString("Role_name");
         return res;
@@ -24,7 +23,7 @@ class CreateDataBase {
                     (CN.URL_DB_2, CN.USER_DB, CN.PASSWORD_DB);
             Statement statement = connection.createStatement();
             statement.executeUpdate("DROP DATABASE IF EXISTS artiuschik");
-            statement.executeUpdate("CREATE DATABASE artiuschik CHARACTER SET utf8 COLLATE utf8_german2_ci");
+            statement.executeUpdate("CREATE DATABASE artiuschik CHARACTER SET utf8 COLLATE utf8_general_ci");
             if (!connection.isClosed())
                 System.out.println("БАЗА ДАННЫХ СОЗДАНА");
             connection = DriverManager.getConnection
@@ -32,22 +31,18 @@ class CreateDataBase {
             if (!connection.isClosed())
                 System.out.println("СОЕДИНЕНИЕ С БАЗОЙ...");
             statement = connection.createStatement();
-            statement.executeUpdate("DROP TABLE IF EXISTS users ");
+            statement.executeUpdate("DROP TABLE IF EXISTS users; ");
             //создание таблицы пользователей
-            String createTableSQL =
-                    String.format("CREATE TABLE users (ID INT NULL AUTO_INCREMENT ,Name VARCHAR(100) NOT NULL ,Surname VARCHAR(100) NOT NULL ,Password VARCHAR(100) NOT NULL, Login VARCHAR(100) NOT NULL, Tests_amount INT NOT NULL , Balls INT NOT NULL , FK_ROLE INT NOT NULL , PRIMARY KEY (ID))");
+            String createTableSQL = "CREATE TABLE users (ID INT NULL AUTO_INCREMENT ,Name VARCHAR(100) NOT NULL ,Surname VARCHAR(100) NOT NULL ,Password VARCHAR(100) NOT NULL, Login VARCHAR(100) NOT NULL, Tests_amount INT NOT NULL , Balls INT NOT NULL , FK_ROLE INT NOT NULL , PRIMARY KEY (ID))";
             statement.executeUpdate(createTableSQL);
             //создание таблицы ролей
-            createTableSQL =
-                    String.format("CREATE TABLE roles (ID INT NULL AUTO_INCREMENT ,Role_name VARCHAR(100) NOT NULL , PRIMARY KEY (ID))");
+            createTableSQL = "CREATE TABLE roles (ID INT NULL AUTO_INCREMENT ,Role_name VARCHAR(100) NOT NULL , PRIMARY KEY (ID))";
             statement.executeUpdate(createTableSQL);
             //создание таблицы тестов
-            createTableSQL =
-                    String.format("CREATE TABLE tests (ID INT NULL AUTO_INCREMENT , Name VARCHAR(100) NOT NULL , Subject VARCHAR(100) NOT NULL , Questions INT NOT NULL , PRIMARY KEY (ID))");
+            createTableSQL ="CREATE TABLE tests (ID INT NULL AUTO_INCREMENT , Name VARCHAR(100) NOT NULL , Subject VARCHAR(100) NOT NULL , Questions INT NOT NULL , PRIMARY KEY (ID))";
             statement.executeUpdate(createTableSQL);
             //создание таблицы вопросов
-            createTableSQL =
-                    String.format("CREATE TABLE questions (ID INT NULL AUTO_INCREMENT , Text VARCHAR(1000) NOT NULL , Subject VARCHAR(100) NOT NULL , Varianta VARCHAR(1000) NOT NULL , Variantb VARCHAR(1000) NOT NULL , Balls INT NOT NULL , FK_TEST INT NOT NULL, PRIMARY KEY (ID))");
+            createTableSQL = "CREATE TABLE questions (ID INT NULL AUTO_INCREMENT , Text VARCHAR(1000) NOT NULL , Subject VARCHAR(100) NOT NULL , Varianta VARCHAR(1000) NOT NULL , Variantb VARCHAR(1000) NOT NULL , Balls INT NOT NULL , Answer INT NOT NULL , FK_TEST INT NOT NULL, PRIMARY KEY (ID))";
             statement.executeUpdate(createTableSQL);
             //заполнение  users
             statement.executeUpdate("INSERT INTO users (ID, Name, Surname, Password, Login, Tests_amount, Balls, FK_ROLE) VALUES (NULL, 'Иван', 'Иванов', '1232', 'ivaniv97', '3', '30', '1')");
@@ -60,12 +55,12 @@ class CreateDataBase {
             statement.executeUpdate("INSERT INTO tests (ID, Name, Subject, Questions) VALUES (NULL, 'Законы Ньютона', 'Физика', '3')");
             statement.executeUpdate("INSERT INTO tests (ID, Name, Subject, Questions) VALUES (NULL, 'Механическое движение', 'Физика', '3')");
             //заполнение  questions
-            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, FK_TEST) VALUES (NULL, 'Единица измерения силы в СИ —', 'Физика', 'Ньютон', 'Джоуль', '1', '1')");
-            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, FK_TEST) VALUES (NULL, 'Если на тело не действуют другие тела, то оно…', 'Физика', 'находится в покое или движется равномерно прямолинейно', 'движется с изменяющейся скоростью', '1', '1')");
-            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, FK_TEST) VALUES (NULL, 'Тело движется прямолинейно с постоянной скоростью. Какое утверждение о равнодействующей всех приложенных к нему сил правильно?', 'Физика', 'Равна нулю', 'Не равна нулю и постоянна по модулю и направлению', '1', '1')");
-            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, FK_TEST) VALUES (NULL, 'Механическим движением тела называют?', 'Физика', 'изменение положения тела в пространстве с течением времени', 'изменение положения тела на плоскости', '1', '2')");
-            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, FK_TEST) VALUES (NULL, 'Какую систему координат используют для точного указания положения материальной точки в пространстве?', 'Физика', 'прямоугольную', 'коническую', '1', '2')");
-            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, FK_TEST) VALUES (NULL, 'Вектор, проведенный из центра системы в любую точку, называется?', 'Физика', 'радиус-вектор', 'центральный вектор', '1', '2')");
+            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, Answer, FK_TEST) VALUES (NULL, 'Единица измерения силы в СИ —', 'Физика', 'Ньютон', 'Джоуль', '1', '1', '1')");
+            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, Answer, FK_TEST) VALUES (NULL, 'Если на тело не действуют другие тела, то оно…', 'Физика', 'находится в покое или движется равномерно прямолинейно', 'движется с изменяющейся скоростью', '1', '1', '1')");
+            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, Answer, FK_TEST) VALUES (NULL, 'Тело движется прямолинейно с постоянной скоростью. Какое утверждение о равнодействующей всех приложенных к нему сил правильно?', 'Физика', 'Равна нулю', 'Не равна нулю и постоянна по модулю и направлению', '1', '1', '1')");
+            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, Answer, FK_TEST) VALUES (NULL, 'Механическим движением тела называют?', 'Физика', 'изменение положения тела в пространстве с течением времени', 'изменение положения тела на плоскости', '1', '1', '2')");
+            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, Answer, FK_TEST) VALUES (NULL, 'Какую систему координат используют для точного указания положения материальной точки в пространстве?', 'Физика', 'прямоугольную', 'коническую', '1', '1', '2')");
+            statement.executeUpdate("INSERT INTO questions (ID, Text, Subject, Varianta, Variantb, Balls, Answer, FK_TEST) VALUES (NULL, 'Вектор, проведенный из центра системы в любую точку, называется?', 'Физика', 'радиус-вектор', 'центральный вектор', '1', '1', '2')");
             //вывод users
             ResultSet resultSet = statement.executeQuery("select * from users;");
             while (resultSet.next()) {

@@ -5,7 +5,15 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+/**
+ * @author Artiuschik Elena
+ */
 public abstract class AbstractDAO {
+    /**
+     *
+     * @param sql SQL instruction
+     * @return result of update
+     */
     protected int executeUpdate(String sql) {
         int result = -1;
         try (Connection connection = ConnectionCreator.getConnection();

@@ -3,8 +3,6 @@ package by.it.artiuschik.project2.java.controller;
 import javax.servlet.http.HttpServletRequest;
 
 public abstract class Action {
-    private Action redirectTo;
-
     //CmdName - CmdLogin -> /login.jsp
     @Override
     public String toString() {

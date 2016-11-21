@@ -10,7 +10,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Artiuschik Elena
+ */
 public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
+    /**
+     *
+     * @param user user to add to database
+     * @return success of adding
+     */
     //CREATE
     @Override
     public boolean create(User user) {
@@ -20,8 +28,14 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
                 user.getName(), user.getSurname(), user.getPassword(), user.getLogin(), user.getTests_amount(), user.getBalls(), user.getFK_ROLE()
         );
         user.setID(executeUpdate(createUserSQL));
-        return (user.getID()>0);
+        return (user.getID() > 0);
     }
+
+    /**
+     *
+     * @param id user id
+     * @return read user
+     */
     //READ
     @Override
     public User read(int id) {
@@ -31,6 +45,12 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
         } else
             return null;
     }
+
+    /**
+     *
+     * @param user to update
+     * @return  updated user
+     */
     //UPDATE
     @Override
     public boolean update(User user) {
@@ -40,6 +60,12 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
         );
         return (0 < executeUpdate(updateUserSQL));
     }
+
+    /**
+     *
+     * @param user to delete
+     * @return success of deleting
+     */
     //DELETE
     @Override
     public boolean delete(User user) {
@@ -47,6 +73,11 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
         return (0 < executeUpdate(deleteUserSQL));
     }
 
+    /**
+     *
+     * @param WHERE condition
+     * @return users answer condition
+     */
     @Override
     public List<User> getAll(String WHERE) {
         List<User> users = new ArrayList<>();
@@ -71,6 +102,20 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
             e.printStackTrace();
         }
         return users;
+    }
+
+    /**
+     *
+     * @param login user login
+     * @param password user password
+     * @return user with login and password
+     */
+    public List<User> getAll(String login, String password) {
+        return getAll(
+                String.format("WHERE Login='%s' and Password='%s' LIMIT 0,1",
+                        login,
+                        password
+                ));
     }
 }
 

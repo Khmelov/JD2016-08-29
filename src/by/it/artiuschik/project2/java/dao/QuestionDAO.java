@@ -10,18 +10,32 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Artiuschik Elena
+ */
+
 public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
+    /**
+     *
+     * @param question to add to database
+     * @return success of adding
+     */
     //CREATE
     @Override
     public boolean create(Question question) {
         String createQuestionSQL = String.format(
-                "insert into questions(Text,Subject,Varianta,Variantb,Balls,FK_TEST) values('%s','%s','%s','%s',%d','%d');",
-                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getFK_TEST()
+                "insert into questions(Text,Subject,Varianta,Variantb,Balls,Answer,FK_TEST) values('%s','%s','%s','%s','%d','%d','%d');",
+                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getAnswer(), question.getFK_TEST()
         );
         question.setID(executeUpdate(createQuestionSQL));
         return (question.getID() > 0);
     }
 
+    /**
+     *
+     * @param id id of question
+     * @return read question
+     */
     //READ
     @Override
     public Question read(int id) {
@@ -32,16 +46,26 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
             return null;
     }
 
+    /**
+     *
+     * @param question to update
+     * @return success of updating
+     */
     //UPDATE
     @Override
     public boolean update(Question question) {
         String updateUserSQL = String.format(
-                "UPDATE questions SET Text = '%s', Subject = '%s', Varianta = '%s', Variantb = '%s', Balls = '%d' ,FK_TEST='%d' WHERE questions.ID = %d",
-                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getFK_TEST(), question.getID()
+                "UPDATE questions SET Text = '%s', Subject = '%s', Varianta = '%s', Variantb = '%s', Balls = '%d' , Answer = '%d' , FK_TEST='%d' WHERE questions.ID = %d",
+                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getAnswer(), question.getFK_TEST(), question.getID()
         );
         return (0 < executeUpdate(updateUserSQL));
     }
 
+    /**
+     *
+     * @param question to delete
+     * @return success of deleting
+     */
     //DELETE
     @Override
     public boolean delete(Question question) {
@@ -49,6 +73,11 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
         return (0 < executeUpdate(deleteQuestionSQL));
     }
 
+    /**
+     *
+     * @param WHERE condition
+     * @return questions from database
+     */
     @Override
     public List<Question> getAll(String WHERE) {
         List<Question> questions = new ArrayList<>();
@@ -60,6 +89,7 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
             while (rs.next()) {
                 Question question = new Question();
                 question.setVarianta(rs.getString("Varianta"));
+                question.setAnswer(rs.getInt("Answer"));
                 question.setVariantb(rs.getString("Variantb"));
                 question.setSubject(rs.getString("Subject"));
                 question.setBalls(rs.getInt("Balls"));
@@ -73,6 +103,12 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
         }
         return questions;
     }
+
+    /**
+     *
+     * @param testId id of test
+     * @return questions of this test
+     */
     public List<Question> getTestQuestions(int testId) {
         List<Question> questions = getAll("WHERE FK_TEST=" + testId);
         if (questions.size() > 0) {
