@@ -49,7 +49,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="role">Роль пользователя (не требуется)</label>
             <div class="col-md-4">
-                <select id="role" name="FK_role" class="form-control">
+                <select id="role" name="role" class="form-control">
                     <option value="2">User</option>
                     <option value="1">Administrator</option>
                 </select>

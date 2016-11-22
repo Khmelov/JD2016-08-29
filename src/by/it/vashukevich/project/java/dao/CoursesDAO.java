@@ -63,9 +63,9 @@ public class CoursesDAO extends AbstractDAO implements InterfaceDAO<Courses> {
             ResultSet resultSet=statement.executeQuery(sql);
             while (resultSet.next()){
                 Courses courses=new Courses();
-                courses.setId(resultSet.getInt("IdCourses"));
+                courses.setId(resultSet.getInt("Id"));
                 courses.setName(resultSet.getString("Name"));
-                courses.setName(resultSet.getString("User"));
+                courses.setUser(resultSet.getInt("User"));
                 std.add(courses);
 
             }

@@ -1,37 +1,37 @@
 package by.it.vashukevich.project.java.beans;
 
 public class Courses {
-    private int Id;
-    private String Name;
-    private  int User;
+    private int id;
+    private String name;
+    private  int user;
 
     public Courses() {
     }
 
     public Courses(int id, String name, int user) {
-        Id = id;
-        Name = name;
-        User = user;
+        this.id = id;
+        this.name = name;
+        this.user = user;
     }
 
-    public int getId() {return Id;}
+    public int getId() {return id;}
 
-    public void setId(int id) {Id = id;}
+    public void setId(int id) {this.id = id;}
 
-    public String getName() {return Name;}
+    public String getName() {return name;}
 
-    public void setName(String name) {Name = name;}
+    public void setName(String name) {this.name = name;}
 
-    public int getUser() {return User;}
+    public int getUser() {return user;}
 
-    public void setUser(int user) {User = user;}
+    public void setUser(int user) {this.user = user;}
 
     @Override
     public String toString() {
         return "Courses{" +
-                "Id=" + Id +
-                ", Name='" + Name + '\'' +
-                ", User=" + User +
+                "Id=" + id +
+                ", Name='" + name + '\'' +
+                ", User=" + user +
                 '}';
     }
 
@@ -42,17 +42,17 @@ public class Courses {
 
         Courses courses = (Courses) o;
 
-        if (Id != courses.Id) return false;
-        if (User != courses.User) return false;
-        return Name.equals(courses.Name);
+        if (id != courses.id) return false;
+        if (user != courses.user) return false;
+        return name.equals(courses.name);
 
     }
 
     @Override
     public int hashCode() {
-        int result = Id;
-        result = 31 * result + Name.hashCode();
-        result = 31 * result + User;
+        int result = id;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + user;
         return result;
     }
 }

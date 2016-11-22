@@ -12,21 +12,21 @@ public class CmdLogin extends Action{
     @Override
     Action execute(HttpServletRequest req) {
         if (Form.isPost(req)) {
-           Users users = new Users();
+            Users user = new Users();
             try {
-                users.setLogin(Form.getParameter(req, "Login", Patterns.LOGIN));
-                users.setPassword(Form.getParameter(req, "Password", Patterns.PASSWORD));
+                user.setLogin(Form.getString(req, "Login", Patterns.LOGIN));
+                user.setPassword(Form.getString(req, "Password", Patterns.PASSWORD));
                 DAO dao = DAO.getDAO();
-               List<Users>user=dao.users.getAll(
+                List<Users> userses = dao.users.getAll(
                         String.format("WHERE Login='%s' and Password='%s' LIMIT 0,1",
-                                users.getLogin(),
-                                users.getPassword()
+                                user.getLogin(),
+                                user.getPassword()
                         ));
-                if (user.size() == 1) {
+                if (userses.size() == 1) {
                     //user ok. save to session
-                    users=user.get(0);
+                    user=userses.get(0);
                     HttpSession session=req.getSession();
-                    session.setAttribute("user",users);
+                    session.setAttribute("user",user);
                     return Actions.PROFILE.action;
                 } else {
                     Form.showError(req, "USER NOT FOUND");
