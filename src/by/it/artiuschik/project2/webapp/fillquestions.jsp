@@ -4,12 +4,12 @@
 <form class="form-horizontal" action="do?command=ADDQUESTIONS" method="post">
     <!-- Form Name -->
     <legend>Добавить вопросы в тест</legend>
-    <c:forEach items="${questions}" var="question">
+    <c:forEach var="number" begin="0" end="${questions_amount}">
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="QuestionText${question.ID}">Текст вопроса</label>
+            <label class="col-md-4 control-label" for="QuestionText${number}">Текст вопроса</label>
             <div class="col-md-5">
-                <input id="QuestionText${question.ID}" name="QuestionText${question.ID}" type="text"
+                <input id="QuestionText${number}" name="QuestionText${number}" type="text"
                        placeholder="Введите текст вопроса..." class="form-control input-md">
 
             </div>
@@ -19,7 +19,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label">Баллы</label>
             <div class="col-md-4">
-                <input id="Balls" name="Balls${question.ID}" type="text" placeholder="Введите баллы за вопрос..."
+                <input id="Balls" name="Balls${number}" type="text" placeholder="Введите баллы за вопрос..."
                        class="form-control input-md">
 
             </div>
@@ -27,7 +27,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label">Вариант ответа</label>
             <div class="col-md-4">
-                <input id="Varianta" name="Varianta${question.ID}" type="text" placeholder="Введите вариант ответа..."
+                <input id="Varianta" name="Varianta${number}" type="text" placeholder="Введите вариант ответа..."
                        class="form-control input-md">
 
             </div>
@@ -35,7 +35,15 @@
         <div class="form-group">
             <label class="col-md-4 control-label">Вариант ответа</label>
             <div class="col-md-4">
-                <input id="Variantb" name="Variantb${question.ID}" type="text" placeholder="Введите вариант ответа..."
+                <input id="Variantb" name="Variantb${number}" type="text" placeholder="Введите вариант ответа..."
+                       class="form-control input-md">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Правильный ответ</label>
+            <div class="col-md-4">
+                <input id="Answer" name="Answer${number}" type="text" placeholder="Номер правильного варианта..."
                        class="form-control input-md">
 
             </div>

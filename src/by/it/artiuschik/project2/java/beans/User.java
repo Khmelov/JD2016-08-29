@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.Objects;
 
 //Bean User
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -110,13 +111,10 @@ public class User {
         User user = (User) o;
 
         if (ID != user.ID) return false;
-        if (Password != user.Password) return false;
-        if (Tests_amount != user.Tests_amount) return false;
-        if (Balls != user.Balls) return false;
-        if (FK_ROLE != user.FK_ROLE) return false;
-        if (!Name.equals(user.Name)) return false;
-        if (!Surname.equals(user.Surname)) return false;
-        return Login.equals(user.Login);
+        if (!Objects.equals(Password, user.Password)) return false;
+        if (Tests_amount == user.Tests_amount) if (Balls == user.Balls) if (FK_ROLE == user.FK_ROLE)
+            if (Name.equals(user.Name)) if (Surname.equals(user.Surname)) if (Login.equals(user.Login)) return true;
+        return false;
 
     }
 

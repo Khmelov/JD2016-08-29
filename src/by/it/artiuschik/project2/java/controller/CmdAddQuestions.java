@@ -5,25 +5,32 @@ import by.it.artiuschik.project2.java.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
-import java.util.List;
 
-public class CmdAddQuestions extends Action {
+class CmdAddQuestions extends Action {
     @Override
     Action execute(HttpServletRequest req) {
         if (Form.isPost(req)) {
             DAO dao = DAO.getDAO();
+            int questionsAmount=(Integer)req.getSession().getAttribute("questionsAmount");
+
             try {
-                List<Question> questions = (List<Question>) req.getSession().getAttribute("questions");
-                for (int i = 0; i < questions.size(); i++) {
-                    questions.get(i).setText(Form.getParameter(req, "QuestionText" + i, Patterns.TEXT));
-                    questions.get(i).setBalls(Form.getInt(req, "Balls" + i));
-                    questions.get(i).setVarianta(Form.getParameter(req, "Varianta" + i,Patterns.TEXT));
-                    questions.get(i).setVariantb(Form.getParameter(req, "Variantb" + i,Patterns.TEXT));
-                    dao.question.create(questions.get(i));
+                int testID=(Integer) req.getSession().getAttribute("FK_TEST");
+                String subject=(String)req.getSession().getAttribute("Subject");
+                for (int i = 0; i <questionsAmount; i++) {
+                    Question question=new Question();
+                    question.setID(i);
+                    question.setFK_TEST(testID);
+                    question.setSubject(subject);
+                    question.setText(Form.getParameter(req, "QuestionText" + i, Patterns.QUESTION_TEXT));
+                    question.setBalls(Form.getInt(req, "Balls" + i));
+                    question.setAnswer(Form.getInt(req, "Answer" + i));
+                    question.setVarianta(Form.getParameter(req, "Varianta" + i,Patterns.QUESTION_TEXT));
+                    question.setVariantb(Form.getParameter(req, "Variantb" + i,Patterns.QUESTION_TEXT));
+                    dao.question.create(question);
                 }
                 return Actions.PROFILE.action;
             } catch (ParseException e) {
-                Form.showError(req, "Incorrect data");
+                Form.showError(req, "Incorrect data"+e.getMessage());
                 return null;
             }
         }

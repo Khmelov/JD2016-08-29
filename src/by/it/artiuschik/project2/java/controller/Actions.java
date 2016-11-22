@@ -30,15 +30,9 @@ public enum Actions {
     PROFILE {{
         this.action = new CmdProfile();
     }},
-    ADDQUESTION {{
-        this.action = new CmdAddQuestion();
-    }},
     CREATETEST {{
         this.action = new CmdCreateTest();
-    }},
-    ERROR {{
-        this.action = new CmdError();
-    }},;
+    }};
 
     protected Action action = null;
 
@@ -49,8 +43,7 @@ public enum Actions {
             try {
                 res = Actions.valueOf(command.toUpperCase()).action;
             } catch (Exception e) {
-                //
-                res = Actions.ERROR.action;
+                e.printStackTrace();
             }
         return res;
     }

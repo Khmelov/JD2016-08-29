@@ -10,7 +10,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Author Artiuschik Elena
+ */
 public class TestDAO extends AbstractDAO implements InterfaceDAO<Test> {
+    /**
+     *
+     * @param test test to add to database
+     * @return success of adding
+     */
     //CREATE
     @Override
     public boolean create(Test test) {
@@ -23,6 +31,11 @@ public class TestDAO extends AbstractDAO implements InterfaceDAO<Test> {
         return (test.getID() > 0);
     }
 
+    /**
+     *
+     * @param id test  id
+     * @return read test
+     */
     //READ
     @Override
     public Test read(int id) {
@@ -33,6 +46,11 @@ public class TestDAO extends AbstractDAO implements InterfaceDAO<Test> {
             return null;
     }
 
+    /**
+     *
+     * @param test test to update
+     * @return success of updating
+     */
     //UPDATE
     @Override
     public boolean update(Test test) {
@@ -43,6 +61,11 @@ public class TestDAO extends AbstractDAO implements InterfaceDAO<Test> {
         return (0 < executeUpdate(updateUserSQL));
     }
 
+    /**
+     *
+     * @param test to delete
+     * @return success of deleting
+     */
     //DELETE
     @Override
     public boolean delete(Test test) {
@@ -50,6 +73,11 @@ public class TestDAO extends AbstractDAO implements InterfaceDAO<Test> {
         return (0 < executeUpdate(deleteTestSQL));
     }
 
+    /**
+     *
+     * @param WHERE condition
+     * @return tests answer condition
+     */
     @Override
     public List<Test> getAll(String WHERE) {
         List<Test> tests = new ArrayList<>();
@@ -71,10 +99,15 @@ public class TestDAO extends AbstractDAO implements InterfaceDAO<Test> {
         }
         return tests;
     }
-    //Получить Test по имени теста
-    public Test getTest(String name)
+
+    /**
+     *
+     * @param ID test id
+     * @return test with id
+     */
+    public Test getTest(int ID)
     {
-        List<Test> tests = getAll("WHERE Name=" + name + " LIMIT 0,1");
+        List<Test> tests = getAll("WHERE ID=" + ID + " LIMIT 0,1");
         if (tests.size() > 0) {
             return tests.get(0);
         } else

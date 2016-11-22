@@ -3,7 +3,7 @@ package by.it.artiuschik.project2.java.controller;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 
-public class CmdProfile extends Action {
+class CmdProfile extends Action {
     @Override
     Action execute(HttpServletRequest req) {
         if (Form.isPost(req)){

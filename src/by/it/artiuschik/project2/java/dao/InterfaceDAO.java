@@ -1,6 +1,10 @@
 package by.it.artiuschik.project2.java.dao;
 import java.util.List;
 
+/**
+ *
+ * @param <TYPE>
+ */
 interface InterfaceDAO<TYPE> {
     TYPE read(int id);
     boolean create(TYPE entity);

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.util.List;
 
-public class CmdLogin extends Action {
+class CmdLogin extends Action {
     @Override
     Action execute(HttpServletRequest req) {
         if (Form.isPost(req)) {
@@ -16,11 +16,7 @@ public class CmdLogin extends Action {
                 user.setLogin(Form.getParameter(req, "Login", Patterns.LOGIN));
                 user.setPassword(Form.getParameter(req, "Password", Patterns.PASSWORD));
                 DAO dao = DAO.getDAO();
-                List<User> users = dao.user.getAll(
-                        String.format("WHERE Login='%s' and Password='%s' LIMIT 0,1",
-                                user.getLogin(),
-                                user.getPassword()
-                        ));
+                List<User> users = dao.user.getAll(user.getLogin(),user.getPassword());
                 if (users.size() == 1) {
                     //user ok. save to session
                     user=users.get(0);

@@ -16,8 +16,8 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
     @Override
     public boolean create(Question question) {
         String createQuestionSQL = String.format(
-                "insert into questions(Text,Subject,Varianta,Variantb,Balls,FK_TEST) values('%s','%s','%s','%s',%d','%d');",
-                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getFK_TEST()
+                "insert into questions(Text,Subject,Varianta,Variantb,Balls,Answer,FK_TEST) values('%s','%s','%s','%s',%d','%d','%d');",
+                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getAnswer(), question.getFK_TEST()
         );
         question.setID(executeUpdate(createQuestionSQL));
         return (question.getID() > 0);
@@ -37,8 +37,8 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
     @Override
     public boolean update(Question question) {
         String updateUserSQL = String.format(
-                "UPDATE questions SET Text = '%s', Subject = '%s', Varianta = '%s', Variantb = '%s', Balls = '%d' ,FK_TEST='%d' WHERE questions.ID = %d",
-                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getFK_TEST(), question.getID()
+                "UPDATE questions SET Text = '%s', Subject = '%s', Varianta = '%s', Variantb = '%s', Balls = '%d' , Answer = '%d' , FK_TEST='%d' WHERE questions.ID = %d",
+                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getAnswer(),question.getFK_TEST(), question.getID()
         );
         return (0 < executeUpdate(updateUserSQL));
     }
@@ -53,7 +53,7 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
     @Override
     public List<Question> getAll(String WHERE) {
         List<Question> questions = new ArrayList<>();
-        String sql = "SELECT * FROM questions " + WHERE + " ;";
+        String sql = String.format("SELECT * FROM questions %s ;",WHERE);
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {

@@ -29,7 +29,6 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="do?command=CreateTest">Создать тест</a></li>
-                    <li><a href="do?command=AddQuestion">Добавить вопрос в тест</a></li>
                     <li><a href="do?command=ShowUsers">Список пользователей</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

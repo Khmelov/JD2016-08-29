@@ -1,5 +1,15 @@
 package by.it.artiuschik.project2.java.shifr;
+
+/**
+ * @author Artischik Elena
+ */
 public class EncoderDecoder {
+    /**
+     *
+     * @param text text to encode
+     * @param keyStr key
+     * @return encoded text
+     */
     public static byte[] encode(String text, String keyStr) {
         byte[] txt = text.getBytes();
         byte[] key = keyStr.getBytes();
@@ -11,6 +21,13 @@ public class EncoderDecoder {
 
         return res;
     }
+
+    /**
+     *
+     * @param text text to decode
+     * @param strKey key
+     * @return decoded text
+     */
     public static String decode(byte[] text, String strKey) {
         byte[] res = new byte[text.length];
         byte[] key = strKey.getBytes();
