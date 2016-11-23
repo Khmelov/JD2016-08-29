@@ -33,8 +33,7 @@ import static java.lang.String.*;
                 String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT , Name VARCHAR(100) NOT NULL , Subject VARCHAR(100) NOT NULL , Questions INT NOT NULL , PRIMARY KEY (ID))","tests");
         statement.executeUpdate(createTableSQL);
         //создание таблицы вопросов
-        createTableSQL =
-                String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT , Text VARCHAR(100) NOT NULL , Subject VARCHAR(100) NOT NULL , Balls INT NOT NULL , FK_TEST INT NOT NULL, PRIMARY KEY (ID))","questions");
+        createTableSQL = String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT , Text VARCHAR(1000) NOT NULL , Subject VARCHAR(100) NOT NULL , Varianta VARCHAR(1000) NOT NULL , Variantb VARCHAR(1000) NOT NULL , Balls INT NOT NULL , Answer INT NOT NULL , FK_TEST INT NOT NULL, PRIMARY KEY (ID))","questions");
         statement.executeUpdate(createTableSQL);
     }
 

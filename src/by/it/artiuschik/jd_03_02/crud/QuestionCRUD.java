@@ -14,8 +14,8 @@ import static by.it.artiuschik.jd_03_02.utils.Updater.executeUpdate;
 public class QuestionCRUD {
     public boolean create(Question question) {
         String createQuestionSQL = String.format(
-                "insert into questions(Text,Subject,Varianta,Variantb,Balls,FK_TEST) values('%s','%s','%s','%s',%d','%d');",
-                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getFK_TEST()
+                "insert into questions(Text,Subject,Varianta,Variantb,Balls,Answer,FK_TEST) values('%s','%s','%s','%s','%d','%d','%d');",
+                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getAnswer(), question.getFK_TEST()
         );
         question.setID(executeUpdate(createQuestionSQL));
         return (question.getID() > 0);
@@ -31,8 +31,8 @@ public class QuestionCRUD {
 
     public boolean update(Question question) {
         String updateUserSQL = String.format(
-                "UPDATE questions SET Text = '%s', Subject = '%s', Varianta = '%s', Variantb = '%s', Balls = '%d' ,FK_TEST='%d' WHERE questions.ID = %d",
-                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getFK_TEST(), question.getID()
+                "UPDATE questions SET Text = '%s', Subject = '%s', Varianta = '%s', Variantb = '%s', Balls = '%d' , Answer = '%d' , FK_TEST='%d' WHERE questions.ID = %d",
+                question.getText(), question.getSubject(), question.getVarianta(), question.getVariantb(), question.getBalls(), question.getAnswer(), question.getFK_TEST(), question.getID()
         );
         return (0 < executeUpdate(updateUserSQL));
     }
@@ -44,7 +44,7 @@ public class QuestionCRUD {
 
     public List<Question> getAll(String WHERE) {
         List<Question> questions = new ArrayList<>();
-        String sql = String.format("SELECT * FROM questions %s ;",WHERE);
+        String sql = "SELECT * FROM questions " + WHERE + " ;";
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {
@@ -52,10 +52,11 @@ public class QuestionCRUD {
             while (rs.next()) {
                 Question question = new Question();
                 question.setVarianta(rs.getString("Varianta"));
-                question.setVariantb(rs.getString("Variantb"));
                 question.setSubject(rs.getString("Subject"));
                 question.setBalls(rs.getInt("Balls"));
                 question.setFK_TEST(rs.getInt("FK_TEST"));
+                question.setAnswer(rs.getInt("Answer"));
+                question.setVariantb(rs.getString("Variantb"));
                 question.setID(rs.getInt("ID"));
                 question.setText(rs.getString("Text"));
                 questions.add(question);

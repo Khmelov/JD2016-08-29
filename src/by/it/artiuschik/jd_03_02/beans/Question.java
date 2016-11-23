@@ -4,7 +4,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Question", propOrder = {
         "ID",
@@ -13,10 +12,10 @@ import javax.xml.bind.annotation.XmlType;
         "Varianta",
         "Variantb",
         "Balls",
+        "Answer",
         "FK_TEST"
 })
 public class Question {
-
     @XmlElement(name = "ID")
     private int ID;
     @XmlElement(name = "Text", required = true)
@@ -29,10 +28,22 @@ public class Question {
     private String Variantb;
     @XmlElement(name = "Balls")
     private int Balls;
+    @XmlElement(name = "Answer")
+    private int Answer;
     @XmlElement(name = "FK_TEST")
     private int FK_TEST;//ID  теста которому принадлежит вопрос
-
     public Question() {
+    }
+
+    public Question(int ID, String text, String subject, String varianta, String variantb, int balls, int answer, int FK_TEST) {
+        this.ID = ID;
+        Text = text;
+        Subject = subject;
+        Varianta = varianta;
+        Variantb = variantb;
+        Balls = balls;
+        Answer = answer;
+        this.FK_TEST = FK_TEST;
     }
 
     public int getID() {
@@ -83,21 +94,19 @@ public class Question {
         Balls = balls;
     }
 
+    public int getAnswer() {
+        return Answer;
+    }
+
+    public void setAnswer(int answer) {
+        Answer = answer;
+    }
+
     public int getFK_TEST() {
         return FK_TEST;
     }
 
     public void setFK_TEST(int FK_TEST) {
-        this.FK_TEST = FK_TEST;
-    }
-
-    public Question(int ID, String text, String subject, String varianta, String variantb, int balls, int FK_TEST) {
-        this.ID = ID;
-        Text = text;
-        Subject = subject;
-        Varianta = varianta;
-        Variantb = variantb;
-        Balls = balls;
         this.FK_TEST = FK_TEST;
     }
 
@@ -107,24 +116,19 @@ public class Question {
         if (o == null || getClass() != o.getClass()) return false;
 
         Question question = (Question) o;
-
-        return ID == question.ID && Balls == question.Balls
-                && FK_TEST == question.FK_TEST
-                && Text.equals(question.Text)
-                && Subject.equals(question.Subject)
-                && Varianta.equals(question.Varianta)
-                && Variantb.equals(question.Variantb);
+        return ID==question.ID&&Balls==question.Balls&&Answer == question.Answer&&FK_TEST == question.FK_TEST && (Text != null ? Text.equals(question.Text) : question.Text == null && (Subject != null ? Subject.equals(question.Subject) : question.Subject == null && (Varianta != null ? Varianta.equals(question.Varianta) : question.Varianta == null && (Variantb != null ? Variantb.equals(question.Variantb) : question.Variantb == null))));
 
     }
 
     @Override
     public int hashCode() {
         int result = ID;
-        result = 31 * result + Text.hashCode();
-        result = 31 * result + Subject.hashCode();
-        result = 31 * result + Varianta.hashCode();
-        result = 31 * result + Variantb.hashCode();
+        result = 31 * result + (Text != null ? Text.hashCode() : 0);
+        result = 31 * result + (Subject != null ? Subject.hashCode() : 0);
+        result = 31 * result + (Varianta != null ? Varianta.hashCode() : 0);
+        result = 31 * result + (Variantb != null ? Variantb.hashCode() : 0);
         result = 31 * result + Balls;
+        result = 31 * result + Answer;
         result = 31 * result + FK_TEST;
         return result;
     }
@@ -138,7 +142,8 @@ public class Question {
                 ", Varianta='" + Varianta + '\'' +
                 ", Variantb='" + Variantb + '\'' +
                 ", Balls=" + Balls +
+                ", Answer=" + Answer +
                 ", FK_TEST=" + FK_TEST +
-                '}' + "\n";
+                '}'+"\n";
     }
 }
