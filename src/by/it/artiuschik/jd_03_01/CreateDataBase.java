@@ -22,8 +22,8 @@ class CreateDataBase {
             connection = DriverManager.getConnection
                     (CN.URL_DB_2, CN.USER_DB, CN.PASSWORD_DB);
             Statement statement = connection.createStatement();
-            statement.executeUpdate("DROP DATABASE IF EXISTS artiuschik");
-            statement.executeUpdate("CREATE DATABASE artiuschik CHARACTER SET utf8 COLLATE utf8_general_ci");
+            statement.executeUpdate(String.format("DROP DATABASE IF EXISTS %s","artiuschik"));
+            statement.executeUpdate(String.format("CREATE DATABASE %s CHARACTER SET %s COLLATE %s","artiuschik","utf8","utf8_general_ci"));
             if (!connection.isClosed())
                 System.out.println("БАЗА ДАННЫХ СОЗДАНА");
             connection = DriverManager.getConnection
@@ -31,7 +31,7 @@ class CreateDataBase {
             if (!connection.isClosed())
                 System.out.println("СОЕДИНЕНИЕ С БАЗОЙ...");
             statement = connection.createStatement();
-            statement.executeUpdate("DROP TABLE IF EXISTS users; ");
+            statement.executeUpdate(String.format("DROP TABLE IF EXISTS %s; ","users"));
             //создание таблицы пользователей
             String createTableSQL = "CREATE TABLE users (ID INT NULL AUTO_INCREMENT ,Name VARCHAR(100) NOT NULL ,Surname VARCHAR(100) NOT NULL ,Password VARCHAR(100) NOT NULL, Login VARCHAR(100) NOT NULL, Tests_amount INT NOT NULL , Balls INT NOT NULL , FK_ROLE INT NOT NULL , PRIMARY KEY (ID))";
             statement.executeUpdate(createTableSQL);
