@@ -33,16 +33,19 @@ class CreateDataBase {
             statement = connection.createStatement();
             statement.executeUpdate(String.format("DROP TABLE IF EXISTS %s; ","users"));
             //создание таблицы пользователей
-            String createTableSQL = "CREATE TABLE users (ID INT NULL AUTO_INCREMENT ,Name VARCHAR(100) NOT NULL ,Surname VARCHAR(100) NOT NULL ,Password VARCHAR(100) NOT NULL, Login VARCHAR(100) NOT NULL, Tests_amount INT NOT NULL , Balls INT NOT NULL , FK_ROLE INT NOT NULL , PRIMARY KEY (ID))";
+            String createTableSQL =
+                    String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT ,Name VARCHAR(100) NOT NULL ,Surname VARCHAR(100) NOT NULL ,Password VARCHAR(100) NOT NULL, Login VARCHAR(100) NOT NULL, Tests_amount INT NOT NULL , Balls INT NOT NULL , FK_ROLE INT NOT NULL , PRIMARY KEY (ID))","users");
             statement.executeUpdate(createTableSQL);
             //создание таблицы ролей
-            createTableSQL = "CREATE TABLE roles (ID INT NULL AUTO_INCREMENT ,Role_name VARCHAR(100) NOT NULL , PRIMARY KEY (ID))";
+            createTableSQL =
+                    String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT ,Role_name VARCHAR(100) NOT NULL , PRIMARY KEY (ID))","roles");
             statement.executeUpdate(createTableSQL);
             //создание таблицы тестов
-            createTableSQL ="CREATE TABLE tests (ID INT NULL AUTO_INCREMENT , Name VARCHAR(100) NOT NULL , Subject VARCHAR(100) NOT NULL , Questions INT NOT NULL , PRIMARY KEY (ID))";
+            createTableSQL =
+                    String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT , Name VARCHAR(100) NOT NULL , Subject VARCHAR(100) NOT NULL , Questions INT NOT NULL , PRIMARY KEY (ID))","tests");
             statement.executeUpdate(createTableSQL);
             //создание таблицы вопросов
-            createTableSQL = "CREATE TABLE questions (ID INT NULL AUTO_INCREMENT , Text VARCHAR(1000) NOT NULL , Subject VARCHAR(100) NOT NULL , Varianta VARCHAR(1000) NOT NULL , Variantb VARCHAR(1000) NOT NULL , Balls INT NOT NULL , Answer INT NOT NULL , FK_TEST INT NOT NULL, PRIMARY KEY (ID))";
+            createTableSQL = String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT , Text VARCHAR(1000) NOT NULL , Subject VARCHAR(100) NOT NULL , Varianta VARCHAR(1000) NOT NULL , Variantb VARCHAR(1000) NOT NULL , Balls INT NOT NULL , Answer INT NOT NULL , FK_TEST INT NOT NULL, PRIMARY KEY (ID))","questions");
             statement.executeUpdate(createTableSQL);
             //заполнение  users
             statement.executeUpdate("INSERT INTO users (ID, Name, Surname, Password, Login, Tests_amount, Balls, FK_ROLE) VALUES (NULL, 'Иван', 'Иванов', '1232', 'ivaniv97', '3', '30', '1')");
