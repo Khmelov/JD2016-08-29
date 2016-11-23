@@ -5,13 +5,13 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TaskB2 {
-    public static int processArray(int n) {
+class TaskB2 {
+    static int processArray(int n) {
         List<Integer> array = new ArrayList<>();
         return process(array, n);
     }
 
-    public static int processLinked(int n) {
+    static int processLinked(int n) {
         List<Integer> linked = new LinkedList<>();
         return process(linked, n);
     }

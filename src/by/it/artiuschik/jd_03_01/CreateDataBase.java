@@ -3,12 +3,12 @@ import com.mysql.fabric.jdbc.FabricMySQLDriver;
 import java.sql.*;
 
 class CreateDataBase {
-    private static String getRole(String id) throws SQLException {
+    private static String getRole(int id) throws SQLException {
         String res = null;
         Connection connection = DriverManager.getConnection
                 (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM roles WHERE ID=" + id);
+        ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM roles WHERE roles.ID=%d ;",id));
         if (resultSet.next())
             res = resultSet.getString("Role_name");
         return res;
@@ -64,7 +64,7 @@ class CreateDataBase {
             //вывод users
             ResultSet resultSet = statement.executeQuery("select * from users;");
             while (resultSet.next()) {
-                String out = resultSet.getString("Name") + ", " + resultSet.getString("Surname") + ", " + getRole(resultSet.getString("FK_ROLE"));
+                String out = resultSet.getString("Name") + ", " + resultSet.getString("Surname") + ", " + getRole(resultSet.getInt("FK_ROLE"));
                 System.out.println(out);
             }
         } catch (SQLException e) {

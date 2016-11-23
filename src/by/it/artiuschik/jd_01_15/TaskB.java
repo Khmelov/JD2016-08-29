@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-/*joijoijo*/
+/*@author Elena*/
 class TaskB {
     /**
      * @param args input params
@@ -28,13 +28,13 @@ class TaskB {
                 sb.append("\n");
             }
             //processing
-            Pattern pattern = Pattern.compile("((\\/((\\*{2})|(\\*))[^\\/]+\\/)|((\\/{2})(.)+))");
+            Pattern pattern;
+            pattern = Pattern.compile("((\\/((\\*{2})|(\\*))[^\\/]+\\/)|((\\/{2})(.)+))");
             Matcher matcher = pattern.matcher(sb);
             int pos = 0;
             while (matcher.find(pos)) {
                 sb.delete(matcher.start(), matcher.end());
                 matcher.reset(sb);
-                //pos = matcher.start();
             }
             System.out.println(sb);
         /*Print results

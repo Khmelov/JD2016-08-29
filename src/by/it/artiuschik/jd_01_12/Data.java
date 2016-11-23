@@ -1,7 +1,7 @@
 package by.it.artiuschik.jd_01_12;
 
 public class Data {
-    final public static String TEXT="THE PICTURE OF DORIAN GRAY                       \n" +
+    final static String TEXT="THE PICTURE OF DORIAN GRAY                       \n" +
             "                                                                            \n" +
             "                                 by Oscar Wilde                             \n" +
             "                                                                            \n" +
@@ -41,5 +41,5 @@ public class Data {
             "he feared he might awake.                                                   \n" +
             "  \"It is your best work, Basil, the best thing you have ever done,\"         \n" +
             "said Lord Henry, languidly.\n";
-    final public static String OBJECT_NAMES="Object1, Object2, Object3, Object4, Object5, Object5, Object6,Object1,Object2";
+    final static String OBJECT_NAMES="Object1, Object2, Object3, Object4, Object5, Object5, Object6,Object1,Object2";
 }

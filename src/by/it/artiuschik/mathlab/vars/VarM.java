@@ -25,7 +25,7 @@ public class VarM extends Var {
 
     @Override
     public void setFrom(String str) {
-        ArrayList<String> rows = new ArrayList();
+        ArrayList<String> rows = new ArrayList<>();
         Pattern p = Pattern.compile(Patterns.exVec);
         Matcher m = p.matcher(str);
         while (m.find()) {
@@ -52,8 +52,8 @@ public class VarM extends Var {
         String prefix;
         if (!(matrix == null)) {
             prefix = "{";
-            for (int i = 0; i < matrix.length; i++) {
-                res.append(prefix).append(new VarV(matrix[i]).toString());
+            for (double[] aMatrix : matrix) {
+                res.append(prefix).append(new VarV(aMatrix).toString());
                 prefix = ",";
             }
             res.append("}");

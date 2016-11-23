@@ -6,10 +6,8 @@ import by.it.artiuschik.jd_02_04.mathlab.vars.VarF;
 import by.it.artiuschik.jd_02_04.mathlab.vars.VarM;
 import by.it.artiuschik.jd_02_04.mathlab.vars.VarV;
 
-
 //операции с  Var
 public class Calculator {
-   //лучше  hashmap  сделать здесь
     public static void assign(String varName, Var var) {
         if (var instanceof VarF) {
             VarFOperations.assign(varName, (VarF) var);
@@ -17,7 +15,7 @@ public class Calculator {
         if (var instanceof VarV) {
             VarVOperations.assign(varName, (VarV) var);
         }
-        if (var instanceof VarF) {
+        if (var instanceof VarM) {
             VarMOperations.assign(varName, (VarM) var);
         }
 
@@ -25,11 +23,11 @@ public class Calculator {
 
     public static Var add(Var v1, Var v2) {
         if (v1 instanceof VarF) {
-            if (v2 instanceof VarF) {
-                return VarFOperations.add((VarF) v1, (VarF) v2);
-            }
             if (v2 instanceof VarV) {
                 return VarFOperations.add((VarF) v1, (VarV) v2);
+            }
+            if (v2 instanceof VarF) {
+                return VarFOperations.add((VarF) v1, (VarF) v2);
             }
             if (v2 instanceof VarM) {
                 new Error("Нельзя сложить вектор и матрицу!");

@@ -19,8 +19,6 @@ public class Main {
         b1.showInfo();
         Book b2=new ReferenceBook("Справочник по грамматике английского языка", 2011, 96, "Английский язык", "Т.В. Митрошкина");
         b2.showInfo();
-        b1=null;
-        b2=b1;
         System.gc();
     }
 

@@ -14,6 +14,7 @@ class Cashier implements Runnable {
     }
 
     public void run() {
+
         while (QueueBuyers.needService()) {
             synchronized (Dispatcher.monitorForSystemOut) {
                 Buyer b = QueueBuyers.extract();

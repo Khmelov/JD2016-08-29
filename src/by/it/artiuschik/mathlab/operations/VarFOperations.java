@@ -4,7 +4,7 @@ import by.it.artiuschik.mathlab.Runner;
 import by.it.artiuschik.mathlab.data.ApplicationData;
 import by.it.artiuschik.mathlab.vars.*;
 //операции с  VarF
-public class VarFOperations {
+class VarFOperations {
     //Присваивание
     public static void assign(String scalarName,VarF scalar)
     {

@@ -5,12 +5,11 @@ import by.it.artiuschik.jd_02_04.mathlab.utils.Parser;
 import by.it.artiuschik.jd_02_04.mathlab.utils.VarsReader;
 import by.it.artiuschik.jd_02_04.mathlab.utils.VarsWriter;
 import by.it.artiuschik.jd_02_04.mathlab.vars.Var;
-import by.it.artiuschik.jd_02_04.mathlab.vars.VarM;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Runner {
+class Runner {
     public static void main(String[] args) {
         try {
             VarsReader.readFromFile("vars.txt");//значения переменных в  hashmap

@@ -10,7 +10,6 @@ public class Dispatcher {
     static AtomicInteger countBuyers=new AtomicInteger(0);//количество покупателей в магазине
     static AtomicInteger countCashiers=new AtomicInteger(0);//количество кассиров в магазине
     static AtomicInteger countOutBuyers=new AtomicInteger(0);//количество обслуженных покупателей
-    static AtomicInteger numberOfBuyer=new AtomicInteger(0);//номер покупателя
     static AtomicInteger numberOfCashier=new AtomicInteger(0);//номер кассира
     static AtomicInteger allCash=new AtomicInteger(0);//выручка магазина
     static AtomicBoolean flag=new AtomicBoolean(false);

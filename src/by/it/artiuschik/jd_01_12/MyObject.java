@@ -1,6 +1,6 @@
 package by.it.artiuschik.jd_01_12;
 
-public class MyObject implements Comparable<MyObject>{
+class MyObject implements Comparable<MyObject>{
     private String objectName;
     private int code;
     MyObject(String name,int code)
@@ -22,7 +22,7 @@ public class MyObject implements Comparable<MyObject>{
         return Integer.compare(code,o.code);
     }
 
-    public String getObjectName() {
+    String getObjectName() {
         return objectName;
     }
 

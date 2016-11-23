@@ -4,7 +4,6 @@ public class Util {
     //поделить строку на слова
     public static String[] words(String str)
     {
-        String[] result=str.split("[^a-zA-Z0-9]+");
-        return result;
+        return str.split("[^a-zA-Z0-9]+");
     }
 }

@@ -72,8 +72,7 @@ public class Test {
 
         Test test = (Test) o;
 
-        if (ID != test.ID) return false;
-        return Questions == test.Questions && Name.equals(test.Name) && Subject.equals(test.Subject);
+        return ID == test.ID && Questions == test.Questions && Name.equals(test.Name) && Subject.equals(test.Subject);
 
     }
 

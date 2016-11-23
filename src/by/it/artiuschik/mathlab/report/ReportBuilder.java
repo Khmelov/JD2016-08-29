@@ -6,7 +6,7 @@ public abstract class ReportBuilder {
         return report;
     }
     void createNewReport(){report=new Report();}
-    public  void setReportFileName(String fileName){
+    void setReportFileName(String fileName){
         report.setPathToFile(fileName);
     }
     public abstract void createReportName();

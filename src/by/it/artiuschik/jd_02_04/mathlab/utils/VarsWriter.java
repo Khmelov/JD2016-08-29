@@ -20,10 +20,4 @@ public class VarsWriter {
             throw new IOException("Not write " + fileName, e);
         }
     }
-
-    public static void writeToConsole() {
-        for (Map.Entry<String, Var> entry : Vars.vars.entrySet()) {
-            System.out.println(entry.getKey() + "=" + entry.getValue());
-        }
-    }
 }

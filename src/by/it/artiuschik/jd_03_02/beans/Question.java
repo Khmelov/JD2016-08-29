@@ -31,6 +31,7 @@ public class Question {
     private int Balls;
     @XmlElement(name = "FK_TEST")
     private int FK_TEST;//ID  теста которому принадлежит вопрос
+
     public Question() {
     }
 
@@ -107,13 +108,12 @@ public class Question {
 
         Question question = (Question) o;
 
-        if (ID != question.ID) return false;
-        if (Balls != question.Balls) return false;
-        if (FK_TEST != question.FK_TEST) return false;
-        if (!Text.equals(question.Text)) return false;
-        if (!Subject.equals(question.Subject)) return false;
-        if (!Varianta.equals(question.Varianta)) return false;
-        return Variantb.equals(question.Variantb);
+        return ID == question.ID && Balls == question.Balls
+                && FK_TEST == question.FK_TEST
+                && Text.equals(question.Text)
+                && Subject.equals(question.Subject)
+                && Varianta.equals(question.Varianta)
+                && Variantb.equals(question.Variantb);
 
     }
 
@@ -139,6 +139,6 @@ public class Question {
                 ", Variantb='" + Variantb + '\'' +
                 ", Balls=" + Balls +
                 ", FK_TEST=" + FK_TEST +
-                '}'+"\n";
+                '}' + "\n";
     }
 }

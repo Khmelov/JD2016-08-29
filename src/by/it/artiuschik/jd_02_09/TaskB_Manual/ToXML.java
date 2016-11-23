@@ -13,7 +13,7 @@ public class ToXML {
             Marshaller m = context.createMarshaller();
             Students st = new Students() { // анонимный класс
                 {
-                    ArrayList<Student.Test.question> questions=new ArrayList();
+                    ArrayList<Student.Test.question> questions=new ArrayList<>();
                     questions.add(new Student.Test.question("easy","Question about functions"));
                     questions.add(new Student.Test.question("medium","Question about polinoms"));
                     questions.add(new Student.Test.question("easy","Question about matrix"));

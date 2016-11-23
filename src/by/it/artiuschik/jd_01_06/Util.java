@@ -5,11 +5,10 @@ import java.util.regex.Pattern;
 
 public class Util {
     //Вставить пробелы в строку
-    static String insertSpacesToString(int number, String str)
-    {
+    static String insertSpacesToString(int number, String str) {
         int index;
-        StringBuilder line=new StringBuilder(str);
-        while(number>0) {
+        StringBuilder line = new StringBuilder(str);
+        while (number > 0) {
             Pattern p = Pattern.compile("\\b[^а-яА-ЯёЁ]+\\b");
             Matcher m = p.matcher(str);
             index = 0;
@@ -21,19 +20,19 @@ public class Util {
                 }
                 index++;
             }
-        str=line.toString();
+            str = line.toString();
         }
 
         return line.toString();
     }
+
     //поделить строку на слова
-    public static String[] words(String str)
-    {
+    static String[] words(String str) {
         return str.split("[^а-яА-ЯёЁ]+");
     }
+
     //найти слово заданной длины
-    static String findWord(String[] words, int length)
-    {
+    static String findWord(String[] words, int length) {
         for (String word : words) {
             if (word.length() == length) {
                 return word;
@@ -42,15 +41,15 @@ public class Util {
         }
         return "";
     }
-    static long timeWin()
-    {
-        long startString=System.currentTimeMillis();
+
+    static long timeWin() {
+        long startString = System.currentTimeMillis();
         TaskC2.createMillionString();
-        long endString=System.currentTimeMillis();
-        long startStringBuilder=System.currentTimeMillis();
+        long endString = System.currentTimeMillis();
+        long startStringBuilder = System.currentTimeMillis();
         TaskC2.createMillionStringBuilder();
-        long endStringBuilder=System.currentTimeMillis();
-        return (endString-startString)-(endStringBuilder-startStringBuilder);
+        long endStringBuilder = System.currentTimeMillis();
+        return (endString - startString) - (endStringBuilder - startStringBuilder);
     }
 
 }

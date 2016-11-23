@@ -2,18 +2,18 @@ package by.it.artiuschik.jd_01_12;
 
 import java.util.HashSet;
 
-public class MyCollect {
-    private HashSet<Integer> integerSet;
+class MyCollect {
+    private HashSet<Integer> integerSet=new HashSet<>();
 
-    public MyCollect() {
+    MyCollect(int... items) {
         integerSet = new HashSet<>();
-    }
-
-    public MyCollect(int... items) {
-        integerSet = new HashSet<>();
-        for (int i = 0; i < items.length; i++) {
-            integerSet.add(items[i]);
+        for (int item : items) {
+            integerSet.add(item);
         }
+    }
+    private MyCollect(HashSet<Integer> items)
+    {
+        integerSet=items;
     }
 
     @Override
@@ -21,26 +21,18 @@ public class MyCollect {
         return integerSet.toString();
     }
 
-    public MyCollect(HashSet integerSet) {
-        this.integerSet = integerSet;
+    static MyCollect getCross(MyCollect a, MyCollect b) {
+        HashSet<Integer> result = new HashSet<>();
+        result.addAll(a.integerSet);
+        result.retainAll(b.integerSet);
+        return new MyCollect(result);
     }
 
-    public static MyCollect getCross(MyCollect a, MyCollect b) {
-        MyCollect cross = getUnion(a, b);
-        HashSet<Integer> s1 = new HashSet(a.integerSet);
-        HashSet<Integer> s2 = new HashSet(b.integerSet);
-        s1.removeAll(b.integerSet);
-        s2.removeAll(a.integerSet);
-        s1.addAll(s2);
-        cross.integerSet.removeAll(s1);
-        return cross;
-    }
-
-    public static MyCollect getUnion(MyCollect a, MyCollect b) {
-        MyCollect union = new MyCollect();
-        union.integerSet.addAll(a.integerSet);
-        union.integerSet.addAll(b.integerSet);
-        return union;
+    static MyCollect getUnion(MyCollect a, MyCollect b) {
+        HashSet<Integer> result = new HashSet<>();
+        result.addAll(a.integerSet);
+        result.addAll(b.integerSet);
+        return new MyCollect(result);
     }
 
 }

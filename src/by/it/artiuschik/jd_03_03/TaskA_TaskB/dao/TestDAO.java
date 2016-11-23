@@ -54,7 +54,7 @@ public class TestDAO extends AbstractDAO implements InterfaceDAO<Test> {
     @Override
     public List<Test> getAll(String WHERE) {
         List<Test> tests = new ArrayList<>();
-        String sql = "SELECT * FROM tests " + WHERE + " ;";
+        String sql = String.format("SELECT * FROM tests %s ;",WHERE);
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {
@@ -72,15 +72,5 @@ public class TestDAO extends AbstractDAO implements InterfaceDAO<Test> {
         }
         return tests;
     }
-    //Получить Test по имени теста
-    public Test getTest(String name)
-    {
-        List<Test> tests = getAll("WHERE Name=" + name + " LIMIT 0,1");
-        if (tests.size() > 0) {
-            return tests.get(0);
-        } else
-            return null;
-    }
-
 
 }

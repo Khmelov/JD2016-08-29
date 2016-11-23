@@ -44,7 +44,7 @@ public class QuestionCRUD {
 
     public List<Question> getAll(String WHERE) {
         List<Question> questions = new ArrayList<>();
-        String sql = "SELECT * FROM questions " + WHERE + " ;";
+        String sql = String.format("SELECT * FROM questions %s ;",WHERE);
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {

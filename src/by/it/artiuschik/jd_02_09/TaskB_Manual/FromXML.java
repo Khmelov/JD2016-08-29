@@ -16,9 +16,7 @@ public class FromXML {
             Students students = (Students) u.unmarshal(reader);
             System.out.println(students);
 
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
+        } catch (JAXBException | FileNotFoundException e) {
             e.printStackTrace();
         }
     }

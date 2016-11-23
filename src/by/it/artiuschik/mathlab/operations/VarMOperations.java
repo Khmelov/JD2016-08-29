@@ -6,7 +6,7 @@ import by.it.artiuschik.mathlab.errors.Error;
 import by.it.artiuschik.mathlab.vars.*;
 
 //операции с  VarM
-public class VarMOperations {
+class VarMOperations {
     //Присваивание
     public static void assign(String matrixName,VarM matrix)
     {
@@ -34,7 +34,7 @@ public class VarMOperations {
 
     //Сложить матрицу с вектором
     public static Var add(VarM v1, VarV v2) {
-        new Error("Сложение невозможно");
+        new Error("Операция "+v1.toString()+"+"+v2.toString()+ " невозможна!");
         return null;
     }
 
@@ -122,13 +122,14 @@ public class VarMOperations {
     //--------------Деление
     //матрица на матрицу
     public static Var div(VarM v1, VarM v2) {
-        new Error("Операция невозможна!");
+        new Error("Операция "+v1.toString()+"/"+v2.toString()+ " невозможна!");
         return null;
     }
 
     //матрица на вектор
     public static Var div(VarM v1, VarV v2) {
-        new Error("Операция невозможна!");
+        new Error("Операция "+v1.toString()+"/"+v2.toString()+ " невозможна!");
+
         return null;
     }
 

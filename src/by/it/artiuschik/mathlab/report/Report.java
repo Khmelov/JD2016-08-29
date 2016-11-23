@@ -8,17 +8,16 @@ public class Report {
     private String end = new Date().toString();
     private HashMap<String, String> operationsResults = null;
     private String pathToFile;
-    public void setPathToFile(String fileName) {
+    void setPathToFile(String fileName) {
         String src = System.getProperty("user.dir");
-        String path = src + "/src/by/it/artiuschik/mathlab/out/"+fileName;
-        pathToFile = path;
+        pathToFile = src + "/src/by/it/artiuschik/mathlab/out/"+fileName;
     }
 
-    public String getPathToFile() {
+    String getPathToFile() {
         return pathToFile;
     }
 
-    public void setReportName(String reportName) {
+    void setReportName(String reportName) {
         this.reportName = reportName;
     }
 
@@ -30,12 +29,8 @@ public class Report {
         this.end = end;
     }
 
-    public void setOperationsResults(HashMap<String, String> operationsResults) {
+    void setOperationsResults(HashMap<String, String> operationsResults) {
         this.operationsResults = operationsResults;
-    }
-
-    public String getReportName() {
-        return reportName;
     }
 
     public String getStart() {
@@ -46,7 +41,7 @@ public class Report {
         return end;
     }
 
-    public HashMap<String, String> getOperationsResults() {
+    HashMap<String, String> getOperationsResults() {
         return operationsResults;
     }
 }
