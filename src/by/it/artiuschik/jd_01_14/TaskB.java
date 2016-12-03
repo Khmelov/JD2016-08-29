@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TaskB {
-    public static int numberOfPunctuation(String text)
+    static int numberOfPunctuation(String text)
     {
         int counter=0;
         Pattern p= Pattern.compile("[\\\\p{Punkt}]");
@@ -20,7 +20,7 @@ public class TaskB {
         return counter;
     }
 
-    public static String readText(String fn) {
+    static String readText(String fn) {
         StringBuilder sb=new StringBuilder();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fn))) {
             String line;
@@ -37,7 +37,7 @@ public class TaskB {
         return sb.toString();
     }
 
-    public static int numberOfWords(String text)
+    static int numberOfWords(String text)
     {
         int counter=0;
         Pattern p= Pattern.compile("\\b[а-яА-ЯёЁa-zA-Z]+\\b");

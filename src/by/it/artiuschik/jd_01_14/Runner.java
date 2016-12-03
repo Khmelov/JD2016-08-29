@@ -19,16 +19,19 @@ public class Runner {
         File file=new File("./src/by/it");
         System.out.println(file.getCanonicalPath());
         System.out.println("---Файлы----");
-        for (int i = 0; i < file.listFiles().length; i++) {
-            if (file.listFiles()[i].isFile()) {
-                System.out.println(file.list()[i]);
-            }
-        }
-        System.out.println("----Каталоги----");
-            for (int i = 0; i < file.listFiles().length; i++) {
-                if(file.listFiles()[i].isDirectory()) {
-                    System.out.println(file.list()[i] + "   ");
+        File[] files=file.listFiles();
+        if (files != null) {
+            for (File currentFile : files) {
+                if (currentFile.isFile()) {
+                    System.out.println(currentFile);
                 }
+            }
+            System.out.println("----Каталоги----");
+            for (File currentFile : files) {
+                if (currentFile.isDirectory()) {
+                    System.out.println(currentFile + "   ");
+                }
+            }
         }
 
     }

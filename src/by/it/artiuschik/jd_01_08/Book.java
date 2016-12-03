@@ -20,14 +20,6 @@ abstract class Book implements IEdition {
         System.arraycopy(authors, 0, this.authors, 0, authors.length);
     }
 
-    Book() {
-        this.authors = null;
-        this.name = "unknown";
-        this.year = 0;
-        this.pages = 0;
-
-    }
-
     public String getName() {
         return name;
     }
@@ -72,11 +64,19 @@ abstract class Book implements IEdition {
         Calendar calendar = new GregorianCalendar();
         return calendar.get(Calendar.YEAR) - year;
     }
+
     @Override
     public void showInfo() {
+        String string = "";
+        if (!(isOpened && reading)) {
+            string = "не";
+        }
         System.out.println("Информация о книге");
         System.out.println("Название: " + this.name);
         System.out.println("Год издания: " + this.year);
+        System.out.println("Количество страниц: " + this.pages);
+        System.out.println("Книгу " + string + " читают");
+        System.out.println("Книга " + string + " открыта");
         System.out.print("Авторы: ");
         for (String author : authors) {
             System.out.print(author + " ");

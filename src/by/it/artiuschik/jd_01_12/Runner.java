@@ -33,9 +33,9 @@ public class Runner {
         TaskB2.processLinked(5);
         end=System.nanoTime();
         System.out.println("LinkedList time="+(end-start));
-        //TaskC1
-        System.out.println(TaskC1.buildList(by.it.artiuschik.jd_01_12.Data.OBJECT_NAMES));
-        System.out.println(TaskC1.deleteEqual(TaskC1.buildList(Data.OBJECT_NAMES)));
+        //TaskC1_C2
+        System.out.println(TaskC1_C2.buildList(Data.OBJECT_NAMES));
+        System.out.println(TaskC1_C2.deleteEqual(TaskC1_C2.buildList(Data.OBJECT_NAMES)));
         //TaskC2
         MyGeneralCollect<Character> collect1=new MyGeneralCollect<>('q','r','u','c','a');
         MyGeneralCollect<Character> collect2=new MyGeneralCollect<>('a','b','c','d');

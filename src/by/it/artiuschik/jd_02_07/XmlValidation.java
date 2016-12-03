@@ -20,12 +20,12 @@ public class XmlValidation {
         SchemaFactory factory = SchemaFactory.newInstance(language);
         File schemaLocation = new File(schemaName);
         try {
+            Source source = new StreamSource(fileName);
             // создание схемы
             Schema schema = factory.newSchema(schemaLocation);
             // создание валидатора на основе схемы
             Validator validator = schema.newValidator();
             // проверка документа
-            Source source = new StreamSource(fileName);
             validator.validate(source);
             System.out.println(fileName + " валиден.");
         } catch (SAXException e) {

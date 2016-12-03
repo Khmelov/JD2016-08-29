@@ -17,7 +17,6 @@ public class VarV extends Var {
         if (!str.equals("")) {
             setFrom(str);
         } else {
-            //new by.it.artiuschik.jd_01_09.mathlab.errors.Error("В конструктор передана пустая строка!");
             new Error("В конструктор передана пустая строка!");
         }
     }
@@ -33,21 +32,10 @@ public class VarV extends Var {
         return res.append("}").toString();
     }
 
-    /*@Override
     public void setFrom(String str) {
-        int counter = 0;
-        String[] mas = str.split(",");
-        value = new double[mas.length];
-        Pattern p = Pattern.compile(Patterns.exVal);
-        Matcher m = p.matcher(str);
-        while (m.find()) {
-            value[counter] = Double.parseDouble(m.group());
-            counter++;
-        }
-    }*/
-    public void setFrom(String str) {
-        String[] elem=str.split(",");
-        value=new double[elem.length];
+        String[] coords=str.split(",");
+        int coordsAmount=coords.length;
+        value=new double[coordsAmount];
         Matcher m=Pattern.compile(Patterns.exVal).matcher(str);
         int i=0;
         while (m.find()) {

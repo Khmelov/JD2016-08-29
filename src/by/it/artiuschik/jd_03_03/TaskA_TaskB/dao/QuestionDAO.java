@@ -74,12 +74,5 @@ public class QuestionDAO extends AbstractDAO implements InterfaceDAO<Question> {
         }
         return questions;
     }
-    public List<Question> getTestQuestions(int testId) {
-        List<Question> questions = getAll("WHERE FK_TEST=" + testId);
-        if (questions.size() > 0) {
-            return questions;
-        } else
-            return null;
-    }
 
 }

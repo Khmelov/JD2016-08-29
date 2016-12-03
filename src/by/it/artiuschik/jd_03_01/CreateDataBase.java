@@ -3,12 +3,12 @@ import com.mysql.fabric.jdbc.FabricMySQLDriver;
 import java.sql.*;
 
 class CreateDataBase {
-    private static String getRole(String id) throws SQLException {
+    private static String getRole(int id) throws SQLException {
         String res = null;
         Connection connection = DriverManager.getConnection
                 (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM roles WHERE ID=" + id);
+        ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM roles WHERE roles.ID=%d ;",id));
         if (resultSet.next())
             res = resultSet.getString("Role_name");
         return res;
@@ -22,8 +22,8 @@ class CreateDataBase {
             connection = DriverManager.getConnection
                     (CN.URL_DB_2, CN.USER_DB, CN.PASSWORD_DB);
             Statement statement = connection.createStatement();
-            statement.executeUpdate("DROP DATABASE IF EXISTS artiuschik");
-            statement.executeUpdate("CREATE DATABASE artiuschik CHARACTER SET utf8 COLLATE utf8_general_ci");
+            statement.executeUpdate(String.format("DROP DATABASE IF EXISTS %s","artiuschik"));
+            statement.executeUpdate(String.format("CREATE DATABASE %s CHARACTER SET %s COLLATE %s","artiuschik","utf8","utf8_general_ci"));
             if (!connection.isClosed())
                 System.out.println("БАЗА ДАННЫХ СОЗДАНА");
             connection = DriverManager.getConnection
@@ -31,18 +31,21 @@ class CreateDataBase {
             if (!connection.isClosed())
                 System.out.println("СОЕДИНЕНИЕ С БАЗОЙ...");
             statement = connection.createStatement();
-            statement.executeUpdate("DROP TABLE IF EXISTS users; ");
+            statement.executeUpdate(String.format("DROP TABLE IF EXISTS %s; ","users"));
             //создание таблицы пользователей
-            String createTableSQL = "CREATE TABLE users (ID INT NULL AUTO_INCREMENT ,Name VARCHAR(100) NOT NULL ,Surname VARCHAR(100) NOT NULL ,Password VARCHAR(100) NOT NULL, Login VARCHAR(100) NOT NULL, Tests_amount INT NOT NULL , Balls INT NOT NULL , FK_ROLE INT NOT NULL , PRIMARY KEY (ID))";
+            String createTableSQL =
+                    String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT ,Name VARCHAR(100) NOT NULL ,Surname VARCHAR(100) NOT NULL ,Password VARCHAR(100) NOT NULL, Login VARCHAR(100) NOT NULL, Tests_amount INT NOT NULL , Balls INT NOT NULL , FK_ROLE INT NOT NULL , PRIMARY KEY (ID))","users");
             statement.executeUpdate(createTableSQL);
             //создание таблицы ролей
-            createTableSQL = "CREATE TABLE roles (ID INT NULL AUTO_INCREMENT ,Role_name VARCHAR(100) NOT NULL , PRIMARY KEY (ID))";
+            createTableSQL =
+                    String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT ,Role_name VARCHAR(100) NOT NULL , PRIMARY KEY (ID))","roles");
             statement.executeUpdate(createTableSQL);
             //создание таблицы тестов
-            createTableSQL ="CREATE TABLE tests (ID INT NULL AUTO_INCREMENT , Name VARCHAR(100) NOT NULL , Subject VARCHAR(100) NOT NULL , Questions INT NOT NULL , PRIMARY KEY (ID))";
+            createTableSQL =
+                    String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT , Name VARCHAR(100) NOT NULL , Subject VARCHAR(100) NOT NULL , Questions INT NOT NULL , PRIMARY KEY (ID))","tests");
             statement.executeUpdate(createTableSQL);
             //создание таблицы вопросов
-            createTableSQL = "CREATE TABLE questions (ID INT NULL AUTO_INCREMENT , Text VARCHAR(1000) NOT NULL , Subject VARCHAR(100) NOT NULL , Varianta VARCHAR(1000) NOT NULL , Variantb VARCHAR(1000) NOT NULL , Balls INT NOT NULL , Answer INT NOT NULL , FK_TEST INT NOT NULL, PRIMARY KEY (ID))";
+            createTableSQL = String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT , Text VARCHAR(1000) NOT NULL , Subject VARCHAR(100) NOT NULL , Varianta VARCHAR(1000) NOT NULL , Variantb VARCHAR(1000) NOT NULL , Balls INT NOT NULL , Answer INT NOT NULL , FK_TEST INT NOT NULL, PRIMARY KEY (ID))","questions");
             statement.executeUpdate(createTableSQL);
             //заполнение  users
             statement.executeUpdate("INSERT INTO users (ID, Name, Surname, Password, Login, Tests_amount, Balls, FK_ROLE) VALUES (NULL, 'Иван', 'Иванов', '1232', 'ivaniv97', '3', '30', '1')");
@@ -64,7 +67,7 @@ class CreateDataBase {
             //вывод users
             ResultSet resultSet = statement.executeQuery("select * from users;");
             while (resultSet.next()) {
-                String out = resultSet.getString("Name") + ", " + resultSet.getString("Surname") + ", " + getRole(resultSet.getString("FK_ROLE"));
+                String out = resultSet.getString("Name") + ", " + resultSet.getString("Surname") + ", " + getRole(resultSet.getInt("FK_ROLE"));
                 System.out.println(out);
             }
         } catch (SQLException e) {

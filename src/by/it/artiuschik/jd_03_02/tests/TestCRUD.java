@@ -24,7 +24,7 @@ public class TestCRUD {
         ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
         if (resultSet.next())
             user.setID(resultSet.getInt(1));
-        assertTrue("Не работает Create()", user.equals(userCRUD.create(user)));
+        assertTrue("Не работает Create()", userCRUD.create(user));
     }
 
     @Test
@@ -32,7 +32,7 @@ public class TestCRUD {
         Connection connection = ConnectionCreator.getConnection();
         Statement statement = connection.createStatement();
         String createUserSQL = String.format(
-                "insert into users(Name,Surname,Password,Tests_amount,Balls,FK_ROLE) values('%s','%s','%d','%d','%d','%d');",
+                "insert into users(Name,Surname,Password,Tests_amount,Balls,FK_ROLE) values('%s','%s','%s','%d','%d','%d');",
                 user.getName(), user.getSurname(), user.getPassword(), user.getTests_amount(), user.getBalls(), user.getFK_ROLE()
         );
         statement.executeUpdate(createUserSQL);
@@ -47,7 +47,7 @@ public class TestCRUD {
         Connection connection = ConnectionCreator.getConnection();
         Statement statement = connection.createStatement();
         String createUserSQL = String.format(
-                "insert into users(Name,Surname,Password,Tests_amount,Balls,FK_ROLE) values('%s','%s','%d','%d','%d','%d');",
+                "insert into users(Name,Surname,Password,Tests_amount,Balls,FK_ROLE) values('%s','%s','%s','%d','%d','%d');",
                 user.getName(), user.getSurname(), user.getPassword(), user.getTests_amount(), user.getBalls(), user.getFK_ROLE()
         );
         statement.executeUpdate(createUserSQL);
@@ -63,7 +63,7 @@ public class TestCRUD {
         Connection connection = ConnectionCreator.getConnection();
         Statement statement = connection.createStatement();
         String createUserSQL = String.format(
-                "insert into users(Name,Surname,Password,Tests_amount,Balls,FK_ROLE) values('%s','%s','%d','%d','%d','%d');",
+                "insert into users(Name,Surname,Password,Tests_amount,Balls,FK_ROLE) values('%s','%s','%s','%d','%d','%d');",
                 user.getName(), user.getSurname(), user.getPassword(), user.getTests_amount(), user.getBalls(), user.getFK_ROLE()
         );
         statement.executeUpdate(createUserSQL);
@@ -72,7 +72,7 @@ public class TestCRUD {
         int id = resultSet.getInt(1);
         user.setID(id);
         user.setSurname("Иванова");
-        assertTrue("Не работает update()", userCRUD.update(user) != false);
+        assertTrue("Не работает update()", userCRUD.update(user));
     }
 
 }

@@ -42,7 +42,7 @@ public class RoleCRUD {
     }
     public List<Role> getAll(String WHERE) {
         List<Role> roles = new ArrayList<>();
-        String sql = "SELECT * FROM roles " + WHERE + " ;";
+        String sql = String.format("SELECT * FROM roles %s ;",WHERE);
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {

@@ -3,8 +3,8 @@ package by.it.artiuschik.jd_01_12;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TaskB1 {
-    public static void wordFrequency(String text) {
+class TaskB1 {
+    static void wordFrequency(String text) {
         HashMap<String, Integer> wordFrequency = new HashMap<>();
         String[] words = by.it.artiuschik.jd_01_12.Util.words(text);
         for (String word : words) {

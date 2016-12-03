@@ -40,7 +40,7 @@ public class UserCRUD {
         }
         public List<User> getAll(String WHERE) {
             List<User> users = new ArrayList<>();
-            String sql = "SELECT * FROM users " + WHERE + " ;";
+            String sql = String.format("SELECT * FROM users %s ;",WHERE);
             try (Connection connection = ConnectionCreator.getConnection();
                  Statement statement = connection.createStatement()
             ) {

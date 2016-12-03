@@ -13,9 +13,7 @@ public class Runner {
             //From JSON to XML
             FromJSONToXML.fromPOJOToXML(FromJSONToXML.fromJSONToPOJO(json),path+"StudentsNew.xml");
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (JAXBException e) {
+        } catch (FileNotFoundException | JAXBException e) {
             e.printStackTrace();
         }
     }

@@ -17,24 +17,23 @@ import java.util.List;
 
 import static java.lang.String.*;
 
-public class AdditionalDBOperations {
+ class AdditionalDBOperations {
     private static void createAllTables(Connection connection) throws SQLException {
         Statement statement = connection.createStatement();
         //создание таблицы пользователей
         String createTableSQL =
-                String.format("CREATE TABLE users (ID INT NULL AUTO_INCREMENT ,Name VARCHAR(100) NOT NULL ,Surname VARCHAR(100) NOT NULL ,Password VARCHAR(100) NOT NULL, Login VARCHAR(100) NOT NULL, Tests_amount INT NOT NULL , Balls INT NOT NULL , FK_ROLE INT NOT NULL , PRIMARY KEY (ID))");
+                String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT ,Name VARCHAR(100) NOT NULL ,Surname VARCHAR(100) NOT NULL ,Password VARCHAR(100) NOT NULL, Login VARCHAR(100) NOT NULL, Tests_amount INT NOT NULL , Balls INT NOT NULL , FK_ROLE INT NOT NULL , PRIMARY KEY (ID))","users");
         statement.executeUpdate(createTableSQL);
         //создание таблицы ролей
         createTableSQL =
-                String.format("CREATE TABLE roles (ID INT NULL AUTO_INCREMENT ,Role_name VARCHAR(100) NOT NULL , PRIMARY KEY (ID))");
+                String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT ,Role_name VARCHAR(100) NOT NULL , PRIMARY KEY (ID))","roles");
         statement.executeUpdate(createTableSQL);
         //создание таблицы тестов
         createTableSQL =
-                String.format("CREATE TABLE tests (ID INT NULL AUTO_INCREMENT , Name VARCHAR(100) NOT NULL , Subject VARCHAR(100) NOT NULL , Questions INT NOT NULL , PRIMARY KEY (ID))");
+                String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT , Name VARCHAR(100) NOT NULL , Subject VARCHAR(100) NOT NULL , Questions INT NOT NULL , PRIMARY KEY (ID))","tests");
         statement.executeUpdate(createTableSQL);
         //создание таблицы вопросов
-        createTableSQL =
-                String.format("CREATE TABLE questions (ID INT NULL AUTO_INCREMENT , Text VARCHAR(100) NOT NULL , Subject VARCHAR(100) NOT NULL , Balls INT NOT NULL , FK_TEST INT NOT NULL, PRIMARY KEY (ID))");
+        createTableSQL = String.format("CREATE TABLE %s (ID INT NULL AUTO_INCREMENT , Text VARCHAR(1000) NOT NULL , Subject VARCHAR(100) NOT NULL , Varianta VARCHAR(1000) NOT NULL , Variantb VARCHAR(1000) NOT NULL , Balls INT NOT NULL , Answer INT NOT NULL , FK_TEST INT NOT NULL, PRIMARY KEY (ID))","questions");
         statement.executeUpdate(createTableSQL);
     }
 
@@ -42,19 +41,19 @@ public class AdditionalDBOperations {
         Statement statement = connection.createStatement();
         //Удаление таблицы ролей
         String deleteTableSQL =
-                format("DROP TABLE IF EXISTS users ");
+                format("DROP TABLE IF EXISTS %s ","users");
         statement.executeUpdate(deleteTableSQL);
         //Удаление таблицы пользователей
         deleteTableSQL =
-                format("DROP TABLE IF EXISTS roles ");
+                format("DROP TABLE IF EXISTS %s ","roles");
         statement.executeUpdate(deleteTableSQL);
         //Удаление таблицы вопросов
         deleteTableSQL =
-                format("DROP TABLE IF EXISTS questions ");
+                format("DROP TABLE IF EXISTS %s ","questions");
         statement.executeUpdate(deleteTableSQL);
         //Удаление таблицы тестов
         deleteTableSQL =
-                format("DROP TABLE IF EXISTS tests ");
+                format("DROP TABLE IF EXISTS %s ","tests");
         statement.executeUpdate(deleteTableSQL);
     }
 
@@ -111,18 +110,10 @@ public class AdditionalDBOperations {
                     "/xml/Roles.xml");
             Roles rs = (Roles) u.unmarshal(fileReader);
             roles = rs.getRole();
-            for (User user : users) {
-                userCRUD.create(user);
-            }
-            for (Role role : roles) {
-                roleCRUD.create(role);
-            }
-            for (Test test : tests) {
-                testCRUD.create(test);
-            }
-            for (Question question : questions) {
-                questionCRUD.create(question);
-            }
+            users.forEach(userCRUD::create);
+            roles.forEach(roleCRUD::create);
+            tests.forEach(testCRUD::create);
+            questions.forEach(questionCRUD::create);
         } catch (JAXBException  | FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -138,7 +129,7 @@ public class AdditionalDBOperations {
     }
 
     //данные для перезаполнения через XML
-    public static void resetXML() throws SQLException {
+    static void resetXML() throws SQLException {
         Connection connection = ConnectionCreator.getConnection();
         deleteAllTables(connection);
         createAllTables(connection);

@@ -10,14 +10,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-public class FromJSONToXML {
+class FromJSONToXML {
     static Students fromJSONToPOJO(String json) {
         Gson gson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
-        Students students = gson.fromJson(json, Students.class);
-        return students;
+        return gson.fromJson(json, Students.class);
     }
 
-    public static void fromPOJOToXML(Students students, String XMLPath) throws JAXBException, FileNotFoundException {
+    static void fromPOJOToXML(Students students, String XMLPath) throws JAXBException, FileNotFoundException {
         JAXBContext context = JAXBContext.newInstance(Students.class);
         Marshaller m = context.createMarshaller();
         Students st = new Students() {

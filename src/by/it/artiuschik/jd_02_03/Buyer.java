@@ -3,7 +3,7 @@ package by.it.artiuschik.jd_02_03;
 import java.util.HashMap;
 import java.util.Map;
 
-class Buyer implements Runnable, IBuyer, IBacket {
+class Buyer implements Runnable, IBuyer, IBucket {
     private int number;//номер покупателя
     private String name;//имя
     private boolean isPensioneer = false;
@@ -76,17 +76,12 @@ class Buyer implements Runnable, IBuyer, IBacket {
             Helper.sleep(Helper.rnd(500, 2000));
             String goodName = Goods.random();
             goods.put(goodName, Goods.getTable().get(goodName));
-            putGoodsToBacket();
+            putGoodsToBucket();
         }
     }
 
     @Override
-    public void takeBacket() {
-        Helper.sleep(Helper.rnd(100, 200));
-    }
-
-    @Override
-    public void putGoodsToBacket() {
+    public void putGoodsToBucket() {
         Helper.sleep(Helper.rnd(100, 200));
     }
 

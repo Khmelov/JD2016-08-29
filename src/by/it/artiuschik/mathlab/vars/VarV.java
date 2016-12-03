@@ -17,7 +17,6 @@ public class VarV extends Var {
         if (!str.equals("")) {
             setFrom(str);
         } else {
-            //new by.it.artiuschik.jd_01_09.mathlab.errors.Error("В конструктор передана пустая строка!");
             new Error("В конструктор передана пустая строка!");
         }
     }
@@ -34,7 +33,8 @@ public class VarV extends Var {
     }
     public void setFrom(String str) {
         String[] elem=str.split(",");
-        value=new double[elem.length];
+        int coordAmount=elem.length;
+        value=new double[coordAmount];
         Matcher m=Pattern.compile(Patterns.exVal).matcher(str);
         int i=0;
         while (m.find()) {

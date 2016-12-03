@@ -5,7 +5,7 @@ import by.it.artiuschik.mathlab.data.ApplicationData;
 import by.it.artiuschik.mathlab.errors.Error;
 import by.it.artiuschik.mathlab.vars.*;
 
-public class VarVOperations {
+class VarVOperations {
     //Присваивание
     public static void assign(String vectorName, VarV vector) {
         ApplicationData.vars.put(vectorName, vector);
@@ -28,7 +28,8 @@ public class VarVOperations {
 
     //Сложить вектор с матрицей
     public static Var add(VarV v1, VarM v2) throws Exception {
-        throw new Exception("Сложение невозможно");
+        new Error("Операция "+v1.toString()+"+"+v2.toString()+ " невозможна!");
+        return null;
     }
 
     //сложить вектор с числом
@@ -53,13 +54,14 @@ public class VarVOperations {
             Runner.logger.writeToLogfile("Вычитание векторов", "log.txt");
             return result;
         }
-        new Exception("Нельзя вычесть векторы разной длины!");
+        new Error("Нельзя вычесть векторы разной длины!");
         return null;
     }
 
     //Вычесть из  вектора с матрицу
     public static Var sub(VarV v1, VarM v2) throws Exception {
-        new Exception("Вычитание невозможно");
+        new Error("Операция "+v1.toString()+"-"+v2.toString()+ " невозможна!");
+
         return null;
     }
 
@@ -92,7 +94,8 @@ public class VarVOperations {
 
     //вектор на матрицу
     public static Var mul(VarV v1, VarM v2) {
-        new Error("Нельзя умножить вектор на матрицу!");
+        new Error("Операция "+v1.toString()+"*"+v2.toString()+ " невозможна!");
+
         return null;
     }
 
@@ -109,13 +112,13 @@ public class VarVOperations {
     //--------------Деление
     //вектор на вектор
     public static Var div(VarV v1, VarV v2) {
-        new Error("Операция невозможна!");
+        new Error("Операция "+v1.toString()+"/"+v2.toString()+ " невозможна!");
         return null;
     }
 
     //вектор на матрицу
     public static Var div(VarV v1, VarM v2) {
-        new Error("Операция невозможна!");
+        new Error("Операция "+v1.toString()+"/"+v2.toString()+ " невозможна!");
         return null;
     }
 

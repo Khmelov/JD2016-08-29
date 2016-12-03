@@ -8,9 +8,7 @@ public class Runner {
         try {
             GenericDAO<User> dao = new GenericDAO<>(new User(), "users");
             System.out.println("\nСписок всех записей:");
-            for (User current : dao.getAll("")) {
-                System.out.println(current);
-            }
+            dao.getAll("").forEach(System.out::println);
         }
         catch(SQLException e)
         {

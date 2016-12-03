@@ -119,12 +119,7 @@ public class Question {
 
         Question question = (Question) o;
 
-        if (ID != question.ID) return false;
-        if (Balls != question.Balls) return false;
-        if (Answer != question.Answer) return false;
-        if (FK_TEST != question.FK_TEST) return false;
-        if (Text != null ? !Text.equals(question.Text) : question.Text != null) return false;
-        return Subject != null ? Subject.equals(question.Subject) : question.Subject == null && (Varianta != null ? Varianta.equals(question.Varianta) : question.Varianta == null && (Variantb != null ? Variantb.equals(question.Variantb) : question.Variantb == null));
+        return ID == question.ID && Balls == question.Balls && Answer == question.Answer && FK_TEST == question.FK_TEST && (Text != null ? Text.equals(question.Text) : question.Text == null && (Subject != null ? Subject.equals(question.Subject) : question.Subject == null && (Varianta != null ? Varianta.equals(question.Varianta) : question.Varianta == null && (Variantb != null ? Variantb.equals(question.Variantb) : question.Variantb == null))));
 
     }
 

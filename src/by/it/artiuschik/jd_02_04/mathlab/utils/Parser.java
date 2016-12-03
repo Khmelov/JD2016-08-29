@@ -16,10 +16,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
-    private Var result;
     private final String[] levelOperation = {"=", "+", "-", "*", "/"};   //таблица приоритетов операций
     //= имеет приоритет 0, + имеет приоритет 1, - имеет приоритет 2...
-    //private ArrayList<String> strVar = new ArrayList<>();                  //переменные
     private ArrayList<String> strVar = new ArrayList<>();                  //переменные
     private ArrayList<String> operation = new ArrayList<>();               //операции
 
@@ -31,15 +29,6 @@ public class Parser {
                 result = j;
         }
         return result;
-    }
-
-    private void debug() {
-        System.out.print("debug: " + strVar.get(0));
-        int i = 0;
-        for (String op : operation) {
-            System.out.print(op + strVar.get(++i));
-        }
-        System.out.println();
     }
 
     private int findOpNumber() { //ищет самую приоритетную операцию (ее номер в массиве)
@@ -116,26 +105,26 @@ public class Parser {
             for (int i = 0; i < str.length(); i++) {//проход по всем символам строки
                 char c = str.charAt(i);
                 switch (c) {
-                    case '(':
-                    case '{':
                     case '[':
+                    case '{':
+                    case '(':
                         bracketsStack.push(c);
                         break;
                 /*как только встретили закрывающую скобку-проверяем была ли перед ней
                 открывающая-она должна быть на верхушке стека
                  */
-                    case ')':
-                        if (bracketsStack.pop() != '(') {
+                    case ']':
+                        if (bracketsStack.pop() != '[') {
                             return false;
                         }
                         break;
                     case '}':
-                        if (bracketsStack.pop().charValue() != '{') {
+                        if (bracketsStack.pop() != '{') {
                             return false;
                         }
                         break;
-                    case ']':
-                        if (bracketsStack.pop().charValue() != ']') {
+                    case ')':
+                        if (bracketsStack.pop() != '(') {
                             return false;
                         }
                         break;
@@ -151,9 +140,9 @@ public class Parser {
         //временная замена минусов на свой вариант
         //A=6*-4
         str = str.replaceAll("\\+-", "+MINUS");
+        str = str.replaceAll("/-", "/MINUS");
         str = str.replaceAll("\\*-", "*MINUS");
         str = str.replaceAll("--", "-MINUS");
-        str = str.replaceAll("/-", "/MINUS");
 
         //удаление всех пробелов и пробельных символов
         str = str.replaceAll("\\s", "");
@@ -178,14 +167,12 @@ public class Parser {
 
         while (operation.size() > 0) {
             int i = findOpNumber(); //нашли наиболее высокоприоритетную операцию
-            //debug();
             oneOperation(i); //выполнили ее
         }
 
         //операций больше нет. возвращаем итог расчетов
-        result = parseOneVar(strVar.get(0));
 
-        return result;
+        return parseOneVar(strVar.get(0));
     }
 
     public Var calc(String str) throws IncorrectBracketsException {
@@ -194,8 +181,8 @@ public class Parser {
             Pattern p = Pattern.compile(Patterns.innerBrackets);
             Matcher m = p.matcher(sb);
             while (m.find()) {
-                int start = m.start();
                 int end = m.end();
+                int start = m.start();
                 String s = m.group();
                 String strWithoutBr = s.replaceAll("[\\(\\)]", "");
                 sb.delete(start, end);

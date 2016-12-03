@@ -6,10 +6,6 @@ public class Director {
     {
         this.reportBuilder=reportBuilder;
     }
-    public Report getReportBuilder()
-    {
-        return reportBuilder.getReport();
-    }
     public void constructReport(String fileName)
     {
         reportBuilder.setReportFileName(fileName);

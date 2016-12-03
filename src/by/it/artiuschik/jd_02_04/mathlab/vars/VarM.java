@@ -1,9 +1,6 @@
 package by.it.artiuschik.jd_02_04.mathlab.vars;
-
-import by.it.artiuschik.jd_01_05.Util;
 import by.it.artiuschik.jd_02_04.mathlab.errors.Error;
 import by.it.artiuschik.jd_02_04.mathlab.utils.Patterns;
-import by.it.artiuschik.jd_01_05.Util.*;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -27,7 +24,7 @@ public class VarM extends Var {
 
     @Override
     public void setFrom(String str) {
-        ArrayList<String> rows = new ArrayList();
+        ArrayList<String> rows = new ArrayList<>();
         Pattern p = Pattern.compile(Patterns.exVec);
         Matcher m = p.matcher(str);
         while (m.find()) {
@@ -36,7 +33,8 @@ public class VarM extends Var {
         matrix = new double[rows.size()][];
         for (int i = 0; i < rows.size(); i++) {
             String[] elem = rows.get(i).split(",");
-            double[] value = new double[elem.length];
+            int elemAmount=elem.length;
+            double[] value = new double[elemAmount];
             m = Pattern.compile(Patterns.exVal).matcher(rows.get(i));
             int ind = 0;
             while (m.find()) {
@@ -54,8 +52,8 @@ public class VarM extends Var {
         String prefix;
         if (!(matrix == null)) {
             prefix = "{";
-            for (int i = 0; i < matrix.length; i++) {
-                res.append(prefix).append(new VarV(matrix[i]).toString());
+            for (double[] aMatrix : matrix) {
+                res.append(prefix).append(new VarV(aMatrix).toString());
                 prefix = ",";
             }
             res.append("}");
