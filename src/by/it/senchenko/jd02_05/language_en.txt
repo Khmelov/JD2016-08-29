@@ -1,3 +1,0 @@
-message.welcome=Welcome!!!!
-message.username=Senchenko Denis
-message.question=How are you????

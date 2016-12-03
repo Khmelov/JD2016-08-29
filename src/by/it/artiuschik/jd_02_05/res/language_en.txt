@@ -1,3 +1,0 @@
-message.welcome=Welcome!!!!
-message.username=Artiuschik Elena
-message.question=How are you????

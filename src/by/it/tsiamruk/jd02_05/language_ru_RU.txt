@@ -1,3 +1,0 @@
-message.welcome = Добрый день!
-message.username = Вальдемар Темрук
-message.question = Как ваши дела?

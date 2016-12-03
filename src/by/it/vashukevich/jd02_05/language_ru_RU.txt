@@ -1,3 +1,0 @@
-message.welcome=Привет!
-message.username=Владимир Вашукевич
-message.question=Что ты делаешь?

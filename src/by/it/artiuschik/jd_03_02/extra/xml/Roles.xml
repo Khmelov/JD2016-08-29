@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Roles>
-    <Role>
-        <Role_name>Студент</Role_name>
-    </Role>
-    <Role>
-        <Role_name>Тьютор</Role_name>
-    </Role>
-</Roles>

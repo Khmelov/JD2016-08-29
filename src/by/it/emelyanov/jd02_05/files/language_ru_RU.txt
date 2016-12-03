@@ -1,3 +1,0 @@
-message.welcome=Добро пожаловать!
-message.username=Дмитрий Емельянов.
-message.question=Как дела?

@@ -1,6 +1,0 @@
-message.welcome=Добрый день!
-message.username=Наталья Савельева
-message.question=Как дела?
-prompt.hint=Чтобы переключить язык - введите 'en', 'be', 'ru' или 'END' для выхода из программы.
-prompt.error=Неизвестная команда! Будет использована английская локаль.
-prompt.exit=До свидания!

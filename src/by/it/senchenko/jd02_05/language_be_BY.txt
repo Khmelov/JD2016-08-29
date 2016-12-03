@@ -1,3 +1,0 @@
-message.welcome=Добры дзень!
-message.username=Сенчанка Дзянис
-message.question=Як вашы справы?

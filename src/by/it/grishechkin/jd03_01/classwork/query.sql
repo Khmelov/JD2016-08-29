@@ -1,1 +1,0 @@
-insert into Role (ID, Role) values (null, 'Moder');

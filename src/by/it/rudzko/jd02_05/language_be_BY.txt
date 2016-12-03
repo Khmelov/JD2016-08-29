@@ -1,4 +1,0 @@
-message.welcome=Дабрыдзень,
-message.username=Вольга Рудзько!
-message.question=Як маецеся?
-message.chooselanguage=Увядзiце 'en', 'by' цi 'ru', каб выбраць мову. Або надрукуйце 'stop', каб выйсцi.

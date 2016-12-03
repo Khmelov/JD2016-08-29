@@ -1,3 +1,0 @@
-message.welcome=Добры дзень!
-message.username=Арцюшчык Алена
-message.question=Як вашы справы?

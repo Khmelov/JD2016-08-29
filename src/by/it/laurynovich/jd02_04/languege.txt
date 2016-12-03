@@ -1,3 +1,0 @@
-message.welcom = Welcome!
-message.username = Kate Laurynovich
-message.question = How are you?

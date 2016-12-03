@@ -1,4 +1,0 @@
-message.welcome=Здравствуйте,
-message.username=Ольга Рудько!
-message.question=Как Ваши дела?
-message.chooselanguage=Введите 'en', 'by' или 'ru' для выбора языка. Либо 'stop' для выхода.

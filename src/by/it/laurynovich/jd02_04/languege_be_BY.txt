@@ -1,3 +1,0 @@
-message.welcom = Добры дзень!
-message.username = Кацярына Лаурынович
-message.question = Як вашы справы?

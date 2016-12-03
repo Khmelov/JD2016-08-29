@@ -1,3 +1,0 @@
-message.welcome=Добры дзень!
-message.username=Ілюхін Ігнат
-message.question=Як вашы справы?

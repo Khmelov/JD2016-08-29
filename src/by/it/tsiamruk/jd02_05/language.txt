@@ -1,3 +1,0 @@
-message.welcome = Welcome!
-message.username = Waldemar Tsiamruk
-message.question = How are you?
